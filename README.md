@@ -9,7 +9,7 @@ Also, just a test
 
 ## This is where I would put my links. 
 
-[linked text]("https://github.com/BornB4Google/swe-3313-fall-2025-team-09") <- to the repo
+[https://github.com/BornB4Google/swe-3313-fall-2025-team-09]
 
 *italic* and **bold**
 
