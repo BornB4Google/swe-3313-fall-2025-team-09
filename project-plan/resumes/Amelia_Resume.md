@@ -1,3 +1,3 @@
-#Amelia Ellingson
+# Amelia Ellingson
 
-Placeholder file for Amelia Resume
+Placeholder for Amelia Resume
