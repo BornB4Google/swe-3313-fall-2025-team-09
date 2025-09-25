@@ -2,13 +2,13 @@
 This is where we put our team assignments and job descriptions.
 
 ## Amy Ward 
-### Backend Developer
+## Backend Developer
 
 - Job Description
 - Job Description
 
 ## Andrew Tressler 
-### Backend Developer
+## Backend Developer
 
 - Job Description
 - Job Description
