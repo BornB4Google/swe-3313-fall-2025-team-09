@@ -1,10 +1,12 @@
-# Group 9 README.md Template
+# Project Plan
 
-This is just a test
+This is the project plan
 
-## This is a second header placeholder
 
-Also, just a test
+## Meet The Team: 
+
+[Isaac Thoman] (https://isaacthoman.github.io/SWE3313/)  
+[Amelia Ellingson] (https://emmyatri.io/)  
 
 
 ## This is where I would put my Gantt Chart
