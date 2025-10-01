@@ -5,8 +5,8 @@ This is the project plan
 
 ## Meet The Team: 
 
-[Isaac Thoman] (https://isaacthoman.github.io/SWE3313/)  
-[Amelia Ellingson] (https://emmyatri.io/)  
+[Isaac Thoman](https://isaacthoman.github.io/SWE3313/)  
+[Amelia Ellingson](https://emmyatri.io/)  
 
 
 ## This is where I would put my Gantt Chart
