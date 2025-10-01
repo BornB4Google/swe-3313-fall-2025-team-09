@@ -5,7 +5,7 @@ This is the project plan
 
 ## Meet The Team: 
 
-[Isaac Thoman](https://isaacthoman.github.io/SWE3313/) 
+[Isaac Thoman](https://isaacthoman.github.io/SWE3313/)  
 [Amelia Ellingson](https://emmyatri.io/)  
 [Andrew Tressler](https://atressler5.github.io/)  
 
