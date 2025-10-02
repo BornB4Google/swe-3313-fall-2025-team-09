@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-23" view-index="0" gantt-divider-location="666" resource-divider-location="461" version="3.3.3316" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-07" view-index="0" gantt-divider-location="651" resource-divider-location="461" version="3.3.3316" locale="en_US">
     <description/>
-    <view zooming-state="default:3" id="gantt-chart">
+    <view zooming-state="default:5" id="gantt-chart">
         <field id="tpd15" name="Notes" width="20" order="0"/>
-        <field id="tpd3" name="Name" width="324" order="0"/>
+        <field id="tpd3" name="Name" width="317" order="0"/>
         <field id="tpd14" name="Task color" width="20" order="1"/>
-        <field id="tpd4" name="Begin date" width="122" order="1"/>
-        <field id="tpd5" name="End date" width="122" order="2"/>
-        <field id="tpd7" name="Completion" width="82" order="3"/>
+        <field id="tpd4" name="Begin date" width="119" order="1"/>
+        <field id="tpd5" name="End date" width="119" order="2"/>
+        <field id="tpd7" name="Completion" width="80" order="3"/>
         <option id="filter.completedTasks" value="false"/>
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
@@ -44,6 +44,7 @@
         </taskproperties>
         <task id="37" uid="fb7194ff02a34b67a00b163dcaa8f8d3" name="SWE3313 - Group 9" meeting="false" project="true" start="2025-09-25" duration="75" complete="18" expand="true">
             <task id="0" uid="4e52f27d2c7448c0bae9126b626cbf93" name="MILESTONE: Project Plan" color="#cccc00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2025-09-25" duration="13" complete="69" priority="4" expand="true">
+                <depend id="17" type="2" difference="0" hardness="Strong"/>
                 <task id="1" uid="a67d6dcb232e4ca28765e970526f9155" name="EPIC: Technology Description" color="#cc0000" meeting="false" start="2025-09-25" duration="9" complete="66" priority="2" expand="true">
                     <task id="6" uid="7843eb107a11463c890d5db60f4916fe" name="STORY: Select Technology" meeting="false" start="2025-09-25" duration="4" complete="100" expand="true">
                         <depend id="7" type="2" difference="0" hardness="Strong"/>
@@ -100,6 +101,8 @@ Put relative link to team assignments on the "main" README.md]]></notes>
                 </task>
             </task>
             <task id="17" uid="33b8ec6fbee24e1cbf53f700163ca740" name="MILESTONE: Requirements" color="#cccc00" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true">
+                <depend id="24" type="2" difference="0" hardness="Strong"/>
+                <depend id="31" type="2" difference="0" hardness="Strong"/>
                 <task id="18" uid="88d9467e98e24cce835061003fb0f970" name="EPIC: Req Analysis &amp; Elicitation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
                 <task id="19" uid="2926e7749bd6473ba03497d98355c3a5" name="EPIC: Introduction" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
                 <task id="20" uid="4f43744cf53146c3a4ed27b526b633c7" name="EPIC: Requirements" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
@@ -108,9 +111,11 @@ Put relative link to team assignments on the "main" README.md]]></notes>
                 <task id="23" uid="60c0859bc6dc4214be7978df65e22fd7" name="EPIC: Presentation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
             </task>
             <task id="24" uid="8defa038033b4e4e9538a7b7f1773131" name="MILESTONE: UI Design" color="#cccc00" meeting="false" start="2025-10-17" duration="12" complete="0" expand="false">
+                <depend id="33" type="2" difference="0" hardness="Strong"/>
                 <task id="25" uid="bf5a98d83e0847c59495b99466698f83" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-17" duration="12" complete="0" expand="true"/>
             </task>
             <task id="31" uid="597675a872b44f26b52ca7cec3ee5cf8" name="MILESTONE: Technical Design" color="#cccc00" meeting="false" start="2025-10-29" duration="21" complete="0" expand="false">
+                <depend id="33" type="2" difference="0" hardness="Strong"/>
                 <task id="32" uid="4d018df6978146baa2ba1a9d0a57b3ba" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-29" duration="21" complete="0" expand="true"/>
             </task>
             <task id="33" uid="c8b3425d0cc64e80848ac82d27fbef04" name="MILESTONE: Implementation" color="#cccc00" meeting="false" start="2025-11-19" duration="20" complete="0" expand="false">
