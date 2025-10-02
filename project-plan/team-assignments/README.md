@@ -1,15 +1,10 @@
-# Group 9 - Born B4 Google
+# Team Assignments
 This is where we put our team assignments and job descriptions.
 
-## Amy Ward - Backend Developer
+## Amelia Ellingson - Project Manager, QA
 
-- Job Description
-- Job Description
-
-## Andrew Tressler - Backend Developer
-
-- Job Description
-- Job Description
+- Bullet Point
+- Bullet Point
 
 ## Isaac Thoman - Frontend Developer, Dev Ops
 
@@ -21,9 +16,16 @@ This is where we put our team assignments and job descriptions.
 - Bullet Point
 - Bullet Point
 
-## Amelia Ellingson - Project Manager, QA
+## Amy Ward - Backend Developer
 
-- Bullet Point
-- Bullet Point
+- Job Description
+- Job Description
+
+## Andrew Tressler - Backend Developer
+
+- Job Description
+- Job Description
+
+
 
 
