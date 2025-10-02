@@ -22,11 +22,21 @@
 
 ## [Amy Ward](/project-plan/resumes/Amy_Resume.md) - Backend Developer
 
-- Job Description
-- Job Description
+- Set up database tables and make sure data is saved/loaded with SQLite (seed data, inventory, users)
+- Maintain authentication (login) and roles (customer vs. admin)
+- Implement admin features: sales report, CSV export, and adding inventory
+- Enforce data integrity and handle edge cases
+- Write unit/integration tests for backend logic
+- Keep README/setup instructions accurate
+- Ensure backend data matches what the UI needs
 
 ## [Andrew Tressler](/project-plan/resumes/Andrew_Resume.md) - Backend Developer
 
-- Job Description
-- Job Description
+- Build business rules for cart/checkout, including 6% sales tax and totals
+- Maintain authentication (login) and roles (customer vs. admin)
+- Implement admin features: sales report, CSV export, and adding inventory
+- Enforce data integrity and handle edge cases
+- Write unit/integration tests for backend logic
+- Keep README/setup instructions accurate
+
 
