@@ -10,22 +10,22 @@
 - Maintain project documentation, track deliverables, and ensure alignment with client requirements
 - Serve as primary liaison between development team and stakeholders for status updates and blockers.
 
-## Isaac Thoman - Frontend Developer, Dev Ops
+## [Isaac Thoman](/project-plan/resumes/Isaac_Resume.md) - Frontend Developer, Dev Ops
 
 - Bullet Point
 - Bullet Point
 
-## Sara Waymen - Frontend Developer, UI/UX
+## [Sara Waymen](/project-plan/resumes/Sara_Resume.md) - Frontend Developer, UI/UX
 
 - Bullet Point
 - Bullet Point
 
-## Amy Ward - Backend Developer
+## [Amy Ward](/project-plan/resumes/Amy_Resume.md) - Backend Developer
 
 - Job Description
 - Job Description
 
-## Andrew Tressler - Backend Developer
+## [Andrew Tressler](/project-plan/resumes/Andrew_Resume.md) - Backend Developer
 
 - Job Description
 - Job Description
