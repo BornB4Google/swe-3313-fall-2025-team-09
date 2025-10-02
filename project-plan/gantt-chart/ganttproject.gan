@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-23" view-index="0" gantt-divider-location="666" resource-divider-location="461" version="3.3.3316" locale="en_US">
+    <description/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd15" name="Notes" width="20" order="0"/>
+        <field id="tpd3" name="Name" width="324" order="0"/>
+        <field id="tpd14" name="Task color" width="20" order="1"/>
+        <field id="tpd4" name="Begin date" width="122" order="1"/>
+        <field id="tpd5" name="End date" width="122" order="2"/>
+        <field id="tpd7" name="Completion" width="82" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <timeline><![CDATA[0]]></timeline>
+        <option id="color.recent"><![CDATA[#cc0000 #cccc00]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="1" name="Default role" width="185" order="0"/>
+        <field id="0" name="Name" width="272" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="37" uid="fb7194ff02a34b67a00b163dcaa8f8d3" name="SWE3313 - Group 9" meeting="false" project="true" start="2025-09-25" duration="75" complete="18" expand="true">
+            <task id="0" uid="4e52f27d2c7448c0bae9126b626cbf93" name="MILESTONE: Project Plan" color="#cccc00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2025-09-25" duration="13" complete="69" priority="4" expand="true">
+                <task id="1" uid="a67d6dcb232e4ca28765e970526f9155" name="EPIC: Technology Description" color="#cc0000" meeting="false" start="2025-09-25" duration="9" complete="66" priority="2" expand="true">
+                    <task id="6" uid="7843eb107a11463c890d5db60f4916fe" name="STORY: Select Technology" meeting="false" start="2025-09-25" duration="4" complete="100" expand="true">
+                        <depend id="7" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="7" uid="03ff168028fd48c991c158fc705ca2fc" name="STORY: Write Technology Description" color="#8cb6ce" meeting="false" start="2025-09-29" duration="5" complete="40" expand="true">
+                        <notes><![CDATA[Explain what and why: 
+
+Language
+Framework
+Storage Plan
+Operating Environment
+Anything additional needed for project
+
+Place your technology selection details in project-plan/technology-selection/README.md
+
+Relative link to "main" README.md
+]]></notes>
+                        <depend id="13" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+                <task id="3" uid="e21e8bcc13a54d51af7766b7c4e860ce" name="EPIC: Gantt Chart" color="#cc0000" meeting="false" start="2025-09-25" duration="11" complete="66" expand="true">
+                    <depend id="5" type="2" difference="0" hardness="Strong"/>
+                    <task id="8" uid="4da3e70d747e4517bd94c41c589d8a3a" name="STORY: Project Plan Gantt" meeting="false" start="2025-09-25" duration="6" complete="100" expand="true">
+                        <notes><![CDATA[Enter Project Plan into Gantt Project]]></notes>
+                    </task>
+                    <task id="9" uid="d1ea8c6d61fc41d48a32c61af1886aa0" name="STORY: Finish Gannt Chart" color="#8cb6ce" meeting="false" start="2025-10-03" duration="3" complete="0" expand="true">
+                        <notes><![CDATA[Coordinate with team to finish Gantt Chart in meeting on Sunday]]></notes>
+                        <depend id="13" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+                <task id="4" uid="592c18c13d0a4d5091aa0e843212e67c" name="EPIC: Team Assignment" color="#cc0000" meeting="false" start="2025-09-25" duration="11" complete="84" expand="true">
+                    <depend id="5" type="2" difference="0" hardness="Strong"/>
+                    <task id="11" uid="87a1679883a2421cae3a1b281c982530" name="STORY:Select Roles" meeting="false" start="2025-09-25" duration="6" complete="100" expand="true">
+                        <depend id="10" type="2" difference="0" hardness="Strong"/>
+                        <depend id="15" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="12" uid="23a357b2b6c343d1805dfd2500df71cb" name="STORY:Write Resumes" color="#8cb6ce" meeting="false" start="2025-09-25" duration="8" complete="100" expand="true">
+                        <depend id="10" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="10" uid="07f66cc3e19a487097fc89c88f33e695" name="STORY: Write Team Assignments" meeting="false" start="2025-10-03" duration="2" complete="20" expand="true">
+                        <notes><![CDATA[Update README.md file in "project-plan/team-assignments/" with team assignments and role selection.
+
+Put relative link to team assignments on the "main" README.md]]></notes>
+                        <depend id="13" type="2" difference="0" hardness="Strong"/>
+                        <depend id="15" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="15" uid="c1dcfc01221b41c9ad639223210e03bb" name="STORY: Write Meet Our Team" color="#8cb6ce" meeting="false" start="2025-10-05" duration="1" complete="0" expand="true">
+                        <depend id="13" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+                <task id="5" uid="b041f0ce46174e64ba8c89bf56010fdb" name="EPIC: Film Loom Video" color="#cc0000" meeting="false" start="2025-10-06" duration="2" complete="0" expand="true">
+                    <task id="13" uid="3ae7911ed0e4467da7fad0ed41bd717a" name="STORY: Write Script" meeting="false" start="2025-10-06" duration="1" complete="0" expand="true"/>
+                    <task id="14" uid="b3b956474c4044a3953fe5d648f566a3" name="STORY: Film, Edit, Submit" color="#8cb6ce" meeting="false" start="2025-10-06" duration="2" complete="0" expand="true"/>
+                </task>
+            </task>
+            <task id="17" uid="33b8ec6fbee24e1cbf53f700163ca740" name="MILESTONE: Requirements" color="#cccc00" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true">
+                <task id="18" uid="88d9467e98e24cce835061003fb0f970" name="EPIC: Req Analysis &amp; Elicitation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+                <task id="19" uid="2926e7749bd6473ba03497d98355c3a5" name="EPIC: Introduction" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+                <task id="20" uid="4f43744cf53146c3a4ed27b526b633c7" name="EPIC: Requirements" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+                <task id="21" uid="5679c9b94b284a59ac43eb1e308d4cc4" name="EPIC: Use Case Diagram" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+                <task id="22" uid="189e7e6c95164f7aaacc1ca3ca307800" name="EPIC: Decision Table" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+                <task id="23" uid="60c0859bc6dc4214be7978df65e22fd7" name="EPIC: Presentation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+            </task>
+            <task id="24" uid="8defa038033b4e4e9538a7b7f1773131" name="MILESTONE: UI Design" color="#cccc00" meeting="false" start="2025-10-17" duration="12" complete="0" expand="false">
+                <task id="25" uid="bf5a98d83e0847c59495b99466698f83" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-17" duration="12" complete="0" expand="true"/>
+            </task>
+            <task id="31" uid="597675a872b44f26b52ca7cec3ee5cf8" name="MILESTONE: Technical Design" color="#cccc00" meeting="false" start="2025-10-29" duration="21" complete="0" expand="false">
+                <task id="32" uid="4d018df6978146baa2ba1a9d0a57b3ba" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-29" duration="21" complete="0" expand="true"/>
+            </task>
+            <task id="33" uid="c8b3425d0cc64e80848ac82d27fbef04" name="MILESTONE: Implementation" color="#cccc00" meeting="false" start="2025-11-19" duration="20" complete="0" expand="false">
+                <task id="34" uid="acf63977f7284bd08179c845361400ce" name="EPIC:" color="#cc0000" meeting="false" start="2025-11-19" duration="20" complete="0" expand="true"/>
+            </task>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="2" name="Amelia Ellingson" function="1" contacts="" phone=""/>
+        <resource id="3" name="Isaac Thoman" function="2" contacts="" phone=""/>
+        <resource id="4" name="Sara Waymen" function="2" contacts="" phone=""/>
+        <resource id="5" name="Andrew Tressler" function="3" contacts="" phone=""/>
+        <resource id="6" name="Amy Ward" function="3" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="7" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="8" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="11" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="12" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="10" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="14" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="15" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="11" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="11" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="11" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="11" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="6" function="3" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name="Project Manager"/>
+        <role id="2" name="Front End Developer"/>
+        <role id="3" name="Back End Developer"/>
+    </roles>
+</project>
