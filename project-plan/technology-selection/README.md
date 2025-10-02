@@ -2,14 +2,14 @@
 
 ## Language
 
-C#
+C# *(why?)*
 
 ## Framework
 
-ASP .NET
+ASP .NET *(why?)*
 
 ## Database 
 
-SQLite
+SQLite *(why?)*
 
 
