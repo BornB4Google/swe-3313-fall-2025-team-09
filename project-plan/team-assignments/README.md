@@ -1,6 +1,6 @@
 # Team Assignments
 
-## Amelia Ellingson - Project Manager, Full-Stack Support
+## [Amelia Ellingson](/project-plan/resumes/Amelia_Resume.md) - Project Manager, Full-Stack Support
 
 - Project Coordinator, responsible for deadlines, scheduling, and GanttProject planning
 - Interface with back and front end teams to assess risk factors and establish mitigation strategies.
