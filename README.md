@@ -6,7 +6,7 @@ This is the project plan
 ## Meet The Team: 
 
 [Isaac Thoman](https://isaacthoman.github.io/SWE3313/)  
-[Amelia Ellingson](https://emmyatri.io/)  
+[Amelia Ellingson](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Amelia_Resume.md)  
 [Andrew Tressler](https://atressler5.github.io/)  
 
 ## Team Assignments
