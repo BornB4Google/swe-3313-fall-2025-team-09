@@ -6,7 +6,7 @@ We are building the ultimate e-commerce platform where you can finally buy what 
 
 Our stack consists of C#, ASP MVC, and SQLite, because when you're selling companies worth trillions, you need enterprise grade technologyrunning on a database that fits on a floppy disk. 
 
-**Disclaimer: No actual corporations were acquired in the making of this project. Yet...**
+*Disclaimer: No actual corporations were acquired in the making of this project. Yet...*
 
 
 ## Meet The Team: 
