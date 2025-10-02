@@ -1,10 +1,14 @@
 # Team Assignments
-This is where we put our team assignments and job descriptions.
 
-## Amelia Ellingson - Project Manager, QA
+## Amelia Ellingson - Project Manager, Full-Stack Support
 
-- Bullet Point
-- Bullet Point
+- Project Coordinator, responsible for deadlines, scheduling, and GanttProject planning
+- Interface with back and front end teams to assess risk factors and establish mitigation strategies.
+- Manage sprint cycles, stand-ups, and team coordination to ensure on-time delivery
+- Provide full-stack development support across C#, ASP MVC, and SQLite implementation
+- Conduct code reviews and troubleshoot technical issue across the entire application stack.
+- Maintain project documentation, track deliverables, and ensure alignment with client requirements
+- Serve as primary liaison between development team and stakeholders for status updates and blockers.
 
 ## Isaac Thoman - Frontend Developer, Dev Ops
 
@@ -25,7 +29,4 @@ This is where we put our team assignments and job descriptions.
 
 - Job Description
 - Job Description
-
-
-
 
