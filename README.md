@@ -11,11 +11,12 @@ Our stack consists of C#, ASP MVC, and SQLite, because when you're selling compa
 
 ## Meet The Team: 
 
-[Isaac Thoman](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Isaac_Resume.md/)  
-[Amelia Ellingson](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Amelia_Resume.md)  
-[Andrew Tressler](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Andrew_Resume.md)  
-[Amy Ward](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Amy_Resume.md)  
-[Sara Waymen](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/resumes/Sara_Resume.md)  
+[Amelia Ellingson](/project-plan/resumes/Amelia_Resume.md)  
+[Isaac Thoman](/project-plan/resumes/Isaac_Resume.md)  
+[Andrew Tressler](/project-plan/resumes/Andrew_Resume.md)  
+[Amy Ward](/project-plan/resumes/Amy_Resume.md)  
+[Sara Waymen](/project-plan/resumes/Sara_Resume.md)
+
 
 ## Team Assignments
 
