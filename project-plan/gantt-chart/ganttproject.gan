@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-07" view-index="0" gantt-divider-location="651" resource-divider-location="461" version="3.3.3316" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-14" view-index="0" gantt-divider-location="856" resource-divider-location="461" version="3.3.3316" locale="en_US">
     <description/>
-    <view zooming-state="default:5" id="gantt-chart">
+    <view zooming-state="default:6" id="gantt-chart">
         <field id="tpd15" name="Notes" width="20" order="0"/>
-        <field id="tpd3" name="Name" width="317" order="0"/>
+        <field id="tpd3" name="Name" width="529" order="0"/>
         <field id="tpd14" name="Task color" width="20" order="1"/>
-        <field id="tpd4" name="Begin date" width="119" order="1"/>
-        <field id="tpd5" name="End date" width="119" order="2"/>
-        <field id="tpd7" name="Completion" width="80" order="3"/>
+        <field id="tpd4" name="Begin date" width="86" order="1"/>
+        <field id="tpd5" name="End date" width="107" order="2"/>
+        <field id="tpd7" name="Completion" width="118" order="3"/>
         <option id="filter.completedTasks" value="false"/>
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
@@ -42,84 +42,157 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="37" uid="fb7194ff02a34b67a00b163dcaa8f8d3" name="SWE3313 - Group 9" meeting="false" project="true" start="2025-09-25" duration="75" complete="18" expand="true">
-            <task id="0" uid="4e52f27d2c7448c0bae9126b626cbf93" name="MILESTONE: Project Plan" color="#cccc00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2025-09-25" duration="13" complete="69" priority="4" expand="true">
-                <depend id="17" type="2" difference="0" hardness="Strong"/>
-                <task id="1" uid="a67d6dcb232e4ca28765e970526f9155" name="EPIC: Technology Description" color="#cc0000" meeting="false" start="2025-09-25" duration="9" complete="66" priority="2" expand="true">
-                    <task id="6" uid="7843eb107a11463c890d5db60f4916fe" name="STORY: Select Technology" meeting="false" start="2025-09-25" duration="4" complete="100" expand="true">
+        <task id="37" uid="fb7194ff02a34b67a00b163dcaa8f8d3" name="SWE3313 - Group 9" meeting="false" project="true" start="2025-09-27" duration="73" complete="0" priority="4" expand="true">
+            <task id="0" uid="4e52f27d2c7448c0bae9126b626cbf93" name="MILESTONE: Project Plan" color="#cccc00" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2025-09-27" duration="11" complete="0" priority="4" expand="true">
+                <task id="1" uid="a67d6dcb232e4ca28765e970526f9155" name="EPIC: Write Technology Description" color="#cc0000" meeting="false" start="2025-09-27" duration="7" complete="0" priority="2" expand="false">
+                    <task id="6" uid="7843eb107a11463c890d5db60f4916fe" name="STORY: Select Technology" meeting="false" start="2025-09-27" duration="2" complete="0" expand="true">
                         <depend id="7" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="7" uid="03ff168028fd48c991c158fc705ca2fc" name="STORY: Write Technology Description" color="#8cb6ce" meeting="false" start="2025-09-29" duration="5" complete="40" expand="true">
-                        <notes><![CDATA[Explain what and why: 
-
-Language
-Framework
-Storage Plan
-Operating Environment
-Anything additional needed for project
-
-Place your technology selection details in project-plan/technology-selection/README.md
-
-Relative link to "main" README.md
-]]></notes>
+                    <task id="7" uid="03ff168028fd48c991c158fc705ca2fc" name="STORY: Write Technology Description" color="#8cb6ce" meeting="false" start="2025-09-29" duration="5" complete="0" priority="2" expand="true">
                         <depend id="13" type="2" difference="0" hardness="Strong"/>
                     </task>
                 </task>
-                <task id="3" uid="e21e8bcc13a54d51af7766b7c4e860ce" name="EPIC: Gantt Chart" color="#cc0000" meeting="false" start="2025-09-25" duration="11" complete="66" expand="true">
+                <task id="3" uid="e21e8bcc13a54d51af7766b7c4e860ce" name="EPIC: Create Gantt Chart" color="#cc0000" meeting="false" start="2025-09-27" duration="9" complete="0" priority="2" expand="true">
                     <depend id="5" type="2" difference="0" hardness="Strong"/>
-                    <task id="8" uid="4da3e70d747e4517bd94c41c589d8a3a" name="STORY: Project Plan Gantt" meeting="false" start="2025-09-25" duration="6" complete="100" expand="true">
-                        <notes><![CDATA[Enter Project Plan into Gantt Project]]></notes>
-                    </task>
-                    <task id="9" uid="d1ea8c6d61fc41d48a32c61af1886aa0" name="STORY: Finish Gannt Chart" color="#8cb6ce" meeting="false" start="2025-10-03" duration="3" complete="0" expand="true">
-                        <notes><![CDATA[Coordinate with team to finish Gantt Chart in meeting on Sunday]]></notes>
+                    <task id="8" uid="4da3e70d747e4517bd94c41c589d8a3a" name="STORY: Plan Gantt Chart" meeting="false" start="2025-09-27" duration="4" complete="0" expand="true"/>
+                    <task id="9" uid="d1ea8c6d61fc41d48a32c61af1886aa0" name="STORY: Finish Gannt Chart" color="#8cb6ce" meeting="false" start="2025-10-01" duration="5" complete="0" priority="2" expand="true">
                         <depend id="13" type="2" difference="0" hardness="Strong"/>
                     </task>
                 </task>
-                <task id="4" uid="592c18c13d0a4d5091aa0e843212e67c" name="EPIC: Team Assignment" color="#cc0000" meeting="false" start="2025-09-25" duration="11" complete="84" expand="true">
+                <task id="4" uid="592c18c13d0a4d5091aa0e843212e67c" name="EPIC: Create Team Assignments" color="#cc0000" meeting="false" start="2025-09-27" duration="9" complete="0" priority="2" expand="true">
                     <depend id="5" type="2" difference="0" hardness="Strong"/>
-                    <task id="11" uid="87a1679883a2421cae3a1b281c982530" name="STORY:Select Roles" meeting="false" start="2025-09-25" duration="6" complete="100" expand="true">
+                    <task id="11" uid="87a1679883a2421cae3a1b281c982530" name="STORY: Select Roles" meeting="false" start="2025-09-27" duration="4" complete="0" expand="true">
                         <depend id="10" type="2" difference="0" hardness="Strong"/>
                         <depend id="15" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="12" uid="23a357b2b6c343d1805dfd2500df71cb" name="STORY:Write Resumes" color="#8cb6ce" meeting="false" start="2025-09-25" duration="8" complete="100" expand="true">
+                    <task id="12" uid="23a357b2b6c343d1805dfd2500df71cb" name="STORY: Write Resumes" color="#8cb6ce" meeting="false" start="2025-09-27" duration="6" complete="0" priority="2" expand="true">
                         <depend id="10" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="10" uid="07f66cc3e19a487097fc89c88f33e695" name="STORY: Write Team Assignments" meeting="false" start="2025-10-03" duration="2" complete="20" expand="true">
-                        <notes><![CDATA[Update README.md file in "project-plan/team-assignments/" with team assignments and role selection.
-
-Put relative link to team assignments on the "main" README.md]]></notes>
+                    <task id="10" uid="07f66cc3e19a487097fc89c88f33e695" name="STORY: Write Team Assignments" meeting="false" start="2025-10-03" duration="2" complete="0" priority="2" expand="true">
                         <depend id="13" type="2" difference="0" hardness="Strong"/>
                         <depend id="15" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="15" uid="c1dcfc01221b41c9ad639223210e03bb" name="STORY: Write Meet Our Team" color="#8cb6ce" meeting="false" start="2025-10-05" duration="1" complete="0" expand="true">
+                    <task id="15" uid="c1dcfc01221b41c9ad639223210e03bb" name="STORY: Write Introduction" color="#8cb6ce" meeting="false" start="2025-10-05" duration="1" complete="0" priority="2" expand="true">
                         <depend id="13" type="2" difference="0" hardness="Strong"/>
                     </task>
                 </task>
-                <task id="5" uid="b041f0ce46174e64ba8c89bf56010fdb" name="EPIC: Film Loom Video" color="#cc0000" meeting="false" start="2025-10-06" duration="2" complete="0" expand="true">
+                <task id="5" uid="b041f0ce46174e64ba8c89bf56010fdb" name="EPIC: Film Loom Video" color="#cc0000" meeting="false" start="2025-10-06" duration="2" complete="0" priority="2" expand="true">
                     <task id="13" uid="3ae7911ed0e4467da7fad0ed41bd717a" name="STORY: Write Script" meeting="false" start="2025-10-06" duration="1" complete="0" expand="true"/>
-                    <task id="14" uid="b3b956474c4044a3953fe5d648f566a3" name="STORY: Film, Edit, Submit" color="#8cb6ce" meeting="false" start="2025-10-06" duration="2" complete="0" expand="true"/>
+                    <task id="14" uid="b3b956474c4044a3953fe5d648f566a3" name="STORY: Film, Edit, Submit" color="#8cb6ce" meeting="false" start="2025-10-06" duration="2" complete="0" priority="4" expand="true"/>
                 </task>
             </task>
-            <task id="17" uid="33b8ec6fbee24e1cbf53f700163ca740" name="MILESTONE: Requirements" color="#cccc00" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true">
-                <depend id="24" type="2" difference="0" hardness="Strong"/>
-                <depend id="31" type="2" difference="0" hardness="Strong"/>
-                <task id="18" uid="88d9467e98e24cce835061003fb0f970" name="EPIC: Req Analysis &amp; Elicitation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
-                <task id="19" uid="2926e7749bd6473ba03497d98355c3a5" name="EPIC: Introduction" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
-                <task id="20" uid="4f43744cf53146c3a4ed27b526b633c7" name="EPIC: Requirements" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
-                <task id="21" uid="5679c9b94b284a59ac43eb1e308d4cc4" name="EPIC: Use Case Diagram" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
-                <task id="22" uid="189e7e6c95164f7aaacc1ca3ca307800" name="EPIC: Decision Table" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
-                <task id="23" uid="60c0859bc6dc4214be7978df65e22fd7" name="EPIC: Presentation" color="#cc0000" meeting="false" start="2025-10-08" duration="9" complete="0" expand="true"/>
+            <task id="17" uid="33b8ec6fbee24e1cbf53f700163ca740" name="MILESTONE: Requirements" color="#cccc00" meeting="false" start="2025-10-05" duration="12" complete="0" expand="true">
+                <task id="39" uid="0731c5a2bbd24629a43c525a5e1f2f9f" name="EPIC: Write Requirements" color="#cc0000" meeting="false" start="2025-10-05" duration="10" complete="0" priority="2" expand="true">
+                    <task id="40" uid="c6e4305a92d44a8690aa2bcbdb836c28" name="STORY: Analyze Customer Notes" color="#8cb6ce" meeting="false" start="2025-10-05" duration="2" complete="0" priority="2" expand="true"/>
+                    <task id="46" uid="1ee17e505fb34e94b60dff3c9830997f" name="STORY: Create Requirements Table" color="#8cb6ce" meeting="false" start="2025-10-07" duration="2" complete="0" priority="2" expand="true"/>
+                    <task id="47" uid="4a19f344d3e8460fb10c35365244903f" name="STORY: Write Requirement 1st Draft" color="#8cb6ce" meeting="false" start="2025-10-09" duration="3" complete="0" priority="0" expand="true"/>
+                    <task id="60" uid="f841ef7f4f954da8b049b5c7f9a4b2d5" name="STORY: Peer Review Draft" color="#8cb6ce" meeting="false" start="2025-10-11" duration="2" complete="0" expand="true"/>
+                    <task id="48" uid="2c529f83d7bc49249370921a5d485343" name="STORY: Finalize Requirements" color="#8cb6ce" meeting="false" start="2025-10-12" duration="3" complete="0" priority="2" expand="true"/>
+                </task>
+                <task id="21" uid="5679c9b94b284a59ac43eb1e308d4cc4" name="EPIC: Create Use Case Diagram" color="#cc0000" meeting="false" start="2025-10-06" duration="10" complete="0" expand="true">
+                    <task id="49" uid="ff94539724cc442086854b42e87afb59" name="STORY: Identify Actors and Epics" color="#8cb6ce" meeting="false" start="2025-10-06" duration="2" complete="0" priority="2" expand="true"/>
+                    <task id="50" uid="862223c9567f45e19721b715dc6ee4eb" name="STORY: Create Diagram Draft" color="#8cb6ce" meeting="false" start="2025-10-08" duration="6" complete="0" priority="2" expand="true"/>
+                    <task id="51" uid="21acaa4243cc4e1e88b4e82f79deaa19" name="STORY: Finalize Diagram Draft" color="#8cb6ce" meeting="false" start="2025-10-14" duration="2" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="22" uid="189e7e6c95164f7aaacc1ca3ca307800" name="EPIC: Create Decision Table" color="#cc0000" meeting="false" start="2025-10-10" duration="6" complete="0" expand="true">
+                    <task id="57" uid="56feea0d46634096a2681c5d1d2428e9" name="STORY: Identify Administrative Privileges" color="#8cb6ce" meeting="false" start="2025-10-10" duration="2" complete="0" priority="0" expand="true"/>
+                    <task id="61" uid="d2670c6623554131b687d6ea49ff97ed" name="STORY: Identify and Table Preconditions" color="#8cb6ce" meeting="false" start="2025-10-10" duration="2" complete="0" priority="0" expand="true"/>
+                    <task id="42" uid="413dda3439764fd989574e2fc5f4e29e" name="STORY: Format Table" color="#8cb6ce" meeting="false" start="2025-10-12" duration="3" complete="0" expand="true"/>
+                    <task id="59" uid="3e7af2fa6b55453d8b4fa29a070dfab7" name="STORY: Peer Review Table and Finalize" color="#8cb6ce" meeting="false" start="2025-10-14" duration="2" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="18" uid="88d9467e98e24cce835061003fb0f970" name="EPIC: Write Introduction to Requirements" color="#cc0000" meeting="false" start="2025-10-14" duration="3" complete="0" expand="true">
+                    <task id="55" uid="8462f58641124cdf9a07dfb1e626616b" name="STORY: Upload and Merge Artifacts" color="#8cb6ce" meeting="false" start="2025-10-14" duration="1" complete="0" priority="4" expand="true"/>
+                    <task id="56" uid="6f387259163441208b74818931b507ed" name="STORY: Finalize README.md" color="#8cb6ce" meeting="false" start="2025-10-15" duration="1" complete="0" priority="4" expand="true"/>
+                    <task id="53" uid="2af079c6d1234060826868e4bd1d3ca9" name="STORY: Finalize Submission" color="#8cb6ce" meeting="false" start="2025-10-16" duration="1" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="23" uid="60c0859bc6dc4214be7978df65e22fd7" name="EPIC: Finalize Presentation" color="#cc0000" meeting="false" start="2025-10-14" duration="3" complete="0" expand="true">
+                    <task id="44" uid="ef9bd41d9a374c9fbc25917e4c86466b" name="STORY: Script Presentation" color="#8cb6ce" meeting="false" start="2025-10-14" duration="1" complete="0" priority="0" expand="true"/>
+                    <task id="58" uid="c865850394de4e36aecd7c5d8e69bc3d" name="STORY: Film, Edit &amp; Submit" color="#8cb6ce" meeting="false" start="2025-10-15" duration="2" complete="0" priority="4" expand="true"/>
+                </task>
             </task>
-            <task id="24" uid="8defa038033b4e4e9538a7b7f1773131" name="MILESTONE: UI Design" color="#cccc00" meeting="false" start="2025-10-17" duration="12" complete="0" expand="false">
-                <depend id="33" type="2" difference="0" hardness="Strong"/>
-                <task id="25" uid="bf5a98d83e0847c59495b99466698f83" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-17" duration="12" complete="0" expand="true"/>
+            <task id="24" uid="8defa038033b4e4e9538a7b7f1773131" name="MILESTONE: UI Design" color="#cccc00" meeting="false" start="2025-10-17" duration="11" complete="0" expand="true">
+                <task id="25" uid="bf5a98d83e0847c59495b99466698f83" name="EPIC: Plan UI Design" color="#cc0000" meeting="false" start="2025-10-17" duration="3" complete="0" expand="true">
+                    <task id="72" uid="f8fa15d46f6f43a3878f633757bc5230" name="STORY: Identify Pages to Mockup" color="#8cb6ce" meeting="false" start="2025-10-17" duration="2" complete="0" priority="0" expand="true"/>
+                    <task id="73" uid="4fedf1b0f78947b2960d73a42595e8d4" name="STORY: Finalize Color Scheme" color="#8cb6ce" meeting="false" start="2025-10-18" duration="2" complete="0" expand="true"/>
+                </task>
+                <task id="67" uid="dfae7bceea9c42c99fb77cfa301780aa" name="EPIC: Create UI Prototype" color="#cc0000" meeting="false" start="2025-10-20" duration="7" complete="0" expand="true">
+                    <task id="68" uid="44c9c5c884814872b9fceea1744d03e4" name="STORY: Create Login/Registration" color="#8cb6ce" meeting="false" start="2025-10-20" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="71" uid="1552466f852246c69642aee11c975536" name="STORY: Create Inventory Filtering" color="#8cb6ce" meeting="false" start="2025-10-20" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="62" uid="31f89bfa8a8340428e823308c153c4fe" name="STORY: Create Inventory List" color="#8cb6ce" meeting="false" start="2025-10-20" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="64" uid="80a9c26b972b48cf9995dfec3c79bd5a" name="STORY: Create Shopping Cart" color="#8cb6ce" meeting="false" start="2025-10-23" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="63" uid="3308fcf7bcb94ae5bc622d7fcbbb4ffd" name="STORY: Create Checkout" color="#8cb6ce" meeting="false" start="2025-10-23" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="65" uid="52a7530ba99b4a7ab229681e56227420" name="STORY: Create Sales Report" color="#8cb6ce" meeting="false" start="2025-10-23" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="75" uid="9801b0b2f28c4291b4be06deeaf978bf" name="STORY: Add Interactive Linking" color="#8cb6ce" meeting="false" start="2025-10-26" duration="1" complete="0" priority="2" expand="true"/>
+                    <task id="76" uid="c000f225d9154fee8371feffca4b7aa8" name="STORY: Finalize Design" color="#8cb6ce" meeting="false" start="2025-10-26" duration="1" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="66" uid="b71efe3c8b52468aa81676c2038207d6" name="EPIC: Film Presentation" color="#cc0000" meeting="false" start="2025-10-24" duration="4" complete="0" expand="true">
+                    <task id="69" uid="f0f0d85bb0c1454f80c68cc7772cd9f8" name="STORY: Write Script" color="#8cb6ce" meeting="false" start="2025-10-24" duration="3" complete="0" priority="0" expand="true"/>
+                    <task id="70" uid="d894d981639b4188a4cefc58b8fcfcdf" name="STORY: Film, Edit, and Submit Presentation" color="#8cb6ce" meeting="false" start="2025-10-27" duration="1" complete="0" priority="2" expand="true"/>
+                </task>
             </task>
-            <task id="31" uid="597675a872b44f26b52ca7cec3ee5cf8" name="MILESTONE: Technical Design" color="#cccc00" meeting="false" start="2025-10-29" duration="21" complete="0" expand="false">
-                <depend id="33" type="2" difference="0" hardness="Strong"/>
-                <task id="32" uid="4d018df6978146baa2ba1a9d0a57b3ba" name="EPIC:" color="#cc0000" meeting="false" start="2025-10-29" duration="21" complete="0" expand="true"/>
+            <task id="31" uid="597675a872b44f26b52ca7cec3ee5cf8" name="MILESTONE: Technical Design" color="#cccc00" meeting="false" start="2025-10-29" duration="21" complete="0" expand="true">
+                <task id="32" uid="4d018df6978146baa2ba1a9d0a57b3ba" name="EPIC: Compile Resources" color="#cc0000" meeting="false" start="2025-10-29" duration="7" complete="0" priority="4" expand="true">
+                    <task id="85" uid="dc5f6e18655947a9b9a71d89d588e4e3" name="STORY: Find Language/Framework Documentation" meeting="false" start="2025-10-29" duration="3" complete="0" expand="true"/>
+                    <task id="87" uid="6c340eecad2d4005b439f4f54e2897de" name="STORY: Create First Draft of Language + Framework Explanation" color="#8cb6ce" meeting="false" start="2025-10-31" duration="4" complete="0" priority="2" expand="true"/>
+                    <task id="90" uid="1705a05e58e54c0e95d6857588a618f3" name="STORY: Peer Review and Finalize Language + Framework Explanation" color="#8cb6ce" meeting="false" start="2025-11-04" duration="1" complete="0" expand="true"/>
+                </task>
+                <task id="79" uid="a628e37ef9f14eae839051afae74aa90" name="EPIC: Create Coding Style Guide" color="#cc0000" meeting="false" start="2025-10-29" duration="7" complete="0" priority="4" expand="true">
+                    <task id="105" uid="4e4844ec9660438d9e20335f0da4a5c2" name="STORY: Determine Source Control and Branch Management Strategy" color="#8cb6ce" meeting="false" start="2025-10-29" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="108" uid="dee1437b06b44efda3b8da11030b8ccb" name="STORY: Select Style Guides &amp; Team Conventions" color="#8cb6ce" meeting="false" start="2025-10-29" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="109" uid="a70bd420a14e45858be9eca287c85ae6" name="STORY: Define Team Conventions" color="#8cb6ce" meeting="false" start="2025-10-31" duration="5" complete="0" priority="2" expand="true"/>
+                </task>
+                <task id="83" uid="e6383f2660e543dfbfc6c2a6258df548" name="EPIC: Create Entity Relationship Diagram and Table of Field Descriptions" color="#cc0000" meeting="false" start="2025-10-29" duration="6" complete="0" priority="4" expand="true">
+                    <task id="92" uid="12c23f487ded4ee2873d2b9d9ecb6a7e" name="STORY: Identify Entities, Fields &amp; Relationships" color="#8cb6ce" meeting="false" start="2025-10-29" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="98" uid="7c770c5fac10461596121fb0d9c90453" name="STORY: Identify Primary and Foreign Keys" color="#8cb6ce" meeting="false" start="2025-10-29" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="97" uid="c9e27a0cc0c24ec3b6c649b9fca7029f" name="STORY: Create Table of Field Descriptions" color="#8cb6ce" meeting="false" start="2025-10-31" duration="4" complete="0" priority="2" expand="true"/>
+                    <task id="95" uid="e3abfb34687348679c49cb140223f31e" name="STORY: Construct ER Diagram" color="#8cb6ce" meeting="false" start="2025-10-31" duration="4" complete="0" priority="2" expand="true"/>
+                    <task id="100" uid="83cd346ab1614bf9a2b394c391d46820" name="STORY: Create Example Data" color="#8cb6ce" meeting="false" start="2025-10-31" duration="4" complete="0" priority="0" expand="true"/>
+                </task>
+                <task id="81" uid="d166549933694c56b7b6fe24f140e00c" name="EPIC: Create Table of Seed Data" color="#cc0000" meeting="false" start="2025-11-03" duration="6" complete="0" priority="2" expand="true">
+                    <task id="101" uid="a1bc699d67d4432b9cd2b6432104f9fb" name="STORY: Create Administrator Table with One Administrator" color="#8cb6ce" meeting="false" start="2025-11-03" duration="6" complete="0" expand="true"/>
+                    <task id="102" uid="6e183f3af35241a6b5cd353fa83e0951" name="STORY: Create Table for Starting Inventory" color="#8cb6ce" meeting="false" start="2025-11-03" duration="6" complete="0" priority="2" expand="true"/>
+                </task>
+                <task id="80" uid="bc193913b091400a939f1e257eed1c46" name="EPIC: Create Data Storage Plan" color="#cc0000" meeting="false" start="2025-11-09" duration="8" complete="0" expand="true">
+                    <task id="104" uid="afadfe9764884d0b9192f6d653c71aaf" name="STORY: Create First Draft" color="#8cb6ce" meeting="false" start="2025-11-09" duration="6" complete="0" expand="true"/>
+                    <task id="107" uid="7fa15da8995440ecac0481edec0bf0fb" name="STORY: Create Final Draft" color="#8cb6ce" meeting="false" start="2025-11-14" duration="3" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="86" uid="1a207fc2d2d44580a2615d835f2f5ee6" name="EPIC: Create Presentation" color="#cc0000" meeting="false" start="2025-11-15" duration="4" complete="0" expand="true">
+                    <task id="106" uid="72bc78e3b7cf465cbb27639d7e152739" name="STORY: Write Script" color="#8cb6ce" meeting="false" start="2025-11-15" duration="2" complete="0" priority="0" expand="true"/>
+                    <task id="110" uid="b57068ef3e9f4534bfaa8283597f080c" name="STORY: Film, Edit, Submit Video" color="#8cb6ce" meeting="false" start="2025-11-16" duration="3" complete="0" priority="2" expand="true"/>
+                </task>
             </task>
-            <task id="33" uid="c8b3425d0cc64e80848ac82d27fbef04" name="MILESTONE: Implementation" color="#cccc00" meeting="false" start="2025-11-19" duration="20" complete="0" expand="false">
-                <task id="34" uid="acf63977f7284bd08179c845361400ce" name="EPIC:" color="#cc0000" meeting="false" start="2025-11-19" duration="20" complete="0" expand="true"/>
+            <task id="33" uid="c8b3425d0cc64e80848ac82d27fbef04" name="MILESTONE: Implementation" color="#cccc00" meeting="false" start="2025-11-19" duration="20" complete="0" expand="true">
+                <task id="34" uid="acf63977f7284bd08179c845361400ce" name="EPIC: Implement Database" color="#cc0000" meeting="false" start="2025-11-19" duration="4" complete="0" priority="4" expand="true">
+                    <task id="112" uid="5ce260c494304c7286fad88eb9d273b4" name="STORY: Create Database Schema" color="#8cb6ce" meeting="false" start="2025-11-19" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="124" uid="5bbd676e371d42b2bf7de1442893506c" name="STORY: Load Seed Data" color="#8cb6ce" meeting="false" start="2025-11-19" duration="4" complete="0" priority="2" expand="true"/>
+                </task>
+                <task id="116" uid="9ffb2b18c12448228ec70d10ae058183" name="EPIC: Develop Core Features" color="#cc0000" meeting="false" start="2025-11-23" duration="4" complete="0" priority="4" expand="true">
+                    <task id="117" uid="688eb0eac40644ef87b5ac1c8d146469" name="STORY: Implement Login and Registration Logic" color="#8cb6ce" meeting="false" start="2025-11-23" duration="4" complete="0" expand="true"/>
+                    <task id="125" uid="1b93fb4c454744909c48466e799213e1" name="STORY: Implement Inventory and Search Logic" color="#8cb6ce" meeting="false" start="2025-11-23" duration="4" complete="0" expand="true"/>
+                    <task id="126" uid="2647f7f2c7aa4fceac79575e070b1b4d" name="STORY: Implement Cart Management + Chekout Logic" color="#8cb6ce" meeting="false" start="2025-11-23" duration="4" complete="0" expand="true"/>
+                    <task id="128" uid="1d46350f05c9437a868600392eb9c0ae" name="STORY: Implement User Functions" color="#8cb6ce" meeting="false" start="2025-11-23" duration="4" complete="0" expand="true"/>
+                </task>
+                <task id="118" uid="c68fceddeefb4e84a7b654c27fb9f88d" name="EPIC: Implement and Integrate UI" color="#cc0000" meeting="false" start="2025-11-28" duration="7" complete="0" expand="true">
+                    <task id="129" uid="f5d8fef7a3ae4356a414f296ceab5138" name="STORY: Connect UI componenents to Backend APIs" color="#8cb6ce" meeting="false" start="2025-11-28" duration="5" complete="0" priority="2" expand="true"/>
+                    <task id="130" uid="9998f980d5624a12ba01316faf54f5c3" name="STORY: Integrate User Input Forms with Backend Validation" color="#8cb6ce" meeting="false" start="2025-11-28" duration="5" complete="0" priority="2" expand="true"/>
+                    <task id="119" uid="b87f3bf2040b4ab0bb7e9920f54d88a2" name="STORY: Test and Debug UI" color="#8cb6ce" meeting="false" start="2025-12-03" duration="2" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="120" uid="015225dd816543bd8e842f78bc70245b" name="EPIC: Test program and Ensure Quality" color="#cc0000" meeting="false" start="2025-12-04" duration="4" complete="0" expand="true">
+                    <task id="121" uid="b0e4442eb7ed4c06b43b622e807bd709" name="STORY: Write Unit Tests for Major Modules" color="#8cb6ce" meeting="false" start="2025-12-04" duration="2" complete="0" priority="2" expand="true"/>
+                    <task id="131" uid="cd9895a0f03e4f199999454d134ebc19" name="STORY: Conduct Integration Testing" color="#8cb6ce" meeting="false" start="2025-12-04" duration="3" complete="0" expand="true"/>
+                    <task id="132" uid="dd38e6ac4fe543a693b22e488f438d82" name="STORY: Conduct User Testing" color="#8cb6ce" meeting="false" start="2025-12-04" duration="3" complete="0" priority="2" expand="true"/>
+                    <task id="133" uid="f526588cf5244ee4b4a5e08ca72719b3" name="STORY: Perform Final Code Review" color="#8cb6ce" meeting="false" start="2025-12-06" duration="2" complete="0" priority="4" expand="true"/>
+                    <task id="134" uid="9888dcf034764f4ba72909671fcae71e" name="STORY: Conduct Final Debug" color="#8cb6ce" meeting="false" start="2025-12-06" duration="2" complete="0" priority="4" expand="true"/>
+                </task>
+                <task id="122" uid="aca4d13dc3574d9784afb911e1f059cc" name="EPIC: Finalize Documentation" color="#cc0000" meeting="false" start="2025-12-04" duration="4" complete="0" expand="true">
+                    <task id="123" uid="5e2e2dd523b14bb3b9b904e0fd24ce94" name="STORY: Write Application Description" color="#8cb6ce" meeting="false" start="2025-12-04" duration="4" complete="0" priority="4" expand="true"/>
+                    <task id="135" uid="c0015e556cdd41fe8b972c27e02362d7" name="STORY: Write Environmental Requirements" color="#8cb6ce" meeting="false" start="2025-12-04" duration="4" complete="0" priority="2" expand="true"/>
+                    <task id="136" uid="506aba92595043709f20adc2487e8526" name="STORY: Write User Guide for Cloning and Building" color="#8cb6ce" meeting="false" start="2025-12-04" duration="4" complete="0" priority="2" expand="true"/>
+                </task>
+                <task id="137" uid="bc8b001378a24394a43592d05dc7e1cf" name="EPIC: Create Presentation" color="#cc0000" meeting="false" start="2025-12-07" duration="2" complete="0" expand="true">
+                    <task id="138" uid="3ccdb96778474b8b9c760d216add57c0" name="STORY: Write script" color="#8cb6ce" meeting="false" start="2025-12-07" duration="1" complete="0" expand="true"/>
+                    <task id="139" uid="fd7ad2fc735243d990ea26a9b42c17b1" name="STORY: Film, Edit, and Submit Presentation" color="#8cb6ce" meeting="false" start="2025-12-07" duration="2" complete="0" expand="true"/>
+                </task>
             </task>
         </task>
     </tasks>
@@ -138,14 +211,213 @@ Put relative link to team assignments on the "main" README.md]]></notes>
         <allocation task-id="10" resource-id="2" function="1" responsible="true" load="100.0"/>
         <allocation task-id="14" resource-id="2" function="1" responsible="true" load="100.0"/>
         <allocation task-id="15" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="39" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="40" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="46" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="47" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="59" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="55" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="56" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="44" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="58" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="69" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="70" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="85" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="90" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="106" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="110" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="119" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="121" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="131" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="132" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="133" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="134" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="123" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="135" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="136" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="138" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="139" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="1" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="3" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="5" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="22" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="18" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="23" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="25" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="66" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="2" function="1" responsible="true" load="100.0"/>
         <allocation task-id="11" resource-id="3" function="2" responsible="false" load="100.0"/>
         <allocation task-id="12" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="7" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="60" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="50" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="51" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="72" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="73" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="68" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="71" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="62" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="64" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="63" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="75" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="76" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="69" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="70" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="90" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="129" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="130" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="119" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="132" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="133" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="134" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="135" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="136" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="138" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="139" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="25" resource-id="3" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="67" resource-id="3" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="66" resource-id="3" function="2" responsible="false" load="100.0"/>
         <allocation task-id="11" resource-id="4" function="2" responsible="false" load="100.0"/>
         <allocation task-id="12" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="8" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="10" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="13" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="60" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="49" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="50" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="51" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="59" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="44" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="58" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="72" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="73" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="68" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="71" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="62" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="64" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="63" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="65" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="75" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="76" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="69" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="70" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="85" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="90" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="129" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="130" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="119" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="129" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="121" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="131" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="132" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="133" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="123" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="138" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="139" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="21" resource-id="4" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="25" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="67" resource-id="4" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="66" resource-id="4" function="2" responsible="false" load="100.0"/>
         <allocation task-id="11" resource-id="5" function="3" responsible="false" load="100.0"/>
         <allocation task-id="12" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="8" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="10" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="60" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="57" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="61" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="59" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="85" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="87" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="90" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="105" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="108" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="109" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="104" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="106" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="110" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="117" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="125" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="126" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="128" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="116" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="119" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="132" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="133" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="134" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="138" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="139" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="5" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="22" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="32" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="79" resource-id="5" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="5" function="3" responsible="false" load="100.0"/>
         <allocation task-id="11" resource-id="6" function="3" responsible="false" load="100.0"/>
         <allocation task-id="12" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="8" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="10" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="15" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="13" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="14" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="39" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="46" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="60" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="48" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="59" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="44" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="58" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="85" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="87" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="90" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="92" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="98" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="97" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="95" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="100" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="101" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="102" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="104" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="107" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="106" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="112" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="124" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="125" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="116" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="34" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="119" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="132" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="133" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="134" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="123" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="138" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="139" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="5" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="32" resource-id="6" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="83" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="81" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="80" resource-id="6" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="86" resource-id="6" function="3" responsible="false" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
