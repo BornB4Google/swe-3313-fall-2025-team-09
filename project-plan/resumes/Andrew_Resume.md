@@ -9,7 +9,7 @@ Enter professional Summary here
 ## Education
 **Kennesaw State University**  
 *Bachelor of Science in Computer Science*  
-Expected Gradutation: Dec 2026  
+Expected Gradutation: 2026  
 *GPA:* 3.38  
 
 - Completed courses: Computer Architectures, Data Structures, Linear Algebra, Discrete Mathematics, Technical Writing, AI-controlled phased array antennas  
