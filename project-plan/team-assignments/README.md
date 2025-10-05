@@ -17,8 +17,12 @@
 
 ## [Sara Waymen](/project-plan/resumes/Sara_Resume.md) - Frontend Developer, UI/UX
 
-- Bullet Point
-- Bullet Point
+- Designing prototype in Marvel to plan user flows and layout
+- Implementing visual designs
+- Building responsive web pages using Angular
+- Focusing on user experience, ensuring the site is easy to navigate, accessible, and visually consistent
+- Test and refine the UI, fixing layout issues 
+- Collaborate with team, integrating designs with backend functionality or data
 
 ## [Amy Ward](/project-plan/resumes/Amy_Resume.md) - Backend Developer
 
