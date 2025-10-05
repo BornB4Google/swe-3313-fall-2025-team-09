@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-14" view-index="0" gantt-divider-location="856" resource-divider-location="461" version="3.3.3316" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-09-21" view-index="0" gantt-divider-location="841" resource-divider-location="461" version="3.3.3316" locale="en_US">
     <description/>
     <view zooming-state="default:6" id="gantt-chart">
         <field id="tpd15" name="Notes" width="20" order="0"/>
-        <field id="tpd3" name="Name" width="529" order="0"/>
+        <field id="tpd3" name="Name" width="520" order="0"/>
         <field id="tpd14" name="Task color" width="20" order="1"/>
-        <field id="tpd4" name="Begin date" width="86" order="1"/>
-        <field id="tpd5" name="End date" width="107" order="2"/>
-        <field id="tpd7" name="Completion" width="118" order="3"/>
+        <field id="tpd4" name="Begin date" width="84" order="1"/>
+        <field id="tpd5" name="End date" width="105" order="2"/>
+        <field id="tpd7" name="Completion" width="116" order="3"/>
         <option id="filter.completedTasks" value="false"/>
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
