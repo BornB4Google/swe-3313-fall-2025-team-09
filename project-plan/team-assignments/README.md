@@ -10,10 +10,17 @@
 - Maintain project documentation, track deliverables, and ensure alignment with client requirements
 - Serve as primary liaison between development team and stakeholders for status updates and blockers.
 
-## [Isaac Thoman](/project-plan/resumes/Isaac_Resume.md) - Frontend Developer, Dev Ops
+## [Isaac Thoman](/project-plan/resumes/Isaac_Resume.md) - Frontend Developer, DevOps
 
-- Bullet Point
-- Bullet Point
+- Design prototype in Marvel to plan user flows and layout
+- Implement visual designs
+- Scaffold Angular SPA architecture and configure project structure with routing and module organization
+- Set up C# ASP.NET backend to serve the Angular frontend application
+- Build and integrate individual pages of the SPA
+- Help to establish frontend-backend integration points and API communication layer
+- Configure development and production build pipelines, CI/CD workflows
+- Set up development environment tooling, version control standards, and build configurations
+- Coordinate with backend team to define API contracts and data models for frontend consumption
 
 ## [Sara Waymen](/project-plan/resumes/Sara_Resume.md) - Frontend Developer, UI/UX
 
