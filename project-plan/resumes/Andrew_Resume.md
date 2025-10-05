@@ -4,12 +4,12 @@
 **GitHub:** https://github.com/atressler5
 
 ## Professional Summary
-Enter professional Summary here
+Computer Science student with a deep interest in wireless technologies. Varied projects and work experience show curiosity, flexibility, and perseverance.  
 
 ## Education
 **Kennesaw State University**  
 *Bachelor of Science in Computer Science*  
-Expected Gradutation: 2026  
+Expected Graduation: 2026  
 *GPA:* 3.38  
 
 - Completed courses: Computer Architectures, Data Structures, Linear Algebra, Discrete Mathematics, Technical Writing, AI-controlled phased array antennas  
@@ -19,11 +19,11 @@ Expected Gradutation: 2026
 ## Work Experience
 ### 2021 – 2022
 **Cashier** • Kroger #430  
-- Processed high order volumes and built rapport with regular customers  
+- Processed high order volumes and built rapport with regular customers.  
 
 ### 2011 – Present
 **Farm Hand** • Family  
-- Performed manual labor ranging from constructing fences to diesel tractor repair  
+- Performed manual labor ranging from constructing fences to diesel tractor repair.  
 
 ## Projects
 ### 2019 – Present
