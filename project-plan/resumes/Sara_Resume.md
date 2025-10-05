@@ -31,11 +31,11 @@ Expected Graduation: 2027
 
 ## Projects
 ### October 2024 - May 2025
-**Research Project, Kennesaw State University** • [Quantum Machine Learning for Cybersecurity and Science & Engineering Data](https://digitalcommons.kennesaw.edu/undergradsymposiumksu/spring2025/spring2025/299/) 
+**Research Project | Kennesaw State University** • [Quantum Machine Learning for Cybersecurity and Science & Engineering Data](https://digitalcommons.kennesaw.edu/undergradsymposiumksu/spring2025/spring2025/299/) 
 - Researched in quantum machine learning and implementing cybersecurity and engineering datasets for analysis in Google Colab using python
 
 ### May 2024 - July 2024
-**Home Lab, Personal Project**
+**Home Lab** • Personal Project
 - Built a home lab including a game server, virtual machines, and PFSense firewall. 
 - Implemented VLANs, port forwarding, and firewall rules.
 
