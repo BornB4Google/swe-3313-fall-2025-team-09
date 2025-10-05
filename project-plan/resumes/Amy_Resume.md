@@ -16,7 +16,7 @@ Expected Graduation: 2027
 *Bachelor of Science in Biology*  
 Graduated May 2020  
 
-## Technical Experience
+## Work Experience
 
 ### January 2024 – Present
 **Data Annotation Specialist** · DataAnnotation.tech 
