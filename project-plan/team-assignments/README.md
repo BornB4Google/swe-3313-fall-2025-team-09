@@ -27,7 +27,7 @@
 - Design prototype in Marvel to plan user flows and layout
 - Implement visual designs
 - Build responsive web pages using Angular
-- Focus on user experience, ensure the site is easy to navigate, accessible, and visually consistent
+- Focus on user experience, ensuring the site is easy to navigate, accessible, and visually consistent
 - Test and refine the UI, fixing layout issues 
 - Collaborate with team, integrating designs with backend functionality or data
 
