@@ -6,7 +6,7 @@
 **LinkedIn:** [Sara Waymen](https://www.linkedin.com/in/sara-waymen-7a981b25a/)
 
 ## Professional Summary
-CS student passionate about human-computer interaction. Experienced in full-stack development with a focus on user-centered design and scalable systems.
+Computer Science student passionate about cybersecurity and developing secure, efficient software solutions. Experienced in Python, Java, and C, with hands-on knowledge of network administration, system deployment, and cybersecurity tools.
 
 ## Education
 **Kennesaw State University**  
