@@ -44,20 +44,6 @@ Utilized Git for version control and team collaboration.
 - I also do Bar/Bat Mitzvahs.
 
 ## Technical Skills
-
-### Languages
-- Python, Java, C#, C, SQL
-
-### Tools and IDEs:   
-- Git/GitHub
-- VIM
-- VS Code
-- JetBrains IntelliJ, CLion, and PyCharm
-- PyGame
-- YouTrack
-
-### Additional Skills
-
-- Adobe Photoshop, InDesign
-- Bash / Shell Scripting
-- Windows / macOS / Linux / Unix
+- **Languages:** Python, Java, C#, C, SQL
+- **Tools and IDEs:** Git/GitHub, VIM, VS Code, JetBrains IntelliJ, CLion, PyCharm, PyGame, YouTrack
+- **Additional Skills:** Adobe Photoshop, InDesign, Bash / Shell Scripting, Windows / macOS / Linux / Unix
