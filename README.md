@@ -20,11 +20,15 @@ Our stack consists of C#, ASP MVC, and SQLite, because when you're selling compa
 
 ## Team Assignments
 
-Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/team-assignments/README.md) to see team assignments.
+- We have elected to split into a front-end team, a backend team, and a project manager. 
+
+- Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/team-assignments/README.md) to see a detailed breakdown of our team assignments.
 
 ## Technology Selection
 
-Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/technology-selection/README.md) to see technology selection.
+- We have selected C#, ASP.NET Core / Angular, and SQLite as our tools.    
+
+- Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/technology-selection/README.md) to see a detailed breakdown of our technology selection.
 
 ## Project Gantt Chart
 
