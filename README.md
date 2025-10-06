@@ -4,7 +4,7 @@ Welcome to the project repository for **Group 9 - Born B4 Google**. Here you wil
 
 We are building the ultimate e-commerce platform where you can finally buy what you've always dreamed of owning: Apple Music, Microsoft Office, Disney+, or even the entire Marvel Cinematic Universe. If it exists and has brand recognition, it's probably in our inventory. 
 
-Our stack consists of C#, ASP MVC, and SQLite, because when you're selling companies worth trillions, you need enterprise grade technology running on a database that fits on a floppy disk. 
+Our stack consists of C#, ASP.NET, and SQLite, because when you're selling companies worth trillions, you need enterprise grade technology running on a database that fits on a floppy disk. 
 
 *Disclaimer: No actual corporations were acquired in the making of this project. Yet...*
 
@@ -26,7 +26,7 @@ Our stack consists of C#, ASP MVC, and SQLite, because when you're selling compa
 
 ## Technology Selection
 
-- We have selected C#, ASP.NET Core / Angular, and SQLite as our tools.    
+- We have selected C#, ASP.NET Core, and SQLite as our tools.    
 
 - Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/technology-selection/README.md) to see a detailed breakdown of our technology selection.
 
