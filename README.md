@@ -8,6 +8,8 @@ Our stack consists of C#, ASP.NET, and SQLite, because when you're selling compa
 
 *Disclaimer: No actual corporations were acquired in the making of this project. Yet...*
 
+Click [here](https://www.loom.com/share/4aba970bd1cf435dbdea48bd94638f1b) for a virtual tour!
+
 
 ## Meet The Team: 
 
