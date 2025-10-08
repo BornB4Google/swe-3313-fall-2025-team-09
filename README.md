@@ -14,11 +14,11 @@ Click [here](https://www.loom.com/share/4aba970bd1cf435dbdea48bd94638f1b) for a 
 
 ## Meet The Team: 
 
-[Amelia Ellingson](/project-plan/resumes/Amelia_Resume.md)  
-[Isaac Thoman](/project-plan/resumes/Isaac_Resume.md)  
-[Andrew Tressler](/project-plan/resumes/Andrew_Resume.md)  
-[Amy Ward](/project-plan/resumes/Amy_Resume.md)  
-[Sara Waymen](/project-plan/resumes/Sara_Resume.md)
+[Amelia Ellingson](project-plan/resumes/Amelia_Resume.md)  
+[Isaac Thoman](project-plan/resumes/Isaac_Resume.md)  
+[Andrew Tressler](project-plan/resumes/Andrew_Resume.md)  
+[Amy Ward](project-plan/resumes/Amy_Resume.md)  
+[Sara Waymen](project-plan/resumes/Sara_Resume.md)
 
 
 ## Team Assignments
