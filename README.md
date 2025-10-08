@@ -25,14 +25,16 @@ Click [here](https://www.loom.com/share/4aba970bd1cf435dbdea48bd94638f1b) for a 
 
 - We have elected to split into a front-end team, a backend team, and a project manager. 
 
-- Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/team-assignments/README.md) to see a detailed breakdown of our team assignments.
+- Click [here](project-plan/team-assignments/README.md) to see a detailed breakdown of our team assignments.
 
 ## Technology Selection
 
 - We have selected C#, ASP.NET Core, and SQLite as our tools.    
 
-- Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/technology-selection/README.md) to see a detailed breakdown of our technology selection.
+- Click [here](project-plan/technology-selection/README.md) to see a detailed breakdown of our technology selection.
 
 ## Project Gantt Chart
 
-![Alt text](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/gantt-chart/ganttchart.png)
+- Review the full project plan [here](project-plan/README.md).
+
+![Gantt Chart](project-plan/gantt-chart/ganttchart.png)

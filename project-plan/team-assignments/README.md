@@ -1,6 +1,6 @@
 # Team Assignments
 
-## [Amelia Ellingson](/project-plan/resumes/Amelia_Resume.md) - Project Manager, Full-Stack Support
+## [Amelia Ellingson](../../project-plan/resumes/Amelia_Resume.md) - Project Manager, Full-Stack Support
 
 - Project Coordinator, responsible for deadlines, scheduling, and GanttProject planning
 - Interface with back and front end teams to assess risk factors and establish mitigation strategies.
@@ -10,7 +10,7 @@
 - Maintain project documentation, track deliverables, and ensure alignment with client requirements
 - Serve as primary liaison between development team and stakeholders for status updates and blockers.
 
-## [Isaac Thoman](/project-plan/resumes/Isaac_Resume.md) - Frontend Developer, DevOps
+## [Isaac Thoman](../../project-plan/resumes/Isaac_Resume.md) - Frontend Developer, DevOps
 
 - Design prototype in Marvel to plan user flows and layout
 - Implement visual designs
@@ -22,7 +22,7 @@
 - Set up development environment tooling, version control standards, and build configurations
 - Coordinate with backend team to define API contracts and data models for frontend consumption
 
-## [Sara Waymen](/project-plan/resumes/Sara_Resume.md) - Frontend Developer, UI/UX
+## [Sara Waymen](../../project-plan/resumes/Sara_Resume.md) - Frontend Developer, UI/UX
 
 - Design prototype in Marvel to plan user flows and layout
 - Implement visual designs
@@ -31,7 +31,7 @@
 - Test and refine the UI, fixing layout issues 
 - Collaborate with team, integrating designs with backend functionality or data
 
-## [Amy Ward](/project-plan/resumes/Amy_Resume.md) - Backend Developer
+## [Amy Ward](../../project-plan/resumes/Amy_Resume.md) - Backend Developer
 
 - Set up database tables and make sure data is saved/loaded with SQLite (seed data, inventory, users)
 - Maintain authentication (login) and roles (customer vs. admin)
@@ -41,7 +41,7 @@
 - Keep README/setup instructions accurate
 - Ensure backend data matches what the UI needs
 
-## [Andrew Tressler](/project-plan/resumes/Andrew_Resume.md) - Backend Developer
+## [Andrew Tressler](../../project-plan/resumes/Andrew_Resume.md) - Backend Developer
 
 - Build business rules for cart/checkout, including 6% sales tax and totals
 - Maintain authentication (login) and roles (customer vs. admin)
