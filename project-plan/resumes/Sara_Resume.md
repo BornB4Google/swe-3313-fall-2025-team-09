@@ -44,4 +44,4 @@ Expected Graduation: 2027
 - **Tools:** WireShark, NMAP, Fortinet, SentinelOne, WindowsServer, PFSense
 - **Platforms:** Windows, Linux, MacOS, iOS, Android
 - **Hardware Skills:** Building and repair on laptops, desktops, tablets, cellphones
-- Networking knowledge
+- **Additional Skills:** CTF Competitions 
