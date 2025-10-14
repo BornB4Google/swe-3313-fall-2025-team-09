@@ -91,14 +91,14 @@ ___
 
 - **Story T9S-3.3**
     - **Name:** Add Multiple Items to Cart
-    - **Priority:** **Must Have
+    - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Functional
     - **Description:** User can add multiple items to the shopping cart.
 
 - **Story T9S-3.4**
     - **Name:** Subtotal Summary
-    - **Priority:** **Must Have
+    - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Non-Functional
     - **Description:** Subtotal showing the price before taxes and shipping in the users shopping cart
