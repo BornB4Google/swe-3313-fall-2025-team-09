@@ -43,12 +43,12 @@ ___
     - **Name:** Display Inventory Details
     -	**Priority:** Must Have
     -	**Effort:** 1 day
-    -	**Type:** Functional
+    -	**Type:** Non-Functional
     -	**Description:** Each inventory item must include a name, picture, brief description, and an “Add to Cart” button.
 
 - **Story T9S-2.3**
-    -	**Name:** Add Items to Cart
-    - **Priority:** **Must Have
+    - **Name:** Add Items to Cart
+    - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Functional
     - **Description:** Button for user to add items to the shopping cart.
@@ -71,7 +71,7 @@ ___
     - **Name:** Search Function
     - **Priority:** Must Have
     - **Effort:** 0.25 day
-    - **Type:** Non-Functional
+    - **Type:** Functional
     - **Description:** Search bar for user to be able to search inventory.
 
 ### Epic T9E-3: Shopping Cart
@@ -84,10 +84,10 @@ ___
 
 - **Story T9S-3.2**
     - **Name:** Checkout Button
-    - **Priority:** **Must Have
+    - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Functional
-    - **Description:** Checkout button brings user to Checkout page
+    - **Description:** Checkout button brings user to checkout page
 
 - **Story T9S-3.3**
     - **Name:** Add Multiple Items to Cart
@@ -100,7 +100,7 @@ ___
     - **Name:** Subtotal Summary
     - **Priority:** **Must Have
     - **Effort:** 1 day
-    - **Type:** Functional
+    - **Type:** Non-Functional
     - **Description:** Subtotal showing the price before taxes and shipping in the users shopping cart
 
 ### Epic T9E-3: Checkout and Payment Flow
@@ -109,14 +109,14 @@ ___
     - **Name:** Checkout Summary
     -	**Priority:** Must Have
     -	**Effort:** 1 day
-    -	**Type:** Functional
+    -	**Type:** Non-Functional
     -	**Description:** Clicking checkout displays all cart items with subtotal.
 
 - **Story T9S-3.3**
     -	**Name:** Payment Process
     -	**Priority:** Must Have
     -	**Effort:** 2 days
-    -	**Type:** Functional
+    -	**Type:** Non-Functional
     -	**Description:** User enters shipping address, credit card (number, expiration, CCV), phone number, and selects a shipping speed.
 
 - **Story T9S-3.4**
@@ -127,11 +127,11 @@ ___
     -	**Description:** Provide three shipping speed options — Overnight ($29), 3-Day ($19), and Ground (Free).
 
 - **Story T9S-3.5**
-    -	**Name:** Confirm Order Button
+    -	**Name:** Pay Now Button
     -	**Priority:** Must Have
     -	**Effort:** 1 day
     -	**Type:** Functional
-    -	**Description:** User clicks “Confirm Order” to view the confirm order page.
+    -	**Description:** User clicks “Pay Now” to view the confirm order page.
 
 ###	Epic T9E-4: Confirm Order Page
 
@@ -139,15 +139,23 @@ ___
     -	**Name:** List of items
     -	**Priority:** Must Have
     -	**Effort:** 1 day
-    -	**Type:** Functional
-    -	**Description:** User clicks “Confirm Order” to view item list, subtotal, tax (6%), shipping cost, and grand total.
+    -	**Type:** Non-Functional
+    -	**Description:** Lists items, subtotal, tax (6%), shipping cost, and grand total.
 
 - **Story T9S-4.2**
     -	**Name:** Price breakdown and Determination of Total
     -	**Priority:** Must Have
     -	**Effort:** 1 day
-    -	**Type:** Functional
+    -	**Type:** Non-Functional
     -	**Description:** Shows subtotal, tax (6%), shipping cost, and grand total.
+
+- **Story T9S-4.3**
+    -	**Name:** Confirm Order Button
+    -	**Priority:** Must Have
+    -	**Effort:** 1 day
+    -	**Type:** Functional
+    -	**Description:** User clicks “Confirm Order” to view the confirm order page.
+
 
 ###	Epic T9E-5: Complete Order Page
 
@@ -155,8 +163,8 @@ ___
     -	**Name:** Complete Order and Receipt
     -	**Priority:** Must Have
     -	**Effort:** 1 day
-    -	**Type:** Functional
-    -	**Description:** User clicks “Complete Order” to finalize purchase, then views a receipt showing masked card and shipping info.
+    -	**Type:** Non-Functional
+    -	**Description:** Page shows a receipt with masked card and shipping info.
 
 - **Story T9S-5.2**
     -	**Name:** Complete Order Button
@@ -169,7 +177,7 @@ ___
     -	**Name:** Remove Purchased Inventory and Recorded in Sales Report
     -	**Priority:** Must Have
     -	**Effort:** 0.5 day
-    -	**Type:** Functional
+    -	**Type:** Non-Functional
     -	**Description:** All purchased inventory must no longer appear in search results and must be recorded in sales reports.
 
 ###	Epic T9E-6: Admin and Reporting
@@ -213,7 +221,7 @@ ___
     - **Name:** Application Flow
     - **Priority:** Needs to Have
     - **Effort:** 2 days
-    - **Type:** Non-Functional
+    - **Type:** Functional
     - **Description:** Interactive mockup of how the user will navigate between pages
 
 ___
