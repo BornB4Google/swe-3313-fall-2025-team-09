@@ -6,15 +6,15 @@ We defined the requirements for an online IP marketplace to include comprehensiv
 
 The system includes enhanced administration features for managing users, maintaining IP inventory, and generating sales reports. Key technical requirements ensure accurate pricing and valuation, automatic removal of sold IP assets from active listings, and provides high-fidelity UI mockup and transaction documentation for a consistent user experience.  
 
-- For complete project requirements captured during customer conversations, please refer to the detailed documentation [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+For complete project requirements captured during customer conversations, please refer to the detailed documentation [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## Use Case Diagram
 
-- Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed Use-Case Diagram for our poject.
+Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed Use-Case Diagram for our poject.
 
 ## Decision Table 
 
-- Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed view of our decision table for all processes in Version 1.
+Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed view of our decision table for all processes in Version 1.
 
 
 ## Presentation
