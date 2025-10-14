@@ -226,7 +226,7 @@ ___
 
 ___
 ## Version 2
-### Epic T9E-8:** Advanced Admin Features
+### Epic T9E-8: Advanced Admin Features
 - **Story T9S-8.1**
     - **Name:** Create Additional Admins
     - **Priority:** Wants to Have
