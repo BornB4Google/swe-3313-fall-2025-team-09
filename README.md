@@ -10,7 +10,7 @@ The system includes enhanced administration features for managing users, maintai
 
 ## Use Case Diagram
 
-- Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed Use-Case Diagram for our poject.
+- Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed Use-Case Diagram for our project.
 
 ## Decision Table 
 
