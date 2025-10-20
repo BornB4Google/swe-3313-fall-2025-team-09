@@ -1,6 +1,8 @@
 # Use Case Diagram
 
-This page contains the use-case diagram for our E-commerce site
-**Not finalized-- still working on formatting issues**
+High-level view of system functionality, showing user roles and their interactions with the Storefront System.
 
 ![Use Case Diagram](diagrams/use_case_diagram.png)
+
+You can also view the **PlantUML source file** here:  
+[usecase.puml](diagrams/use_case_diagram.puml)
