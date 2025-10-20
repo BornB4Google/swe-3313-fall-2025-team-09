@@ -39,7 +39,4 @@ flowchart LR
     UC_Checkout --- spacer1 --- payment
     UC_Checkout --- spacer2 --- shipping
     UC_Confirm --- shipping
-
-    %% Style invisible nodes
-    classDef invisible fill=transparent,stroke=transparent;
 ```
