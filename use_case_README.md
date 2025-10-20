@@ -5,4 +5,4 @@ High-level view of system functionality, showing user roles and their interactio
 ![Use Case Diagram](diagrams/use_case_diagram.png)
 
 You can also view the **PlantUML source file** here:  
-[usecase.puml](diagrams/use_case_diagram.puml)
+[use_case_diagram.puml](diagrams/use_case_diagram.puml)
