@@ -37,7 +37,4 @@ payment -- UC_Checkout
 shipping -- UC_Checkout
 shipping -- UC_Confirm
 
-' --- Layout trick to visually separate actors ---
-' Put external systems AFTER system declaration to push them rightward
-' PlantUML auto-balances sides when direction is left-to-right
 @enduml
