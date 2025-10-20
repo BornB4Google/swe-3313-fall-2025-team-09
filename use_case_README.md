@@ -11,10 +11,6 @@ flowchart LR
     payment(["Payment Processor"])
     shipping(["Shipping Service"])
 
-    %% Invisible spacing nodes
-    spacer1[" "]:::invisible
-    spacer2[" "]:::invisible
-
     %% System boundary
     subgraph System["Storefront System"]
         UC_Auth["Register and Log In to Account"]
