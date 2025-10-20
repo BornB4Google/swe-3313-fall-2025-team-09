@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+skinparam usecase {
+  BorderColor Black
+  BackgroundColor White
+}
+
+' --- Actors ---
+actor Shopper as shopper
+actor Admin as admin
+actor "Payment Processor" as payment
+actor "Shipping Service" as shipping
+
+' --- System Boundary ---
+rectangle "Storefront System" as system {
+  (Register and Log In to Account) as UC_Auth
+  (Browse and Search Inventory) as UC_Inventory
+  (Add and Manage Items in Cart) as UC_Cart
+  (Checkout and Make Payment) as UC_Checkout
+  (Review and Confirm Order) as UC_Confirm
+  (Finalize and Complete Purchase) as UC_Complete
+  (Manage Inventory and Generate Reports) as UC_Admin
+}
+
+' --- Associations (normal links) ---
+shopper -- UC_Auth
+shopper -- UC_Inventory
+shopper -- UC_Cart
+shopper -- UC_Checkout
+shopper -- UC_Confirm
+shopper -- UC_Complete
+
+admin -- UC_Admin
+
+payment -- UC_Checkout
+shipping -- UC_Checkout
+shipping -- UC_Confirm
+
+' --- Layout trick to visually separate actors ---
+' Put external systems AFTER system declaration to push them rightward
+' PlantUML auto-balances sides when direction is left-to-right
+@enduml
