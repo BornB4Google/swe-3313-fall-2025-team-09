@@ -21,11 +21,12 @@ flowchart LR
         UC_Admin["(Manage Inventory and Generate Reports)"]
     end
 
-    %% --- Right-side External Services ---
-    subgraph External["External Services"]
-        payment["Payment Processor"]
-        shipping["Shipping Service"]
-    end
+    %% --- Invisible spacer to keep layout even ---
+    spacer[" "]:::invis
+
+    %% --- External Actors (no visible box or label) ---
+    payment["Payment Processor"]
+    shipping["Shipping Service"]
 
     %% --- Associations (Left actors to system use cases) ---
     shopper --- UC_Auth
@@ -37,7 +38,11 @@ flowchart LR
     admin --- UC_Admin
 
     %% --- Associations (System to external services) ---
-    UC_Checkout --- payment
+    UC_Checkout --- spacer --- payment
     UC_Checkout --- shipping
     UC_Confirm --- shipping
+
+    %% --- Invisible node style ---
+    classDef invis fill=transparent,stroke=transparent;
+
 ```
