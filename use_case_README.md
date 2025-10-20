@@ -36,7 +36,7 @@ flowchart LR
     admin --- UC_Admin
 
     %% External systems - on right
-    UC_Checkout --- spacer1 --- payment
-    UC_Checkout --- spacer2 --- shipping
+    UC_Checkout --- payment
+    UC_Checkout --- shipping
     UC_Confirm --- shipping
 ```
