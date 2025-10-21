@@ -36,7 +36,7 @@ ___
     - **Name:** Display Inventory List
     - **Priority:** Must Have
     - **Effort:** 1 day
-    - **Type:** Functional
+    - **Type:** Non-Functional
     - **Description:** Inventory will be listed from highest to lowest
 
 - **Story T9S-2.2**
@@ -116,7 +116,7 @@ ___
     -	**Name:** Payment Process
     -	**Priority:** Must Have
     -	**Effort:** 2 days
-    -	**Type:** Non-Functional
+    -	**Type:** Functional
     -	**Description:** User enters shipping address, credit card (number, expiration, CCV), phone number, and selects a shipping speed.
 
 - **Story T9S-3.4**
@@ -229,7 +229,7 @@ ___
 ### Epic T9E-8: Advanced Admin Features
 - **Story T9S-8.1**
     - **Name:** Create Additional Admins
-    - **Priority:** Wants to Have
+    - **Priority:** Needs to Have
     - **Effort:** 1 day
     - **Type:** Functional
     - **Description:** Admin can create and manage other admin accounts.
@@ -250,11 +250,11 @@ ___
 
 ### Epic T9E-9: Enhanced User Experience
 - **Story T9S-9.1**
-    - **Name:** Simple Interface
+    - **Name:** Remove Item from Cart
     - **Priority:** Needs to Have
     - **Effort:** 1 day
-    - **Type:** Non-Functional
-    - **Description:** Interface should be designed to be visually simple and intuitive for users and admins.
+    - **Type:** Functional
+    - **Description:** Users are allowed to remove items from cart, if all items are removed it will go back to main screen
 
 - **Story T9S-9.2**
     - **Name:** Multiple Item Photos
@@ -264,11 +264,11 @@ ___
     - **Description:** Allow multiple images per inventory item.
 
 - **Story T9S-9.3**
-    - **Name:** Search Inventory
+    - **Name:** Return to Shopping
     - **Priority:** Needs to Have
     - **Effort:** 1.5 days
     - **Type:** Functional
-    - **Description:** Add search functionality to find specific inventory items.
+    - **Description:** Users can return to shopping from cart.
 
 - **Story T9S-9.4**
     - **Name:** Auto-Email Receipts
