@@ -150,28 +150,28 @@ ___
     -	**Description:** Shows subtotal, tax (6%), shipping cost, and grand total.
 
 - **Story T9S-4.3**
-    -	**Name:** Confirm Order Button
+    -	**Name:** Complete Order Button
     -	**Priority:** Must Have
     -	**Effort:** 1 day
     -	**Type:** Functional
-    -	**Description:** User clicks “Confirm Order” to view the confirm order page.
+    -	**Description:** User clicks “Complete Order” to view the confirm order page.
 
 
-###	Epic T9E-5: Complete Order Page
+###	Epic T9E-5: Receipt Page
 
 - **Story T9S-5.1**
-    -	**Name:** Complete Order and Receipt
+    -	**Name:** Receipt
     -	**Priority:** Must Have
     -	**Effort:** 1 day
     -	**Type:** Non-Functional
     -	**Description:** Page shows a receipt with masked card and shipping info.
 
 - **Story T9S-5.2**
-    -	**Name:** Complete Order Button
+    -	**Name:** Ok Button
     -	**Priority:** Must Have
     -	**Effort:** 0.5 day
     -	**Type:** Functional
-    -	**Description:** Button to complete the order.
+    -	**Description:** "Ok" button to exit the receipt page.
 
 - **Story T9S-5.3**
     -	**Name:** Remove Purchased Inventory and Recorded in Sales Report
@@ -204,7 +204,7 @@ ___
 
 - **Story T9S-6.4**
     - **Name:** Add Inventory into Database
-    - **Priority:** Needs to Have
+    - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Functional
     - **Description:** Admins can manually add inventory into the database.
@@ -212,14 +212,14 @@ ___
 ###	Epic T9E-7: UI Mockup
 - **Story T9S-7.1**
     - **Name:** High Fidelity Screen Mockups
-    - **Priority:** Needs to Have
+    - **Priority:** Must Have
     - **Effort:** 2 days
     - **Type:** Non-Functional
     - **Description:** Show a preview of what screen will look like
 
 - **Story T9S-7.2**
     - **Name:** Application Flow
-    - **Priority:** Needs to Have
+    - **Priority:** Must Have
     - **Effort:** 2 days
     - **Type:** Functional
     - **Description:** Interactive mockup of how the user will navigate between pages
