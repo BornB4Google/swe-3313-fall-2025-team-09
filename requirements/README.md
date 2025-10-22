@@ -5,7 +5,7 @@ ___
 - **Story T9S-1.1**
     - **Name:** Self-Register Account
     - **Priority:** Must Have
-    - **Effort:** 1 day
+    - **Effort:** 0.5 day
     - **Type:** Functional
     - **Description:** User must be able to create an account by entering required details and registering successfully.
 
@@ -42,7 +42,7 @@ ___
 - **Story T9S-2.2**
     - **Name:** Display Inventory Details
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.5 day
     -	**Type:** Non-Functional
     -	**Description:** Each inventory item must include a name, picture, brief description, and an “Add to Cart” button.
 
@@ -85,7 +85,7 @@ ___
 - **Story T9S-3.2**
     - **Name:** Checkout Button
     - **Priority:** Must Have
-    - **Effort:** 1 day
+    - **Effort:** 0.25 day
     - **Type:** Functional
     - **Description:** Checkout button brings user to checkout page
 
@@ -99,7 +99,7 @@ ___
 - **Story T9S-3.4**
     - **Name:** Subtotal Summary
     - **Priority:** Must Have
-    - **Effort:** 1 day
+    - **Effort:** 0.25 day
     - **Type:** Non-Functional
     - **Description:** Subtotal showing the price before taxes and shipping in the users shopping cart
 
@@ -108,14 +108,14 @@ ___
 - **Story T9S-3.2**
     - **Name:** Checkout Summary
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.25 day
     -	**Type:** Non-Functional
     -	**Description:** Clicking checkout displays all cart items with subtotal.
 
 - **Story T9S-3.3**
     -	**Name:** Payment Process
     -	**Priority:** Must Have
-    -	**Effort:** 2 days
+    -	**Effort:** 0.5 days
     -	**Type:** Functional
     -	**Description:** User enters shipping address, credit card (number, expiration, CCV), phone number, and selects a shipping speed.
 
@@ -129,7 +129,7 @@ ___
 - **Story T9S-3.5**
     -	**Name:** Pay Now Button
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.25 day
     -	**Type:** Functional
     -	**Description:** User clicks “Pay Now” to view the confirm order page.
 
@@ -138,9 +138,9 @@ ___
 - **Story T9S-4.1**
     -	**Name:** List of items
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.5 day
     -	**Type:** Non-Functional
-    -	**Description:** Lists items, subtotal, tax (6%), shipping cost, and grand total.
+    -	**Description:** Lists items and prices.
 
 - **Story T9S-4.2**
     -	**Name:** Price breakdown and Determination of Total
@@ -152,7 +152,7 @@ ___
 - **Story T9S-4.3**
     -	**Name:** Complete Order Button
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.25 day
     -	**Type:** Functional
     -	**Description:** User clicks “Complete Order” to view the confirm order page.
 
@@ -162,21 +162,21 @@ ___
 - **Story T9S-5.1**
     -	**Name:** Receipt
     -	**Priority:** Must Have
-    -	**Effort:** 1 day
+    -	**Effort:** 0.5 day
     -	**Type:** Non-Functional
     -	**Description:** Page shows a receipt with masked card and shipping info.
 
 - **Story T9S-5.2**
     -	**Name:** Ok Button
     -	**Priority:** Must Have
-    -	**Effort:** 0.5 day
+    -	**Effort:** 0.25 day
     -	**Type:** Functional
     -	**Description:** "Ok" button to exit the receipt page.
 
 - **Story T9S-5.3**
     -	**Name:** Remove Purchased Inventory and Recorded in Sales Report
     -	**Priority:** Must Have
-    -	**Effort:** 0.5 day
+    -	**Effort:** 1 day
     -	**Type:** Non-Functional
     -	**Description:** All purchased inventory must no longer appear in search results and must be recorded in sales reports.
 
@@ -184,25 +184,18 @@ ___
 - **Story T9S-6.1**
     - **Name:** Sales Report Access
     - **Priority:** Must Have
-    - **Effort:** 1.5 days
+    - **Effort:** 1 days
     - **Type:** Functional
     - **Description:** Admin users can run sales reports showing all purchases and corresponding buyers.
 
 - **Story T9S-6.2**
-    - **Name:** Creating a New Admin
-    - **Priority:** Needs to Have
-    - **Effort:** 0.5 day
-    - **Type:** Functional
-    - **Description:** Existing admins are able to create new admins.
-
-- **Story T9S-6.3**
     - **Name:** Export Sales Reports
     - **Priority:** Needs to Have
     - **Effort:** 0.5 day
     - **Type:** Functional
     - **Description:** Admins can export sales reports in CSV format.
 
-- **Story T9S-6.4**
+- **Story T9S-6.3**
     - **Name:** Add Inventory into Database
     - **Priority:** Must Have
     - **Effort:** 1 day
@@ -213,7 +206,7 @@ ___
 - **Story T9S-7.1**
     - **Name:** High Fidelity Screen Mockups
     - **Priority:** Must Have
-    - **Effort:** 2 days
+    - **Effort:** 3 days
     - **Type:** Non-Functional
     - **Description:** Show a preview of what screen will look like
 
@@ -230,14 +223,14 @@ ___
 - **Story T9S-8.1**
     - **Name:** Create Additional Admins
     - **Priority:** Needs to Have
-    - **Effort:** 1 day
+    - **Effort:** 0.5 day
     - **Type:** Functional
     - **Description:** Admin can create and manage other admin accounts.
 
 - **Story T9S-8.2**
     - **Name:** View Receipts for Sold Items
     - **Priority:** Wants to Have
-    - **Effort:** 0.5 day
+    - **Effort:** 1 day
     - **Type:** Functional
     - **Description:** Admin can click a sold item and view its related receipt.
 
@@ -266,7 +259,7 @@ ___
 - **Story T9S-9.3**
     - **Name:** Return to Shopping
     - **Priority:** Needs to Have
-    - **Effort:** 1.5 days
+    - **Effort:** 0.5 days
     - **Type:** Functional
     - **Description:** Users can return to shopping from cart.
 
