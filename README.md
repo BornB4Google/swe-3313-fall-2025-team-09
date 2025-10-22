@@ -48,8 +48,7 @@ The system includes enhanced administration features for managing users, maintai
 
 ## Requirements and Elicitation
 
-For complete project requirements captured during customer conversations, please refer  
-to the detailed documentation [here](requirements/README.md)
+- For complete project requirements captured during customer conversations, please refer to the detailed documentation [here](requirements/README.md)
 
 ## Use Case Diagram
 
