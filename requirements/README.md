@@ -72,8 +72,8 @@ ___
     - **Priority:** Must Have
     - **Effort:** 0.25 day
     - **Type:** Functional
-    - **Description:** Search bar for user to be able to search inventory.
-
+    - **Description:** Search bar for user to be able to search inventory by typing in a search box.
+ 
 ### Epic T9E-3: Shopping Cart
 - **Story T9S-3.1**
     - **Name:** Checkout Button Validation
@@ -101,7 +101,7 @@ ___
     - **Priority:** Must Have
     - **Effort:** 0.25 day
     - **Type:** Non-Functional
-    - **Description:** Subtotal showing the price before taxes and shipping in the users shopping cart
+    - **Description:** Subtotal showing the price before taxes and shipping in the users shopping cart.
 
 ### Epic T9E-3: Checkout and Payment Flow
 
