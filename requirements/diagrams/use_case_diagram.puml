@@ -6,13 +6,13 @@ skinparam usecase {
   BackgroundColor White
 }
 
-' Actors
+
 actor Shopper as shopper
-actor Admin as admin
 actor "Payment Processor" as payment
 actor "Shipping Service" as shipping
+actor "Admin" as admin
 
-' System Boundary
+
 rectangle "Storefront System" as system {
   (Register and Log In to Account) as UC_Auth
   (Browse and Search Inventory) as UC_Inventory
@@ -23,16 +23,22 @@ rectangle "Storefront System" as system {
   (Manage Inventory and Generate Reports) as UC_Admin
 }
 
-' Associations
+
 shopper -- UC_Auth
 shopper -- UC_Inventory
 shopper -- UC_Cart
 shopper -- UC_Checkout
 shopper -- UC_Confirm
 shopper -- UC_Complete
-admin -- UC_Admin
-payment -- UC_Checkout
+
+UC_Admin -- admin
+UC_Cart -- admin
+UC_Inventory -- admin
+UC_Checkout -- admin
+UC_Confirm -- admin
+UC_Complete -- admin
+  
+UC_Checkout -- payment
 shipping -- UC_Checkout
 shipping -- UC_Confirm
-
 @enduml
