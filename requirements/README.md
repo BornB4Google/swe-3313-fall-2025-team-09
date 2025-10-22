@@ -37,7 +37,7 @@ ___
     - **Priority:** Must Have
     - **Effort:** 1 day
     - **Type:** Non-Functional
-    - **Description:** Inventory will be listed from highest to lowest
+    - **Description:** Inventory will be listed from highest to lowest.
 
 - **Story T9S-2.2**
     - **Name:** Display Inventory Details
@@ -87,7 +87,7 @@ ___
     - **Priority:** Must Have
     - **Effort:** 0.25 day
     - **Type:** Functional
-    - **Description:** Checkout button brings user to checkout page
+    - **Description:** Checkout button brings user to checkout page.
 
 - **Story T9S-3.3**
     - **Name:** Add Multiple Items to Cart
@@ -208,14 +208,14 @@ ___
     - **Priority:** Must Have
     - **Effort:** 3 days
     - **Type:** Non-Functional
-    - **Description:** Show a preview of what screen will look like
+    - **Description:** Show a preview of what screen will look like.
 
 - **Story T9S-7.2**
     - **Name:** Application Flow
     - **Priority:** Must Have
     - **Effort:** 2 days
     - **Type:** Functional
-    - **Description:** Interactive mockup of how the user will navigate between pages
+    - **Description:** Interactive mockup of how the user will navigate between pages.
 
 ___
 ## Version 2
@@ -247,7 +247,7 @@ ___
     - **Priority:** Needs to Have
     - **Effort:** 1 day
     - **Type:** Functional
-    - **Description:** Users are allowed to remove items from cart, if all items are removed it will go back to main screen
+    - **Description:** Users are allowed to remove items from cart, if all items are removed it will go back to main screen.
 
 - **Story T9S-9.2**
     - **Name:** Multiple Item Photos
