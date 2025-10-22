@@ -14,7 +14,7 @@ The system includes enhanced administration features for managing users, maintai
 
 ## Decision Table 
 
-- Click [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) for a detailed view of our decision table for all processes in Version 1.
+- Click [here](requirements/decision-table.md) for a detailed view of our decision table for all processes in Version 1.
 
 
 ## Presentation
