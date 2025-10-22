@@ -3,4 +3,4 @@
 ![Decision Table](diagrams/table-image.PNG)
 
 
-[Decision Table Demo Code](requirements/decision-table-code-demo.cs)
+[Decision Table Demo Code](decision-table-code-demo.cs)
