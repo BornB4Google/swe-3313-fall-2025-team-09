@@ -25,3 +25,5 @@ replay_pid*
 
 #perpetual undo file created by VIM
 *~un
+
+.DS_Store
