@@ -1,3 +1,3 @@
-# Link to Google Doc with decision table
+# Decision Table
 
 ![Decision Table](diagrams/table-image.PNG)
