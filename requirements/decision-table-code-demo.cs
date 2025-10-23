@@ -8,6 +8,7 @@ public class DecisionTable
         Inventory myInventory = new Inventory();
         User myUser = new User(myInventory);
         Admin myAdmin = new Admin(myInventory);
+        Console.WriteLine("");
 
         Console.WriteLine("Items in inventory");
         AddTestItems(myInventory);
