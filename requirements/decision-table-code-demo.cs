@@ -24,6 +24,11 @@ public class DecisionTable
 
         myUser.PrintCart();
 
+        myAdmin.AddToInventory("Kino - Gruppa Krovi");
+
+        myInventory.PrintInventory();
+
+
 
 
 
@@ -216,6 +221,19 @@ public class DecisionTable
     public void Remove(Item i)
     {
         items.Remove(i);
+    }
+
+    public void PrintInventory()
+    {
+        if(items.Count == 0)
+            {
+                Console.WriteLine("No items in inventory.");
+                return;
+            }
+            foreach(Item i in items)
+            {
+                Console.WriteLine(i.name);
+            }
     }  
 
     }
