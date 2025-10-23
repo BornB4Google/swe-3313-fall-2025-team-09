@@ -36,7 +36,7 @@ Click [here](https://www.loom.com/share/4aba970bd1cf435dbdea48bd94638f1b) for a 
 
 ## Project Gantt Chart
 
-- Click [here](https://github.com/BornB4Google/swe-3313-fall-2025-team-09/blob/main/project-plan/gantt-chart/ganttchart.png) to see a visualzation of our Gantt chart.
+- Click [here](project-plan/README.md) to see a visualzation of our Gantt chart.
 
 # Requirements
 
