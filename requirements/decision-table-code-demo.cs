@@ -9,6 +9,11 @@ public class DecisionTable
         User myUser = new User(myInventory);
         Admin myAdmin = new Admin(myInventory);
 
+        myUser.AddItemToCart("Supertramp - Breakfast in America");
+        myUser.AddItemToCart("ABBA - Arrival");
+
+        myUser.PrintCart();
+
 
 
 
@@ -20,23 +25,26 @@ public class DecisionTable
         Item dirt = new Item("Alice In Chains - Dirt");
         Item flies = new Item("Alice In Chains - Jar of Flies");
         Item nevermind = new Item("Nirvana - Nevermind");
-        i.add(dirt);
-        i.add(flies);
-        i.add(nevermind);
+        Item breakfast = new Item("Supertramp - Breakfast in America");
+        Item arrival = new Item("ABBA - Arrival");
+        i.Add(dirt);
+        i.Add(flies);
+        i.Add(nevermind);
+        i.Add(breakfast);
     }
 
 
     public class User
     {
         List<Item> cart = new List<Item>();
-        private Inventory storesInventory;
+        public Inventory storesInventory;
 
         public User(Inventory inventory)
         {
             storesInventory = inventory;
             Login();
         }
-        public void Login()
+        public virtual void Login()
         {
             Console.WriteLine("Give us your money!");
         }
@@ -44,14 +52,14 @@ public class DecisionTable
         //search if any item has the same name as the item you're looking for
         public Item SearchInventory(string s)
         {
-            foreach (Item i in storesInventory)
+            foreach (Item i in storesInventory.items)
             {
                 if (i.name == s) return i;
             }
             return null;
         }
 
-        public void AddItemToCart(string itemName)
+        public virtual void AddItemToCart(string itemName)
         {
             //tuple of item and quantity
             var item = SearchInventory(itemName);
@@ -64,12 +72,12 @@ public class DecisionTable
             {
                 //making seperate object so changes on the object in cart don't affect object in inventory
                 cart.Add(item);
-                storesInventory.remove(item);
+                storesInventory.Remove(item);
                 Console.WriteLine("Added item " + itemName + "to cart.");
             }
         }
 
-        public void RemoveItemFromCart(string itemName)
+        public virtual void RemoveItemFromCart(string itemName)
         {
             var item = SearchInventory(itemName);
 
@@ -80,13 +88,13 @@ public class DecisionTable
             }
             else
             {
+                storesInventory.items.Add(item);
                 cart.Remove(item);
-                var.quantity++;
-                Console.WriteLine("Removed item " + itemName + "to cart.");
+                Console.WriteLine("Removed item " + itemName + "from cart.");
             }
         }
 
-        private Item SearchCart(string itemName)
+        public virtual Item SearchCart(string itemName)
         {
             foreach (Item i in cart)
             {
@@ -95,10 +103,19 @@ public class DecisionTable
             return null;
         }
 
-        public void Checkout()
+        public virtual void Checkout()
         {
             cart = null;
             Console.WriteLine("Money, money, money, must be funny \n In the rich man's world");
+        }
+
+        //not in decision table, here for debug
+        public void PrintCart()
+        {
+            foreach(Item i in cart)
+            {
+                Console.WriteLine(i.name);
+            }
         }
 
 
@@ -109,10 +126,8 @@ public class DecisionTable
 
     public class Admin : User
     {
-        public Admin(Inventory inventory)
+        public Admin(Inventory inventory) : base(inventory)
         {
-            storeInventory = inventory;
-            Login();
         }
 
         public override void Login()
@@ -132,9 +147,10 @@ public class DecisionTable
             Console.WriteLine("Admins cannot remove items from cart.");
         }
 
-        //Shouldn't need since private and no other methods call, just here in case
-        private override void SearchCart(string itemName)
-        { }
+        public override Item SearchCart(string itemName)
+        {
+            return null;
+        }
 
         public override void Checkout()
         {
@@ -151,8 +167,8 @@ public class DecisionTable
             }
             else
             {
-                item i = new Item();
-                storesInventory.add;
+                Item i = new Item(itemName);
+                storesInventory.Add(i);
             }
         }
 
@@ -167,7 +183,7 @@ public class DecisionTable
 
     public class Inventory
     {
-        List<Item> items = new List<Item>();
+        public List<Item> items = new List<Item>();
         public Inventory()
         {
         }
