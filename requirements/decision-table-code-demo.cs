@@ -25,7 +25,7 @@ public class DecisionTable
         myUser.PrintCart();
 
         myAdmin.AddToInventory("Kino - Gruppa Krovi");
-        myAdmin.RemoveFrom
+        myAdmin.RemoveFromInventory("Alice In Chains - Jar of Flies");
 
         myInventory.PrintInventory();
 
