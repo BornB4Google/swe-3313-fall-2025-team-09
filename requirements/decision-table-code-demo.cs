@@ -9,7 +9,12 @@ public class DecisionTable
         User myUser = new User(myInventory);
         Admin myAdmin = new Admin(myInventory);
 
+        Console.WriteLine("Items in inventory");
         AddTestItems(myInventory);
+        myInventory.PrintInventory();
+        Console.WriteLine("");
+
+
         myUser.AddItemToCart("Supertramp - Breakfast in America");
         myUser.AddItemToCart("ABBA - Arrival");
         myUser.AddItemToCart("Nirvana - Nevermind");
