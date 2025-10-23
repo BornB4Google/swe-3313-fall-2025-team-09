@@ -28,15 +28,15 @@ public class Program
 		
 		Console.WriteLine($"\nApplying Rule: {rule}");
 		Console.WriteLine("======================");
-		Console.WriteLine($"Register user account:		{CanRegisterUserAccount(isUser, isAdmin)}");
-		Console.WriteLine($"Login:				{CanLogin(isUser, isAdmin)}");
-		Console.WriteLine($"Search Inventory:		{CanSearchInventory(isUser, isAdmin)}");
-		Console.WriteLine($"Add item to cart:		{CanAddItemToCart(isUser, isAdmin)}");
-		Console.WriteLine($"Remove item from cart:		{CanRemoveItemFromCart(isUser, isAdmin)}");
-		Console.WriteLine($"Checkout:			{CanCheckout(isUser, isAdmin)}");
-		Console.WriteLine($"Add item to inventory:		{CanAddItemToInventory(isUser, isAdmin)}");
-		Console.WriteLine($"Remove item from inventory:	{CanRemoveItemFromInventory(isUser, isAdmin)}");
-		Console.WriteLine($"View sales report:		{CanViewSalesReport(isUser, isAdmin)}");
+		Console.WriteLine($"Register user account:------{CanRegisterUserAccount(isUser, isAdmin)}");
+		Console.WriteLine($"Login:----------------------{CanLogin(isUser, isAdmin)}");
+		Console.WriteLine($"Search Inventory:-----------{CanSearchInventory(isUser, isAdmin)}");
+		Console.WriteLine($"Add item to cart:-----------{CanAddItemToCart(isUser, isAdmin)}");
+		Console.WriteLine($"Remove item from cart:------{CanRemoveItemFromCart(isUser, isAdmin)}");
+		Console.WriteLine($"Checkout:-------------------{CanCheckout(isUser, isAdmin)}");
+		Console.WriteLine($"Add item to inventory:------{CanAddItemToInventory(isUser, isAdmin)}");
+		Console.WriteLine($"Remove item from inventory:-{CanRemoveItemFromInventory(isUser, isAdmin)}");
+		Console.WriteLine($"View sales report:----------{CanViewSalesReport(isUser, isAdmin)}");
 	}
 	
 	static bool IsUser()
@@ -122,4 +122,4 @@ public class Program
 		// N for R1, N for R2, Y for R3
 		return isUser && isAdmin;
 	}
-
+}
