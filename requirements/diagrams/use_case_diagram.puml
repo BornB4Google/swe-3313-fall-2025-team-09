@@ -34,11 +34,11 @@ shopper -- UC_Complete
 UC_Admin -- admin
 UC_Cart -- admin
 UC_Inventory -- admin
+UC_Auth -- admin
 UC_Checkout -- admin
 UC_Confirm -- admin
 UC_Complete -- admin
   
 UC_Checkout -- payment
 shipping -- UC_Checkout
-shipping -- UC_Confirm
 @enduml
