@@ -25,6 +25,7 @@ public class DecisionTable
         myUser.PrintCart();
 
         myAdmin.AddToInventory("Kino - Gruppa Krovi");
+        myAdmin.RemoveFrom
 
         myInventory.PrintInventory();
 
@@ -194,6 +195,21 @@ public class DecisionTable
             {
                 Item i = new Item(itemName);
                 storesInventory.Add(i);
+            }
+        }
+
+        public void RemoveFromInventory(string itemName)
+        {
+            var item = SearchInventory(itemName);
+
+            if (item != null)
+            {
+                Console.WriteLine("Item is not in inventory.");
+            }
+            else
+            {
+                Item i = new Item(itemName);
+                storesInventory.Remove(i);
             }
         }
 
