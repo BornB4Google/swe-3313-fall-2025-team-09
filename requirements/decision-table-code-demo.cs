@@ -1,24 +1,36 @@
+using System;
+using System.Collections.Generic;
 public class DecisionTable
 {
 
     public static void Main()
     {
+        Inventory myInventory = new Inventory();
+        User myUser = new User(myInventory);
+        Admin myAdmin = new Admin(myInventory);
+
+
 
 
 
     }
 
-    private static void AddTestItems()
+    private static void AddTestItems(Inventory i)
     {
-        
+        Item dirt = new Item("Alice In Chains - Dirt");
+        Item flies = new Item("Alice In Chains - Jar of Flies");
+        Item nevermind = new Item("Nirvana - Nevermind");
+        i.add(dirt);
+        i.add(flies);
+        i.add(nevermind);
     }
 
-    
+
     public class User
     {
         List<Item> cart = new List<Item>();
         private Inventory storesInventory;
-        
+
         public User(Inventory inventory)
         {
             storesInventory = inventory;
@@ -48,17 +60,11 @@ public class DecisionTable
                 Console.WriteLine("No such item in inventory. Cannot add to cart.");
                 return;
             }
-            else if (item.quantity < 1)
-            {
-                Console.WriteLine("Item is out of stock.");
-                return;
-            }
             else
             {
                 //making seperate object so changes on the object in cart don't affect object in inventory
-                Item cartItem = new Item(itemName, 1);
-                cart.Add(cartItem);
-                item.quantity--;
+                cart.Add(item);
+                storesInventory.remove(item);
                 Console.WriteLine("Added item " + itemName + "to cart.");
             }
         }
@@ -79,22 +85,23 @@ public class DecisionTable
                 Console.WriteLine("Removed item " + itemName + "to cart.");
             }
         }
-        
-        private Item SearchCart(string itemName){
+
+        private Item SearchCart(string itemName)
+        {
             foreach (Item i in cart)
             {
                 if (i.name == itemName) return i;
             }
             return null;
         }
-        
+
         public void Checkout()
         {
             cart = null;
             Console.WriteLine("Money, money, money, must be funny \n In the rich man's world");
         }
-        
-        
+
+
     }
 
 
@@ -105,6 +112,7 @@ public class DecisionTable
         public Admin(Inventory inventory)
         {
             storeInventory = inventory;
+            Login();
         }
 
         public override void Login()
@@ -133,23 +141,27 @@ public class DecisionTable
             Console.WriteLine("Thief!");
         }
 
-        public void AddToInventory(string itemName, int quantity)
+        public void AddToInventory(string itemName)
         {
             var item = SearchInventory(itemName);
 
             if (item != null)
             {
-                item.quantity += quantity;
+                Console.WriteLine("Item already in inventory.");
             }
             else
             {
                 item i = new Item();
-                storesInventory.add
+                storesInventory.add;
             }
+        }
 
-
+        public void SalesReport()
+        {
+            Console.WriteLine("Sales report ig");
         }
     }
+}
 
 
 
@@ -159,19 +171,26 @@ public class DecisionTable
         public Inventory()
         {
         }
+
+    public void Add(Item i)
+    {
+        items.Add(i);
+    }
+
+    public void Remove(Item i)
+    {
+        items.Remove(i);
+    }  
+
     }
 
     public class Item
     {
         public string name;
-        public int quantity;
 
-        public Item(string name, int price, int quantity)
+        public Item(string name)
         {
             this.name = name;
-            this.price = price;
-            this.quantity = quantity;
         }
     }
     
-}
