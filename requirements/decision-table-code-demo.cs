@@ -9,8 +9,18 @@ public class DecisionTable
         User myUser = new User(myInventory);
         Admin myAdmin = new Admin(myInventory);
 
+        AddTestItems(myInventory);
         myUser.AddItemToCart("Supertramp - Breakfast in America");
         myUser.AddItemToCart("ABBA - Arrival");
+        myUser.AddItemToCart("Nirvana - Nevermind");
+
+        myUser.PrintCart();
+
+        myUser.RemoveItemFromCart("Nirvana - Nevermind");
+
+        myUser.PrintCart();
+
+        myUser.Checkout();
 
         myUser.PrintCart();
 
@@ -31,6 +41,7 @@ public class DecisionTable
         i.Add(flies);
         i.Add(nevermind);
         i.Add(breakfast);
+        i.Add(arrival);
     }
 
 
@@ -61,8 +72,7 @@ public class DecisionTable
 
         public virtual void AddItemToCart(string itemName)
         {
-            //tuple of item and quantity
-            var item = SearchInventory(itemName);
+            Item item = SearchInventory(itemName);
             if (item == null)
             {
                 Console.WriteLine("No such item in inventory. Cannot add to cart.");
@@ -73,13 +83,18 @@ public class DecisionTable
                 //making seperate object so changes on the object in cart don't affect object in inventory
                 cart.Add(item);
                 storesInventory.Remove(item);
-                Console.WriteLine("Added item " + itemName + "to cart.");
+                Console.WriteLine("Added item " + itemName + " to cart.");
             }
         }
 
         public virtual void RemoveItemFromCart(string itemName)
         {
-            var item = SearchInventory(itemName);
+            Item item = null;
+
+            foreach(Item i in cart)
+            {
+                if (i.name == itemName) item = i;
+            }
 
             if (item == null)
             {
@@ -90,7 +105,7 @@ public class DecisionTable
             {
                 storesInventory.items.Add(item);
                 cart.Remove(item);
-                Console.WriteLine("Removed item " + itemName + "from cart.");
+                Console.WriteLine("Removed item " + itemName + " from cart.");
             }
         }
 
@@ -105,13 +120,18 @@ public class DecisionTable
 
         public virtual void Checkout()
         {
-            cart = null;
+            cart.Clear();
             Console.WriteLine("Money, money, money, must be funny \n In the rich man's world");
         }
 
         //not in decision table, here for debug
         public void PrintCart()
         {
+            if(cart.Count == 0)
+            {
+                Console.WriteLine("Cart is empty.");
+                return;
+            }
             foreach(Item i in cart)
             {
                 Console.WriteLine(i.name);
@@ -174,7 +194,7 @@ public class DecisionTable
 
         public void SalesReport()
         {
-            Console.WriteLine("Sales report ig");
+            Console.WriteLine("This is where a sales report would go");
         }
     }
 }
