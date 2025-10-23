@@ -5,6 +5,25 @@ public class DecisionTable
 
     public static void Main()
     {
+        Test();
+    }
+
+    private static void AddTestItems(Inventory i)
+    {
+        Item dirt = new Item("Alice In Chains - Dirt");
+        Item flies = new Item("Alice In Chains - Jar of Flies");
+        Item nevermind = new Item("Nirvana - Nevermind");
+        Item breakfast = new Item("Supertramp - Breakfast in America");
+        Item arrival = new Item("ABBA - Arrival");
+        i.Add(dirt);
+        i.Add(flies);
+        i.Add(nevermind);
+        i.Add(breakfast);
+        i.Add(arrival);
+    }
+
+    public static void Test()
+    {
         Inventory myInventory = new Inventory();
         User myUser = new User(myInventory);
         Admin myAdmin = new Admin(myInventory);
@@ -44,26 +63,6 @@ public class DecisionTable
         myAdmin.RemoveFromInventory("Alice In Chains - Jar of Flies");
 
         myInventory.PrintInventory();
-
-
-
-
-
-
-    }
-
-    private static void AddTestItems(Inventory i)
-    {
-        Item dirt = new Item("Alice In Chains - Dirt");
-        Item flies = new Item("Alice In Chains - Jar of Flies");
-        Item nevermind = new Item("Nirvana - Nevermind");
-        Item breakfast = new Item("Supertramp - Breakfast in America");
-        Item arrival = new Item("ABBA - Arrival");
-        i.Add(dirt);
-        i.Add(flies);
-        i.Add(nevermind);
-        i.Add(breakfast);
-        i.Add(arrival);
     }
 
 
