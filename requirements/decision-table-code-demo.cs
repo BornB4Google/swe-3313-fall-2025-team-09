@@ -13,21 +13,26 @@ public class DecisionTable
         myUser.AddItemToCart("Supertramp - Breakfast in America");
         myUser.AddItemToCart("ABBA - Arrival");
         myUser.AddItemToCart("Nirvana - Nevermind");
+        Console.WriteLine("");
 
         Console.WriteLine("Items in user's cart");
         myUser.PrintCart();
         Console.WriteLine("");
 
         myUser.RemoveItemFromCart("Nirvana - Nevermind");
+        Console.WriteLine("");
+        
 
         Console.WriteLine("Items in user's cart");
         myUser.PrintCart();
         Console.WriteLine("");
 
-        Console.Write("Checkout");
+        Console.WriteLine("Checkout");
         myUser.Checkout();
+        Console.WriteLine("");
 
         myUser.PrintCart();
+        Console.WriteLine("");
 
         myAdmin.AddToInventory("Kino - Gruppa Krovi");
         myAdmin.RemoveFromInventory("Alice In Chains - Jar of Flies");
