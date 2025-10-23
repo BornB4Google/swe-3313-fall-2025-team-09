@@ -1,319 +1,125 @@
 using System;
-using System.Collections.Generic;
-public class DecisionTable
+
+public class Program
 {
+	public static void Main()
+	{
+		bool isUser = IsUser();
+		bool isAdmin = IsAdmin();
+		
+		string rule;
+		if (!isUser && !isAdmin)
+		{
+			rule = "R1";
+		}
+		else if (isUser && !isAdmin)
+		{
+			rule = "R2";
+		}
+		else if (isUser && isAdmin)
+		{
+			rule = "R3";
+		}
+		else
+		{
+			// This case shouldn't happen based on the table (F,T doesn't exist)
+			rule = "Invalid";
+		}
+		
+		Console.WriteLine($"\nApplying Rule: {rule}");
+		Console.WriteLine("======================");
+		Console.WriteLine($"Register user account:		{CanRegisterUserAccount(isUser, isAdmin)}");
+		Console.WriteLine($"Login:				{CanLogin(isUser, isAdmin)}");
+		Console.WriteLine($"Search Inventory:		{CanSearchInventory(isUser, isAdmin)}");
+		Console.WriteLine($"Add item to cart:		{CanAddItemToCart(isUser, isAdmin)}");
+		Console.WriteLine($"Remove item from cart:		{CanRemoveItemFromCart(isUser, isAdmin)}");
+		Console.WriteLine($"Checkout:			{CanCheckout(isUser, isAdmin)}");
+		Console.WriteLine($"Add item to inventory:		{CanAddItemToInventory(isUser, isAdmin)}");
+		Console.WriteLine($"Remove item from inventory:	{CanRemoveItemFromInventory(isUser, isAdmin)}");
+		Console.WriteLine($"View sales report:		{CanViewSalesReport(isUser, isAdmin)}");
+	}
+	
+	static bool IsUser()
+	{
+		Console.WriteLine("Is the person a user? (y/n): ");
+		var input = Console.ReadLine();
+		var isUser = input == "y" || input == "Y";
+		Console.WriteLine($"Is User: {isUser}");
+		return isUser;
+	}
+	
+	static bool IsAdmin()
+	{
+		Console.WriteLine("Is the person an admin? (y/n)");
+		var input = Console.ReadLine();
+		var isAdmin = input == "y" || input == "Y";
+		Console.WriteLine($"Is Admin: {isAdmin}");
+		return isAdmin;
+	}
+	
+	// Rule R1: isUser = F, isAdmin = F
+	// Rule R2: isUser = T, isAdmin = F
+	// Rule R3: isUser = T, isAdmin = T
+	
+	static bool CanRegisterUserAccount(bool isUser, bool isAdmin)
+	{
+		// Y for R1, N for R2, N for R3
+		return !isUser && !isAdmin;
+	}
+	
+	static bool CanLogin(bool isUser, bool isAdmin)
+	{
+		// N for R1, Y for R2, Y for R3
+		return isUser;
+	}
+	
+	static bool CanSearchInventory(bool isUser, bool isAdmin)
+	{
+		if (!isUser)
+			return false;
+		// N for R1, Y for R2, Y for R3
+		return isUser || isAdmin;
+	}
+	
+	static bool CanAddItemToCart(bool isUser, bool isAdmin)
+	{
+		if (!isUser)
+			return false;
+		// N for R1, Y for R2, N for R3
+		return isUser || isAdmin;
+	}
+	
+	static bool CanRemoveItemFromCart(bool isUser, bool isAdmin)
+	{
+		if (!isUser)
+			return false;
+		// N for R1, Y for R2, N for R3
+		return isUser || isAdmin;
+	}
+	
+	static bool CanCheckout(bool isUser, bool isAdmin)
+	{
+		if (!isUser)
+			return false;
+		// N for R1, Y for R2, N for R3
+		return isUser || isAdmin;
+	}
+	
+	static bool CanAddItemToInventory(bool isUser, bool isAdmin)
+	{
+		// N for R1, N for R2, Y for R3
+		return isUser && isAdmin;
+	}
+	
+	static bool CanRemoveItemFromInventory(bool isUser, bool isAdmin)
+	{
+		// N for R1, N for R2, Y for R3
+		return isUser && isAdmin;
+	}
+	
+	static bool CanViewSalesReport(bool isUser, bool isAdmin)
+	{
+		// N for R1, N for R2, Y for R3
+		return isUser && isAdmin;
+	}
 
-    public static void Main()
-    {
-        Inventory myInventory = new Inventory();
-        AddTestItems(myInventory);
-        List<User> userList = new List<User>();
-        User loggedIn;
-        while (true)
-        {
-            Console.WriteLine("1. Register User\n2. Login as User\n3. Login as Admin");
-
-            switch (int.Parse(Console.ReadLine()))
-            {
-                case 1:
-                    Console.WriteLine("Enter username for new user.");
-                    userList.Add(new User(myInventory, Console.ReadLine()));
-                    break;
-                case 2:
-                    Console.WriteLine("Enter username.");
-                    string namedEntered = Console.ReadLine();
-                    foreach(User user in userList)
-                    {
-                        if (user.Name == namedEntered)
-                        {
-                            
-                        }
-                    }
-                case 3:
-
-
-
-
-            }
-
-
-        }
-        
-        
-        
-        
-        Test();
-    }
-
-    private static void AddTestItems(Inventory i)
-    {
-        Item dirt = new Item("Alice In Chains - Dirt");
-        Item flies = new Item("Alice In Chains - Jar of Flies");
-        Item nevermind = new Item("Nirvana - Nevermind");
-        Item breakfast = new Item("Supertramp - Breakfast in America");
-        Item arrival = new Item("ABBA - Arrival");
-        i.Add(dirt);
-        i.Add(flies);
-        i.Add(nevermind);
-        i.Add(breakfast);
-        i.Add(arrival);
-    }
-
-    public static void Test()
-    {
-        Inventory myInventory = new Inventory();
-        User myUser = new User(myInventory);
-        Admin myAdmin = new Admin(myInventory);
-        Console.WriteLine("");
-
-        Console.WriteLine("Items in inventory");
-        AddTestItems(myInventory);
-        myInventory.PrintInventory();
-        Console.WriteLine("");
-
-
-        myUser.AddItemToCart("Supertramp - Breakfast in America");
-        myUser.AddItemToCart("ABBA - Arrival");
-        myUser.AddItemToCart("Nirvana - Nevermind");
-        Console.WriteLine("");
-
-        Console.WriteLine("Items in user's cart");
-        myUser.PrintCart();
-        Console.WriteLine("");
-
-        myUser.RemoveItemFromCart("Nirvana - Nevermind");
-        Console.WriteLine("");
-        
-
-        Console.WriteLine("Items in user's cart");
-        myUser.PrintCart();
-        Console.WriteLine("");
-
-        Console.WriteLine("Checkout");
-        myUser.Checkout();
-        Console.WriteLine("");
-
-        myUser.PrintCart();
-        Console.WriteLine("");
-
-        myAdmin.AddToInventory("Kino - Gruppa Krovi");
-        myAdmin.RemoveFromInventory("Alice In Chains - Jar of Flies");
-
-        myInventory.PrintInventory();
-    }
-
-
-    public class User
-    {
-        List<Item> cart = new List<Item>();
-        public Inventory storesInventory;
-        public string Name;
-
-        //constructor analagous to Register action
-        public User(Inventory inventory)
-        {
-            storesInventory = inventory;
-            Login();
-        }
-        public virtual void Login()
-        {
-            Console.WriteLine("User logged in");
-        }
-
-        //search if any item has the same name as the item you're looking for
-        public Item SearchInventory(string s)
-        {
-            foreach (Item i in storesInventory.items)
-            {
-                if (i.name == s) return i;
-            }
-            return null;
-        }
-
-        public virtual void AddItemToCart(string itemName)
-        {
-            Item item = SearchInventory(itemName);
-            if (item == null)
-            {
-                Console.WriteLine("No such item in inventory. Cannot add to cart.");
-                return;
-            }
-            else
-            {
-                //making seperate object so changes on the object in cart don't affect object in inventory
-                cart.Add(item);
-                storesInventory.Remove(item);
-                Console.WriteLine("Added item " + itemName + " to cart.");
-            }
-        }
-
-        public virtual void RemoveItemFromCart(string itemName)
-        {
-            Item item = null;
-
-            foreach(Item i in cart)
-            {
-                if (i.name == itemName) item = i;
-            }
-
-            if (item == null)
-            {
-                Console.WriteLine("No such item in cart. Cannot add to cart.");
-                return;
-            }
-            else
-            {
-                storesInventory.items.Add(item);
-                cart.Remove(item);
-                Console.WriteLine("Removed item " + itemName + " from cart.");
-            }
-        }
-
-        public virtual Item SearchCart(string itemName)
-        {
-            foreach (Item i in cart)
-            {
-                if (i.name == itemName) return i;
-            }
-            return null;
-        }
-
-        public virtual void Checkout()
-        {
-            cart.Clear();
-            Console.WriteLine("Money, money, money, must be funny \n In the rich man's world");
-        }
-
-        //not in decision table, here for debug
-        public void PrintCart()
-        {
-            if(cart.Count == 0)
-            {
-                Console.WriteLine("Cart is empty.");
-                return;
-            }
-            foreach(Item i in cart)
-            {
-                Console.WriteLine(i.name);
-            }
-        }
-
-
-    }
-
-
-
-
-    public class Admin : User
-    {
-        public Admin(Inventory inventory) : base(inventory)
-        {
-        }
-
-        public override void Login()
-        {
-            Console.WriteLine("Admin logged in");
-        }
-
-        //Don't need to override SearchInventory
-
-        public override void AddItemToCart(string itemName)
-        {
-            Console.WriteLine("Admins cannot add items to cart.");
-        }
-
-        public override void RemoveItemFromCart(string itemName)
-        {
-            Console.WriteLine("Admins cannot remove items from cart.");
-        }
-
-        public override Item SearchCart(string itemName)
-        {
-            return null;
-        }
-
-        public override void Checkout()
-        {
-            Console.WriteLine("Thief!");
-        }
-
-        public void AddToInventory(string itemName)
-        {
-            var item = SearchInventory(itemName);
-
-            if (item != null)
-            {
-                Console.WriteLine("Item already in inventory.");
-            }
-            else
-            {
-                Item i = new Item(itemName);
-                storesInventory.Add(i);
-            }
-        }
-
-        public void RemoveFromInventory(string itemName)
-        {
-            var item = SearchInventory(itemName);
-
-            if (item == null)
-            {
-                Console.WriteLine("Item is not in inventory.");
-            }
-            else
-            {
-                storesInventory.Remove(item);
-            }
-        }
-
-        public void SalesReport()
-        {
-            Console.WriteLine("This is where a sales report would go");
-        }
-    }
-}
-
-
-
-    public class Inventory
-    {
-        public List<Item> items = new List<Item>();
-        public Inventory()
-        {
-        }
-
-    public void Add(Item i)
-    {
-        items.Add(i);
-    }
-
-    public void Remove(Item i)
-    {
-        items.Remove(i);
-    }
-
-    public void PrintInventory()
-    {
-        if(items.Count == 0)
-            {
-                Console.WriteLine("No items in inventory.");
-                return;
-            }
-            foreach(Item i in items)
-            {
-                Console.WriteLine(i.name);
-            }
-    }  
-
-    }
-
-    public class Item
-    {
-        public string name;
-
-        public Item(string name)
-        {
-            this.name = name;
-        }
-    }
-    
