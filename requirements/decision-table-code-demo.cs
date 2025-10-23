@@ -5,6 +5,43 @@ public class DecisionTable
 
     public static void Main()
     {
+        Inventory myInventory = new Inventory();
+        AddTestItems(myInventory);
+        List<User> userList = new List<User>();
+        User loggedIn;
+        while (true)
+        {
+            Console.WriteLine("1. Register User\n2. Login as User\n3. Login as Admin");
+
+            switch (int.Parse(Console.ReadLine()))
+            {
+                case 1:
+                    Console.WriteLine("Enter username for new user.");
+                    userList.Add(new User(myInventory, Console.ReadLine()));
+                    break;
+                case 2:
+                    Console.WriteLine("Enter username.");
+                    string namedEntered = Console.ReadLine();
+                    foreach(User user in userList)
+                    {
+                        if (user.Name == namedEntered)
+                        {
+                            
+                        }
+                    }
+                case 3:
+
+
+
+
+            }
+
+
+        }
+        
+        
+        
+        
         Test();
     }
 
@@ -70,7 +107,9 @@ public class DecisionTable
     {
         List<Item> cart = new List<Item>();
         public Inventory storesInventory;
+        public string Name;
 
+        //constructor analagous to Register action
         public User(Inventory inventory)
         {
             storesInventory = inventory;
