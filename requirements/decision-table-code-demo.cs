@@ -14,12 +14,17 @@ public class DecisionTable
         myUser.AddItemToCart("ABBA - Arrival");
         myUser.AddItemToCart("Nirvana - Nevermind");
 
+        Console.WriteLine("Items in user's cart");
         myUser.PrintCart();
+        Console.WriteLine("");
 
         myUser.RemoveItemFromCart("Nirvana - Nevermind");
 
+        Console.WriteLine("Items in user's cart");
         myUser.PrintCart();
+        Console.WriteLine("");
 
+        Console.Write("Checkout");
         myUser.Checkout();
 
         myUser.PrintCart();
@@ -63,7 +68,7 @@ public class DecisionTable
         }
         public virtual void Login()
         {
-            Console.WriteLine("Give us your money!");
+            Console.WriteLine("User logged in");
         }
 
         //search if any item has the same name as the item you're looking for
@@ -158,7 +163,7 @@ public class DecisionTable
 
         public override void Login()
         {
-            Console.WriteLine("Wa wa wee wa! King in the castle, king in the castle!");
+            Console.WriteLine("Admin logged in");
         }
 
         //Don't need to override SearchInventory
@@ -202,14 +207,13 @@ public class DecisionTable
         {
             var item = SearchInventory(itemName);
 
-            if (item != null)
+            if (item == null)
             {
                 Console.WriteLine("Item is not in inventory.");
             }
             else
             {
-                Item i = new Item(itemName);
-                storesInventory.Remove(i);
+                storesInventory.Remove(item);
             }
         }
 
