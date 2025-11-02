@@ -62,3 +62,7 @@ The system includes enhanced administration features for managing users, maintai
 ## Presentation
 
 - Click [here](https://www.loom.com/share/65fc793e64074c6a9bf844f5ba1cc417?sid=6ca0645b-792f-42f6-a9ee-eceecb48b7e5) to view our presentation in Loom.
+
+# User Interface Design
+
+- [High Fidelity User Interface Design (Marvel)](https://marvelapp.com/prototype/ag7cae1/screen/97883566)
