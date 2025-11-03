@@ -66,4 +66,5 @@ The system includes enhanced administration features for managing users, maintai
 # User Interface Design
 
 - [High Fidelity User Interface Design (Marvel)](https://marvelapp.com/prototype/ag7cae1/screen/97883566)
-- Click [here](https://www.loom.com/share/1aed421a33954cb9a11caa0761c24dda) for a virtual tour!
+  
+- Click [here](https://www.loom.com/share/1aed421a33954cb9a11caa0761c24dda) for a virtual tour around the User Interface!
