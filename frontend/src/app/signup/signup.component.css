@@ -1,0 +1,86 @@
+.signup-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+}
+
+.signup-container::after {
+  content: 'OFFSHORE\A HOLDINGS';
+  white-space: pre;
+  position: absolute;
+  bottom: -28%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display SC', serif;
+  font-size: 20rem;
+  line-height: 35rem;
+  color: rgba(62, 92, 118, 0.07);
+  letter-spacing: 5px;
+  pointer-events: none;
+  z-index: 0;
+
+}
+
+
+.signup-form {
+  background-color: #3E5C76;
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0px 20px rgba(84, 112, 154, 0.7);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+.signup-title {
+  font-size: clamp(1rem, 2vw, 2rem);
+  padding-bottom: 15px;
+  margin: 0;
+  text-align: center;
+  position: relative;
+  color: #F4F7F9;
+}
+/*
+.signup-title::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background-color: #1E2A38;
+  border-radius: 2px;
+}
+*/
+.signup-form input,
+.signup-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.signup-btn {
+  background-color: #1E2A38;
+  color: #F4F7F9;
+  cursor: pointer;
+  font-family: 'Playfair', serif;
+  font-size: 15px;
+  transition: 0.3s;
+
+}
+
+.signup-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+}
