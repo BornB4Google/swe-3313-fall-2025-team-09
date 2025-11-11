@@ -1,0 +1,57 @@
+<div class="checkout-container">
+  <form class="checkout-form">
+    <h2 class="checkout-title">Check Out</h2>
+
+    <div class="info-box">
+      <div class="input-grid">
+        <input type="text" class="name" placeholder="Your Name" />
+        <input type="text" class="address1"  placeholder="Address Line 1" />
+        <input type="text" class="number"  placeholder="Phone Number" />
+        <input type="text" class="address2" placeholder="Address Line 2" />
+        <input type="password" class="email" placeholder="Email Address" />
+      </div>
+      <div class="input-grid2">
+        <input type="password" class="credit-card" placeholder="Credit Card #" />
+        <input type="text" class="exp" placeholder="XX/XXXX" />
+        <input type="text" class="cvv" placeholder="CVV" />
+      </div>
+    </div>
+
+    <div class="shipping-options">
+      <label class="shipping-option">
+        <input type="radio" name="shipping" value="Overnight" checked>
+        <div class="option-content">
+          <h3>Overnight</h3>
+          <p>$29.99</p>
+        </div>
+      </label>
+
+      <label class="shipping-option">
+        <input type="radio" name="shipping" value="3Day">
+        <div class="option-content">
+          <h3>3 Day</h3>
+          <p>$19.99</p>
+        </div>
+      </label>
+
+      <label class="shipping-option">
+        <input type="radio" name="shipping" value="Ground">
+        <div class="option-content">
+          <h3>Ground</h3>
+          <p>$0.00</p>
+        </div>
+      </label>
+    </div>
+
+  </form>
+</div>
+
+<nav class="navbar">
+  <div class="logo">Offshore Holdings</div>
+  <ul class="nav-links">
+    <li><a routerLink="/inventory">Shop</a></li>
+    <li><a routerLink="/search">Search</a></li>
+    <li><a routerLink="/checkout">Checkout</a></li>
+    <li><a routerLink="/logout">Logout</a></li>
+  </ul>
+</nav>

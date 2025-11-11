@@ -1,4 +1,4 @@
-/*--
+/*
 Color	Hex	Description
 Near-Black Navy	#0A0F1C
 Deep Slate	#1E2A38
@@ -76,8 +76,8 @@ Ice White	#F4F7F9
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  background-color: #a7b3bc;
-  color: #0a0f1c;
+  background-color: #000000;
+  color: #F4F7F9;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 
@@ -86,6 +86,7 @@ Ice White	#F4F7F9
 
 .landing-btn:hover {
   background-color: #f4f7f9;
+  color: #000000;
   transform: scale(1.05);
   box-shadow:
     10px 20px rgba(0, 0, 0, 0.4),
