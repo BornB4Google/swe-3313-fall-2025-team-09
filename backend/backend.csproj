@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <SpaRoot>../frontend</SpaRoot>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8"/>
+    </ItemGroup>
+
+    <!-- Ensure Node is present -->
+    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build">
+        <Exec Command="node --version" ContinueOnError="true">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+        </Exec>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build the frontend." />
+    </Target>
+
+    <!-- Build Angular during publish -->
+    <Target Name="BuildSpaApp" BeforeTargets="ComputeFilesToPublish">
+        <Message Importance="high" Text="============================================" />
+        <Message Importance="high" Text="Building Angular frontend..." />
+        <Message Importance="high" Text="============================================" />
+
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+        <Message Importance="high" Text="Angular build complete!" />
+    </Target>
+
+    <!-- Include Angular files in publish output -->
+    <Target Name="PublishSpaApp" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <SpaDistFiles Include="$(SpaRoot)/dist/frontend/browser/**" />
+            <ResolvedFileToPublish Include="@(SpaDistFiles)">
+                <RelativePath>wwwroot/%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+                <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            </ResolvedFileToPublish>
+        </ItemGroup>
+
+        <Message Importance="high" Text="Added Angular files to publish manifest" />
+    </Target>
+</Project>
