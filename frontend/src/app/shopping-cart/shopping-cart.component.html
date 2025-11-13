@@ -1,0 +1,17 @@
+<div class="shopping-cart-container">
+  <form class="shopping-cart-form">
+    <h2 class="shopping-cart-title">Your Cart</h2>
+    <div class="shopping-cart-box" *ngFor="let item of shoppingCart">
+    <div class="shopping-cart-grid">
+      <div class="item-image"></div>
+      <h3 class="item-name">{{ item.name }}</h3>
+      <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
+      <button class="remove-cart-btn" (click)="removeCart(item)">Remove</button>
+    </div>
+    </div>
+
+    <h2 class="total-price">Total: $0.00</h2>
+    <button class="checkout" routerLink="/checkout">Checkout</button>
+  </form>
+</div>
+

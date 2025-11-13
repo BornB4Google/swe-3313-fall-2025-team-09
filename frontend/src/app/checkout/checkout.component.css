@@ -148,7 +148,7 @@
 
 .option-content {
   width: 175px;
-  height: 140px;
+  height: 100px;
   background-color: #1E2A38;
   color: #F4F7F9;
   border: 2px solid #3E5C76;
@@ -181,54 +181,11 @@
 
 .option-content h3 {
   font-size: 1.5rem;
-  margin-bottom: 5px;
+  margin-bottom: -15px;
 }
 
 .option-content p {
   font-size: 2rem;
   color: #A7B3BC;
-  margin: 0;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  box-sizing: border-box;
-  background-color: #0A0F1C;
-  color: #F4F7F9;
-}
-
-body {
-  margin-top: 80px;
-  overflow-y: auto ;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #F4F7F9;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #3E5C76;
+  bottom: 8px;
 }

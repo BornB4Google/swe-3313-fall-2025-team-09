@@ -8,10 +8,14 @@
         <input type="text" class="address1"  placeholder="Address Line 1" />
         <input type="text" class="number"  placeholder="Phone Number" />
         <input type="text" class="address2" placeholder="Address Line 2" />
-        <input type="password" class="email" placeholder="Email Address" />
+        <input type="text" class="email" placeholder="Email Address" />
+        <input type="text" class="city"  placeholder="City" />
+        <input type="text" class="state" placeholder="State" />
+        <input type="text" class="zipcode" placeholder="Zip code" />
       </div>
+
       <div class="input-grid2">
-        <input type="password" class="credit-card" placeholder="Credit Card #" />
+        <input type="text" class="credit-card" placeholder="Credit Card #" />
         <input type="text" class="exp" placeholder="XX/XXXX" />
         <input type="text" class="cvv" placeholder="CVV" />
       </div>
@@ -42,16 +46,8 @@
         </div>
       </label>
     </div>
+    <button class="confirm-order" routerLink="/confirm">Confirm Order</button>
 
   </form>
 </div>
 
-<nav class="navbar">
-  <div class="logo">Offshore Holdings</div>
-  <ul class="nav-links">
-    <li><a routerLink="/inventory">Shop</a></li>
-    <li><a routerLink="/search">Search</a></li>
-    <li><a routerLink="/checkout">Checkout</a></li>
-    <li><a routerLink="/logout">Logout</a></li>
-  </ul>
-</nav>

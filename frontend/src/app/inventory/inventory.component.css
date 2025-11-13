@@ -44,48 +44,7 @@ Ice White	#F4F7F9
 
 
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  box-sizing: border-box;
-  background-color: #0A0F1C;
-  color: #F4F7F9;
-}
 
-body {
-  margin-top: 80px;
-  overflow-y: auto ;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #F4F7F9;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #3E5C76;
-}
 .inventory-grid{
   position: relative;
   z-index: 1;
