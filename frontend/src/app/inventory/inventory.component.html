@@ -4,18 +4,18 @@
       <div class="item-image"></div>
       <h3 class="item-name">{{ item.name }}</h3>
       <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
-      <button class="addToCart-btn" (click)="addToCart(item)">Add to Cart</button>
+      <button class="add-to-cart-btn" (click)="addToCart(item)">Add to Cart</button>
     </div>
   </div>
   <div class="pages">
-    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">Previous</button>
+    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">⮘</button>
     <button
       *ngFor="let page of [].constructor(totalPages); let i = index"
       (click)="changePage(i+1)"
       [class.active]="currentPage === i + 1">
       {{ i + 1 }}
     </button>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">⮚</button>
 
   </div>
 </div>

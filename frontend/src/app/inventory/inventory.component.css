@@ -108,17 +108,24 @@ Ice White	#F4F7F9
 }
 
 
-.addToCart-btn {
+.add-to-cart-btn {
   background-color: #000000;
   color: #A7B3BC;
+  font-family: 'Playfair', serif;
+  padding: 5px 8px;
   border-radius: 5px;
   position: absolute;
   bottom: 15px;
   right: 15px;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease;
 
 
+}
+.add-to-cart-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
 }
 
 .item-image{
@@ -144,7 +151,7 @@ Ice White	#F4F7F9
 }
 
 .pages button{
-  background-color: #3E5C76;
+  background-color: #000000;
   color: #F4F7F9;
   border-radius: 5px;
   border: none;
@@ -155,13 +162,17 @@ Ice White	#F4F7F9
 }
 
 .pages button:disabled{
-  opacity: 0.8;
-  cursor: not-allowed;
-
+  opacity: 0;
+  cursor: default ;
 }
 
 .pages button:active{
-  background-color: #3E5C76;
+
+  background-color: #000000;
   color: #F4F7F9;
 
+}
+.pages button:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
 }

@@ -16,9 +16,9 @@ export class ShoppingCartComponent {
 
   /* placeholder until database is made*/
   shoppingCart=[
-    {name: 'name1', price: 0.00},
-    {name: 'name1', price: 0.00},
-    {name: 'name1', price: 0.00}
+    {name: 'name1', description: "Description of item will be written here" ,price: 0.00},
+    {name: 'name1', description: "Description of item will be written here", price: 0.00},
+    {name: 'name1', description: "Description of item will be written here", price: 0.00}
   ];
 
 
