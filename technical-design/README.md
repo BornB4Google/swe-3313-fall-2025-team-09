@@ -32,7 +32,11 @@ Isaac - explain why
 ![Entity Relationship Diagram](assets/entity-relationship-diagram.png)
 
 ## E. Entity/Field Descriptions
-Click [here](DataDictionary.png) to access the data dictionary.
+
+![Data Dictionary](assets/DataDictionary.png)
+
+Click [here](assets/DataDictionary.png) to access the data dictionary.
+
 ## F. Data Examples
 Click [here] for example data.
 ## G. Database Seed Data
