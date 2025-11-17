@@ -42,7 +42,7 @@ Isaac - explain why
 ## F. Data Examples
 Click [here](assets/example-data/example-data-README.md) for example data.
 ## G. Database Seed Data
-Click [here] for seed data.
+Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
 
