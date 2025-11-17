@@ -12,8 +12,10 @@ Isaac - explain why
 
 ## C. Data Storage Plan
 Amy - fill this
-## D. Entity Relationship Diagram
-Amy - fill this
+## D. Entity Relationship Diagram  
+
+![alt text](swe-3313-fall-2025-team-09/technical-design/assets/entity-relationship-diagram.png)  
+
 ## E. Entity/Field Descriptions
 Amy - fill this
 ## F. Data Examples
