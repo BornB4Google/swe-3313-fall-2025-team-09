@@ -29,7 +29,7 @@ Isaac - explain why
 
 ## D. Entity Relationship Diagram
 
-![alt text](swe-3313-fall-2025-team-09/technical-design/assets/entity-relationship-diagram.png)
+![Entity Relationship Diagram](assets/entity-relationship-diagram.png)
 
 ## E. Entity/Field Descriptions
 Click [here](DataDictionary.png) to access the data dictionary.
