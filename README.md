@@ -71,7 +71,7 @@ The system includes enhanced administration features for managing users, maintai
 
 # Technical Design
 
-Our technical design documentation provides a comprehensive overview of the system architecture, database schema, API specifications, and implementation details. This serves as the blueprint for development and ensures consistency across the team.  
+Our technical design documentation provides a comprehensive overview of the system architecture, database schema, and implementation details. This serves as the blueprint for development and ensures consistency across the team.  
 
 [View Full Technical Design Document](technical-design/README.md)
 
