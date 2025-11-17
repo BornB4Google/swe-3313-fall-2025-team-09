@@ -6,15 +6,15 @@ This document defines the technical architecture and implementation approach for
 
 The application is implemented using the following languages:
 
-####Backend:
+#### Backend:
 - **C#: Server-side language for ASP.NET Core, providing strong typing, extensive library support, and built-in dependency injection. Chosen because C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise.
 
-####Frontend:
+#### Frontend:
 - **TypeScript**:  Angular's primary language, offering type safety and compile-time error detection. 
 - **HTML**: Markup language for UI structure and templates.  
 - **CSS**: Styling language for visual design and layout.
 
-####Data:
+#### Data:
 - **SQLite**: SQLite is a lightweight, file-based relational database that stores all data in a single file (`offshore.db`). Unlike traditional database systems that require a separate server (like MySQL or PostgreSQL), SQLite runs directly within the application, making it ideal for development and single-user applications. 
 
 
