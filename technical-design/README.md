@@ -7,7 +7,7 @@ This document defines the technical architecture and implementation approach for
 The application is implemented using the following languages:
 
 #### Backend:
-- **C#: Server-side language for ASP.NET Core, providing strong typing, extensive library support, and built-in dependency injection. Chosen because C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise.
+- **C#**: Server-side language for ASP.NET Core, providing strong typing, extensive library support, and built-in dependency injection. Chosen because C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise.
 
 #### Frontend:
 - **TypeScript**:  Angular's primary language, offering type safety and compile-time error detection. 
