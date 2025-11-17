@@ -11,9 +11,25 @@ We are using Angular as our front end framework.
 Isaac - explain why
 
 ## C. Data Storage Plan
-Amy - fill this
+### Storage Format
+- **Engine:** SQLite  
+- **Database File:** `offshore.db` stored on disk so data persists between application runs.
+
+### C# Libraries / Technologies
+- **Entity Framework Core 9.0** with the SQLite provider (ORM).
+- **Connection string** stored in `appsettings.json`.
+
+### Data Flow
+- Angular sends HTTP requests to ASP.NET Core API endpoints.
+- Controllers/services use `AppDbContext` to:
+  - Query data  
+  - Insert/update/delete entities  
+  - Call `SaveChanges()` to write changes to the SQLite file  
+- All domain objects are represented as EF Core entity classes and mapped to tables.
+
 ## D. Entity Relationship Diagram
-Amy - fill this
+<img width="413" height="459" alt="ERD" src="https://github.com/user-attachments/assets/77f5a269-d379-4dc6-8b22-beef7d85da29" />
+
 ## E. Entity/Field Descriptions
 Amy - fill this
 ## F. Data Examples
