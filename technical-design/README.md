@@ -35,7 +35,7 @@ Click [here](DataDictionary.png) to access the data dictionary.
 ## F. Data Examples
 Click [here] for example data.
 ## G. Database Seed Data
-Click [here] for a look at our databases seed data.
+Click [here] for seed data.
 ## H. Authentication and Authorization Plan
 
 
