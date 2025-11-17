@@ -28,7 +28,8 @@ Isaac - explain why
 - All domain objects are represented as EF Core entity classes and mapped to tables.
 
 ## D. Entity Relationship Diagram
-<img width="413" height="459" alt="ERD" src="https://github.com/user-attachments/assets/77f5a269-d379-4dc6-8b22-beef7d85da29" />
+
+![alt text](swe-3313-fall-2025-team-09/technical-design/assets/entity-relationship-diagram.png)
 
 ## E. Entity/Field Descriptions
 Click [here](DataDictionary.png) to access the data dictionary.
