@@ -3,8 +3,12 @@
 Placeholder
 
 ## A. Implementation Language(s)
-Offshore Holdings will be implemented in C#, HTML, and CSS. 
-C# was chosen to allow use of Angular and it's similarity to Java.
+
+The application is implemented using ASP.NET Core with C# on the backend and Angular on the frontend. This technology stack was selected because:  
+- **C# and .NET**: Provides strong typing, extensive library support, and built-in dependency injection  
+- **Entity Framework Core**: Simplifies database operations with ORM capabilities  
+- **Angular**: Offers a component-based architecture with TypeScript for type safety  
+- **Team Familiarity**: C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise  
 
 ## B. Implementation Framework(s)
 We are using Angular as our front end framework. 
