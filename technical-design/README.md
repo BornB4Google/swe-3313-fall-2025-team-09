@@ -42,7 +42,7 @@ Isaac - explain why
 Click [here](assets/DataDictionary.png) to access the data dictionary.
 
 ## F. Data Examples
-Click [here](assets/example-data-README.md) for example data.
+Click [here](assets/example-data/example-data-README.md) for example data.
 ## G. Database Seed Data
 Click [here] for seed data.
 ## H. Authentication and Authorization Plan
