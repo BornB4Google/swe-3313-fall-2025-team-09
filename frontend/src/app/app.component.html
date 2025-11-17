@@ -1,0 +1,26 @@
+
+
+<nav class="navbar">
+  <div class="logo">Offshore Holdings</div>
+  <ng-container *ngIf="isLanding || isLanding2 || isLogin || isSignup; else normalButtons">
+
+  </ng-container>
+  <ng-template #normalButtons>
+    <ul class="nav-links">
+      <li><a routerLink="/inventory">Shop</a></li>
+      <li><a routerLink="/search">Search</a></li>
+      <li><a routerLink="/shoppingCart">Checkout</a></li>
+
+      <li class="dropdown">
+        <span class="account-label">Account</span>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/account">Settings</a></li>
+          <li><a routerLink="/logout">Logout</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </ng-template>
+</nav>
+
+<router-outlet></router-outlet>

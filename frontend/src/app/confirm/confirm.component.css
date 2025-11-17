@@ -1,0 +1,37 @@
+.confirm-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  animation: gradientShift 15s ease infinite;
+  color: #f4f7f9;
+  text-align: center;
+
+}
+
+
+.confirm-form {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0px 20px rgba(84, 112, 154, 0.7);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.confirm-title{
+  font-size: 2rem;
+}
