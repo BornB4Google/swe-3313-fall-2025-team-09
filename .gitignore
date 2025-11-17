@@ -29,3 +29,13 @@ replay_pid*
 .DS_Store
 
 .idea/
+
+# Backend
+backend/wwwroot/
+backend/publish/
+/backend/bin
+backend/obj/
+
+# Frontend
+frontend/dist/
+frontend/node_modules/
