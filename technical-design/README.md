@@ -25,4 +25,10 @@ Amy - fill this
 
 ## I. Coding Style Guide
 
+Offshore holdings requires that standard style guides be used for all implementation. 
+
+- C# style guide can be located [here](https://www.sqlstyle.guide/)  
+- Angular style guide can be located [here](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)  
+- SQLLite style guide can be located [here](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)  
+
 ## Technical Design Presentation
