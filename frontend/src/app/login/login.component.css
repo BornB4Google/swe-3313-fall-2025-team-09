@@ -12,18 +12,20 @@
   content: 'OFFSHORE\A HOLDINGS';
   white-space: pre;
   position: absolute;
-  bottom: -28%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   font-family: 'Playfair Display SC', serif;
-  font-size: 20rem;
-  line-height: 35rem;
+  font-size: clamp(8rem, 20vw, 25rem);
+  line-height: clamp(10rem, 50vw, 50rem);
   color: rgba(62, 92, 118, 0.07);
   letter-spacing: 5px;
   pointer-events: none;
   z-index: 0;
 
 }
+
+
 
 .login-form {
   background-color: #000000;

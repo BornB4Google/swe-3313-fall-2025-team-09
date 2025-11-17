@@ -28,11 +28,11 @@ Ice White	#F4F7F9
 .landing-container::after {
   content: 'OFFSHORE';
   position: absolute;
-  bottom: 20%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%,-50%);
   font-family: 'Playfair Display SC', serif;
-  font-size: 20rem;
+  font-size: clamp(8rem, 20vw, 20rem);
   color: rgba(62, 92, 118, 0.07);
   letter-spacing: 10px;
   pointer-events: none;

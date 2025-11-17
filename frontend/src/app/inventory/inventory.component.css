@@ -11,15 +11,36 @@ Ice White	#F4F7F9
 .inventory-container {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   overflow: hidden;
-  /*padding: 60px 0;*/
+  padding: 60px 0;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
   text-align: center;
+
+}
+
+.inventory-title {
+  font-size: 3rem;
+  position: relative;
+
+
+}
+.inventory-title:after{
+  content: '';
+  position: absolute;
+  top: 120px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
 
 }
 
@@ -51,7 +72,7 @@ Ice White	#F4F7F9
   display: grid;
   grid-template-columns: repeat(3, 300px);
   gap: 50px;
-  top: 50px;
+  top: 30px;
   padding: 25px;
   justify-items: center;
 }
