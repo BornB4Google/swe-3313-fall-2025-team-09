@@ -25,7 +25,7 @@ Amy - fill this
 
 ## I. Coding Style Guide
 
-Offshore holdings requires that standard style guides be used for all implementation. 
+Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity: 
 
 - C# style guide can be located [here](https://www.sqlstyle.guide/)  
 - Angular style guide can be located [here](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)  
