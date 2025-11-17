@@ -31,11 +31,11 @@ Isaac - explain why
 <img width="413" height="459" alt="ERD" src="https://github.com/user-attachments/assets/77f5a269-d379-4dc6-8b22-beef7d85da29" />
 
 ## E. Entity/Field Descriptions
-Amy - fill this
+Click [here] to access our data dictionary.
 ## F. Data Examples
-Amy - fill this
+Click [here] for example data.
 ## G. Database Seed Data
-Amy - fill this
+Click [here] for a look at our databases seed data.
 ## H. Authentication and Authorization Plan
 
 
