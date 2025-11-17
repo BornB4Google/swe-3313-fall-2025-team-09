@@ -39,8 +39,6 @@ Isaac - explain why
 
 ![Data Dictionary](assets/DataDictionary.png)
 
-Click [here](assets/DataDictionary.png) to access the data dictionary.
-
 ## F. Data Examples
 Click [here](assets/example-data/example-data-README.md) for example data.
 ## G. Database Seed Data
