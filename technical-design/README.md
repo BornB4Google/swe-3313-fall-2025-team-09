@@ -4,11 +4,19 @@ This document defines the technical architecture and implementation approach for
 
 ## A. Implementation Language(s)
 
-The application is implemented using ASP.NET Core with C# on the backend and Angular on the frontend. This technology stack was selected because:  
-- **C# and .NET**: Provides strong typing, extensive library support, and built-in dependency injection  
-- **Entity Framework Core**: Simplifies database operations with ORM capabilities  
-- **Angular**: Offers a component-based architecture with TypeScript for type safety  
-- **Team Familiarity**: C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise  
+The application is implemented using the following languages:
+
+####Backend:
+- **C#: Server-side language for ASP.NET Core, providing strong typing, extensive library support, and built-in dependency injection. Chosen because C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise.
+
+####Frontend:
+- **TypeScript**:  Angular's primary language, offering type safety and compile-time error detection. 
+- **HTML**: Markup language for UI structure and templates.  
+- **CSS**: Styling language for visual design and layout.
+
+####Data:
+- **SQLite**: SQLite is a lightweight, file-based relational database that stores all data in a single file (`offshore.db`). Unlike traditional database systems that require a separate server (like MySQL or PostgreSQL), SQLite runs directly within the application, making it ideal for development and single-user applications. 
+
 
 ## B. Implementation Framework(s)
 We are using Angular as our front end framework. 
