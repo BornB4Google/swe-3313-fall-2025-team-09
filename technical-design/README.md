@@ -50,8 +50,8 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 
 Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity: 
 
-- C# style guide can be located [here](https://www.sqlstyle.guide/)  
+- C# style guide can be located [here](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)  
 - Angular style guide can be located [here](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)  
-- SQLLite style guide can be located [here](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)  
+- SQLite style guide can be located [here](https://www.sqlstyle.guide/)  
 
 ## Technical Design Presentation
