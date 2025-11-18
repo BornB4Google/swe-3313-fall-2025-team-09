@@ -65,3 +65,5 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - SQLite style guide can be located [here](https://www.sqlstyle.guide/)  
 
 ## Technical Design Presentation
+
+This is where I'd put a Loom video... IF I HAD ONE
