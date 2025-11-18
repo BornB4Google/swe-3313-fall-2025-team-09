@@ -245,3 +245,9 @@ Offshore Holdings requires that standard style guides be used for all implementa
 ## Technical Design Presentation
 
 Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please update
+
+**AI Acknowledgement**: 
+
+- The API Endpoint portion of this submission was developed using the help of an AI tool (Claude Sonnet 4.5). The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
+
+- INVENTORY_ITEM Descriptions were generated with the help of ChatGPT 5. All content, including spelling, grammar, and statement validity was reviewed and verified by Amy Ward.
