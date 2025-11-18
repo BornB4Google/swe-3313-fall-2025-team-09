@@ -131,7 +131,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Cart (Athenticated)
 - `GET /api/cart`: Get users cart.
 - `POST /api/cart/items`: Add item to cart.
-- `PUT /api/cart/items/{id}`: Remove item from cart.
+- `DELETE /api/cart/items/{id}`: Remove item from cart.
 
 #### Orders (Athenticated)
 - `GET /api/orders`: Get users order history.
