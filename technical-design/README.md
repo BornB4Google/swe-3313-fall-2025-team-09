@@ -55,13 +55,19 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
 #### Authentication
-Authentication is handled by asking users and admins to enter their username and password. The password is then hashed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+Authentication is handled by asking users and admins to enter their username and password. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+Upon a successful login, a JWT is issued to the user/admin.
 
 #### Authorization
-Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin. 
+Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin.
 
 Users are able to search inventory, register and log in, complete purchases, confirm orders, add or remove items from their cart, and check out.
 Admins can perform every action a user can in addition to admin specific actions. They can add items to the inventory, remove items from inventory, and generate sales reports.
+
+For each API request that a user makes, they pass their JWT along with their request. The JWT token is then used to identify the specific user in the USER table of the database. After the specific user is found, the IsAdmin field is checked to determine if they request was sent by a user or an admin.
+
+Route guards are used to ensure that only admins are shown actions that only admins can perform (i.e. don't show inventory management actions to users).
+
 
 ## I. Coding Style Guide
 
