@@ -153,7 +153,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
 **Repository Structure**
 
 - Main repostory: `swe-3313-fall-2025-team-09`
-- Branch strategy:
+- Branches:
   - `main`: Production ready code (protected branch).
   - `dev`: Integration branch for features.
   - `database`: Database schema changes and migrations
