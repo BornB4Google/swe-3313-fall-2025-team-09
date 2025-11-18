@@ -60,8 +60,6 @@ Authentication is handled by asking users and admins to enter their username and
 #### Authorization
 Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin. 
 
-![Use Case Diagram](../requirements/diagrams/use_case_diagram.png)
-
 Users are able to search inventory, register and log in, complete purchases, confirm orders, add or remove items from their cart, and check out.
 Admins can perform every action a user can in addition to admin specific actions. They can add items to the inventory, remove items from inventory, and generate sales reports.
 
