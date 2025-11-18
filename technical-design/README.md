@@ -66,8 +66,8 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Login Process:  
 
 - User enters username and password on login page.
-- Client transmits credentials to server.
 - Password is hashed on the client side using SHA256.
+- Client transmits credentials to server. 
 - Username and hashed password compared against `USER` table in SQLite database.
 - Match found → user/admin logged in successfully.
 - No match → login denied (invalid credentials).
@@ -78,7 +78,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - Client submits username and password to server.
 - Password is hashed on the client-side using SHA256.
 - New entry added to `USER` table with username and hashed password.
-- User Automatically logged in with new credentials.
+- User is redirected to login screen to enter credentials for authentication.
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - Include comments for complex logic or methods
 - Keep functions/methods focused on single responsibilities. High coupling leads to low cohesion.
 - Maximum file length: no more than 500 lines.
-- Miximum 75 characters per line.
+- Maximum 75 characters per line.
 
 #### C# Backend [Microsoft Style Guide](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
 
