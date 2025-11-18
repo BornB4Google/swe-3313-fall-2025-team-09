@@ -16,7 +16,7 @@ The application is implemented using the following languages:
 
 #### Data:
 - **SQLite**: SQLite is a lightweight, file-based relational database that stores all data in a single file (`offshore.db`). Unlike traditional database systems that require a separate server (like MySQL or PostgreSQL), SQLite runs directly within the application, making it ideal for development and single-user applications.
--  **JSON**: Serialization format for API request/response payloads between frontend and backend.  
+
 
 
 ## B. Implementation Framework(s)
