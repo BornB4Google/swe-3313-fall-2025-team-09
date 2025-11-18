@@ -101,7 +101,6 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - Add items to inventory.
 - Remove items from inventory.
 - Generate sales report.
-- Check out.
 
 ### Endpoint Authorization Flow:
 
