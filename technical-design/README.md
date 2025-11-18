@@ -160,7 +160,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
  
 **Workflow**
 
--All changes require pull requests (PRs).
+- All changes require pull requests (PRs).
 - PRs require at least one approval before merging.
 - All tests must pass before merge.
 - Delete feature branch after succesful merge.
