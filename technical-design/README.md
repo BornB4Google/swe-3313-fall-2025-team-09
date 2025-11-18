@@ -54,6 +54,7 @@ Click [here](assets/example-data/example-data-README.md) for example data.
 Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
+Andrew, its your time to shine!  
 
 ## I. Coding Style Guide
 
