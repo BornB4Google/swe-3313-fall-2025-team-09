@@ -140,7 +140,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 
 #### Reports (Administrator)
 - `GET /api/reports/sales`: Generate sales report with optional data range.
-  -Query parameters: `?startDate={date}&endDate={date}` (optional)
+  - Query parameters: `?startDate={date}&endDate={date}` (optional)
 - `GET /api/reports/inventory`: Inventory status report.
 - `GET /api/reports/revenue`: Revenue breakdown.
 
