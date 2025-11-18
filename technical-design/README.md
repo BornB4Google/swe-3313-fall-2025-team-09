@@ -53,8 +53,9 @@ Click [here](assets/example-data/example-data-README.md) for example data.
 ## G. Database Seed Data
 Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
+Authentication is handled by asking users and admins to enter their username and password. The password is then hashed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
 
-Andrew, its your time to shine!  
+Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin. 
 
 ## I. Coding Style Guide
 
