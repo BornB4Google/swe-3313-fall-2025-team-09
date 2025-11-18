@@ -59,29 +59,58 @@ Click [here](assets/example-data/example-data-README.md) for example data.
 Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
-#### Authentication
-Authentication is handled by asking users to enter their username and password from the login page. Upon submission, the client will transmit the username and password to the server. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+### Authentication
 
+#### Login Process:  
 
-For registration, the client submits a username and password to the server. The server hashes the password using SHA256. A new entry is then added to the USER table with the supplied username and hashed password, and the user will be logged in with these credentials.
+- User enters username and password on login page.
+- Client transmits credentials to server.
+- Server hashes password using SHA256.
+- Username and hashed password compared against `USER` table in SQLite database.
+- Match found → user/admin logged in successfully.
+- No match → login denied (invalid credentials).
+- Upon successful login, JWT issued to user/admin.
 
+#### Registration Process
 
-Upon a successful login, a JWT is issued to the user/admin.
+- Client submits username and password to server.
+- Server hashes password using SHA256.
+- New entry added to `USER` table with username and hashed password.
+- User Automatically logged in with new credentials.
 
+### Authorization
 
-#### Authorization
-Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin.
+### Role Management
 
-Users are able to search inventory, register and log in, complete purchases, confirm orders, add or remove items from their cart, and check out.
-Admins can perform every action a user can in addition to admin specific actions. They can add items to the inventory, remove items from inventory, and generate sales reports.
+- Role is determined by `IsAdmin` field in `USER` table.
+- `IsAdmin = 0` → standard user.
+- `IsAdmin = 1` → administrator.
 
-For each API request a client makes, it passes a JWT along with its request. The JWT is used to identify the associated user in the USER table of the database. If no user is identified and the endpoint requires authentication (most do), code specific to that endpoint is not executed and the client will receive an error response code (401 unauthorized).
+### User Permissions
 
-If a user associated with the JWT is found and the endpoint functionality is accessible to all users, action will be taken on behalf of the identified user.
+- Search Inventory.
+- Register and log-in.
+- Complete purchases and confirm orders.
+- Add/remove from cart.
+- Check out.
 
-If a user associated with the JWT is found and the endpoint functionality is only accessible to admins, the IsAdmin field is checked for the identified user. If the identified user is an admin,  action will be taken on behalf of the identified admin. Otherwise, code specific to that endpoint is not executed and the client will receive an error response code (401 unauthorized).
+### Administrator Permissions
 
-Route guards are used on the frontend to ensure that only admins are shown actions that only admins can perform (i.e. don't show inventory management actions to users).
+- All user permission plus:
+- Add items to inventory.
+- Remove items from inventory.
+- Generate sales report.
+- Check out.
+
+### Endpoint Authorization Flow:
+
+- Client includes JWT with each API request.
+- Server validates JWT and identified associated user in `USER` table.
+- **If no user identified and endpoint requires authentication**: Return `401 Unauthorized`.
+- **If user identified and endpoint accessible to all users**: Execute action on behalf of user.
+- **If user identified and endpoint requires administrative access**: Check `IsAdmin` field:
+      - `IsAdmin = 1` → Execute admin action.
+      - `IsAdmin = 0` → return `401 Unauthorized`.
 
 
 
