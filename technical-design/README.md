@@ -54,7 +54,12 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
 #### Authentication
-Authentication is handled by asking users to enter their username and password from the login/register page. Upon submission, the client will transmit the username and password to the server. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+Authentication is handled by asking users to enter their username and password from the login page. Upon submission, the client will transmit the username and password to the server. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+
+
+For registration, the client submits a username and password to the server. The server hashes the password using SHA256. A new entry is then added to the USER table with the supplied username and hashed password, and the user will be logged in with these credentials.
+
+
 Upon a successful login, a JWT is issued to the user/admin.
 
 
