@@ -20,8 +20,7 @@ The application is implemented using the following languages:
 
 
 ## B. Implementation Framework(s)
-We are using Angular as our front end framework. 
-Isaac - explain why
+We are using Angular as our front end framework. It allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
 
 ## C. Data Storage Plan
 ### Storage Format
