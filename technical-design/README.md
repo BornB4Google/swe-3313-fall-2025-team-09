@@ -24,7 +24,7 @@ We are using Angular as our front end framework. It allows for easy creation of 
 
 Here are a few useful resources related to Angular:
 
-[Angular coding style guide](https://angular.dev/style-guide)
+[Learn Angular](https://angular.dev/tutorials/learn-angular)
 
 [Angular Essentials Overview](https://angular.dev/essentials)
 
