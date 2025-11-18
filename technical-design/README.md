@@ -55,8 +55,9 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 ## H. Authentication and Authorization Plan
 
 #### Authentication
-Authentication is handled by asking users and admins to enter their username and password. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
+Authentication is handled by asking users to enter their username and password from the login/register page. Upon submission, the client will transmit the username and password to the server. The password is then converted to a SHA256 hash. The username and password hash are then passed and compared to the USER table in the SQLite database. If a match is found, the user/admin is allowed to log in. If a match is not found (i.e. invalid username or password), they are not allowed to log in.
 Upon a successful login, a JWT is issued to the user/admin.
+
 
 #### Authorization
 Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin.
@@ -64,9 +65,15 @@ Authorization is handled by the IsAdmin field in the USER table. If it has a val
 Users are able to search inventory, register and log in, complete purchases, confirm orders, add or remove items from their cart, and check out.
 Admins can perform every action a user can in addition to admin specific actions. They can add items to the inventory, remove items from inventory, and generate sales reports.
 
-For each API request that a user makes, they pass their JWT along with their request. The JWT token is then used to identify the specific user in the USER table of the database. After the specific user is found, the IsAdmin field is checked to determine if they request was sent by a user or an admin.
+For each API request a client makes, it passes a JWT along with its request. The JWT is used to identify the associated user in the USER table of the database. If no user is identified and the endpoint requires authentication (most do), code specific to that endpoint is not executed and the client will receive an error response code (401 unauthorized).
 
-Route guards are used to ensure that only admins are shown actions that only admins can perform (i.e. don't show inventory management actions to users).
+If a user associated with the JWT is found and the endpoint functionality is accessible to all users, action will be taken on behalf of the identified user.
+
+If a user associated with the JWT is found and the endpoint functionality is only accessible to admins, the IsAdmin field is checked for the identified user. If the identified user is an admin,  action will be taken on behalf of the identified admin. Otherwise, code specific to that endpoint is not executed and the client will receive an error response code (401 unauthorized).
+
+Route guards are used on the frontend to ensure that only admins are shown actions that only admins can perform (i.e. don't show inventory management actions to users).
+
+
 
 
 ## I. Coding Style Guide
