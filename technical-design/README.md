@@ -59,7 +59,7 @@ Authentication is handled by asking users and admins to enter their username and
 
 #### Authorization
 Authorization is handled by the IsAdmin field in the USER table. If it has a value of 0, the entry is a user. If set to 1, the entry is an admin. 
-![Use Case Diagram](requirements/diagrams/use_case_diagram.png)
+![Use Case Diagram](../requirements/diagrams/use_case_diagram.png)
 
 ## I. Coding Style Guide
 
