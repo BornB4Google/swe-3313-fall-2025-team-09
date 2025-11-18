@@ -113,7 +113,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
     - `IsAdmin = 1` → Execute admin action.  
     - `IsAdmin = 0` → return `401 Unauthorized`.  
 
-## J. API Endpoints
+## I. API Endpoints
 
 #### Authentication (Public)
 - `POST /api/auth/login`: User login.
