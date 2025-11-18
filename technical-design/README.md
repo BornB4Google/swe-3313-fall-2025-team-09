@@ -21,7 +21,8 @@ The application is implemented using the following languages:
 
 
 ## B. Implementation Framework(s)
-We are using Angular as our front end framework. It allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
+
+- **Angular (Front End Framwork)**: Angular allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
 
 Here are a few useful resources related to Angular:
 
