@@ -113,8 +113,47 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
     - `IsAdmin = 1` → Execute admin action.  
     - `IsAdmin = 0` → return `401 Unauthorized`.  
 
+## J. API Endpoints
 
-## I. Coding Style Guide
+#### Authentication (Public)
+- `POST /api/auth/login`: User login.
+- `POST /api/auth/register`: User registration.
+- `POST /api/auth/logout`: Log out user.
+- `PUT /api/users/{id}/role`: Change existing user role (Administrator privilege)
+
+#### Inventory
+- `GET /api/inventory`: Get all inventory items.
+- `GET /api/inventory/{id}`: Get specific item.
+- `POST /api/inventory`: Add item (Administrator privilege).
+- `PUT /api/inventory/{id}`: Update item (Administrator privilege).
+- `DELETE /api/inventory/{id}`: Remove item (Administrator privilege).
+
+#### Cart (Athenticated)
+- `GET /api/cart`: Get users cart.
+- `POST /api/cart/items`: Add item to cart.
+- `PUT /api/cart/items/{id}`: Remove item from cart.
+
+#### Orders (Athenticated)
+- `GET /api/orders`: Get users order history.
+- `GET /api/orders/{id}`: Get order details.
+- `POST /api/orders/checkout`: Complete purchase and create order.
+
+#### Reports (Administrator)
+- `GET /api/reports/sales`: Generate sales report with optional data range.
+  -Query parameters: `?startDate={date}&endDate={date}` (optional)
+- `GET /api/reports/inventory`: Inventory status report.
+- `GET /api/reports/revenue`: Revenue breakdown.
+
+#### HTTP Status Codes
+
+- `200`: Success
+- `201`: Object created
+- `401`: Unauthorized (invalid/missing JWT)
+- `403`: Forbidden (insufficient permissions)
+- `404`: Not found
+- `500`: Server not found
+
+## J. Coding Style Guide
 
 Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity. The following conventions must be followed: 
 
