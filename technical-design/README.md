@@ -108,11 +108,9 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - Server validates JWT and identified associated user in `USER` table.
 - **If no user identified and endpoint requires authentication**: Return `401 Unauthorized`.
 - **If user identified and endpoint accessible to all users**: Execute action on behalf of user.
-- **If user identified and endpoint requires administrative access**: Check `IsAdmin` field:
-      - `IsAdmin = 1` → Execute admin action.
-      - `IsAdmin = 0` → return `401 Unauthorized`.
-
-
+- **If user identified and endpoint requires administrative access**: Check `IsAdmin` field.
+    - `IsAdmin = 1` → Execute admin action.  
+    - `IsAdmin = 0` → return `401 Unauthorized`.  
 
 
 ## I. Coding Style Guide
