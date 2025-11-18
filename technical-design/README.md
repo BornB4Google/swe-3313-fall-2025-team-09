@@ -115,19 +115,41 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 
 ## I. Coding Style Guide
 
-Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity: 
+Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity. The following conventions must be followed: 
 
-#### C#
+#### General Principles 
 
-- C# style guide can be located [here](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+- Code must be documented with clear, descriptive names
+- Include comments for complex logic or methods
+- Keep functions/methods focused on single responsibilities. High coupling leads to low cohesion.
+- Maximum file length: no more than 500 lines.
+- Miximum 75 characters per line.
 
-#### Angular
+#### C# Backend [Microsoft Style Guide](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+
+- Naming:
+  - Classes, methods, properties: `PascalCase`.
+  - Private fields `_camelCase` with underscore prefix.
+
+#### TypeScript/Angular [Angular Style Guide](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)
   
-- Angular style guide can be located [here](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)
+- Naming:
+  - Components: `FeatureNameComponent`.
+  - Services: `FeatureNameService`.
+  - Component selectors: `app-feature-name`.
+- One component per file. 
 
-#### SQLite
+#### SQLite Database [SQLite Style Guide](https://www.sqlstyle.guide/)  
   
-- SQLite style guide can be located [here](https://www.sqlstyle.guide/)  
+- Table names: `UPPER_CASE` (e.g., `USER`, `INVENTORY`).
+- Column names: `PascalCase` (e.g., `IsAdmin`, `ProductId`).
+- Always use foreign key constraints.
+
+#### Version Control and Repository Management
+
+### Platform: Github
+
+Decide on branch management strategy
 
 ## Technical Design Presentation
 
