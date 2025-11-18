@@ -145,11 +145,44 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - Column names: `PascalCase` (e.g., `IsAdmin`, `ProductId`).
 - Always use foreign key constraints.
 
-#### Version Control and Repository Management
+### Version Control and Repository Management
 
-### Platform: Github
+#### Platform: Github
 
-Decide on branch management strategy
+**Repository Structure**
+
+- Main repostory: `swe-3313-fall-2025-team-09`
+- Branch strategy:
+  - `main`: Production ready code (protected branch).
+  - `dev`: Integration branch for features.
+  - `database`: Database schema changes and migrations
+  - `feature` Individual feature branches.
+ 
+**Workflow**
+
+-All changes require pull requests (PRs).
+- PRs require at least one approval before merging.
+- All tests must pass before merge.
+- Delete feature branch after succesful merge.
+
+**Branch Strategy:**
+
+- `dev` serves as the integration branch where all work is merged for testing
+- `backend` and `database` branches used for their respective development work
+- `feature` branch for implementing new features
+- Branches merge to `dev` for integration testing before production deployment
+
+**Commit Conventions:**
+- Use clear, descriptive commit messages
+- Format: `[Type] Brief description`
+  - Types: `feat`, `fix`, `refactor`, `test`
+- Example: `[feat] Add JWT authentication to login endpoint`
+
+**Code Review Requirements:**
+- All PRs must be reviewed by at least one team member
+- Check for adherence to coding style guide
+- Verify tests are included for new features
+- Confirm no merge conflicts before approval
 
 ## Technical Design Presentation
 
