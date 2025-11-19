@@ -8,4 +8,4 @@
 
 OpenAI. (2025). ChatGPT (GPT-5) [Large language model]. https://chat.openai.com/
 
-Usage Note: ChatGPT was used to finalize product descriptions. All factual claims were verified by the author. 
+*Usage Note:* ChatGPT was used to finalize product descriptions. All factual claims were verified by the author. 
