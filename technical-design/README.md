@@ -87,7 +87,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Registration Process
 
 - Client submits username and password to server.
-- Password is hashed on the client-side using SHA-256.
+- Password is hashed on the server side using SHA-256.
 - New entry added to `USER` table with username and hashed password.
 - User is redirected to login screen to enter credentials for authentication.
 
