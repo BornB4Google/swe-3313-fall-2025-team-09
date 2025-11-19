@@ -31,10 +31,10 @@ replay_pid*
 .idea/
 
 # Backend
-backend/wwwroot/
-backend/publish/
-/backend/bin
-backend/obj/
+source/wwwroot/
+source/publish/
+/source/bin
+source/obj/
 
 # Frontend
 frontend/dist/

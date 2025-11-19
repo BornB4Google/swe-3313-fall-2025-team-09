@@ -4,6 +4,8 @@ Before starting, ensure you have the following installed on your machine:
 - [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - [Node.js and npm](https://nodejs.org/en/download/)
 
+Treat /source as your main project directory.
+
 ## Frontend Setup
 1. Install the Angular CLI:
     ```bash
@@ -26,9 +28,9 @@ Before starting, ensure you have the following installed on your machine:
 At this point, the frontend should be running at [localhost:4200](http://localhost:4200)
 
 ## Backend Setup
-1. Run the ASP.NET Core application from repo root:
+1. Run the ASP.NET Core application from project root (/source):
     ```bash
-    ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend/backend.csproj
+    ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend.csproj
     ```
 Because the ASPNETCORE_ENVIRONMENT variable is set to Development, the backend will automatically proxy requests to the frontend running at localhost:4200.
 
