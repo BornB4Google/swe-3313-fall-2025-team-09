@@ -77,7 +77,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Login Process:  
 
 - User enters username and password on login page.
-- Password is hashed on the client side using SHA256.
+- Password is hashed on the client side using SHA-256.
 - Client transmits credentials to server. 
 - Username and hashed password compared against `USER` table in SQLite database.
 - Match found → user/admin logged in successfully.
