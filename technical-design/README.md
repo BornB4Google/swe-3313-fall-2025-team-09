@@ -7,21 +7,25 @@ This document defines the technical architecture and implementation approach for
 The application is implemented using the following languages:
 
 #### Backend:
+
 - **C#**: Server-side language for ASP.NET Core, providing strong typing, extensive library support, and built-in dependency injection. Chosen because C# syntax and object-oriented principles align closely with Java, leveraging existing team expertise.
 
 #### Frontend:
+
 - **TypeScript**:  Angular's primary language, offering type safety and compile-time error detection. 
 - **HTML**: Markup language for UI structure and templates.  
 - **CSS**: Styling language for visual design and layout.
 
 #### Data:
+
 - **SQLite**: SQLite is a lightweight, file-based relational database that stores all data in a single file (`offshore.db`). Unlike traditional database systems that require a separate server (like MySQL or PostgreSQL), SQLite runs directly within the application, making it ideal for development and single-user applications.
-- **JSON**: Data format for API communication and JWT tokens, providing lightweight and human-readable data exchange between frontend and backend.
+- **JSON**: Data format for API communication and JWT tokens, providing a lightweight and readable data exchange between frontend and backend.
 
 
 
 ## B. Implementation Framework(s)
-We are using Angular as our front end framework. It allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
+
+- **Angular (Front End Framework)**: Angular allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
 
 Here are a few useful resources related to Angular:
 
@@ -30,15 +34,19 @@ Here are a few useful resources related to Angular:
 [Angular Essentials Overview](https://angular.dev/essentials)
 
 ## C. Data Storage Plan
+
 ### Storage Format
+
 - **Engine:** SQLite  
 - **Database File:** `offshore.db` stored on disk so data persists between application runs.
 
 ### C# Libraries / Technologies
+
 - **Entity Framework Core 9.0** with the SQLite provider (ORM).
 - **Connection string** stored in `appsettings.json`.
 
 ### Data Flow
+
 - Angular sends HTTP requests to ASP.NET Core API endpoints.
 - Controllers/services use `AppDbContext` to:
   - Query data  
@@ -55,9 +63,13 @@ Here are a few useful resources related to Angular:
 ![Data Dictionary](assets/DataDictionary.png)
 
 ## F. Data Examples
+
 Click [here](assets/example-data/example-data-README.md) for example data.
+
 ## G. Database Seed Data
+
 Click [here](assets/seed-data/seed-data-README.md) for seed data.
+
 ## H. Authentication and Authorization Plan
 
 ### Authentication
@@ -65,8 +77,8 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Login Process:  
 
 - User enters username and password on login page.
-- Client transmits credentials to server.
-- Server hashes password using SHA256.
+- Client transmits credentials to server. 
+- Password is hashed on the server side using SHA-256.
 - Username and hashed password compared against `USER` table in SQLite database.
 - Match found → user/admin logged in successfully.
 - No match → login denied (invalid credentials).
@@ -75,9 +87,9 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 #### Registration Process
 
 - Client submits username and password to server.
-- Server hashes password using SHA256.
+- Password is hashed on the server side using SHA-256.
 - New entry added to `USER` table with username and hashed password.
-- User Automatically logged in with new credentials.
+- User is redirected to login screen to enter credentials for authentication.
 
 ### Authorization
 
@@ -109,13 +121,57 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - **If no user identified and endpoint requires authentication**: Return `401 Unauthorized`.
 - **If user identified and endpoint accessible to all users**: Execute action on behalf of user.
 - **If user identified and endpoint requires administrative access**: Check `IsAdmin` field.
-    - `IsAdmin = 1` → Execute admin action.  
-    - `IsAdmin = 0` → return `401 Unauthorized`.  
+  - `IsAdmin = 1` → Execute admin action.  
+  - `IsAdmin = 0` → return `401 Unauthorized`.  
 
+## I. API Endpoints
 
-## I. Coding Style Guide
+#### Authentication (Public)
 
-Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainabilty and longevity. The following conventions must be followed: 
+- `POST /api/auth/login`: User login.
+- `POST /api/auth/register`: User registration.
+- `POST /api/auth/logout`: Log out user.
+- `PUT /api/users/{id}/role`: Change existing user role (Administrator privilege)
+
+#### Inventory
+
+- `GET /api/inventory`: Get all inventory items.
+- `GET /api/inventory/{id}`: Get specific item.
+- `POST /api/inventory`: Add item (Administrator privilege).
+- `PUT /api/inventory/{id}`: Update item (Administrator privilege).
+- `DELETE /api/inventory/{id}`: Remove item (Administrator privilege).
+
+#### Cart (Authenticated)
+
+- `GET /api/cart`: Get users cart.
+- `POST /api/cart/items`: Add item to cart.
+- `DELETE /api/cart/items/{id}`: Remove item from cart.
+
+#### Orders (Authenticated)
+
+- `GET /api/orders`: Get users order history.
+- `GET /api/orders/{id}`: Get order details.
+- `POST /api/orders/checkout`: Complete purchase and create order.
+
+#### Reports (Administrator)
+
+- `GET /api/reports/sales`: Generate sales report with optional data range.
+  - Query parameters: `?startDate={date}&endDate={date}` (optional)
+- `GET /api/reports/inventory`: Inventory status report.
+- `GET /api/reports/revenue`: Revenue breakdown.
+
+#### HTTP Status Codes
+
+- `200`: Success
+- `201`: Object created
+- `401`: Unauthorized (invalid/missing JWT)
+- `403`: Forbidden (insufficient permissions)
+- `404`: Not found
+- `500`: Server not found
+
+## J. Coding Style Guide
+
+Offshore Holdings requires that standard style guides be used for all implementation to ensure maintainability and longevity. The following conventions must be followed: 
 
 #### General Principles 
 
@@ -123,7 +179,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - Include comments for complex logic or methods
 - Keep functions/methods focused on single responsibilities. High coupling leads to low cohesion.
 - Maximum file length: no more than 500 lines.
-- Miximum 75 characters per line.
+- Maximum 75 characters per line.
 
 #### C# Backend [Microsoft Style Guide](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
 
@@ -132,7 +188,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
   - Private fields `_camelCase` with underscore prefix.
 
 #### TypeScript/Angular [Angular Style Guide](https://angular.dev/style-guide#keep-components-and-directives-focused-on-presentation)
-  
+
 - Naming:
   - Components: `FeatureNameComponent`.
   - Services: `FeatureNameService`.
@@ -140,17 +196,58 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - One component per file. 
 
 #### SQLite Database [SQLite Style Guide](https://www.sqlstyle.guide/)  
-  
+
 - Table names: `UPPER_CASE` (e.g., `USER`, `INVENTORY`).
 - Column names: `PascalCase` (e.g., `IsAdmin`, `ProductId`).
 - Always use foreign key constraints.
 
-#### Version Control and Repository Management
+### Version Control and Repository Management
 
-### Platform: Github
+#### Platform: Github
 
-Decide on branch management strategy
+**Repository Structure**
+
+- Main repostory: `swe-3313-fall-2025-team-09`
+- Branches:
+  - `main`: Production ready code (protected branch).
+  - `dev`: Integration branch for features.
+  - `database`: Database schema changes and migrations
+  - `feature` Individual feature branches.
+
+**Workflow**
+
+- All changes require pull requests (PRs).
+- PRs require at least one approval before merging.
+- All tests must pass before merge.
+- Delete feature branch after succesful merge.
+
+**Branch Strategy:**
+
+- `dev` serves as the integration branch where all work is merged for testing
+- `backend` and `database` branches used for their respective development work
+- `feature` branch for implementing new features
+- Branches merge to `dev` for integration testing before production deployment
+
+**Commit Conventions:**
+
+- Use clear, descriptive commit messages
+- Format: `[Type] Brief description`
+  - Types: `feat`, `fix`, `refactor`, `test`
+- Example: `[feat] Add JWT authentication to login endpoint`
+
+**Code Review Requirements:**
+
+- All PRs must be reviewed by at least one team member
+- Check for adherence to coding style guide
+- Verify tests are included for new features
+- Confirm no merge conflicts before approval
 
 ## Technical Design Presentation
 
 Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please update
+
+**AI Acknowledgement**: 
+
+- The API Endpoint portion of this submission was developed using the help of an AI tool (Claude Sonnet 4.5). The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
+
+- INVENTORY_ITEM Descriptions were generated with the help of ChatGPT 5. All content, including spelling, grammar, and statement validity was reviewed and verified by Amy Ward.

@@ -74,39 +74,3 @@ The system includes enhanced administration features for managing users, maintai
 Our technical design documentation provides a comprehensive overview of the system architecture, database schema, and implementation details. This serves as the blueprint for development and ensures consistency across the team.  
 
 [View Full Technical Design Document](technical-design/README.md)
-
-# Basic Development Setup
-
-Before starting, ensure you have the following installed on your machine:
-- [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-- [Node.js and npm](https://nodejs.org/en/download/)
-
-## Frontend Setup
-1. Install the Angular CLI:
-    ```bash
-   npm install -g @angular/cli
-   ```
-2. Navigate to the `frontend` directory:
-   ```bash
-   cd frontend
-   ```
-
-3. Install project dependencies:
-   ```bash
-    npm install
-    ```
-4. Start the Angular development server:
-   ```bash
-    ng dev
-     ```
-   
-At this point, the frontend should be running at [localhost:4200](http://localhost:4200)
-
-## Backend Setup
-1. Run the ASP.NET Core application from repo root:
-    ```bash
-    ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend/backend.csproj
-    ```
-Because the ASPNETCORE_ENVIRONMENT variable is set to Development, the backend will automatically proxy requests to the frontend running at localhost:4200.
-
-You should now be able to preview the full app at [localhost:5243](http://localhost:5243). Edits made to the frontend should also automatically reload the page.
