@@ -4,7 +4,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <SpaRoot>../frontend</SpaRoot>
+        <SpaRoot>$(MSBuildProjectDirectory)/frontend</SpaRoot>
     </PropertyGroup>
 
     <ItemGroup>
