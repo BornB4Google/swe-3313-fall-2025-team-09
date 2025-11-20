@@ -270,6 +270,7 @@ Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please updat
 
 **AI Acknowledgement**: 
 
-- The API Endpoint portion of this submission was developed using the help of an AI tool (Claude Sonnet 4.5). The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
+- Claude. (2023). Claude (4.5) [LLM](https://claude.ai) The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
 
-- INVENTORY_ITEM Descriptions were generated with the help of ChatGPT 5. All content, including spelling, grammar, and statement validity was reviewed and verified by Amy Ward.
+- OpenAI. (2025). ChatGPT (GPT-5) [Large language model]. https://chat.openai.com/
+Usage Note: ChatGPT was used to finalize product descriptions. All factual claims were verified by the author.
