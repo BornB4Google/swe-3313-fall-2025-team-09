@@ -35,3 +35,14 @@ At this point, the frontend should be running at [localhost:4200](http://localho
 Because the ASPNETCORE_ENVIRONMENT variable is set to Development, the backend will automatically proxy requests to the frontend running at localhost:4200.
 
 You should now be able to preview the full app at [localhost:5243](http://localhost:5243). Edits made to the frontend should also automatically reload the page.
+
+# Running in a Container
+To run the application in a Docker container, ensure you have [Docker](https://www.docker.com/get-started) installed.
+1. Build the Docker image:
+    ```bash
+    docker build -t offshore-app .
+    ```
+2. Run the Docker container:
+    ```bash
+    docker run -p 8080:8080 offshore-app
+    ```

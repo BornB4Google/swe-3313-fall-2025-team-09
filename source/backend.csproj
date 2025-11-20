@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <SpaRoot>$(MSBuildProjectDirectory)/frontend</SpaRoot>
+        <BuildSpa>true</BuildSpa>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,7 @@
     </ItemGroup>
 
     <!-- Ensure Node is present -->
-    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build">
+    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(BuildSpa)' == 'true'">
         <Exec Command="node --version" ContinueOnError="true">
             <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
         </Exec>
@@ -20,7 +21,7 @@
     </Target>
 
     <!-- Build Angular during publish -->
-    <Target Name="BuildSpaApp" BeforeTargets="ComputeFilesToPublish">
+    <Target Name="BuildSpaApp" BeforeTargets="ComputeFilesToPublish" Condition="'$(BuildSpa)' == 'true'">
         <Message Importance="high" Text="============================================" />
         <Message Importance="high" Text="Building Angular frontend..." />
         <Message Importance="high" Text="============================================" />

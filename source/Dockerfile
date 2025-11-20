@@ -1,4 +1,11 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+﻿FROM node:20 AS frontend-build
+WORKDIR /frontend
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend .
+RUN npm run build
+
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
@@ -10,12 +17,12 @@ WORKDIR /src
 COPY ["backend.csproj", "./"]
 RUN dotnet restore "backend.csproj"
 COPY . .
-WORKDIR "/src/"
-RUN dotnet build "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/build
+COPY --from=frontend-build /frontend/dist/frontend/browser ./wwwroot
+RUN dotnet build "./backend.csproj" -c $BUILD_CONFIGURATION -p:BuildSpa=false -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./backend.csproj" -c $BUILD_CONFIGURATION -p:BuildSpa=false -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
