@@ -5,19 +5,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <SpaRoot>$(MSBuildProjectDirectory)/frontend</SpaRoot>
+        <BuildSpa>true</BuildSpa>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-          <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8"/>
     </ItemGroup>
 
     <!-- Ensure Node is present -->
-    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build">
+    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(BuildSpa)' == 'true'">
         <Exec Command="node --version" ContinueOnError="true">
             <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
         </Exec>
@@ -25,7 +24,7 @@
     </Target>
 
     <!-- Build Angular during publish -->
-    <Target Name="BuildSpaApp" BeforeTargets="ComputeFilesToPublish">
+    <Target Name="BuildSpaApp" BeforeTargets="ComputeFilesToPublish" Condition="'$(BuildSpa)' == 'true'">
         <Message Importance="high" Text="============================================" />
         <Message Importance="high" Text="Building Angular frontend..." />
         <Message Importance="high" Text="============================================" />
