@@ -18,20 +18,42 @@ The application is implemented using the following languages:
 
 #### Data:
 
-- **SQLite**: SQLite is a lightweight, file-based relational database that stores all data in a single file (`offshore.db`). Unlike traditional database systems that require a separate server (like MySQL or PostgreSQL), SQLite runs directly within the application, making it ideal for development and single-user applications.
 - **JSON**: Data format for API communication and JWT tokens, providing a lightweight and readable data exchange between frontend and backend.
 
 
 
 ## B. Implementation Framework(s)
 
-- **Angular (Front End Framework)**: Angular allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app. It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
+**Angular (Front End Framework)**:
+- Angular allows for easy creation of components and services, simplifying the development of a fast and interactive client side rendered web app.
+- It also has very detailed established conventions and style, making it easier to maintain consistency across the team.
 
 Here are a few useful resources related to Angular:
 
 [Learn Angular](https://angular.dev/tutorials/learn-angular)
 
 [Angular Essentials Overview](https://angular.dev/essentials)
+
+
+**ASP.NET Core (Backend Framework)**:
+- High-performance web framework that supports REST API development
+- Pairs with Entity Framework Core and SQLite
+
+[ASP.NET Core Tutorial](https://learn.microsoft.com/aspnet/core/tutorials/first-web-api)
+
+
+**Entity Framework Core (ORM Framework)**:
+- Enables direct communication with database in C#
+- Built-in migrations for database schema evolution
+- Strongly typed
+
+[Using EF Core with SQLite](https://learn.microsoft.com/ef/core/providers/sqlite)
+
+
+**SQLite (Database Engine)**:
+- Serverless, file-based database
+- Enables persistent storage
+
 
 ## C. Data Storage Plan
 
@@ -248,6 +270,7 @@ Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please updat
 
 **AI Acknowledgement**: 
 
-- The API Endpoint portion of this submission was developed using the help of an AI tool (Claude Sonnet 4.5). The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
+- Claude. (2023). Claude (4.5) [LLM](https://claude.ai) The AI was used to brainstorm a framework for relevant API enpoints. All content was reviewed and verified by Amelia Ellingson. 
 
-- INVENTORY_ITEM Descriptions were generated with the help of ChatGPT 5. All content, including spelling, grammar, and statement validity was reviewed and verified by Amy Ward.
+- OpenAI. (2025). ChatGPT (GPT-5) [Large language model]. https://chat.openai.com/
+Usage Note: ChatGPT was used to finalize product descriptions. All factual claims were verified by the author.
