@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace backend.Models;
+namespace Backend.Models;
 
 public class Cart
     {
