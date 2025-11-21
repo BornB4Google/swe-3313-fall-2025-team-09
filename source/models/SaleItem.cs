@@ -1,4 +1,8 @@
-  public class SaleItem
+using System.Collections.Generic;
+
+namespace backend.Models;
+
+public class SaleItem
     {
         public int SaleId { get; set; }
         public int ItemId { get; set; }
