@@ -70,7 +70,7 @@ Here are a few useful resources related to Angular:
 ### Data Flow
 
 - Angular sends HTTP requests to ASP.NET Core API endpoints.
-- Controllers/services use `AppDbContext` to:
+- Controllers/services use `StorefrontAppDbContext` to:
   - Query data  
   - Insert/update/delete entities  
   - Call `SaveChanges()` to write changes to the SQLite file  
@@ -101,7 +101,7 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - User enters username and password on login page.
 - Client transmits credentials to server. 
 - Password is hashed on the server side using SHA-256.
-- Username and hashed password compared against `USER` table in SQLite database.
+- Username and hashed password compared against `User` table in SQLite database.
 - Match found → user/admin logged in successfully.
 - No match → login denied (invalid credentials).
 - Upon successful login, JWT issued to user/admin.
@@ -110,14 +110,14 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 
 - Client submits username and password to server.
 - Password is hashed on the server side using SHA-256.
-- New entry added to `USER` table with username and hashed password.
-- User is redirected to login screen to enter credentials for authentication.
+- New entry added to `User` table with username and hashed password.
+- User is immediately logged in after successfully registered.
 
 ### Authorization
 
 ### Role Management
 
-- Role is determined by `IsAdmin` field in `USER` table.
+- Role is determined by `IsAdmin` field in `User` table.
 - `IsAdmin = 0` → standard user.
 - `IsAdmin = 1` → administrator.
 
@@ -135,11 +135,12 @@ Click [here](assets/seed-data/seed-data-README.md) for seed data.
 - Add items to inventory.
 - Remove items from inventory.
 - Generate sales report.
+- Promote "users" to "Administrators".
 
 ### Endpoint Authorization Flow:
 
-- Client includes JWT with each API request.
-- Server validates JWT and identified associated user in `USER` table.
+- Client includes JWT as cookie with each API request.
+- Server validates JWT and identified associated user in `User` table.
 - **If no user identified and endpoint requires authentication**: Return `401 Unauthorized`.
 - **If user identified and endpoint accessible to all users**: Execute action on behalf of user.
 - **If user identified and endpoint requires administrative access**: Check `IsAdmin` field.
@@ -217,12 +218,6 @@ Offshore Holdings requires that standard style guides be used for all implementa
   - Component selectors: `app-feature-name`.
 - One component per file. 
 
-#### SQLite Database [SQLite Style Guide](https://www.sqlstyle.guide/)  
-
-- Table names: `UPPER_CASE` (e.g., `USER`, `INVENTORY`).
-- Column names: `PascalCase` (e.g., `IsAdmin`, `ProductId`).
-- Always use foreign key constraints.
-
 ### Version Control and Repository Management
 
 #### Platform: Github
@@ -233,8 +228,6 @@ Offshore Holdings requires that standard style guides be used for all implementa
 - Branches:
   - `main`: Production ready code (protected branch).
   - `dev`: Integration branch for features.
-  - `database`: Database schema changes and migrations
-  - `feature` Individual feature branches.
 
 **Workflow**
 
@@ -245,10 +238,9 @@ Offshore Holdings requires that standard style guides be used for all implementa
 
 **Branch Strategy:**
 
+- `main` branch serves as stable, production ready code
 - `dev` serves as the integration branch where all work is merged for testing
-- `backend` and `database` branches used for their respective development work
-- `feature` branch for implementing new features
-- Branches merge to `dev` for integration testing before production deployment
+- Inidivial branches with developer `[name]-[feature]` for individual work.
 
 **Commit Conventions:**
 
@@ -274,3 +266,4 @@ Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please updat
 
 - OpenAI. (2025). ChatGPT (GPT-5) [Large language model]. https://chat.openai.com/
 Usage Note: ChatGPT was used to finalize product descriptions. All factual claims were verified by the author.
+

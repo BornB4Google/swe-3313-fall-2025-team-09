@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Backend.Models;
 
 namespace Backend.Data
 {
@@ -84,98 +85,5 @@ namespace Backend.Data
                 .HasForeignKey(s => s.UserId);
         }
     }
-
-
-    // Define entities
-    
-    public class User
-    {
-        public int UserId { get; set; }
-        public string Username { get; set; } = "";
-        public string PasswordHash { get; set; } = "";
-        public string FirstName { get; set; } = "";
-        public string LastName { get; set; } = "";
-        public string Email { get; set; } = "";
-        public bool IsAdmin { get; set; }
-    }
-
-    public class InventoryItem
-    {
-        public int ItemId { get; set; }
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-        public decimal Price { get; set; }
-        public string PrimaryPhotoUrl { get; set; } = "";
-        public string Category { get; set; } = "";
-        public bool IsSold { get; set; }
-
-        public List<ItemImage> Images { get; set; } = new();
-        
-        public List<SaleItem> SaleItems { get; set; } = new();
-        public List<CartItem> CartItems { get; set; } = new();
-    }
-
-    public class ItemImage
-    {
-        public int ImageId { get; set; }
-        public int ItemId { get; set; }
-        public string ImageUrl { get; set; } = "";
-        public int DisplayOrder { get; set; }
-
-        public InventoryItem InventoryItem { get; set; } = null!;
-    }
-
-    public class Sale
-    {
-        public int SaleId { get; set; }
-        public int UserId { get; set; }
-        
-        public string SaleDateTime { get; set; } = "";
-        public decimal Subtotal { get; set; }
-        public decimal Tax { get; set; }
-        public decimal ShippingCost { get; set; }
-        public decimal Total { get; set; }
-        public string ShippingSpeed { get; set; } = "";
-        public string Street1 { get; set; } = "";
-        public string? Street2 { get; set; }
-        public string City { get; set; } = "";
-        public string State { get; set; } = "";
-        public string Zip { get; set; } = "";
-        public string CardLast4 { get; set; } = "";
-
-        public User User { get; set; } = null!;
-        public List<SaleItem> Items { get; set; } = new();
-    }
-
-    public class SaleItem
-    {
-        public int SaleId { get; set; }
-        public int ItemId { get; set; }
-
-        public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-
-        public Sale Sale { get; set; } = null!;
-        public InventoryItem InventoryItem { get; set; } = null!;
-    }
-
-    public class Cart
-    {
-        public int CartId { get; set; }
-        public int UserId { get; set; }
-
-        public User User { get; set; } = null!;
-        public List<CartItem> Items { get; set; } = new();
-    }
-
-    public class CartItem
-    {
-        public int CartId { get; set; }
-        public int ItemId { get; set; }
-
-        public int Quantity { get; set; }
-
-        public Cart Cart { get; set; } = null!;
-        public InventoryItem InventoryItem { get; set; } = null!;
-    }
 }
+   
