@@ -5,12 +5,12 @@ using System.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
+builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<StorefrontDbContext>(options =>
     options.UseSqlite(connectionString));
-
 
 if (builder.Environment.IsDevelopment())
 {
@@ -42,58 +42,58 @@ using (var scope = app.Services.CreateScope())
 
     if (!db.InventoryItems.Any())
     {
-     db.InventoryItems.AddRange(
-    new InventoryItem
-    {
-        ItemId = 1,
-        Name = "Nintendo ADR",
-        Description = "Nintendo offers ownership of one of the world’s most influential entertainment portfolios, including Mario, Zelda, Pokémon, and more. Acquire complete control over beloved franchises, future console development, and a global fanbase spanning generations.",
-        Price = 17460000000000.00m,
-        PrimaryPhotoUrl = "https://cdn.freebiesupply.com/logos/large/2x/nintendo-2-logo-png-transparent.png",
-        Category = "Entertainment",
-        IsSold = false
-    },
-    new InventoryItem
-    {
-        ItemId = 2,
-        Name = "LVMH Moët Hennessy Louis Vuitton SE",
-        Description = "Take control of the world’s premier luxury empire, from Louis Vuitton to Dior to Moët & Chandon. Prestige, heritage, and global influence in one acquisition.",
-        Price = 373600000000.00m,
-        PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/8/1/lvmh-logo-png_seeklogo-86482.png",
-        Category = "Luxury Goods",
-        IsSold = false
-    },
-    new InventoryItem
-    {
-        ItemId = 3,
-        Name = "Tesla Automotive",
-        Description = "Take command of the world’s most influential EV and energy brand. From autonomous driving breakthroughs to global-scale battery innovation, Tesla offers a powerful blend of technology, mobility, and cultural impact.",
-        Price = 1340000000000.00m,
-        PrimaryPhotoUrl = "https://storage.googleapis.com/webdesignledger.pub.network/WDL/d2a6d8d2-t3.jpg",
-        Category = "Automotive",
-        IsSold = false
-    },
-    new InventoryItem
-    {
-        ItemId = 4,
-        Name = "Walt Disney Co",
-        Description = "Own the magic. Purchasing Disney grants control of the entire storytelling empire, including Marvel, Star Wars, Pixar, ESPN, and the global theme park network that defines modern entertainment.",
-        Price = 190220000000.00m,
-        PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/50/1/the-walt-disney-company-logo-png_seeklogo-502952.png",
-        Category = "Entertainment",
-        IsSold = false
-    },
-    new InventoryItem
-    {
-        ItemId = 5,
-        Name = "Google Deepmind",
-        Description = "Own the mind behind the machines. Google DeepMind delivers world-class AI innovation, from advanced neural networks to frontier research, giving you the keys to one of the most powerful technology engines on Earth.",
-        Price = 760000000000.00m,
-        PrimaryPhotoUrl = "https://media.wired.com/photos/66900a63fc84cb0d65446d72/3:2/w_1920,c_limit/Deepmind-Robotics-Chatbot-Business-2021265856.jpg",
-        Category = "Technology",
-        IsSold = false
-    }
-);
+        db.InventoryItems.AddRange(
+            new InventoryItem
+            {
+                ItemId = 1,
+                Name = "Nintendo ADR",
+                Description = "Nintendo offers ownership of one of the world’s most influential entertainment portfolios, including Mario, Zelda, Pokémon, and more. Acquire complete control over beloved franchises, future console development, and a global fanbase spanning generations.",
+                Price = 17460000000000.00m,
+                PrimaryPhotoUrl = "https://cdn.freebiesupply.com/logos/large/2x/nintendo-2-logo-png-transparent.png",
+                Category = "Entertainment",
+                IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 2,
+                Name = "LVMH Moët Hennessy Louis Vuitton SE",
+                Description = "Take control of the world’s premier luxury empire, from Louis Vuitton to Dior to Moët & Chandon. Prestige, heritage, and global influence in one acquisition.",
+                Price = 373600000000.00m,
+                PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/8/1/lvmh-logo-png_seeklogo-86482.png",
+                Category = "Luxury Goods",
+                IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 3,
+                Name = "Tesla Automotive",
+                Description = "Take command of the world’s most influential EV and energy brand. From autonomous driving breakthroughs to global-scale battery innovation, Tesla offers a powerful blend of technology, mobility, and cultural impact.",
+                Price = 1340000000000.00m,
+                PrimaryPhotoUrl = "https://storage.googleapis.com/webdesignledger.pub.network/WDL/d2a6d8d2-t3.jpg",
+                Category = "Automotive",
+                IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 4,
+                Name = "Walt Disney Co",
+                Description = "Own the magic. Purchasing Disney grants control of the entire storytelling empire, including Marvel, Star Wars, Pixar, ESPN, and the global theme park network that defines modern entertainment.",
+                Price = 190220000000.00m,
+                PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/50/1/the-walt-disney-company-logo-png_seeklogo-502952.png",
+                Category = "Entertainment",
+                IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 5,
+                Name = "Google Deepmind",
+                Description = "Own the mind behind the machines. Google DeepMind delivers world-class AI innovation, from advanced neural networks to frontier research, giving you the keys to one of the most powerful technology engines on Earth.",
+                Price = 760000000000.00m,
+                PrimaryPhotoUrl = "https://media.wired.com/photos/66900a63fc84cb0d65446d72/3:2/w_1920,c_limit/Deepmind-Robotics-Chatbot-Business-2021265856.jpg",
+                Category = "Technology",
+                IsSold = false
+            }
+        );
     }
 
     if (!db.ItemImages.Any())
@@ -122,8 +122,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// API routes
-
 // DB health check (check for seed data)
 app.MapGet("/api/db-health", async (StorefrontDbContext db) =>
 {
@@ -139,71 +137,6 @@ app.MapGet("/api/db-health", async (StorefrontDbContext db) =>
         itemCount,
         imageCount
     });
-});
-
-// Inventory listing
-app.MapGet("/api/inventory", async (StorefrontDbContext db) =>
-{
-    var items = await db.InventoryItems
-        .Include(i => i.Images)
-        .OrderBy(i => i.ItemId)
-        .Select(i => new
-        {
-            i.ItemId,
-            i.Name,
-            i.Description,
-            i.Price,
-            i.PrimaryPhotoUrl,
-            i.Category,
-            i.IsSold,
-            Images = i.Images
-                .OrderBy(img => img.DisplayOrder)
-                .Select(img => new
-                {
-                    img.ImageId,
-                    img.ImageUrl,
-                    img.DisplayOrder
-                })
-                .ToList()
-        })
-        .ToListAsync();
-
-    return Results.Ok(items);
-});
-
-// Single inventory item by ID (with images)
-app.MapGet("/api/inventory/{id:int}", async (int id, StorefrontDbContext db) =>
-{
-    var item = await db.InventoryItems
-        .Include(i => i.Images)
-        .Where(i => i.ItemId == id)
-        .Select(i => new
-        {
-            i.ItemId,
-            i.Name,
-            i.Description,
-            i.Price,
-            i.PrimaryPhotoUrl,
-            i.Category,
-            i.IsSold,
-            Images = i.Images
-                .OrderBy(img => img.DisplayOrder)
-                .Select(img => new
-                {
-                    img.ImageId,
-                    img.ImageUrl,
-                    img.DisplayOrder
-                })
-                .ToList()
-        })
-        .FirstOrDefaultAsync();
-
-    if (item is null)
-    {
-        return Results.NotFound();
-    }
-
-    return Results.Ok(item);
 });
 
 if (app.Environment.IsDevelopment())
@@ -282,5 +215,6 @@ else
     app.MapFallbackToFile("index.html");
 }
 
-app.Run();
+app.MapControllers();
 
+app.Run();
