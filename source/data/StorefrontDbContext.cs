@@ -85,6 +85,5 @@ namespace Backend.Data
                 .HasForeignKey(s => s.UserId);
         }
     }
-
-
+}
    
