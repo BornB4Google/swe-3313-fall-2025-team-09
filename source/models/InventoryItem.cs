@@ -1,4 +1,8 @@
- public class InventoryItem
+using System.Collections.Generic;
+
+namespace backend.Models;
+
+public class InventoryItem
     {
         public int ItemId { get; set; }
         public string Name { get; set; } = "";
