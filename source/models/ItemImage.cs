@@ -1,4 +1,8 @@
-    public class ItemImage
+using System.Collections.Generic;
+
+namespace backend.Models;
+
+public class ItemImage
     {
         public int ImageId { get; set; }
         public int ItemId { get; set; }
