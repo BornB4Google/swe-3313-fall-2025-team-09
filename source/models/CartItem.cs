@@ -1,4 +1,8 @@
-    public class CartItem
+using System.Collections.Generic;
+
+namespace backend.Models;
+
+public class CartItem
     {
         public int CartId { get; set; }
         public int ItemId { get; set; }
