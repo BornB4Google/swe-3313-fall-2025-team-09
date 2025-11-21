@@ -1,4 +1,5 @@
 using Backend.Data;
+using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
