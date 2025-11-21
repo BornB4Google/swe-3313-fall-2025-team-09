@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using backend.models;
 
-namespace Backend.Data
+namespace backend.data
 {
     public class StorefrontDbContext : DbContext
     {
