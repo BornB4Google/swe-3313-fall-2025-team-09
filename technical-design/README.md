@@ -258,7 +258,7 @@ Offshore Holdings requires that standard style guides be used for all implementa
 
 ## Technical Design Presentation
 
-Loom video goes [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ) please update
+Click [here](https://www.loom.com/share/8c1d671ef4df4d89b300d9944df39148) for a video overview of our technical design.
 
 **AI Acknowledgement**: 
 
