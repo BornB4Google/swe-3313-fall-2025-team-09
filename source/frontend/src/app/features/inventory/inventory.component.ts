@@ -48,4 +48,17 @@ export class InventoryComponent {
     }
   }
 
+  selectedItem: InventoryItem | null = null;
+
+  openItem(item: InventoryItem) {
+    this.selectedItem = item;
+  }
+
+  closeOverlay(){
+    this.selectedItem = null;
+  }
+
+
+
+
 }

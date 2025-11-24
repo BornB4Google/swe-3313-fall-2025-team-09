@@ -1,23 +1,33 @@
 <div class="inventory-container">
   <h2 class="inventory-title">Shop</h2>
   <div class="inventory-grid">
-    <div class="inventory-box" *ngFor="let item of pageInventory">
+    <div class="inventory-box" (click)="openItem(item)" *ngFor="let item of pageInventory">
       <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
       <h3 class="item-name">{{ item.name }}</h3>
       <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
-      <button class="add-to-cart-btn" (click)="addToCart(item)">Add to Cart</button>
+      <button class="add-to-cart-btn" (click)="addToCart(item); $event.stopPropagation()">Add to Cart</button>
     </div>
   </div>
   <div class="pages">
-    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">⮘</button>
+    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">&#11160;</button>
     <button
       *ngFor="let page of [].constructor(totalPages); let i = index"
       (click)="changePage(i+1)"
       [class.active]="currentPage === i + 1">
       {{ i + 1 }}
     </button>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">⮚</button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">&#11162;</button>
+  </div>
+  <div class="overlay" *ngIf="selectedItem" (click)="closeOverlay()">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
+      <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl"/>
+      <h2 class="overlay-title">{{ selectedItem.name }}</h2>
+      <p class="overlay-description"> {{ selectedItem.description  }}</p>
+      <p class="overlay-price">{{ selectedItem.price | currency }}</p>
+      <button class="overlay-cart-btn" (click)="addToCart(selectedItem)">Add to Cart</button>
 
+    </div>
   </div>
 </div>
 
