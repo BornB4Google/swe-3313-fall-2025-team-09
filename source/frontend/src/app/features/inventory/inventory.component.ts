@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {InventoryService} from '../../services/inventory/inventory.service';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {InventoryItem} from '../../models/inventory.models';
 
 @Component({
   selector: 'app-inventory',
@@ -14,32 +17,10 @@ import {CommonModule} from "@angular/common";
 
 export class InventoryComponent {
   // placeholder until database is connected
-  inventory =[
-    {name: 'name1', price: 0.00},
-    {name: 'name2', price: 0.00},
-    {name: 'name3', price: 0.00},
-    {name: 'name4', price: 0.00},
-    {name: 'name5', price: 0.00},
-    {name: 'name6', price: 0.00},
-    {name: 'name7', price: 0.00},
-    {name: 'name8', price: 0.00},
-    {name: 'name9', price: 0.00},
-    {name: 'name10', price: 0.00},
-    {name: 'name11', price: 0.00},
-    {name: 'name12', price: 0.00},
-    {name: 'name13', price: 0.00},
-    {name: 'name14', price: 0.00},
-    {name: 'name15', price: 0.00},
-    {name: 'name16', price: 0.00},
-    {name: 'name17', price: 0.00},
-    {name: 'name18', price: 0.00},
-    {name: 'name19', price: 0.00},
-    {name: 'name20', price: 0.00},
-    {name: 'name21', price: 0.00},
-    {name: 'name22', price: 0.00},
-    {name: 'name23', price: 0.00},
-    {name: 'name24', price: 0.00}
-  ];
+  inventoryService = inject(InventoryService);
+
+  inventoryData = toSignal(this.inventoryService.getInventory(), { initialValue: [] as InventoryItem[] });
+
   itemsPerPage = 12;
   currentPage = 1;
 
@@ -48,12 +29,12 @@ export class InventoryComponent {
   }
 
   get totalPages(): number{
-        return Math.ceil(this.inventory.length / this.itemsPerPage);
+        return Math.ceil(this.inventoryData().length / this.itemsPerPage);
   }
   get pageInventory(){
     const start = (this.currentPage -1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.inventory.slice(start, end);
+    return this.inventoryData().slice(start, end);
   }
   changePage(page: number){
     if (page >= 1 && page <= this.totalPages){
