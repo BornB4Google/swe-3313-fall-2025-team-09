@@ -1,0 +1,45 @@
+import {Component, inject} from '@angular/core';
+import {RouterLink} from "@angular/router";
+import {CommonModule} from "@angular/common";
+import {InventoryService} from '../../services/inventory/inventory.service';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {InventoryItem} from '../../models/inventory.models';
+
+@Component({
+  selector: 'app-inventory',
+    imports: [
+        RouterLink,
+      CommonModule
+    ],
+  templateUrl: './inventory.component.html',
+  styleUrls: ['./inventory.component.css']
+})
+
+export class InventoryComponent {
+  // placeholder until database is connected
+  inventoryService = inject(InventoryService);
+
+  inventoryData = toSignal(this.inventoryService.getInventory(), { initialValue: [] as InventoryItem[] });
+
+  itemsPerPage = 12;
+  currentPage = 1;
+
+  addToCart(item: any) {
+    console.log(`${item.name} added to cart`);
+  }
+
+  get totalPages(): number{
+        return Math.ceil(this.inventoryData().length / this.itemsPerPage);
+  }
+  get pageInventory(){
+    const start = (this.currentPage -1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.inventoryData().slice(start, end);
+  }
+  changePage(page: number){
+    if (page >= 1 && page <= this.totalPages){
+      this.currentPage = page;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+}
