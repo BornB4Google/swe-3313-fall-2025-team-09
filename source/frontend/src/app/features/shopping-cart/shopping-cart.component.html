@@ -10,7 +10,7 @@
         <button type="button" class="remove-cart-btn" (click)="removeCart(item)">Remove</button>
       </div>
     </div>
-    <h2 class="subtotal">Subtotal: $0.00</h2>
+    <h2 class="subtotal">Subtotal: {{ subtotal | currency:'USD':'symbol':'1.2-2' }}</h2>
     <div class="cart-buttons">
       <button  type="button" class="checkout-btn" routerLink="/checkout">Checkout &#11162;</button>
       <button type="button" class="back-btn" routerLink="/inventory">&#11160; Back</button>

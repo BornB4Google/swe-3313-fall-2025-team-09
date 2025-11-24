@@ -17,9 +17,10 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class ShoppingCartComponent {
 
-  /* placeholder until database is made*/
+  cart: any[] = [];
   cartService = inject(CartService);
   cart$ = this.cartService.cartItems$;
+  subtotal: number = 0;
 
   trackById(index: number, item: any) {
     return item._id;
@@ -28,4 +29,18 @@ export class ShoppingCartComponent {
   removeCart(item: any) {
     this.cartService.removeFromCart(item._id);
   }
+
+  ngOnInit() {
+    this.cartService.cartItems$.subscribe(items => {
+      this.cart = items;
+      this.calculateSubtotal();
+    })
+
+  }
+
+  calculateSubtotal(){
+    this.subtotal = this.cart.reduce((num, item) => num + item.price, 0);
+  }
+
+
 }

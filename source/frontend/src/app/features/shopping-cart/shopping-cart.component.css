@@ -4,7 +4,7 @@
   align-items: flex-start;
   justify-content: center;
   height: 100vh;
-  overflow-y: auto;    
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 80px 0;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
@@ -136,10 +136,12 @@
 
 
 .subtotal{
-
+  justify-content: flex-end;
   position: relative;
-  left: 35%;
+  left: -15px;
+  display: flex;
 }
+
 .cart-buttons {
   display: flex;
   justify-content: space-between;
