@@ -42,6 +42,7 @@ public class AuthController :  ControllerBase
         newUser.IsAdmin = false;
         
         _db.Users.Add(newUser);
+        await _db.SaveChangesAsync();
 
         return StatusCode(200, "Successfully registered new account");
     }
