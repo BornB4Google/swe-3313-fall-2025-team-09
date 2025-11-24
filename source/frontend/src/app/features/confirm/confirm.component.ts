@@ -3,6 +3,7 @@ import { CurrencyPipe, NgForOf} from "@angular/common";
 import { RouterLink } from "@angular/router";
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-confirm',
@@ -20,16 +21,16 @@ export class ConfirmComponent {
 
   shipping: any = {};
 
-  confirmOrder = [
-    { name: 'name1', price: 0.00 },
-    { name: 'name1', price: 0.00 },
-    { name: 'name1', price: 0.00 }
-  ];
+  cart: any[] =[];
 
-  constructor(private shipService: ShippingService) {}
 
+
+  constructor(
+    private shipService: ShippingService,
+    private cartService: CartService) {}
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;
+    this.cartService.cartItems$.subscribe(items => {this.cart = items;});
   }
 
 }

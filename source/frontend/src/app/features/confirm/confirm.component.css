@@ -21,10 +21,10 @@
   padding: 40px 30px;
   border-radius: 16px;
   width: 800px;
-  height: 600px;
+
   display: flex;
   flex-direction: column;
-
+  gap: 5px;
   box-shadow:
     0 4px 15px rgba(0, 0, 0, 0.4),
     0 0px 20px rgba(84, 112, 154, 0.7);
