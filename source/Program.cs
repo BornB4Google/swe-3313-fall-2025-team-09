@@ -112,6 +112,44 @@ using (var scope = app.Services.CreateScope())
         );
     }
 
+    if (!db.Sales.Any())
+    {
+        db.Sales.AddRange(
+            new Sale
+            {
+                SaleId = 1,
+                UserId = 1,
+                SaleDateTime = DateTime.UtcNow.AddDays(-10),
+                Subtotal = 190220000000.00m,
+                Tax = 15217600000.00m,
+                ShippingCost = 0.00m,
+                Total = 205437600000.00m,
+                ShippingSpeed = "N/A",
+                Street1 = "123 Main St",
+                City = "Atlanta",
+                State = "GA",
+                Zip = "30303",
+                CardLast4 = "1234"
+            },
+            new Sale
+            {
+                SaleId = 2,
+                UserId = 1,
+                SaleDateTime = DateTime.UtcNow.AddDays(-5),
+                Subtotal = 1340000000000.00m,
+                Tax = 107200000000.00m,
+                ShippingCost = 0.00m,
+                Total = 1447200000000.00m,
+                ShippingSpeed = "N/A",
+                Street1 = "123 Main St",
+                City = "Atlanta",
+                State = "GA",
+                Zip = "30303",
+                CardLast4 = "1234"
+            }
+            );
+    }
+
     db.SaveChanges();
 }
 
