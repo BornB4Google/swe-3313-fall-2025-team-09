@@ -70,16 +70,6 @@ public class ReportsController : ControllerBase
         // return StatusCode(501, "Not implemented yet");
     }
 
-    // GET /api/reports/inventory
-    // Gets inventory status report
-    [HttpGet("inventory")]
-    public async Task<IActionResult> GetInventoryReport()
-    {
-        // Andrew To Do: inventory status logic 
-        
-        return StatusCode(501, "Not implemented yet");
-    }
-
     // GET /api/reports/revenue
     // Returns revenue breakdown
     [HttpGet("revenue")]
