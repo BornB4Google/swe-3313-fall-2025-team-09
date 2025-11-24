@@ -39,3 +39,9 @@ source/obj/
 # Frontend
 frontend/dist/
 frontend/node_modules/
+
+source/offshore.db
+
+source/offshore.db-shm
+
+source/offshore.db-wal
