@@ -15,12 +15,12 @@ export class CartService {
   addToCart(item: any) {
     const cartItem = {
       ...item,
-      _id: this.idCounter++   // simple id
+      _id: this.idCounter++
     };
 
     this.cart.push(cartItem);
     this.cartItems.next([...this.cart]);
-    
+
 
   }
 

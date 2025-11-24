@@ -18,8 +18,6 @@ import { Router } from '@angular/router';
 })
 
 
-
-
 export class CheckoutComponent {
 
   checkoutData = {
