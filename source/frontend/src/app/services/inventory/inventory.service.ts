@@ -18,7 +18,6 @@ export class InventoryService {
     return Math.random();
   }
 
-
   getInventory(): Observable<InventoryItem[]>{
     return this.http.get<InventoryItem[]>('/api/inventory');
   }

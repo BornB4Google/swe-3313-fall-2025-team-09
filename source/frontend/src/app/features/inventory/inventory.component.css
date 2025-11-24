@@ -14,7 +14,7 @@ Ice White	#F4F7F9
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  height: 100vh;
   overflow: hidden;
   padding: 60px 0;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
@@ -26,8 +26,10 @@ Ice White	#F4F7F9
 
 .inventory-title {
   font-size: 3rem;
-  position: relative;
-
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
 
 }
 .inventory-title:after{

@@ -1,10 +1,11 @@
 .shopping-cart-container {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-
-  overflow: hidden;
+  height: 100vh;
+  overflow-y: auto;    
+  overflow-x: hidden;
   padding: 80px 0;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
   animation: gradientShift 15s ease infinite;

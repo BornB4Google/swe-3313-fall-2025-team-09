@@ -1,20 +1,19 @@
 <div class="shopping-cart-container">
   <form class="shopping-cart-form">
     <h2 class="shopping-cart-title">Your Cart</h2>
-    <div class="shopping-cart-box" *ngFor="let item of shoppingCart">
-    <div class="shopping-cart-grid">
-      <div class="item-image"></div>
-      <h3 class="item-name">{{ item.name }}</h3>
-      <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
-      <h4 class="item-description">{{ item.description }}</h4>
-      <button class="remove-cart-btn" (click)="removeCart(item)">Remove</button>
+    <div class="shopping-cart-box" *ngFor="let item of cart$ | async; trackBy: trackById">
+      <div class="shopping-cart-grid">
+        <div class="item-image"></div>
+        <h3 class="item-name">{{ item.name }}</h3>
+        <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
+        <h4 class="item-description">{{ item.description }}</h4>
+        <button type="button" class="remove-cart-btn" (click)="removeCart(item)">Remove</button>
+      </div>
     </div>
-    </div>
-
     <h2 class="subtotal">Subtotal: $0.00</h2>
     <div class="cart-buttons">
-      <button class="checkout-btn" routerLink="/checkout">Checkout &#11162;</button>
-      <button class="back-btn" routerLink="/inventory">&#11160; Back</button>
+      <button  type="button" class="checkout-btn" routerLink="/checkout">Checkout &#11162;</button>
+      <button type="button" class="back-btn" routerLink="/inventory">&#11160; Back</button>
     </div>
   </form>
 </div>

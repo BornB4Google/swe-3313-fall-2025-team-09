@@ -4,6 +4,8 @@ import {CommonModule} from "@angular/common";
 import {InventoryService} from '../../services/inventory/inventory.service';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {InventoryItem} from '../../models/inventory.models';
+import { CartService } from '../../services/cart/cart.service';
+
 
 @Component({
   selector: 'app-inventory',
@@ -23,10 +25,13 @@ export class InventoryComponent {
 
   itemsPerPage = 12;
   currentPage = 1;
+  cartService = inject(CartService);
 
   addToCart(item: any) {
-    console.log(`${item.name} added to cart`);
+    this.cartService.addToCart(item);
   }
+
+
 
   get totalPages(): number{
         return Math.ceil(this.inventoryData().length / this.itemsPerPage);
@@ -42,4 +47,5 @@ export class InventoryComponent {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
+
 }
