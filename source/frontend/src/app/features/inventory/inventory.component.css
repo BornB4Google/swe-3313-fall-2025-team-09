@@ -106,7 +106,7 @@ Ice White	#F4F7F9
   border-radius: 12px;
   padding: 10px;
   width: 300px;
-  height: 250px;
+  height: 300px;
   box-shadow:0 4px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
@@ -125,6 +125,20 @@ Ice White	#F4F7F9
   text-align: center;
   width: 100%;
 }
+.item-name:after{
+  content: '';
+  position: absolute;
+  top: 65px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 250px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
+
+}
+
 .item-price{
   position: absolute;
   bottom: -5px;
