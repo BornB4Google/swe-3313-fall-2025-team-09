@@ -25,6 +25,9 @@ namespace backend.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("isActive")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CartId");
 
                     b.HasIndex("UserId");
