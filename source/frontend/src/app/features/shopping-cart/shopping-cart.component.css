@@ -34,7 +34,7 @@
   color: #fff;
   padding: 40px 30px;
   border-radius: 16px;
-  width: 800px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -70,7 +70,7 @@
   left: 50%;
 
   transform: translateX(-50%);
-  width: 750px;
+  width: 950px;
   height: 2px;
   background-color: #A7B3BC;
   border-radius: 2px;
@@ -82,7 +82,7 @@
 .item-name{
   position: absolute;
   top: 15px;
-  left: 25%;
+  left: 20%;
   font-size: 1.2rem;
 
 }
@@ -90,7 +90,7 @@
   position: absolute;
   font-family: Playfair, serif;
   top: 50px;
-  left: 25%;
+  left: 20%;
   font-size: 1rem;
 
 }
@@ -130,7 +130,7 @@
   width: 125px;
   height: 125px;
   border-radius: 12px;
-  background-color: #3E5C76;
+
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
