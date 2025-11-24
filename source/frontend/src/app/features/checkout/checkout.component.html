@@ -4,14 +4,13 @@
 
     <div class="info-box">
       <div class="input-grid">
-        <input type="text" class="input" placeholder="First Name" />
-        <input type="text" class="input" placeholder="Last Name" />
-        <input type="text" class="input"  placeholder="Phone Number" />
-        <input type="text" class="input" placeholder="Email Address" />
-        <input type="text" class="input full-width" placeholder="Address" />
+        <input type="text" class="name" placeholder="Your Name" [(ngModel)]="checkoutData.name" name="name"/>
+        <input type="text" class="address1"  placeholder="Address Line 1" [(ngModel)]="checkoutData.address1" name="address1" />
+        <input type="text" class="number"  placeholder="Phone Number" />
+        <input type="text" class="email" placeholder="Email Address" />
         <div class="city-state-zip">
-          <input type="text" class="input"  placeholder="City" />
-          <select class="input2">
+          <input type="text" class="input" placeholder="City" [(ngModel)]="checkoutData.city" name="city"/>
+          <select class="input2" placeholder="State" [(ngModel)]="checkoutData.state" name="state">
             <option value="state">State</option>
             <option>AL</option>
             <option>AK</option>
@@ -66,43 +65,48 @@
             <option>WY</option>
           </select>
 
-          <input type="text" class="input" placeholder="Zip Code" />
+          <input type="text" class="zipcode" placeholder="Zip code" [(ngModel)]="checkoutData.zip" name="zipcode"/>
         </div>
       </div>
+
       <div class="input-grid2">
         <input type="text" class="credit-card" placeholder="Credit Card #" />
         <input type="text" class="exp" placeholder="XX/XXXX" />
         <input type="text" class="cvv" placeholder="CVV" />
       </div>
     </div>
-
+    <div class="confirm-columns">
     <div class="shipping-options">
-      <label class="shipping-option">
+      <label class="shipping-column">
+        <span class="ship-label">Overnight  </span>
+        <span class="ship-price">$29.99</span>
         <input type="radio" name="shipping" value="Overnight" checked>
-        <div class="option-content">
-          <h3>Overnight</h3>
-          <p>$29.99</p>
-        </div>
+        <span class="ship-radio"></span>
       </label>
 
-      <label class="shipping-option">
+      <label class="shipping-column">
+        <span class="ship-label">3 Day Shipping  </span>
+        <span class="ship-price">$19.99</span>
         <input type="radio" name="shipping" value="3Day">
-        <div class="option-content">
-          <h3>3 Day</h3>
-          <p>$19.99</p>
-        </div>
+        <span class="ship-radio"></span>
       </label>
 
-      <label class="shipping-option">
+      <label class="shipping-column">
+        <span class="ship-label">Ground  </span>
+        <span class="ship-price">$0.00</span>
         <input type="radio" name="shipping" value="Ground">
-        <div class="option-content">
-          <h3>Ground</h3>
-          <p>$0.00</p>
-        </div>
+        <span class="ship-radio"></span>
       </label>
     </div>
+      <div class="pricing-container">
+        <h2 class="shipping">Shipping: $0.00</h2>
+        <h2 class="subtotal">Subtotal: $0.00</h2>
+        <h2 class="tax">Tax: $0.00</h2>
+        <h2 class="total">Total: $0.00</h2>
+      </div>
+    </div>
     <div class="confirm-buttons">
-      <button class="confirm-order-btn" routerLink="/confirm">Confirm Order ⮚</button>
+      <button class="confirm-order-btn" (click)="confirmOrder()">Confirm Order &#11162;</button>
       <button class="back-btn" routerLink="/inventory">⮘ Back</button>
     </div>
 

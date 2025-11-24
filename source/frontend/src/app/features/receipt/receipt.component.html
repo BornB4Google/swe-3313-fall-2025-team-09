@@ -1,1 +1,37 @@
-<p>receipt works!</p>
+
+<div class="receipt-container">
+  <form class="receipt-form">
+    <h2 class="receipt-title">Receipt</h2>
+    <div class="receipt-box" *ngFor="let item of receiptItems">
+      <div class="receipt-grid">
+        <div class="item-image"></div>
+        <h3 class="item-name">{{ item.name }}</h3>
+        <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
+      </div>
+    </div>
+    <div class="receipt-columns">
+      <div class="shipping-address">
+        <div class="ship-title">Shipping to:</div>
+        <div class="ship-name">
+          {{ shipping.name }}
+        </div>
+        <div class="ship-line">
+          {{ shipping.address1 }}
+        </div>
+        <div class="ship-line">
+          {{ shipping.city }}, {{ shipping.state }} {{ shipping.zip }}
+        </div>
+      </div>
+      <div class="pricing-container">
+        <h2 class="shipping">Shipping: $0.00</h2>
+        <h2 class="subtotal">Subtotal: $0.00</h2>
+        <h2 class="tax">Tax: $0.00</h2>
+        <h2 class="total">Total: $0.00</h2>
+      </div>
+
+    </div>
+    <div class="receipt-buttons">
+      <button class="checkout-btn" routerLink="/inventory">Forgot Something? </button>
+    </div>
+  </form>
+</div>
