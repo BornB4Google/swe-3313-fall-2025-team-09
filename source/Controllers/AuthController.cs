@@ -40,6 +40,8 @@ public class AuthController :  ControllerBase
         newUser.LastName = request.LastName;
         newUser.Email = request.Email;
         newUser.IsAdmin = false;
+        
+        _db.Users.Add(newUser);
 
         return StatusCode(200, "Successfully registered new account");
     }
