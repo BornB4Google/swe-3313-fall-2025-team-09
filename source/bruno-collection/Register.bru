@@ -5,11 +5,22 @@ meta {
 }
 
 post {
-  url: localhost:8080/api/auth/register
-  body: none
+  url: http://localhost:8080/api/auth/register
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "username": "Isaac",
+    "password": "clanker",
+    "email": "isaac@offshore.baby",
+    "firstName": "Isaac",
+    "lastName": "Thoman"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
