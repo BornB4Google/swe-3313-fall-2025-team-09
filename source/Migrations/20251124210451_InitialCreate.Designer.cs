@@ -11,8 +11,8 @@ using System;
 namespace backend.Migrations
 {
     [DbContext(typeof(StorefrontDbContext))]
-    [Migration("20251121062330_SyncStorefrontModel")]
-    partial class SyncStorefrontModel
+    [Migration("20251124210451_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,9 @@ namespace backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isActive")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CartId");
