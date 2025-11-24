@@ -2,8 +2,9 @@ using System.Security.Claims;
 using Backend.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers;
+using Backend.Models;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -18,13 +19,15 @@ public class OrdersController : ControllerBase
     }
 
     // GET /api/orders
-    // Get user's order history
     [HttpGet]
-    public async Task<IActionResult> GetOrders()
+    public async Task<List<Sale>> GetOrders()
     {
         // Andrew To Do: get user order history logic
-       
-        return StatusCode(501, "Not implemented yet");
+        List<Sale> orders = await _db.Sales
+            .ToListAsync();
+        
+        return orders;
+
     }
 
     // GET /api/orders/{id}
