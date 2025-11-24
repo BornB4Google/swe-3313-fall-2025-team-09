@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 
 #nullable disable
 
@@ -123,7 +124,7 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SaleDateTime")
+                    b.Property<DateTime>("SaleDateTime")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

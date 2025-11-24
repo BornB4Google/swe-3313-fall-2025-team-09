@@ -93,7 +93,7 @@ namespace backend.Migrations
                     SaleId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SaleDateTime = table.Column<string>(type: "TEXT", nullable: false),
+                    SaleDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Subtotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     Tax = table.Column<decimal>(type: "TEXT", nullable: false),
                     ShippingCost = table.Column<decimal>(type: "TEXT", nullable: false),
