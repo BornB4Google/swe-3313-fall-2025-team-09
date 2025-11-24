@@ -33,11 +33,14 @@ public class OrdersController : ControllerBase
     // GET /api/orders/{id}
     // Gets order details
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetOrder(int id)
+    public async Task<Sale> GetOrder(int id)
     {
         // Andrew To Do: implement logic to get details on a specific order
+        Sale thisSale  = await _db.Sales.FindAsync(id);
         
-        return StatusCode(501, "Not implemented yet");
+        //TO DO - handle possiblity of no matches for the passed id
+        
+        return thisSale;
     }
 
     // POST /api/orders/checkout
