@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CurrencyPipe, NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ShippingService } from '../../services/shipping/shipping.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-receipt',
@@ -17,15 +18,18 @@ export class ReceiptComponent {
 
   shipping: any = {};
 
-  receiptItems=[
-    {name: 'name1' ,price: 0.00},
-    {name: 'name1', price: 0.00},
-    {name: 'name1', price: 0.00}
-  ];
-  constructor(private shipService: ShippingService) {}
+  cart: any[] = [];
+
+  constructor(
+    private shipService: ShippingService,
+    private cartService: CartService) {
+  }
 
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;
-  }
+    this.cartService.cartItems$.subscribe(items => {
+      this.cart = items;
+    });
 
+  }
 }
