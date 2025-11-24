@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CurrencyPipe, NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ShippingService } from '../shipping.service';
+import { ShippingService } from '../../services/shipping/shipping.service';
 
 @Component({
   selector: 'app-receipt',

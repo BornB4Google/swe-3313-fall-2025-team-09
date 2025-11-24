@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { FormsModule } from '@angular/forms';
-import { ShippingService } from '../shipping.service';
+import { ShippingService } from '../../services/shipping/shipping.service';
 import { Router } from '@angular/router';
 
 
