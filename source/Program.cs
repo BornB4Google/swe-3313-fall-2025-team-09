@@ -206,6 +206,25 @@ using (var scope = app.Services.CreateScope())
             }
         );
     }
+    if (!db.SaleItems.Any())
+    {
+        db.SaleItems.AddRange(
+            new SaleItem
+            {
+                SaleId = 1,
+                ItemId = 4,       
+                Quantity = 1,
+                UnitPrice = 190220000000.00m
+            },
+            new SaleItem
+            {
+                SaleId = 2,
+                ItemId = 3,       
+                Quantity = 1,
+                UnitPrice = 1340000000000.00m
+            }
+        );
+    }
 
     db.SaveChanges();
 }
