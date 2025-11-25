@@ -1,10 +1,11 @@
 .confirm-container {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-
-  overflow: hidden;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 80px 0;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
   animation: gradientShift 15s ease infinite;
@@ -20,11 +21,10 @@
   padding: 40px 30px;
   border-radius: 16px;
   width: 800px;
-  height: 800px;
+
   display: flex;
   flex-direction: column;
-  gap: 50px;
-
+  gap: 5px;
   box-shadow:
     0 4px 15px rgba(0, 0, 0, 0.4),
     0 0px 20px rgba(84, 112, 154, 0.7);
@@ -32,6 +32,213 @@
   transition: all 0.3s ease;
 }
 
+.confirm-box {
+  position: relative;
+  height: 50px;
+  background-color: #0A0F1C;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+
 .confirm-title{
   font-size: 2rem;
 }
+.confirm-box:after {
+  content: '';
+  position: absolute;
+  top: 125px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 750px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
+
+
+}
+
+.confirm-box:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 750px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
+
+
+}
+
+.item-name, .item-price {
+  position: absolute;
+
+}
+
+
+.item-name{
+  position: absolute;
+  transform: translateY(-50%);
+  left: 30px;
+  font-size: 1.2rem;
+
+}
+
+.item-price{
+  position: absolute;
+  transform: translateY(-50%);
+  right: 30px;
+  font-size: 1.2rem;
+}
+.shipping, .subtotal, .tax, .total {
+  left: 35%;
+}
+
+
+.shipping{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.subtotal{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.tax{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.total{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.shipping, .subtotal, .tax, .total {
+  left: -15px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.back-btn, .confirm-btn {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Playfair Display SC', serif;
+  cursor: pointer;
+}
+
+
+
+.confirm-btn {
+  position: relative;
+  font-family: 'Playfair Display SC', serif;
+  background-color: #1E2A38 ;
+  color: #F4F7F9 ;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  left: 70%;
+  border: none;
+  padding: 8px 8px;
+  width: fit-content;
+  transition: 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+}
+
+.back-btn {
+  position: absolute;
+  font-family: 'Playfair Display SC', serif;
+  background-color: #1E2A38 ;
+  color: #F4F7F9 ;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  left: 8%;
+  border: none;
+  padding: 8px 8px;
+  width: fit-content;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+}
+
+.shipping-address {
+  margin-top: 20px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #F4F7F9;
+  width: 40%;
+  align-self: flex-start;
+}
+.ship-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.ship-name {
+
+  font-size: 1.25rem;
+}
+
+.ship-line {
+  opacity: 0.85;
+}
+
+.confirm-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+.shipping-address {
+  text-align: left;
+  padding-left: 50px;
+  color: #F4F7F9;
+  line-height: 1.5;
+  width: 45%;
+}
+
+
+
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 45%;
+}
+
+

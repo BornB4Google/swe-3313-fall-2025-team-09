@@ -1,1 +1,14 @@
-<p>admin works!</p>
+<div class="admin-container">
+  <form class="admin-form">
+    <h2 class="admin-title">Admin</h2>
+    <aside class="admin-navbar">
+      <nav>
+        <button routerLink="admin">Dashboard</button>
+        <button routerLink="products">Products</button>
+        <button routerLink="orders">Orders</button>
+        <button routerLink="users">Users</button>
+      </nav>
+    </aside>
+    <main class="admin-content"><router-outlet></router-outlet> </main>
+  </form>
+</div>

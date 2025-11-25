@@ -1,0 +1,16 @@
+<h1 class="user-title">User Management</h1>
+
+<div class="user-content">
+  <h2>User List</h2>
+  <div class="user-grid">
+    <div class="user-card" *ngFor="let user of users">
+      <div class="user-line">
+        <strong>ID: </strong> {{ user.id }}
+        <strong>Name: </strong> {{ user.name }}
+        <strong>Email: </strong>{{ user.email }}
+          <strong>Role: </strong> {{ user.role }}
+          <button class="promote-btn" (click)="promoteToAdmin(user)" [disabled]="user.role === 'Admin'">Admin</button>
+      </div>
+    </div>
+  </div>
+</div>
