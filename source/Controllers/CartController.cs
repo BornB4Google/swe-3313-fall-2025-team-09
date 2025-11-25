@@ -28,11 +28,11 @@ public class CartController : ControllerBase
     {
         // Andrew Tressler
         //try to active find cart in db
-        var Cart = await _db.Carts
+        var cart = await _db.Carts
             .Where(c => c.UserId == userId && c.isActive)
             .SingleOrDefaultAsync();
         //if none found, make new one
-        if (Cart == null)
+        if (cart == null)
         {
             var c = new Cart();
             c.UserId = userId;
@@ -41,13 +41,13 @@ public class CartController : ControllerBase
                 .Where(u => u.UserId == userId).
                 SingleOrDefaultAsync();
             c.User = user;
-            Cart = c;
+            cart = c;
             await _db.AddAsync(c);
             await _db.SaveChangesAsync();
         }
 
-        var Dto = ConvertCartToDto(Cart);
-        return Ok(Dto);
+        var dto = ConvertCartToDto(cart);
+        return Ok(dto);
     }
     
     // POST /api/cart/items
