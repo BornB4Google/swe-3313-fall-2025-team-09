@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
 
@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 })
 export class LoginComponent {
  authService = inject(AuthService);
+  router = inject(Router);
  username:string = "";
  password:string = "";
 
@@ -25,6 +26,8 @@ export class LoginComponent {
       next: (response) => {
         console.log('Login Successful!');
         console.log('Server Response:', response);
+        this.router.navigate(['/inventory']);
+
       },
       error: (err)=>{
         console.log('Login failed!');
