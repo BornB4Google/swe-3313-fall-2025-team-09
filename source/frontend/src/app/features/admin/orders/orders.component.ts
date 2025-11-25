@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-orders',
-  imports: [],
+  imports: [
+    NgForOf
+  ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })
