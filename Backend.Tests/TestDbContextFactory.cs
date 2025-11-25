@@ -8,18 +8,25 @@ namespace Backend.Tests;
 public static class TestDbContextFactory
 {
     /// <summary>
-    /// Create a fresh in-memory context with no data.
+    /// Base helper: create a context with a specific in-memory database name.
     /// </summary>
-    public static StorefrontDbContext CreateEmpty()
+    public static StorefrontDbContext CreateContext(string dbName)
     {
         var options = new DbContextOptionsBuilder<StorefrontDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .UseInMemoryDatabase(databaseName: dbName)
+            .EnableSensitiveDataLogging()
             .Options;
 
         var ctx = new StorefrontDbContext(options);
         ctx.Database.EnsureCreated();
         return ctx;
     }
+
+    /// <summary>
+    /// Create a fresh in-memory context with no preset data.
+    /// </summary>
+    public static StorefrontDbContext CreateEmpty()
+        => CreateContext(Guid.NewGuid().ToString());
 
     /// <summary>
     /// Create a fresh in-memory context pre-seeded with a couple of InventoryItems.
@@ -55,4 +62,4 @@ public static class TestDbContextFactory
         return ctx;
     }
 }
-}
+   

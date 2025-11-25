@@ -12,3 +12,9 @@ public class UserSummaryDto
     public string Email { get; set; } = string.Empty;
     public bool IsAdmin { get; set; }
 }
+
+public class AdminDto
+{
+    public int UserId { get; set; }
+    public bool IsAdmin { get; set; }
+}
