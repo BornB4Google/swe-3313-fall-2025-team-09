@@ -131,7 +131,7 @@ public class CartController : ControllerBase
         {
             CartId = cart.CartId,
             ItemId = request.ItemId,
-            Quantity = 1
+            
         });
 
         await _db.SaveChangesAsync();
@@ -143,7 +143,7 @@ public class CartController : ControllerBase
     
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]
-    public async Task<IActionResult> RemoveItem(int itemId)
+    public async Task<IActionResult> RemoveItem(int id)
     {
         var userId = GetUserId();
 
@@ -157,7 +157,7 @@ public class CartController : ControllerBase
             return NotFound("Cart not found");
         }
 
-        var cartItem = cart.Items.FirstOrDefault(i => i.ItemId == itemId);
+        var cartItem = cart.Items.FirstOrDefault(i => i.ItemId == id);
 
         if (cartItem == null)
         {

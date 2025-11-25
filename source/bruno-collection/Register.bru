@@ -1,22 +1,39 @@
 meta {
   name: Register
   type: http
-  seq: 3
+  seq: 1
 }
 
 post {
-  url: http://localhost:8080/api/auth/register
+  url: http://localhost:5243/api/auth/login
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "username": "Isaac",
-    "password": "clanker",
-    "email": "isaac@offshore.baby",
-    "firstName": "Isaac",
-    "lastName": "Thoman"
+      "username": "Amelia",
+      "password": "thisissixcharactersmaybe",
+      "email": "amelia@offshore.baby",
+      "firstName": "Amelia",
+      "lastName": "Ellingson"
+    }
+  
+  
+  
+}
+
+body:text {
+  {
+  "username": "testuser2",
+  "password": "Test123!"
+  }
+  
+  
+  {
+  "token": "",
+  "username": "testuser2",
+  "isAdmin": false
   }
 }
 

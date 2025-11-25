@@ -1,0 +1,25 @@
+meta {
+  name: GetCart
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:5243/api/cart
+  body: none
+  auth: inherit
+}
+
+headers {
+  username: "Isaac",
+  password: "clanker",
+  email: "isaac@offshore.baby",
+  firstName: "Isaac",
+  lastName: "Thoman"
+  Cookie: _authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwidW5pcXVlX25hbWUiOiJJc2FhYyIsImlzQWRtaW4iOiJmYWxzZSIsImV4cCI6MTc2NDExMDYwMSwiaXNzIjoiT2Zmc2hvcmVTdG9yZWZyb250IiwiYXVkIjoiT2Zmc2hvcmVTdG9yZWZyb250In0.TXo6rSm0CkUbOE4EtmqMcRxne2sTk8vs4Npc4_TI7G0
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
