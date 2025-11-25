@@ -52,13 +52,13 @@ public class CartController : ControllerBase
              // Andrew To Do- implement add to cart logic
              
              var Item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
+             Cart cart = await _db.Carts
+                 .Where(c => c.CartId == request.CartId).
+                 SingleOrDefaultAsync();
              CartItem cItem = new CartItem();
              cItem.CartId = request.CartId;
              cItem.ItemId = request.ItemId;
              cItem.InventoryItem = Item;
-             Cart cart = await _db.Carts
-                 .Where(c => ).
-                 SingleOrDefaultAsync();
              cart.Items.Add(cItem);
              await _db.SaveChangesAsync();
              return StatusCode(200);
