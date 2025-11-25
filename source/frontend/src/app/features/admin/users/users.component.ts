@@ -19,7 +19,6 @@ import {of, Subject} from 'rxjs';
 })
 export class UsersComponent {
   adminUserService = inject(AdminUserService);
-  private refreshTrigger$ = new Subject<void>();
   users = toSignal(this.adminUserService.getUsers(), { initialValue: [] as User[] });
 
   updateUserRole(id: number, makeAdmin: boolean) {
