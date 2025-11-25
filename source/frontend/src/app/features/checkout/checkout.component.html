@@ -1,21 +1,49 @@
 <div class="checkout-container">
-  <form class="checkout-form">
+  <form class="checkout-form" #checkoutForm="ngForm" (ngSubmit)="confirmOrder(checkoutForm)">
     <h2 class="checkout-title">Check Out</h2>
 
     <div class="info-box">
       <div class="input-grid">
-        <input type="text" class="name" placeholder="Your Name" [(ngModel)]="checkoutData.name" name="name"/>
-        <input type="text" class="address1"  placeholder="Address Line 1" [(ngModel)]="checkoutData.address1" name="address1" />
+        <input type="text" class="name"
+               placeholder="Your Name"
+               [(ngModel)]="checkoutData.name"
+               required
+               name="name"/>
+        <input type="text"
+               class="address1"
+               placeholder="Address Line 1"
+               required
+               [(ngModel)]="checkoutData.address1"
+               name="address1" />
         <input type="tel"
                class="number"
+               name="phone"
+               required
                placeholder="Phone Number"
-               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-               maxlength="10"
+               pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+               maxlength="12"
+               [(ngModel)]="checkoutData.phone"
                (input)="formatPhone($event)"/>
-        <input type="text" class="email" placeholder="Email Address" />
+        <input type="email"
+               class="email"
+               placeholder="Email Address"
+               name="email"
+               required
+               email
+               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+               [(ngModel)]="checkoutData.email"
+               #emailRef="ngModel">
         <div class="city-state-zip">
-          <input type="text" class="input" placeholder="City" [(ngModel)]="checkoutData.city" name="city"/>
-          <select class="input2" placeholder="State" [(ngModel)]="checkoutData.state" name="state">
+          <input type="text" class="input"
+                 placeholder="City"
+                 required
+                 [(ngModel)]="checkoutData.city"
+                 name="city"/>
+          <select class="input2"
+                  placeholder="State"
+                  required
+                  [(ngModel)]="checkoutData.state"
+                  name="state">
             <option value="state">State</option>
             <option>AL</option>
             <option>AK</option>
@@ -85,21 +113,28 @@
         <input type="text"
                class="credit-card"
                placeholder="Credit Card #"
+               name="card"
                required
-               pattern="[0-9]{3} [0-9]{3} [0-9]{4} [0-9]{4}"
-               maxlength="16"
+               pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
+               maxlength="19"
+               [(ngModel)]="checkoutData.card"
                (input)="formatCC($event)"/>
         <input type="text"
                class="exp"
+               name="exp"
+               required
                placeholder="XX/XXXX"
                maxlength="6"
+               [(ngModel)]="checkoutData.exp"
                (input)="formatDate($event)"/>
         <input type="text"
                class="cvv"
                placeholder="CVV"
+               name="cvv"
                required
                pattern="[0-9]{3}"
                maxlength="3"
+               [(ngModel)]="checkoutData.cvv"
                (input)="formatNumOnly($event)" />
       </div>
     </div>
@@ -132,7 +167,7 @@
       </div>
     </div>
     <div class="confirm-buttons">
-      <button class="confirm-order-btn" (click)="confirmOrder()">Confirm Order &#11162;</button>
+      <button class="confirm-order-btn" type="submit">Confirm Order &#11162;</button>
       <button class="back-btn" routerLink="/inventory">⮘ Back</button>
     </div>
 

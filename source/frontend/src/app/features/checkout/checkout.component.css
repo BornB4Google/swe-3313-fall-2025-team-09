@@ -267,3 +267,10 @@
   background-color: #a7b3bc;
   color: #0a0f1c;
 }
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 2px solid #ff4d4d !important;
+  background-color: rgba(255, 0, 0, 0.15) !important;
+  color: #F4F7F9 !important;
+}
