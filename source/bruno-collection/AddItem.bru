@@ -1,0 +1,23 @@
+meta {
+  name: AddItem
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:5243/api/cart/items
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "ItemId": "0",
+    "CartId": "0"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

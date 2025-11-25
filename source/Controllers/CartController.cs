@@ -4,6 +4,7 @@ using Backend.DTOs;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers;
@@ -47,21 +48,30 @@ public class CartController : ControllerBase
     // POST /api/cart/items
     [HttpPost("items")]
     public async Task<IActionResult> AddItem([FromBody] AddToCartRequest request)
-    {
-        // Andrew To Do- implement add to cart logic
-        
-        var Item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
-        CartItem cItem = new CartItem();
-        
-        
-        return StatusCode(501, "Not implemented yet");
-    }
+         {
+             // Andrew To Do- implement add to cart logic
+             
+             var Item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
+             CartItem cItem = new CartItem();
+             cItem.CartId = request.CartId;
+             cItem.ItemId = request.ItemId;
+             cItem.InventoryItem = Item;
+             Cart cart = await _db.Carts
+                 .Where(c => c.CartId == request.CartId).
+                 SingleOrDefaultAsync();
+             cart.Items.Add(cItem);
+             await _db.SaveChangesAsync();
+             return StatusCode(200);
+         }
     
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]
     public async Task<IActionResult> RemoveItem(int id)
     {
         // Andrew To Do- delete from cart logic
+        
+        
+        
         
         return StatusCode(501, "Not implemented yet");
     }
