@@ -56,7 +56,7 @@ using (var scope = app.Services.CreateScope())
             FirstName = "John",
             LastName = "Pork",
             Email = "jpork@gmail.com",
-            IsAdmin = true
+            IsAdmin = false
         });
     }
 

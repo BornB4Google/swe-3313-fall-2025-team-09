@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {AdminUserService} from '../../../services/admin-user/admin-user.service';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {User} from '../../../models/user.models';
+import {of, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -17,13 +18,13 @@ import {User} from '../../../models/user.models';
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
-
   adminUserService = inject(AdminUserService);
+  private refreshTrigger$ = new Subject<void>();
+  users = toSignal(this.adminUserService.getUsers(), { initialValue: [] as User[] });
 
-
-  users = toSignal(this.adminUserService.getUsers(),{ initialValue: [] as User[] });
-
-  promoteToAdmin(user: any) {
-    user.role = "Admin";
+  updateUserRole(id: number, makeAdmin: boolean) {
+    this.adminUserService.setUserRole(id, makeAdmin).subscribe(users => {
+      this.users = toSignal(of(users), { initialValue: [] });
+    });
   }
 }
