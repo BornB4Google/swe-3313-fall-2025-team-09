@@ -21,7 +21,7 @@ public class UsersController : ControllerBase
     //GET /api/users/me
     // returns current logged-n user's profile
     [HttpGet("me")]
-    [Authorize]
+    [Authorize(Roles = "User, Admin")] 
     public async Task<IActionResult> GetCurrentUser()
     {
         var userIdClaim = User.FindFirst("UserId")?.Value;
