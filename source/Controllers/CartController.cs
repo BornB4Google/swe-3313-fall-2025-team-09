@@ -56,18 +56,22 @@ public class CartController : ControllerBase
          {
              // Andrew To Do- implement add to cart logic
              
-             var Item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
-             Cart cart = await _db.Carts
+             var item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
+             var cart = await _db.Carts
                  .Where(c => c.CartId == request.CartId).
                  SingleOrDefaultAsync();
-             
+
+             if (item == null) return StatusCode(404, "No item found with id" + request.ItemId);
              if(cart == null) return StatusCode(404, "No cart found with id" + request.CartId);
              
-             CartItem cItem = new CartItem();
-             cItem.CartId = request.CartId;
-             cItem.ItemId = request.ItemId;
-             cItem.InventoryItem = Item;
+             var cItem = new CartItem()
+             {
+                 CartId = request.CartId,
+                 ItemId = request.ItemId,
+                 InventoryItem = item
+             };
              cart.Items.Add(cItem);
+             
              await _db.SaveChangesAsync();
              return StatusCode(200);
          }
@@ -79,7 +83,7 @@ public class CartController : ControllerBase
     {
         // Andrew To Do- delete from cart logic
         //TODO - Account for invalid IDs or null variables
-        CartItem cItem = await _db.CartItems.Where(cI => cI.ItemId == id).SingleOrDefaultAsync();
+        var cItem = await _db.CartItems.Where(cI => cI.ItemId == id).SingleOrDefaultAsync();
 
         if (cItem == null) return StatusCode(404, "No cartItem found with id" + id);
         
@@ -113,7 +117,6 @@ public class CartController : ControllerBase
             dto.Items.Add(cItemDto);
         }
         return dto;
-        
     }
     
     
