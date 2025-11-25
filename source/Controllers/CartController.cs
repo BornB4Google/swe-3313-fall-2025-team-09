@@ -57,7 +57,7 @@ public class CartController : ControllerBase
              cItem.ItemId = request.ItemId;
              cItem.InventoryItem = Item;
              Cart cart = await _db.Carts
-                 .Where(c => c.CartId == request.CartId).
+                 .Where(c => ).
                  SingleOrDefaultAsync();
              cart.Items.Add(cItem);
              await _db.SaveChangesAsync();
