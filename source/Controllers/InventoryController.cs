@@ -20,7 +20,7 @@ public class InventoryController : ControllerBase
     
     // Get /api/inventory
     [HttpGet]
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetAll()
     {
         var items = await _db.InventoryItems
