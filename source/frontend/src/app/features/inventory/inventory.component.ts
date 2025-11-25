@@ -1,9 +1,9 @@
-import {Component, inject} from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {InventoryService} from '../../services/inventory/inventory.service';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {InventoryItem} from '../../models/inventory.models';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from "@angular/router";
+import {CommonModule } from "@angular/common";
+import { InventoryService } from '../../services/inventory/inventory.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { InventoryItem } from '../../models/inventory.models';
 import { CartService } from '../../services/cart/cart.service';
 
 

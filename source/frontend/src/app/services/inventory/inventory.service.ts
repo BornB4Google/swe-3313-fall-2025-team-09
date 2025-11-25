@@ -22,4 +22,9 @@ export class InventoryService {
     return this.http.get<InventoryItem[]>('/api/inventory');
   }
 
+  addInventoryItem(item: InventoryItem): Observable<InventoryItem>{
+    return this.http.post<InventoryItem>('/api/inventory', item);
+  }
+
+
 }
