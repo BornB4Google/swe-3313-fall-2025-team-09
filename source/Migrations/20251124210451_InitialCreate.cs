@@ -5,7 +5,7 @@
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class SyncStorefrontModel : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,7 +73,8 @@ namespace backend.Migrations
                 {
                     CartId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    isActive = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,7 +94,7 @@ namespace backend.Migrations
                     SaleId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SaleDateTime = table.Column<string>(type: "TEXT", nullable: false),
+                    SaleDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Subtotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     Tax = table.Column<decimal>(type: "TEXT", nullable: false),
                     ShippingCost = table.Column<decimal>(type: "TEXT", nullable: false),

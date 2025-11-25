@@ -3,6 +3,7 @@ using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 
 #nullable disable
 
@@ -23,6 +24,9 @@ namespace backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isActive")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CartId");
@@ -120,7 +124,7 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SaleDateTime")
+                    b.Property<DateTime>("SaleDateTime")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

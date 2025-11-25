@@ -29,9 +29,20 @@ At this point, the frontend should be running at [localhost:4200](http://localho
 
 ## Backend Setup
 1. Run the ASP.NET Core application from project root (/source):
-    ```bash
-    ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend.csproj
-    ```
+   
+Linux/macOS:
+
+```bash
+ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend.csproj
+```
+
+Windows (PowerShell):
+
+```bash
+$env:ASPNETCORE_ENVIRONMENT="Development"; dotnet run --project backend.csproj
+```
+
+    
 Because the ASPNETCORE_ENVIRONMENT variable is set to Development, the backend will automatically proxy requests to the frontend running at localhost:4200.
 
 You should now be able to preview the full app at [localhost:5243](http://localhost:5243). Edits made to the frontend should also automatically reload the page.

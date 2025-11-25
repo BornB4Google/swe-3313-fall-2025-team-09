@@ -1,0 +1,15 @@
+meta {
+  name: inventory
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:5243/api/inventory
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
