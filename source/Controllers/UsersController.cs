@@ -21,7 +21,7 @@ public class UsersController : ControllerBase
     // Admin only.. change a user to an admin
     [HttpPut("{id:int}/role")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> UpdateRole(int id, [FromBody] ChangeUserRoleRequest request)
+    public async Task<IActionResult> UpdateRole(int id, [FromBody] AdminDto request)
     {
         //Andrew To Do- implement user to admin status logic
         return StatusCode(501, "Not implemented yet");
