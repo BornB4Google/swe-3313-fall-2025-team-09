@@ -31,3 +31,253 @@
 
 }
 
+
+
+.receipt-form {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 800px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0px 20px rgba(84, 112, 154, 0.7);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.receipt-box {
+  position: relative;
+  height: 50px;
+  background-color: #0A0F1C;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+
+.receipt-title{
+  font-size: 2rem;
+}
+.receipt-box:after {
+  content: '';
+  position: absolute;
+  top: 125px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 750px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
+
+
+}
+
+.receipt-box:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 750px;
+  height: 2px;
+  background-color: #A7B3BC;
+  border-radius: 2px;
+
+
+}
+
+.item-name, .item-price {
+  position: absolute;
+
+}
+
+
+.item-name{
+  position: absolute;
+  transform: translateY(-50%);
+  left: 30px;
+  font-size: 1.2rem;
+
+}
+
+.item-price{
+  position: absolute;
+  transform: translateY(-50%);
+  right: 30px;
+  font-size: 1.2rem;
+}
+.shipping, .subtotal, .tax, .total {
+  left: 35%;
+}
+
+
+.shipping{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.subtotal{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.tax{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.total{
+  position: relative;
+  left: 35%;
+  font-size: 1.2rem;
+}
+
+.shipping, .subtotal, .tax, .total {
+  left: -15px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+}
+
+
+
+
+.shipping-address {
+  margin-top: 20px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #F4F7F9;
+  width: 40%;
+  align-self: flex-start;
+}
+.ship-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.ship-name {
+
+  font-size: 1.25rem;
+}
+
+.ship-line {
+  opacity: 0.85;
+}
+.receipt-info {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.receipt-info th,
+.receipt-info td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  width: 25%;
+}
+
+.receipt-info th {
+  background-color: #1a2332;
+  color: #F4F7F9;
+  font-weight: bold;
+}
+
+.receipt-info td {
+  color: #F4F7F9;
+}
+.receipt-info tr:hover {
+  background-color: #1a2332;
+}
+
+
+.receipt-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+.shipping-address {
+  text-align: left;
+  padding-left: 50px;
+  color: #F4F7F9;
+  line-height: 1.5;
+  width: 45%;
+}
+
+
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 45%;
+}
+.receipt-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+
+.overlay {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  backdrop-filter: blur(8px);
+  display: flex;
+  width: 1000px;
+  height: 550px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+
+
+.overlay-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000000;
+  color: #A7B3BC;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.overlay-close-btn:hover {
+  background-color: #A7B3BC;
+  color: #0A0F1C;
+  transform: scale(1.05);
+}
+
+.order-grid {
+
+
+}
