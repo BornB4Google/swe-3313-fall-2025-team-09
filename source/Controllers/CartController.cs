@@ -4,6 +4,7 @@ using Backend.DTOs;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers;
 
@@ -20,22 +21,73 @@ public class CartController : ControllerBase
         _db = db;
     }
     
+    
+    //Exract userId from JWT token for security
+    private int GetUserId()
+    {
+        if (int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var userId))
+            return userId;
+        throw new UnauthorizedAccessException("Invalid user ID");
+    }
+    
+    
     // GET /api/cart
     [HttpGet]
     public async Task<IActionResult> GetCart()
     {
-        // Andrew to do - get users cart logic
+        //collect userId from JWT
+        var userId = GetUserId();
+        
+        var cart = await _db.Carts
+            .Include(c => c.Items)
+                .ThenInclude(i => i.InventoryItem)
+            .FirstOrDefaultAsync(c => c.UserId == userId && c.isActive);
 
-        return StatusCode(501, "Not implemented yet");
+
+        //if cart is empty, return an empty CartDTO
+        if (cart == null)
+        {
+            return Ok(new CartDto
+            {
+                Items = new List<CartItemDto>(),
+                Total = 0
+
+            });
+        }
+
+        //return DTO instead of database entity
+        var response = new CartDto
+        {
+            Items = cart.Items.Select(i => new CartItemDto
+            {
+                CartItemId = i.ItemId,
+                ItemId = i.ItemId,
+                Name = i.InventoryItem.Name,
+                Category = i.InventoryItem.Category,
+                UnitPrice = i.InventoryItem.Price,
+                PrimaryPhotoUrl = i.InventoryItem.PrimaryPhotoUrl
+            }).ToList(),
+
+            Total = cart.Items.Sum(i => i.InventoryItem.Price)
+        };
+
+        return Ok(response); //return the cart
     }
     
     // POST /api/cart/items
     [HttpPost("items")]
     public async Task<IActionResult> AddItem([FromBody] AddToCartRequest request)
     {
-        // Andrew To Do- implement add to cart logic
+        var userId = GetUserId();
+
+        var item = await _db.InventoryItems.FindAsync(request.ItemId);
+
+        if (item == null)
+        {
+            return NotFound("Item not found");
+        }
         
-        return StatusCode(501, "Not implemented yet");
+        if (item.IsSold)
     }
     
     // DELETE /api/cart/items/{id}
