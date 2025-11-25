@@ -97,7 +97,7 @@ public class UsersController : ControllerBase
     // Admin only. change a user to an admin
     [HttpPut("{id:int}/role")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> UpdateRole(int id, [FromBody] ChangeUserRoleRequest request)
+    public async Task<IActionResult> UpdateRole(int id, [FromBody] AdminDto request)
     {
         var user = await _db.Users.FindAsync(id);
         if (user is null)
