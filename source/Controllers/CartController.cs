@@ -24,25 +24,30 @@ public class CartController : ControllerBase
     
     // GET /api/cart
     [HttpGet]
-    public async Task<Cart> GetCart(int userID)
+    public async Task<ActionResult<CartDto>> GetCart(int userId)
     {
-        // Andrew to do - get users cart logic
+        // Andrew Tressler
+        //try to active find cart in db
         var Cart = await _db.Carts
-            .Where(c => c.UserId == userID && c.isActive)
+            .Where(c => c.UserId == userId && c.isActive)
             .SingleOrDefaultAsync();
+        //if none found, make new one
         if (Cart == null)
         {
-            Cart c = new Cart();
-            c.UserId = userID;
+            var c = new Cart();
+            c.UserId = userId;
             c.isActive = true;
-            User user = await _db.Users
-                .Where(u => u.UserId == userID).
+            var user = await _db.Users
+                .Where(u => u.UserId == userId).
                 SingleOrDefaultAsync();
             c.User = user;
+            Cart = c;
             await _db.AddAsync(c);
             await _db.SaveChangesAsync();
         }
-        return Cart;
+
+        var Dto = ConvertCartToDto(Cart);
+        return Ok(Dto);
     }
     
     // POST /api/cart/items
@@ -55,6 +60,7 @@ public class CartController : ControllerBase
              Cart cart = await _db.Carts
                  .Where(c => c.CartId == request.CartId).
                  SingleOrDefaultAsync();
+             if(cart == null) return StatusCode(404, "No cart found with id" + request.CartId);
              CartItem cItem = new CartItem();
              cItem.CartId = request.CartId;
              cItem.ItemId = request.ItemId;
@@ -72,6 +78,8 @@ public class CartController : ControllerBase
         // Andrew To Do- delete from cart logic
         //TODO - Account for invalid IDs or null variables
         CartItem cItem = await _db.CartItems.Where(cI => cI.ItemId == id).SingleOrDefaultAsync();
+
+        if (cItem == null) return StatusCode(404, "No cartItem found with id" + id);
         
         ///Law of Demeter? more like Suggestion of Demeter
         cItem.Cart.Items.Remove(cItem);
@@ -81,4 +89,15 @@ public class CartController : ControllerBase
         
         return StatusCode(200, "Removed item from cart.");
     }
+    
+    //helper methods
+
+    private async Task<CartDto> ConvertCartToDto(Cart cart)
+    {
+        
+    }
+    
+    
+    
+    
 }
