@@ -72,7 +72,7 @@ public class AuthController : ControllerBase
         if (user.PasswordHash != hashedPassword)
             return BadRequest("Incorrect password");
 
-        // ---------- Build JWT token ----------
+        // Build JWT token
         var jwtSection = _config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -96,7 +96,7 @@ public class AuthController : ControllerBase
 
         var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-        // ---------- Set JWT as HttpOnly cookie ----------
+        // Set JWT cookie
         Response.Cookies.Append(
             "authToken",
             tokenString,
@@ -108,7 +108,6 @@ public class AuthController : ControllerBase
                 Expires = DateTimeOffset.UtcNow.AddMinutes(expiryMinutes)
             });
 
-        // OPTIONAL: still return basic info (no token needed in body anymore)
         return Ok(new LoginResponse
         {
             Token = string.Empty,       // not used when using cookie-based auth
