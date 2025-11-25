@@ -1,37 +1,71 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.DTOs;
 
 // One item within an order
 public class OrderItemDto
 {
-    public int ItemId { get; set; }      
+    public int ItemId { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Category { get; set; } = string.Empty;
-
-    public decimal UnitPrice { get; set; }
-
- 
-    public decimal Subtotal => UnitPrice;
+    public decimal Price { get; set; }
+    public string PrimaryPhotoUrl { get; set; } = string.Empty;
 }
 
-// An order placed by a user
-public class OrderDto
+// Summary info for listing orders
+public class OrderSummaryDto
 {
-    public int OrderId { get; set; }
-    public int UserId { get; set; }
+    public int SaleId { get; set; }
+    public DateTime SaleDateTime { get; set; }
+    public decimal Total { get; set; }
+    public int ItemCount { get; set; }
+}
 
-    public DateTime CreatedAt { get; set; }
-    public string Status { get; set; } = string.Empty;   // "Pending", "Completed", etc.
+// Full details for a single order
+public class OrderDetailDto
+{
+    public int SaleId { get; set; }
+    public DateTime SaleDateTime { get; set; }
+    public decimal Subtotal { get; set; }
+    public decimal Tax { get; set; }
+    public decimal ShippingCost { get; set; }
+    public decimal Total { get; set; }
+
+    public string ShippingSpeed { get; set; } = string.Empty;
+    public string Street1 { get; set; } = string.Empty;
+    public string? Street2 { get; set; }
+    public string City { get; set; } = string.Empty;
+    public string State { get; set; } = string.Empty;
+    public string Zip { get; set; } = string.Empty;
+    public string CardLast4 { get; set; } = string.Empty;
 
     public List<OrderItemDto> Items { get; set; } = new();
-
-    public decimal Total { get; set; }
 }
 
 // Request body for POST /api/orders/checkout
-public class CheckoutRequest
+public class CheckoutRequestDto
 {
-    public string Notes { get; set; } = string.Empty;
+    [Required]
+    public string ShippingSpeed { get; set; } = string.Empty;
+
+    [Required]
+    public string Street1 { get; set; } = string.Empty;
+
+    public string? Street2 { get; set; }
+
+    [Required]
+    public string City { get; set; } = string.Empty;
+
+    [Required]
+    [MinLength(2)]
+    public string State { get; set; } = string.Empty;
+
+    [Required]
+    [MinLength(5)]
+    public string Zip { get; set; } = string.Empty;
+
+    [Required]
+    [MinLength(4), MaxLength(4)]
+    public string CardLast4 { get; set; } = string.Empty;
 }
