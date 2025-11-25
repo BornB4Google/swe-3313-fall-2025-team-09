@@ -1,16 +1,18 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Backend.DTOs;
-using Backend.Data;
-using Backend.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Configuration;
+using System.Security.Cryptography;
+using System.Text;
+
+using Backend.Data;
+using Backend.DTOs;
+using Backend.Models;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Backend.Controllers;
 
@@ -32,15 +34,20 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        if (string.IsNullOrWhiteSpace(request.Username)) return BadRequest("No username given.");
-        if (string.IsNullOrWhiteSpace(request.Password)) return BadRequest("No password given.");
-        if (string.IsNullOrWhiteSpace(request.Email)) return BadRequest("No email given.");
-        if (await _db.Users.AnyAsync(p => p.Username == request.Username)) return BadRequest("Another user already took this username.");
+        if (string.IsNullOrWhiteSpace(request.Username))
+            return BadRequest("No username given.");
+        if (string.IsNullOrWhiteSpace(request.Password))
+            return BadRequest("No password given.");
+        if (string.IsNullOrWhiteSpace(request.Email))
+            return BadRequest("No email given.");
+
+        if (await _db.Users.AnyAsync(u => u.Username == request.Username))
+            return BadRequest("Another user already took this username.");
 
         var newUser = new User
         {
             Username = request.Username,
-            PasswordHash = computePasswordHash(request.Password),
+            PasswordHash = ComputePasswordHash(request.Password),
             FirstName = request.FirstName,
             LastName = request.LastName,
             Email = request.Email,
@@ -50,7 +57,7 @@ public class AuthController : ControllerBase
         _db.Users.Add(newUser);
         await _db.SaveChangesAsync();
 
-        return StatusCode(200, "Successfully registered new account");
+        return Ok("Successfully registered new account");
     }
 
     // POST /api/auth/login
@@ -58,10 +65,10 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        if (string.IsNullOrWhiteSpace(request.Username)) return BadRequest("No username given.");
-        if (string.IsNullOrWhiteSpace(request.Password)) return BadRequest("No password given.");
-
-        string hashedPassword = computePasswordHash(request.Password);
+        if (string.IsNullOrWhiteSpace(request.Username))
+            return BadRequest("No username given.");
+        if (string.IsNullOrWhiteSpace(request.Password))
+            return BadRequest("No password given.");
 
         var user = await _db.Users
             .SingleOrDefaultAsync(u => u.Username == request.Username);
@@ -69,22 +76,34 @@ public class AuthController : ControllerBase
         if (user == null)
             return BadRequest("User not found.");
 
+        var hashedPassword = ComputePasswordHash(request.Password);
         if (user.PasswordHash != hashedPassword)
             return BadRequest("Incorrect password");
 
-        // Build JWT token
+        // Build JWT toke
         var jwtSection = _config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var claims = new List<Claim>
         {
+            // subject / user id
             new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
+            // username
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+            // admin flag 
             new Claim("isAdmin", user.IsAdmin ? "true" : "false")
         };
 
-        var expiryMinutes = int.TryParse(jwtSection["ExpiryMinutes"], out var mins) ? mins : 60;
+        // add role claim 
+        if (user.IsAdmin)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        }
+
+        var expiryMinutes = int.TryParse(jwtSection["ExpiryMinutes"], out var mins)
+            ? mins
+            : 60;
 
         var token = new JwtSecurityToken(
             issuer: jwtSection["Issuer"],
@@ -103,14 +122,15 @@ public class AuthController : ControllerBase
             new CookieOptions
             {
                 HttpOnly = true,
-                Secure = true,           // assume HTTPS in prod; in dev you can temporarily set false
+                Secure = true,                 // HTTPS in prod; okay for dev with http if needed
                 SameSite = SameSiteMode.Strict,
                 Expires = DateTimeOffset.UtcNow.AddMinutes(expiryMinutes)
             });
 
         return Ok(new LoginResponse
         {
-            Token = string.Empty,       // not used when using cookie-based auth
+            // token is carried only in cookie for this app
+            Token = string.Empty,
             Username = user.Username,
             IsAdmin = user.IsAdmin
         });
@@ -118,26 +138,24 @@ public class AuthController : ControllerBase
 
     // POST /api/auth/logout
     [HttpPost("logout")]
-    [Authorize]  // only logged-in users should log out logically
+    [Authorize]
     public IActionResult Logout()
     {
-        // Delete the auth cookie so browser stops sending the token
         Response.Cookies.Delete("authToken");
-        return StatusCode(200, "Successfully logged out");
+        return Ok("Successfully logged out");
     }
 
-    private string computePasswordHash(string s)
+    // helpers
+
+    private static string ComputePasswordHash(string s)
     {
         var sb = new StringBuilder();
 
-        using (var hash = SHA256.Create())
-        {
-            Encoding enc = Encoding.UTF8;
-            byte[] result = hash.ComputeHash(enc.GetBytes(s));
+        using var hash = SHA256.Create();
+        byte[] result = hash.ComputeHash(Encoding.UTF8.GetBytes(s));
 
-            foreach (byte b in result)
-                sb.Append(b.ToString("x2"));
-        }
+        foreach (byte b in result)
+            sb.Append(b.ToString("x2"));
 
         return sb.ToString();
     }

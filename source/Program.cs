@@ -1,10 +1,16 @@
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Backend;
 using Backend.Data;
 using Backend.Models;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,13 +28,10 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddHttpClient();
 }
 
-
-// JWT authentication and authorization configuration
-
 var jwtSection = builder.Configuration.GetSection("Jwt");
-var jwtKey = jwtSection["Key"] ?? throw new InvalidOperationException("JWT Key not configured.");
-var jwtIssuer = jwtSection["Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured.");
-var jwtAudience = jwtSection["Audience"] ?? throw new InvalidOperationException("JWT Audience not configured.");
+var jwtKey = jwtSection["Key"];
+var jwtIssuer = jwtSection["Issuer"];
+var jwtAudience = jwtSection["Audience"];
 
 builder.Services
     .AddAuthentication(options =>
@@ -41,28 +44,24 @@ builder.Services
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = jwtIssuer,
-
             ValidateAudience = true,
-            ValidAudience = jwtAudience,
-
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-
             ValidateLifetime = true,
-            ClockSkew = TimeSpan.FromMinutes(1)
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
 
-        // Read token from HttpOnly cookie "authToken"
+        // Read JWT from HttpOnly cookie
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
             {
-                var token = context.Request.Cookies["authToken"];
-                if (!string.IsNullOrEmpty(token))
+                if (context.Request.Cookies.TryGetValue("authToken", out var token))
                 {
                     context.Token = token;
                 }
+
                 return Task.CompletedTask;
             }
         };
@@ -76,9 +75,7 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-
-// database migration and seeding
-
+// Database migration and seeding
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<StorefrontDbContext>();
@@ -92,7 +89,7 @@ using (var scope = app.Services.CreateScope())
         {
             UserId = 1,
             Username = "award62",
-            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            PasswordHash = PasswordHasher.ComputePasswordHash("Admin1!"),
             FirstName = "Amy",
             LastName = "Ward",
             Email = "award62@students.kennesaw.edu",
