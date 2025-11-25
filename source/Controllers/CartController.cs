@@ -66,13 +66,19 @@ public class CartController : ControllerBase
     
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]
+    //id = CartItem id
     public async Task<IActionResult> RemoveItem(int id)
     {
         // Andrew To Do- delete from cart logic
+        //TODO - Account for invalid IDs or null variables
+        CartItem cItem = await _db.CartItems.Where(cI => cI.ItemId == id).SingleOrDefaultAsync();
         
+        ///Law of Demeter? more like Suggestion of Demeter
+        cItem.Cart.Items.Remove(cItem);
+        _db.CartItems.Remove(cItem);
         
+        await _db.SaveChangesAsync();
         
-        
-        return StatusCode(501, "Not implemented yet");
+        return StatusCode(200, "Removed item from cart.");
     }
 }
