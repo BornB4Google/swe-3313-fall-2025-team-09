@@ -1,8 +1,12 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+
 using Backend.DTOs;
 using Backend.Data;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers;
 
@@ -16,57 +20,61 @@ public class UsersController : ControllerBase
     {
         _db = db;
     }
-    
-    
-    //GET /api/users/me
-    // returns current logged-n user's profile
+
+    // GET /api/users/me
+    // Returns the currently logged-in user's profile based on JWT "sub" claim
     [HttpGet("me")]
     [Authorize]
     public async Task<IActionResult> GetCurrentUser()
     {
-        var userIdClaim = User.FindFirst("UserId")?.Value;
-        if (userIdClaim == null || !int.TryParse(userIdClaim, out var userId))
+        // JWT is created in AuthController with:
+        var sub = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value
+                  ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (sub == null || !int.TryParse(sub, out var userId))
             return Unauthorized();
-        
+
         var user = await _db.Users
             .Where(u => u.UserId == userId)
-            .Select (u => new 
-                {
-                u.Username,
+            .Select(u => new
+            {
                 u.UserId,
+                u.Username,
                 u.FirstName,
                 u.LastName,
                 u.Email,
-                
-                })
+                u.IsAdmin
+            })
             .FirstOrDefaultAsync();
+
         if (user == null)
             return NotFound();
+
         return Ok(user);
     }
-    
+
     // GET /api/users
-    //Admin only - list all users for management
-    [HttpGet()]
+    // Admin only - list all users for management
+    [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAll()
     {
         var users = await _db.Users
             .OrderBy(u => u.UserId)
             .Select(u => new
-                {
-                    u.UserId,
-                    u.Username,
-                    u.FirstName,
-                    u.LastName,
-                    u.Email,
-                    u.IsAdmin
-                })
+            {
+                u.UserId,
+                u.Username,
+                u.FirstName,
+                u.LastName,
+                u.Email,
+                u.IsAdmin
+            })
             .ToListAsync();
-        
+
         return Ok(users);
     }
-    
+
     // GET /api/users/{id}
     // Admin only - get specific user details
     [HttpGet("{id:int}")]
@@ -85,27 +93,29 @@ public class UsersController : ControllerBase
                 u.IsAdmin
             })
             .FirstOrDefaultAsync();
-        
+
         if (user == null)
             return NotFound();
-        
+
         return Ok(user);
     }
-    
-    
+
     // PUT /api/users/{id}/role
-    // Admin only. change a user to an admin
+    // Admin only - change a user to/from admin
     [HttpPut("{id:int}/role")]
-   // [Authorize(Roles = "Admin")] //TODO uncomment whern auth implemented
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateRole(int id, [FromBody] AdminDto request)
     {
+        if (request == null)
+            return BadRequest("Request body is required.");
+
         var user = await _db.Users.FindAsync(id);
         if (user is null)
-            return NotFound(new { message = "User Not Found" });
+            return NotFound(new { message = "User not found" });
 
         user.IsAdmin = request.IsAdmin;
         await _db.SaveChangesAsync();
-        
+
         return Ok(new
         {
             message = "User role updated successfully",
@@ -114,5 +124,6 @@ public class UsersController : ControllerBase
             isAdmin = user.IsAdmin
         });
     }
-
 }
+
+
