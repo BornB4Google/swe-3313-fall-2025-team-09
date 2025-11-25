@@ -78,24 +78,89 @@ public class CartController : ControllerBase
     [HttpPost("items")]
     public async Task<IActionResult> AddItem([FromBody] AddToCartRequest request)
     {
+        //collect userId from JWT
         var userId = GetUserId();
 
         var item = await _db.InventoryItems.FindAsync(request.ItemId);
 
+        //validation for null item
         if (item == null)
         {
             return NotFound("Item not found");
         }
-        
+
+        //validation for sold item
         if (item.IsSold)
+        {
+            return BadRequest("Item is sold out");
+        }
+        
+        //
+        var cart = await _db.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == userId && c.isActive);
+
+        if (cart == null)
+        {
+            cart = new Cart
+            {
+                UserId = userId,
+                isActive = true,
+                Items = new List<CartItem>()
+            };
+            
+            _db.Carts.Add(cart);
+            await _db.SaveChangesAsync();
+        }
+        
+        
+        if (cart.Items.Any(i => i.ItemId == item.ItemId))
+        {
+            return BadRequest("Item already in cart");
+        }
+        
+        
+        cart.Items.Add(new CartItem
+        {
+            CartId = cart.CartId,
+            ItemId = request.ItemId,
+            Quantity = 1
+        });
+
+        await _db.SaveChangesAsync();
+
+        return Ok(new { message = "Added to cart" });
     }
+    
+    
     
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]
-    public async Task<IActionResult> RemoveItem(int id)
+    public async Task<IActionResult> RemoveItem(int itemId)
     {
-        // Andrew To Do- delete from cart logic
-        
-        return StatusCode(501, "Not implemented yet");
+        var userId = GetUserId();
+
+        var cart = await _db.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == userId && c.isActive);
+        ;
+
+        if (cart == null)
+        {
+            return NotFound("Cart not found");
+        }
+
+        var cartItem = cart.Items.FirstOrDefault(i => i.ItemId == itemId);
+
+        if (cartItem == null)
+        {
+            return NotFound("Item not found in cart");
+        }
+
+        cart.Items.Remove(cartItem);
+        await _db.SaveChangesAsync();
+
+        return Ok(new { message = "Item removed from cart" });
     }
+
 }
