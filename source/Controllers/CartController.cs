@@ -4,6 +4,7 @@ using Backend.DTOs;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers;
 
@@ -22,11 +23,25 @@ public class CartController : ControllerBase
     
     // GET /api/cart
     [HttpGet]
-    public async Task<IActionResult> GetCart()
+    public async Task<Cart> GetCart(int userID)
     {
         // Andrew to do - get users cart logic
-
-        return StatusCode(501, "Not implemented yet");
+        var Cart = await _db.Carts
+            .Where(c => c.UserId == userID && c.isActive)
+            .SingleOrDefaultAsync();
+        if (Cart == null)
+        {
+            Cart c = new Cart();
+            c.UserId = userID;
+            c.isActive = true;
+            User user = await _db.Users
+                .Where(u => u.UserId == userID).
+                SingleOrDefaultAsync();
+            c.User = user;
+            await _db.AddAsync(c);
+            await _db.SaveChangesAsync();
+        }
+        return Cart;
     }
     
     // POST /api/cart/items
@@ -34,6 +49,10 @@ public class CartController : ControllerBase
     public async Task<IActionResult> AddItem([FromBody] AddToCartRequest request)
     {
         // Andrew To Do- implement add to cart logic
+        
+        var Item = await _db.InventoryItems.Where(i => i.ItemId == request.ItemId).SingleOrDefaultAsync();
+        CartItem cItem = new CartItem();
+        
         
         return StatusCode(501, "Not implemented yet");
     }
