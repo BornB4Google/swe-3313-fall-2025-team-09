@@ -1,0 +1,70 @@
+
+.user-title {
+  position: absolute;
+  align-content: center;
+  left: 50%;
+  top: 250px;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #F4F7F9;
+}
+
+.user-content {
+  font-family: 'Playfair Display SC', serif;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #0A0F1C;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  width: 80%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.user-grid {
+  margin-top: 80px;
+  display: grid;
+  flex-direction: row;
+
+}
+
+.user-card{
+  background-color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  color: #F4F7F9;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+  transition: transform 0.1s ease;
+}
+
+.user-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.promote-btn {
+  background-color: #A7B3BC;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+
+
+}
+
+.promote-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
+}
+
