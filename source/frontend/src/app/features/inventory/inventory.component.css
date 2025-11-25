@@ -13,10 +13,12 @@ Ice White	#F4F7F9
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  padding: 60px 0;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  overflow: visible;
   background: linear-gradient(135deg, #0A0F1C, #1E2A38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
@@ -26,10 +28,9 @@ Ice White	#F4F7F9
 
 .inventory-title {
   font-size: 3rem;
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  text-align: center;
+
 
 }
 .inventory-title:after{
@@ -46,27 +47,6 @@ Ice White	#F4F7F9
 
 }
 
-/*
-.inventory-container::after {
-  content: 'OFFSHORE';
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Playfair Display SC', serif;
-  font-size: 20rem;
-  color: rgba(62, 92, 118, 0.07);
-  letter-spacing: 10px;
-  pointer-events: none;
-  z-index: 0;
-
-}
-*/
-
-
-
-
-
 
 .inventory-grid{
   position: relative;
@@ -77,6 +57,8 @@ Ice White	#F4F7F9
   top: 30px;
   padding: 25px;
   justify-items: center;
+  align-items: flex-start;
+
 }
 @media (max-width: 900px) {
   .inventory-grid {
@@ -90,14 +72,6 @@ Ice White	#F4F7F9
 }
 
 
-
-.inventory-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-  padding: 100px;
-}
 
 .inventory-box {
   position: relative;
@@ -226,8 +200,8 @@ Ice White	#F4F7F9
 
 .overlay {
   position: fixed;
+  top: 200px;
   background-color: #000000;
-  backdrop-filter: blur(8px);
   display: flex;
   width: 800px;
   height: 600px;

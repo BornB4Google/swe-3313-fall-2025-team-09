@@ -20,7 +20,7 @@ public class InventoryController : ControllerBase
     
     // Get /api/inventory
     [HttpGet]
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetAll()
     {
         var items = await _db.InventoryItems
@@ -52,7 +52,7 @@ public class InventoryController : ControllerBase
 
     // Get /api/inventory/{id}
     [HttpGet("{id:int}")]
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetById(int id)
     {
         var item = await _db.InventoryItems
@@ -88,7 +88,7 @@ public class InventoryController : ControllerBase
     // POST /api/inventory  (Admin)
     // Add an inventory item
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> Create([FromBody] InventoryItemWriteDto dto)
     {
         if (!ModelState.IsValid)
