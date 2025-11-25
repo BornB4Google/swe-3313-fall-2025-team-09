@@ -94,11 +94,11 @@ public class CartController : ControllerBase
     
     //helper methods
 
-    private async Task<CartDto> ConvertCartToDto(Cart cart)
+    private static CartDto ConvertCartToDto(Cart cart)
     {
-        List<CartItem> CartItems = cart.Items.ToList();
-        CartDto Dto = new CartDto();
-        foreach (CartItem ci in CartItems)
+        var cartItems = cart.Items.ToList();
+        var dto = new CartDto();
+        foreach (var ci in cartItems)
         {
             CartItemDto cItemDto = new CartItemDto()
             {
@@ -110,9 +110,9 @@ public class CartController : ControllerBase
                 UnitPrice = ci.InventoryItem.Price,
                 PrimaryPhotoUrl = ci.InventoryItem.PrimaryPhotoUrl
             };
-            Dto.Items.Add(cItemDto);
+            dto.Items.Add(cItemDto);
         }
-        return Dto;
+        return dto;
         
     }
     
