@@ -6,7 +6,12 @@
       <div class="input-grid">
         <input type="text" class="name" placeholder="Your Name" [(ngModel)]="checkoutData.name" name="name"/>
         <input type="text" class="address1"  placeholder="Address Line 1" [(ngModel)]="checkoutData.address1" name="address1" />
-        <input type="text" class="number"  placeholder="Phone Number" />
+        <input type="tel"
+               class="number"
+               placeholder="Phone Number"
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+               maxlength="10"
+               (input)="formatPhone($event)"/>
         <input type="text" class="email" placeholder="Email Address" />
         <div class="city-state-zip">
           <input type="text" class="input" placeholder="City" [(ngModel)]="checkoutData.city" name="city"/>
@@ -65,14 +70,37 @@
             <option>WY</option>
           </select>
 
-          <input type="text" class="zipcode" placeholder="Zip code" [(ngModel)]="checkoutData.zip" name="zipcode"/>
+          <input type="text"
+                 class="zipcode"
+                 placeholder="Zip code"
+                 [(ngModel)]="checkoutData.zip"
+                 name="zipcode"
+                 required
+                 pattern="[0-9]*"
+                 maxlength="5"
+                 (input)="formatNumOnly($event)"/>
         </div>
       </div>
-
       <div class="input-grid2">
-        <input type="text" class="credit-card" placeholder="Credit Card #" />
-        <input type="text" class="exp" placeholder="XX/XXXX" />
-        <input type="text" class="cvv" placeholder="CVV" />
+        <input type="text"
+               class="credit-card"
+               placeholder="Credit Card #"
+               required
+               pattern="[0-9]{3} [0-9]{3} [0-9]{4} [0-9]{4}"
+               maxlength="16"
+               (input)="formatCC($event)"/>
+        <input type="text"
+               class="exp"
+               placeholder="XX/XXXX"
+               maxlength="6"
+               (input)="formatDate($event)"/>
+        <input type="text"
+               class="cvv"
+               placeholder="CVV"
+               required
+               pattern="[0-9]{3}"
+               maxlength="3"
+               (input)="formatNumOnly($event)" />
       </div>
     </div>
     <div class="confirm-columns">
