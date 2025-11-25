@@ -60,7 +60,9 @@ public class CartController : ControllerBase
              Cart cart = await _db.Carts
                  .Where(c => c.CartId == request.CartId).
                  SingleOrDefaultAsync();
+             
              if(cart == null) return StatusCode(404, "No cart found with id" + request.CartId);
+             
              CartItem cItem = new CartItem();
              cItem.CartId = request.CartId;
              cItem.ItemId = request.ItemId;
@@ -94,6 +96,23 @@ public class CartController : ControllerBase
 
     private async Task<CartDto> ConvertCartToDto(Cart cart)
     {
+        List<CartItem> CartItems = cart.Items.ToList();
+        CartDto Dto = new CartDto();
+        foreach (CartItem ci in CartItems)
+        {
+            CartItemDto cItemDto = new CartItemDto()
+            {
+                //law of what now?
+                CartItemId = ci.ItemId,
+                ItemId = ci.InventoryItem.ItemId,
+                Name = ci.InventoryItem.Name,
+                Category =  ci.InventoryItem.Category,
+                UnitPrice = ci.InventoryItem.Price,
+                PrimaryPhotoUrl = ci.InventoryItem.PrimaryPhotoUrl
+            };
+            Dto.Items.Add(cItemDto);
+        }
+        return Dto;
         
     }
     
