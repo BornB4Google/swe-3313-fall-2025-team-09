@@ -1,7 +1,10 @@
 using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+
 using Backend.Data;
 using Backend.DTOs;
 using Backend.Models;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,8 +28,12 @@ public class CartController : ControllerBase
     //Exract userId from JWT token for security
     private int GetUserId()
     {
-        if (int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var userId))
+        var sub = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value
+                  ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (int.TryParse(sub, out var userId))
             return userId;
+
         throw new UnauthorizedAccessException("Invalid user ID");
     }
     
