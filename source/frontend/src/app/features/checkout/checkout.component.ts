@@ -38,6 +38,26 @@ export class CheckoutComponent {
     this.shipService.shippingInfo = this.checkoutData;
     this.router.navigate(['/confirm']);
   }
+  formatPhone(event:any) {
+    let value = event.target.value.replace(/[^0-9]/g, '');
+    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    event.target.value = value;
+  }
+  formatCC(event:any) {
+    let value = event.target.value.replace(/[^0-9]/g, '');
+    value = value.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+    event.target.value = value;
+  }
+  formatNumOnly(event:any) {
+    let value = event.target.value.replace(/[^0-9]/g, '');
 
+    event.target.value = value;
+  }
+  formatDate(event:any) {
+    let value = event.target.value.replace(/[^0-9]/g, '');
+    value = value.replace(/(\d{2})(\d{4})/, '$1/$2');
+    event.target.value = value;
+  }
 
 }
+
