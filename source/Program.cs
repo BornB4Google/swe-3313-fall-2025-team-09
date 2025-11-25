@@ -38,6 +38,26 @@ using (var scope = app.Services.CreateScope())
             Email = "award62@students.kennesaw.edu",
             IsAdmin = true
         });
+        db.Users.Add(new User
+        {
+            UserId = 2,
+            Username = "ithoman67",
+            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            FirstName = "Isaac",
+            LastName = "Thoman",
+            Email = "ithoman67@students.kennesaw.edu",
+            IsAdmin = true
+        });
+        db.Users.Add(new User
+        {
+            UserId = 3,
+            Username = "john",
+            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            FirstName = "John",
+            LastName = "Pork",
+            Email = "jpork@gmail.com",
+            IsAdmin = true
+        });
     }
 
     if (!db.InventoryItems.Any())

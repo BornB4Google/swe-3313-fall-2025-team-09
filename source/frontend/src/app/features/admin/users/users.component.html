@@ -3,13 +3,13 @@
 <div class="user-content">
   <h2>User List</h2>
   <div class="user-grid">
-    <div class="user-card" *ngFor="let user of users">
+    <div class="user-card" *ngFor="let user of users()">
       <div class="user-line">
-        <strong>ID: </strong> {{ user.id }}
-        <strong>Name: </strong> {{ user.name }}
+        <strong>ID: </strong> {{ user.userId }}
+        <strong>Name: </strong> {{ user.firstName }}
         <strong>Email: </strong>{{ user.email }}
-          <strong>Role: </strong> {{ user.role }}
-          <button class="promote-btn" (click)="promoteToAdmin(user)" [disabled]="user.role === 'Admin'">Admin</button>
+          <strong>Admin: </strong> {{ user.isAdmin }}
+          <button class="promote-btn" (click)="promoteToAdmin(user)" [disabled]="user.isAdmin">Make Admin</button>
       </div>
     </div>
   </div>
