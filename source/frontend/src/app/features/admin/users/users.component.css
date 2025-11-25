@@ -48,6 +48,34 @@
   gap: 15px;
 }
 
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  width: 16.66%; /* Evenly distribute 6 columns */
+}
+
+.user-table th {
+  background-color: #1a2332;
+  color: #F4F7F9;
+  font-weight: bold;
+}
+
+.user-table td {
+  color: #F4F7F9;
+}
+
+.user-table tr:hover {
+  background-color: #1a2332;
+}
+
 .promote-btn {
   background-color: #A7B3BC;
   color: #000000;
@@ -59,8 +87,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
   align-self: flex-end;
-
-
 }
 
 .promote-btn:hover {

@@ -2,15 +2,39 @@
 
 <div class="user-content">
   <h2>User List</h2>
-  <div class="user-grid">
-    <div class="user-card" *ngFor="let user of users">
-      <div class="user-line">
-        <strong>ID: </strong> {{ user.id }}
-        <strong>Name: </strong> {{ user.name }}
-        <strong>Email: </strong>{{ user.email }}
-          <strong>Role: </strong> {{ user.role }}
-          <button class="promote-btn" (click)="promoteToAdmin(user)" [disabled]="user.role === 'Admin'">Admin</button>
-      </div>
-    </div>
-  </div>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users()">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.isAdmin }}</td>
+        <td>
+          <button
+            class="promote-btn"
+            (click)="updateUserRole(user.userId, true)"
+            [hidden]="user.isAdmin">
+            Make Admin
+          </button>
+          <button
+            class="promote-btn"
+            (click)="updateUserRole(user.userId, false)"
+            [hidden]="!user.isAdmin">
+            Make User
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
