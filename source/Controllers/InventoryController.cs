@@ -1,4 +1,6 @@
 using Backend.Data;
+using Backend.DTOs;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
@@ -47,7 +49,7 @@ public class InventoryController : ControllerBase
 
         return Ok(items);
     }
-    
+
     // Get /api/inventory/{id}
     [HttpGet("{id:int}")]
     [AllowAnonymous]
@@ -84,29 +86,106 @@ public class InventoryController : ControllerBase
     }
     
     // POST /api/inventory  (Admin)
+    // Add an inventory item
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public IActionResult Create()
+    public async Task<IActionResult> Create([FromBody] InventoryItemWriteDto dto)
     {
-        // ANDREW TO DO : implement create inventory item business logic
-        return StatusCode(501, "Not implemented yet");
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var entity = new InventoryItem
+        {
+            Name = dto.Name,
+            Description = dto.Description,
+            Price = dto.Price,
+            PrimaryPhotoUrl = dto.PrimaryPhotoUrl,
+            Category = dto.Category,
+            IsSold = dto.IsSold
+        };
+
+        _db.InventoryItems.Add(entity);
+        await _db.SaveChangesAsync();
+
+        var result = new
+        {
+            entity.ItemId,
+            entity.Name,
+            entity.Description,
+            entity.Price,
+            entity.PrimaryPhotoUrl,
+            entity.Category,
+            entity.IsSold,
+            Images = Array.Empty<object>()
+        };
+
+        return CreatedAtAction(nameof(GetById), new { id = entity.ItemId }, result);
     }
 
     // PUT /api/inventory/{id} (Admin)
+    // Update an inventory item
     [HttpPut("{id:int}")]
     [Authorize(Roles = "Admin")]
-    public IActionResult Update(int id)
+    public async Task<IActionResult> Update(int id, [FromBody] InventoryItemWriteDto dto)
     {
-        // Andrew To Do: implement update inventory item logic
-        return StatusCode(501, "Not implemented yet");
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var entity = await _db.InventoryItems
+            .Include(i => i.Images)
+            .FirstOrDefaultAsync(i => i.ItemId == id);
+
+        if (entity is null)
+            return NotFound();
+        
+        entity.Name = dto.Name;
+        entity.Description = dto.Description;
+        entity.Price = dto.Price;
+        entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl;
+        entity.Category = dto.Category;
+        entity.IsSold = dto.IsSold;
+
+        await _db.SaveChangesAsync();
+
+        var result = new
+        {
+            entity.ItemId,
+            entity.Name,
+            entity.Description,
+            entity.Price,
+            entity.PrimaryPhotoUrl,
+            entity.Category,
+            entity.IsSold,
+            Images = entity.Images
+                .OrderBy(img => img.DisplayOrder)
+                .Select(img => new
+                {
+                    img.ImageId,
+                    img.ImageUrl,
+                    img.DisplayOrder
+                })
+                .ToList()
+        };
+
+        return Ok(result);
     }
 
     // DELETE /api/inventory/{id} (Admin)
+    // Delete an inventory item
     [HttpDelete("{id:int}")]
     [Authorize(Roles = "Admin")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        // Andrew To Do: implement delete item logic
-        return StatusCode(501, "Not implemented yet");
+        var entity = await _db.InventoryItems
+            .Include(i => i.Images)
+            .FirstOrDefaultAsync(i => i.ItemId == id);
+
+        if (entity is null)
+            return NotFound();
+        
+        _db.InventoryItems.Remove(entity);
+        await _db.SaveChangesAsync();
+
+        return NoContent();
     }
 }
