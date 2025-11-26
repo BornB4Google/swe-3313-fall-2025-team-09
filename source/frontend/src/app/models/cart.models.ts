@@ -10,9 +10,9 @@ export interface ShippingInfo {
   city: string;
   state: string;
   zip: string;
-  email: string,
-  phone: string,
-  card: string,
-  exp: string,
-  cvv: string,
+  email: string;
+  phone: string;
+  card: string;
+  exp: string;
+  cvv: string;
 }

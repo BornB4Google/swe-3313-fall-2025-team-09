@@ -48,7 +48,6 @@ export class CheckoutComponent implements OnInit {
     }
     this.shipService.shippingInfo = this.checkoutData;
 
-
     this.shipService.shippingCost = this.shippingCost;
     this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
 

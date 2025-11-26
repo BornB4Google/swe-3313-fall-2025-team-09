@@ -178,11 +178,13 @@
         <label class="shipping-column">
           <span class="ship-label">3 Day Shipping </span>
           <span class="ship-price">$19.99</span>
-          <input type="radio"
-                 name="shipping"
-                 value="3Day"
-                 [checked]="shipService.selectedOption === 'ThreeDay'"
-                 (change)="updateShipping('ThreeDay')" />
+          <input
+            type="radio"
+            name="shipping"
+            value="3Day"
+            [checked]="shipService.selectedOption === 'ThreeDay'"
+            (change)="updateShipping('ThreeDay')"
+          />
           <span class="ship-radio"></span>
         </label>
 
