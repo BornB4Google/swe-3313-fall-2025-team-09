@@ -138,11 +138,11 @@ public class AuthController : ControllerBase
 
     // POST /api/auth/logout
     [HttpPost("logout")]
-    [Authorize]
+    [Authorize(Roles = "User, Admin")]
     public IActionResult Logout()
     {
         Response.Cookies.Delete("authToken");
-        return Ok("Successfully logged out");
+        return Ok(new { message = "Successfully logged out" });
     }
 
     // helpers

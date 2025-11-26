@@ -26,6 +26,14 @@ export class AuthService {
     );
   }
 
+  logout() {
+    console.log('logout')
+    const body = {  };
+    return this.http.post(`/api/auth/logout`, body).pipe(
+      tap(() => this.refreshCurrentUser(true))
+    );
+  }
+
   refreshCurrentUser(forceReload = false): void {
     if (forceReload) {
       this.hasFetchedCurrentUser = false;
