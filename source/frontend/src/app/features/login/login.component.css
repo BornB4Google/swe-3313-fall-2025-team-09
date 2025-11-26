@@ -71,3 +71,10 @@
   background-color: #a7b3bc;
   color: #0a0f1c;
 }
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0 0 5px;
+}

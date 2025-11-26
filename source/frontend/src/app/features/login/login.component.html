@@ -3,6 +3,7 @@
     <h2 class="login-title">Login</h2>
     <input type="text" name="username" [(ngModel)]="username" placeholder="Username" />
     <input type="password" name="password" [(ngModel)]="password" placeholder="Password" />
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
     <button class="login-btn" (click)="login()">Log In</button>
     <button class="login-btn" routerLink="/signup">Don't have an account?</button>
   </form>
