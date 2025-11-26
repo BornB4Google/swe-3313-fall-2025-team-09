@@ -17,6 +17,10 @@
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="bruno-collection\UserController_Test\UserController_Test.json" />
+    </ItemGroup>
+
     <!-- Ensure Node is present -->
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition="'$(BuildSpa)' == 'true'">
         <Exec Command="node --version" ContinueOnError="true">

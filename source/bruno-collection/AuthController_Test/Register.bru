@@ -1,0 +1,43 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5243/api/auth/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "username": "testuser",
+      "password": "testpass123",
+      "email": "test@offshore.baby",
+      "firstName": "Test",
+      "lastName": "User"
+    }
+  
+  
+  
+}
+
+body:text {
+  {
+  "username": "testuser2",
+  "password": "Test123!"
+  }
+  
+  
+  {
+  "token": "",
+  "username": "testuser2",
+  "isAdmin": false
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
