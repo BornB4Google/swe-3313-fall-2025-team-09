@@ -13,6 +13,7 @@
   text-align: center;
 
 }
+
 .shopping-cart-title{
   font-size: 2rem;
 }
@@ -183,6 +184,12 @@
   color: #0a0f1c;
 }
 
+.checkout-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
 .back-btn {
   position: absolute;
   font-family: 'Playfair Display SC', serif;
@@ -202,4 +209,15 @@
 .back-btn:hover {
   background-color: #a7b3bc;
   color: #0a0f1c;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #A7B3BC;
+}
+
+.empty-message {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display SC', serif;
 }
