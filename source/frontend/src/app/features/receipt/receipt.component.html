@@ -22,10 +22,10 @@
         <div class="ship-line">{{ shipping.city }}, {{ shipping.state }} {{ shipping.zip }}</div>
       </div>
       <div class="pricing-container">
-        <h2 class="shipping">Shipping: $0.00</h2>
-        <h2 class="subtotal">Subtotal: $0.00</h2>
-        <h2 class="tax">Tax: $0.00</h2>
-        <h2 class="total">Total: $0.00</h2>
+        <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' }}</h2>
+        <h2 class="subtotal">Subtotal: {{ subtotal | currency: 'USD' }}</h2>
+        <h2 class="tax">Tax: {{ tax | currency: 'USD' }}</h2>
+        <h2 class="total">Total: {{ total | currency: 'USD' }}</h2>
       </div>
     </div>
     <div class="receipt-buttons">
