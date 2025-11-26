@@ -92,7 +92,9 @@ public class AuthController : ControllerBase
             // username
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
             // admin flag 
-            new Claim("isAdmin", user.IsAdmin ? "true" : "false")
+            new Claim("isAdmin", user.IsAdmin ? "true" : "false"),
+            // user claim
+            new Claim(ClaimTypes.Role, "User")
         };
 
         // add role claim 
