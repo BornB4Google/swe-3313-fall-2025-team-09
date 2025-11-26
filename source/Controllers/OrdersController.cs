@@ -11,7 +11,7 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize] // all endpoints require auth
+[Authorize]
 public class OrdersController : ControllerBase
 {
     private readonly StorefrontDbContext _db;
@@ -25,8 +25,8 @@ public class OrdersController : ControllerBase
     }
 
     // GET /api/orders
-    // Customer- their orders
-    // Admin- all orders
+    // Customer - their orders
+    // Admin - all orders
     [HttpGet]
     public async Task<ActionResult<IEnumerable<OrderSummaryDto>>> GetOrders()
     {
@@ -35,7 +35,8 @@ public class OrdersController : ControllerBase
 
         IQueryable<Sale> query = _db.Sales
             .AsNoTracking()
-            .Include(s => s.Items);
+            .Include(s => s.Items)
+            .Include(s => s.User); // 👈 need user info for Username
 
         if (!isAdmin)
         {
@@ -51,15 +52,17 @@ public class OrdersController : ControllerBase
             SaleId = s.SaleId,
             SaleDateTime = s.SaleDateTime,
             Total = s.Total,
-            ItemCount = s.Items.Count
+            ItemCount = s.Items.Count,
+            UserId = s.UserId,
+            Username = s.User?.Username ?? string.Empty
         }).ToList();
 
         return Ok(result);
     }
 
     // GET /api/orders/{id}
-    // Customer- can only see their own
-    // Admin- can see any
+    // Customer - can only see their own
+    // Admin - can see any
     [HttpGet("{id:int}")]
     public async Task<ActionResult<OrderDetailDto>> GetOrder(int id)
     {
@@ -68,6 +71,7 @@ public class OrdersController : ControllerBase
 
         var sale = await _db.Sales
             .AsNoTracking()
+            .Include(s => s.User) // 👈 include user
             .Include(s => s.Items)
                 .ThenInclude(si => si.InventoryItem)
             .SingleOrDefaultAsync(s => s.SaleId == id);
@@ -86,134 +90,134 @@ public class OrdersController : ControllerBase
         return Ok(dto);
     }
 
- // POST /api/orders/checkout
-// Turn the current user's active cart into a Sale
-[HttpPost("checkout")]
-public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequestDto request)
-{
-    if (!ModelState.IsValid)
+    // POST /api/orders/checkout
+    // Turn the current user's active cart into a Sale
+    [HttpPost("checkout")]
+    public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequestDto request)
     {
-        return BadRequest(ModelState);
-    }
-
-    var userId = GetUserIdFromClaims();
-
-    // Load the active cart for this user with items and inventory details
-    var cart = await _db.Carts
-        .Include(c => c.Items)
-            .ThenInclude(ci => ci.InventoryItem)
-        .SingleOrDefaultAsync(c => c.UserId == userId && c.isActive);
-
-    if (cart == null)
-    {
-        return BadRequest("No active cart found.");
-    }
-
-    if (cart.Items == null || cart.Items.Count == 0)
-    {
-        return BadRequest("Cart is empty.");
-    }
-
-    // Make sure none of the items are already sold
-    var soldItems = cart.Items
-        .Where(ci => ci.InventoryItem.IsSold)
-        .ToList();
-
-    if (soldItems.Any())
-    {
-        return BadRequest("One or more items in the cart are no longer available.");
-    }
-
-    // Each item is one-of-one, so subtotal is just sum of prices
-    var subtotal = cart.Items.Sum(ci => ci.InventoryItem.Price);
-
-    // 🔹 Shipping cost based on ShippingSpeed
-    decimal shippingCost;
-    string normalizedSpeed = request.ShippingSpeed.Trim();
-
-    switch (normalizedSpeed.ToLowerInvariant())
-    {
-        case "overnight":
-            shippingCost = 29m;
-            normalizedSpeed = "Overnight";
-            break;
-
-        case "3-day":
-        case "3 day":
-        case "3day":
-            shippingCost = 19m;
-            normalizedSpeed = "3-Day";
-            break;
-
-        case "ground":
-            shippingCost = 0m;
-            normalizedSpeed = "Ground";
-            break;
-
-        default:
-            return BadRequest("Invalid shipping speed. Must be 'Overnight', '3-Day', or 'Ground'.");
-    }
-
-    var tax = Math.Round(subtotal * TAX_RATE, 2, MidpointRounding.AwayFromZero);
-    var total = subtotal + tax + shippingCost;
-
-    var sale = new Sale
-    {
-        UserId = userId,
-        SaleDateTime = DateTime.UtcNow,
-        Subtotal = subtotal,
-        Tax = tax,
-        ShippingCost = shippingCost,
-        Total = total,
-        ShippingSpeed = normalizedSpeed,
-        Street1 = request.Street1,
-        Street2 = request.Street2,
-        City = request.City,
-        State = request.State,
-        Zip = request.Zip,
-        CardLast4 = request.CardLast4
-    };
-
-    _db.Sales.Add(sale);
-    await _db.SaveChangesAsync(); // get SaleId
-
-    // Create SaleItems (one per inventory item) and mark inventory as sold
-    foreach (var ci in cart.Items)
-    {
-        var saleItem = new SaleItem
+        if (!ModelState.IsValid)
         {
-            SaleId = sale.SaleId,
-            ItemId = ci.ItemId,
-            Quantity = 1, // always 1
-            UnitPrice = ci.InventoryItem.Price
+            return BadRequest(ModelState);
+        }
+
+        var userId = GetUserIdFromClaims();
+
+        // Load the active cart for this user with items and inventory details
+        var cart = await _db.Carts
+            .Include(c => c.Items)
+                .ThenInclude(ci => ci.InventoryItem)
+            .SingleOrDefaultAsync(c => c.UserId == userId && c.isActive);
+
+        if (cart == null)
+        {
+            return BadRequest("No active cart found.");
+        }
+
+        if (cart.Items == null || cart.Items.Count == 0)
+        {
+            return BadRequest("Cart is empty.");
+        }
+
+        // Make sure none of the items are already sold
+        var soldItems = cart.Items
+            .Where(ci => ci.InventoryItem.IsSold)
+            .ToList();
+
+        if (soldItems.Any())
+        {
+            return BadRequest("One or more items in the cart are no longer available.");
+        }
+        
+        var subtotal = cart.Items.Sum(ci => ci.InventoryItem.Price);
+
+        // Shipping cost based on ShippingSpeed
+        decimal shippingCost;
+        string normalizedSpeed = request.ShippingSpeed.Trim();
+
+        switch (normalizedSpeed.ToLowerInvariant())
+        {
+            case "overnight":
+                shippingCost = 29m;
+                normalizedSpeed = "Overnight";
+                break;
+
+            case "3-day":
+            case "3 day":
+            case "3day":
+                shippingCost = 19m;
+                normalizedSpeed = "3-Day";
+                break;
+
+            case "ground":
+                shippingCost = 0m;
+                normalizedSpeed = "Ground";
+                break;
+
+            default:
+                return BadRequest("Invalid shipping speed. Must be 'Overnight', '3-Day', or 'Ground'.");
+        }
+
+        var tax = Math.Round(subtotal * TAX_RATE, 2, MidpointRounding.AwayFromZero);
+        var total = subtotal + tax + shippingCost;
+
+        var sale = new Sale
+        {
+            UserId = userId,
+            SaleDateTime = DateTime.UtcNow,
+            Subtotal = subtotal,
+            Tax = tax,
+            ShippingCost = shippingCost,
+            Total = total,
+            ShippingSpeed = normalizedSpeed,
+            Street1 = request.Street1,
+            Street2 = request.Street2,
+            City = request.City,
+            State = request.State,
+            Zip = request.Zip,
+            CardLast4 = request.CardLast4
         };
 
-        _db.SaleItems.Add(saleItem);
+        _db.Sales.Add(sale);
+        await _db.SaveChangesAsync(); // get SaleId
 
-        // mark inventory item as sold
-        ci.InventoryItem.IsSold = true;
+        // Create SaleItems and mark inventory as sold
+        foreach (var ci in cart.Items)
+        {
+            var saleItem = new SaleItem
+            {
+                SaleId = sale.SaleId,
+                ItemId = ci.ItemId,
+                Quantity = 1, // always 1
+                UnitPrice = ci.InventoryItem.Price
+            };
+
+            _db.SaleItems.Add(saleItem);
+
+            // mark inventory item as sold
+            ci.InventoryItem.IsSold = true;
+        }
+
+        // Deactivate cart
+        cart.isActive = false;
+
+        await _db.SaveChangesAsync();
+
+        // Reload for DTO, including user
+        var completedSale = await _db.Sales
+            .Include(s => s.User) // 👈 include user here too
+            .Include(s => s.Items)
+                .ThenInclude(si => si.InventoryItem)
+            .SingleAsync(s => s.SaleId == sale.SaleId);
+
+        var dto = MapToDetailDto(completedSale);
+        return Ok(dto);
     }
-
-    // Deactivate cart
-    cart.isActive = false;
-
-    await _db.SaveChangesAsync();
-
-    // Update for DTO 
-    var completedSale = await _db.Sales
-        .Include(s => s.Items)
-            .ThenInclude(si => si.InventoryItem)
-        .SingleAsync(s => s.SaleId == sale.SaleId);
-
-    var dto = MapToDetailDto(completedSale);
-    return Ok(dto);
-}
 
     // Helpers
 
     private int GetUserIdFromClaims()
     {
-        // JWT created in AuthController: sub = UserId
+        // JWT created in AuthController
         var sub = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                   ?? User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -249,6 +253,8 @@ public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequ
             Tax = sale.Tax,
             ShippingCost = sale.ShippingCost,
             Total = sale.Total,
+            UserId = sale.UserId,
+            Username = sale.User?.Username ?? string.Empty,
             ShippingSpeed = sale.ShippingSpeed,
             Street1 = sale.Street1,
             Street2 = sale.Street2,

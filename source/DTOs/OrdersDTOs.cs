@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backend.DTOs;
@@ -13,16 +12,17 @@ public class OrderItemDto
     public string PrimaryPhotoUrl { get; set; } = string.Empty;
 }
 
-// Summary info for listing orders
 public class OrderSummaryDto
 {
     public int SaleId { get; set; }
     public DateTime SaleDateTime { get; set; }
     public decimal Total { get; set; }
     public int ItemCount { get; set; }
+    
+    public int UserId { get; set; }
+    public string Username { get; set; } = string.Empty;
 }
 
-// Full details for a single order
 public class OrderDetailDto
 {
     public int SaleId { get; set; }
@@ -31,6 +31,9 @@ public class OrderDetailDto
     public decimal Tax { get; set; }
     public decimal ShippingCost { get; set; }
     public decimal Total { get; set; }
+    
+    public int UserId { get; set; }
+    public string Username { get; set; } = string.Empty;
 
     public string ShippingSpeed { get; set; } = string.Empty;
     public string Street1 { get; set; } = string.Empty;
