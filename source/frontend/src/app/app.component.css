@@ -22,6 +22,15 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 2px;
+  color: #f4f7f9;
+  text-decoration: none;
+}
+
+.logo:visited,
+.logo:hover,
+.logo:active,
+.logo:focus {
+  color: #f4f7f9;
 }
 
 .nav-links {
@@ -87,6 +96,7 @@ body {
 .dropdown-menu li a {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .dropdown-menu li:hover {
