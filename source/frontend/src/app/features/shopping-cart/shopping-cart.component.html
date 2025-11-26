@@ -1,8 +1,13 @@
-<div class="shopping-cart-container">
+<div class="shopping-cart-container" >
+
   <form class="shopping-cart-form">
     <h2 class="shopping-cart-title">Your Cart</h2>
+    <div class="empty-cart" *ngIf="(cart$ | async)?.length === 0">
+      <p class="empty-message">Your cart is empty.</p>
+    </div>
     <div class="shopping-cart-box" *ngFor="let item of cart$ | async; trackBy: trackById">
-      <div class="shopping-cart-grid">
+
+    <div class="shopping-cart-grid">
         <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
         <h3 class="item-name">{{ item.name }}</h3>
         <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
@@ -12,7 +17,13 @@
     </div>
     <h2 class="subtotal">Subtotal: {{ subtotal | currency:'USD':'symbol':'1.2-2' }}</h2>
     <div class="cart-buttons">
-      <button  type="button" class="checkout-btn" routerLink="/checkout">Checkout &#11162;</button>
+      <button
+        type="button"
+        class="checkout-btn"
+        routerLink="/checkout"
+        [disabled]="cart.length === 0">
+        Checkout &#11162;
+      </button>
       <button type="button" class="back-btn" routerLink="/inventory">&#11160; Back</button>
     </div>
   </form>
