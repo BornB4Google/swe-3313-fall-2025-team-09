@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { ShippingInfo } from '../../models/cart.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShippingService {
-  shippingInfo: any = {};
-  constructor() {}
+  shippingInfo: ShippingInfo = {
+    name: '',
+    address1: '',
+    city: '',
+    state: '',
+    zip: '',
+  };
 }

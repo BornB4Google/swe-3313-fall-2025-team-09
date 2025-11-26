@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InventoryService } from '../../../services/inventory/inventory.service';
 import { CommonModule } from '@angular/common';
+import { InventoryItem, InventoryImage } from '../../../models/inventory.models';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './products.component.css',
 })
 export class ProductsComponent {
-  newProduct: any = {
+  private inventoryService = inject(InventoryService);
+
+  newProduct: InventoryItem = {
     itemId: 0,
     name: '',
     description: '',
@@ -21,9 +24,7 @@ export class ProductsComponent {
     isSold: false,
     images: [],
   };
-  products: any[] = [];
-
-  constructor(private inventoryService: InventoryService) {}
+  products: InventoryItem[] = [];
   submitNewProduct() {
     this.inventoryService.addInventoryItem(this.newProduct).subscribe({
       next: createdItem => {
@@ -43,6 +44,7 @@ export class ProductsComponent {
     });
   }
   addImage() {
-    this.newProduct.images.push({ imageId: 0, imageUrl: '' });
+    const newImage: InventoryImage = { imageId: 0, imageUrl: '', displayOrder: 0 };
+    this.newProduct.images.push(newImage);
   }
 }

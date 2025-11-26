@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs';
+import { CartItem } from '../../models/cart.models';
+import { InventoryItem } from '../../models/inventory.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart: any[] = [];
-  private cartItems = new BehaviorSubject<any[]>([]);
+  private cart: CartItem[] = [];
+  private cartItems = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItems.asObservable();
 
   private idCounter = 1;
@@ -17,7 +19,7 @@ export class CartService {
   private subtotalSubject = new BehaviorSubject<number>(0);
   subtotal$ = this.subtotalSubject.asObservable();
 
-  addToCart(item: any) {
+  addToCart(item: InventoryItem) {
     const cartItem = {
       ...item,
       _id: this.idCounter++,
@@ -44,7 +46,7 @@ export class CartService {
     this.subtotalSubject.next(subtotal);
   }
 
-  isInCart(id: number): boolean {
-    return this.cart.some(i => i.itemId === id);
+  isInCart(itemId: number): boolean {
+    return this.cart.some(i => i.itemId === itemId);
   }
 }

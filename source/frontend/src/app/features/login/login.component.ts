@@ -14,8 +14,8 @@ import { AuthService } from '../../services/auth/auth.service';
 export class LoginComponent {
   authService = inject(AuthService);
   router = inject(Router);
-  username: string = '';
-  password: string = '';
+  username = '';
+  password = '';
   errorMessage: string | null = null;
 
   login() {

@@ -4,6 +4,61 @@ on:
     branches:
       - '**'
 jobs:
+  frontend-format:
+    name: format-frontend (prettier)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: source/frontend/package-lock.json
+      - name: Install dependencies
+        working-directory: source/frontend
+        run: npm ci
+      - name: Check formatting with Prettier
+        working-directory: source/frontend
+        run: npx prettier --check "src/**/*.{ts,html,css,scss}"
+
+  frontend-lint:
+    name: lint-frontend (eslint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: source/frontend/package-lock.json
+      - name: Install dependencies
+        working-directory: source/frontend
+        run: npm ci
+      - name: Type check
+        working-directory: source/frontend
+        run: npx tsc --noEmit
+      - name: Lint
+        working-directory: source/frontend
+        run: npx ng lint
+
+  backend-format:
+    name: format-backend (dotnet format)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Verify formatting with dotnet format
+        working-directory: source
+        run: dotnet format backend.sln --verify-no-changes
+
   docker:
     runs-on: ubuntu-latest
     steps:

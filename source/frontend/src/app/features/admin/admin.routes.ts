@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Component } from '@angular/core';
 import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
 import { ProductsComponent } from './products/products.component';

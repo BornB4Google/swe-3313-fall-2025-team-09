@@ -9,13 +9,11 @@ import { Observable } from 'rxjs';
 export class AdminUserService {
   private http = inject(HttpClient);
 
-  constructor() {}
-
   getUsers() {
     return this.http.get<User[]>('/api/users');
   }
 
-  setUserRole(userId: number, isAdmin: boolean): Observable<any> {
+  setUserRole(userId: number, isAdmin: boolean): Observable<object> {
     const body = { isAdmin: isAdmin };
     return this.http.put(`/api/users/${userId}/role`, body);
   }

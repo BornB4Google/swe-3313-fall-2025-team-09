@@ -1,10 +1,10 @@
-import { Component, NgModule } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ShippingService } from '../../services/shipping/shipping.service';
-import { Router } from '@angular/router';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
+import { CartItem } from '../../models/cart.models';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +13,11 @@ import { CartService } from '../../services/cart/cart.service';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit {
+  private shipService = inject(ShippingService);
+  private router = inject(Router);
+  private cartService = inject(CartService);
+
   checkoutData = {
     name: '',
     address1: '',
@@ -21,27 +25,22 @@ export class CheckoutComponent {
     city: '',
     state: '',
     zip: '',
-    email: undefined,
-    phone: undefined,
-    card: undefined,
-    exp: undefined,
-    cvv: undefined,
+    email: undefined as string | undefined,
+    phone: undefined as string | undefined,
+    card: undefined as string | undefined,
+    exp: undefined as string | undefined,
+    cvv: undefined as string | undefined,
   };
-  constructor(
-    private shipService: ShippingService,
-    private router: Router,
-    private cartService: CartService
-  ) {}
 
-  subtotal: number = 0;
-  shippingCost: number = 0;
+  subtotal = 0;
+  shippingCost = 0;
 
-  shippingOptions: any = {
+  shippingOptions: Record<string, number> = {
     Overnight: 29.99,
     ThreeDay: 19.99,
     Ground: 0.0,
   };
-  total: number = 0;
+  total = 0;
 
   updateShipping(option: string) {
     this.shippingCost = this.shippingOptions[option];
@@ -52,9 +51,9 @@ export class CheckoutComponent {
     this.total = this.subtotal + this.shippingCost;
   }
 
-  confirmOrder(form: any) {
+  confirmOrder(form: NgForm) {
     if (form.invalid) {
-      Object.values(form.form.controls).forEach((control: any) => {
+      Object.values(form.controls).forEach(control => {
         control.markAsTouched();
       });
       return;
@@ -62,30 +61,33 @@ export class CheckoutComponent {
     this.shipService.shippingInfo = this.checkoutData;
     this.router.navigate(['/confirm']);
   }
-  formatPhone(event: any) {
-    let value = event.target.value.replace(/[^0-9]/g, '');
+  formatPhone(event: Event) {
+    const target = event.target as HTMLInputElement;
+    let value = target.value.replace(/[^0-9]/g, '');
     value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    event.target.value = value;
+    target.value = value;
     this.checkoutData.phone = value;
   }
-  formatCC(event: any) {
-    let value = event.target.value.replace(/[^0-9]/g, '');
+  formatCC(event: Event) {
+    const target = event.target as HTMLInputElement;
+    let value = target.value.replace(/[^0-9]/g, '');
     value = value.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
-    event.target.value = value;
+    target.value = value;
     this.checkoutData.card = value;
   }
-  formatNumOnly(event: any) {
-    let value = event.target.value.replace(/[^0-9]/g, '');
-
-    event.target.value = value;
+  formatNumOnly(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value.replace(/[^0-9]/g, '');
+    target.value = value;
   }
-  formatDate(event: any) {
-    let value = event.target.value.replace(/[^0-9]/g, '');
+  formatDate(event: Event) {
+    const target = event.target as HTMLInputElement;
+    let value = target.value.replace(/[^0-9]/g, '');
     value = value.replace(/(\d{2})(\d{4})/, '$1/$2');
-    event.target.value = value;
+    target.value = value;
   }
 
-  cart: any[] = [];
+  cart: CartItem[] = [];
 
   ngOnInit() {
     this.cartService.cartItems$.subscribe(items => (this.cart = items));

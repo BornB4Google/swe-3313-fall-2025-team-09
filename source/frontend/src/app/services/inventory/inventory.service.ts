@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpParameterCodec } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InventoryItem } from '../../models/inventory.models';
@@ -9,8 +9,6 @@ import { InventoryItem } from '../../models/inventory.models';
 })
 export class InventoryService {
   private http = inject(HttpClient);
-
-  constructor() {}
 
   getRandom() {
     return Math.random();

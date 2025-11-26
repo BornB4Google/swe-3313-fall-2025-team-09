@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { InventoryService } from '../../services/inventory/inventory.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -8,7 +7,7 @@ import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-inventory',
-  imports: [RouterLink, CommonModule],
+  imports: [CommonModule],
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
@@ -24,8 +23,8 @@ export class InventoryComponent {
   currentPage = 1;
   cartService = inject(CartService);
 
-  addToCart(item: any) {
-    if (this.cartService.isInCart(item)) {
+  addToCart(item: InventoryItem) {
+    if (this.cartService.isInCart(item.itemId)) {
       return;
     }
     this.cartService.addToCart(item);
