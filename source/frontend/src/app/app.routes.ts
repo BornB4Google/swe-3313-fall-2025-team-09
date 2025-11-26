@@ -9,10 +9,11 @@ import { AccountComponent } from './features/account/account.component';
 import { ConfirmComponent } from './features/confirm/confirm.component';
 import { ReceiptComponent } from './features/receipt/receipt.component';
 import { ADMIN_ROUTES } from './features/admin/admin.routes';
+import { redirectIfAuthenticatedGuard } from './guards/redirect-if-authenticated.guard';
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: '', component: LandingComponent, canActivate: [redirectIfAuthenticatedGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [redirectIfAuthenticatedGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [redirectIfAuthenticatedGuard] },
   { path: 'inventory', component: InventoryComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
