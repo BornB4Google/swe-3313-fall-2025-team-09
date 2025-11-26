@@ -58,15 +58,15 @@ public class ReportsController : ControllerBase
                 sale.State,
                 sale.Zip,
                 sale.CardLast4
-                
+
             })
             .ToListAsync();
 
-     //   return Ok();
+        //   return Ok();
         return Ok(items);
-            
-        
-        
+
+
+
         // return StatusCode(501, "Not implemented yet");
     }
 

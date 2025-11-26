@@ -1,4 +1,3 @@
-
 .dashboard-title {
   position: absolute;
   align-content: center;
@@ -6,28 +5,24 @@
   top: 250px;
   transform: translateX(-50%);
   font-size: 2rem;
-  color: #F4F7F9;
+  color: #f4f7f9;
 }
 
 .dashboard-content {
   font-family: 'Playfair Display SC', serif;
   margin-top: 40px;
   padding: 20px;
-  background-color: #0A0F1C;
+  background-color: #0a0f1c;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   width: 80%;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-
 }
-
 
 .dashboard-grid {
   margin-top: 80px;
   display: grid;
   flex-direction: row;
-
 }
-

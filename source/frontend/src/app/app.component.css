@@ -1,4 +1,3 @@
-
 .navbar {
   position: fixed;
   top: 0;
@@ -10,13 +9,13 @@
   align-items: center;
   padding: 15px 40px;
   box-sizing: border-box;
-  background-color: #0A0F1C;
-  color: #F4F7F9;
+  background-color: #0a0f1c;
+  color: #f4f7f9;
 }
 
 body {
   margin-top: 80px;
-  overflow-y: auto ;
+  overflow-y: auto;
 }
 
 .logo {
@@ -34,15 +33,15 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #F4F7F9;
+  color: #f4f7f9;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #3E5C76;
+  color: #3e5c76;
 }
 
-.dropdown-item.account-label{
+.dropdown-item.account-label {
   cursor: pointer;
   user-select: none;
 }
@@ -51,13 +50,13 @@ body {
   position: relative;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   list-style: none;
   display: none;
   position: absolute;
   top: 100%;
   right: -40px;
-  background-color: #0A0F1C;
+  background-color: #0a0f1c;
   padding: 10px 10px;
   min-width: 120px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
@@ -65,7 +64,9 @@ body {
   opacity: 0;
 
   transform: translateY(-10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 @keyframes dropdownFade {
@@ -89,7 +90,7 @@ body {
 }
 
 .dropdown-menu li:hover {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown:hover .dropdown-menu,
@@ -98,5 +99,3 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
-

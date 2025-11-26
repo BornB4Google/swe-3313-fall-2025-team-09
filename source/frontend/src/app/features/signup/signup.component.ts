@@ -1,55 +1,45 @@
-import {Component, inject} from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
-import {AuthService} from '../../services/auth/auth.service';
-import {FormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
-  imports: [
-    RouterLink,
-    FormsModule,
-    NgIf
-  ],
+  imports: [RouterLink, FormsModule, NgIf],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent {
   authService = inject(AuthService);
   router = inject(Router);
 
-  firstName:string = "";
-  lastName:string = "";
-  username:string = "";
-  email:string = "";
-  password:string = "";
+  firstName: string = '';
+  lastName: string = '';
+  username: string = '';
+  email: string = '';
+  password: string = '';
 
   errorMessage: string | null = null;
 
-
-  register(){
-    console.log('register clicked')
-    this.authService.register(this.username,this.password,this.email,this.firstName,this.lastName).subscribe({
-      next:(response)=>{
-        console.log('register successful!')
-        console.log('Server Response:', response);
-        this.router.navigate(['/inventory']);
-
-      },
-      error:(err)=>{
-        console.log('Login failed!');
-        console.log('Server Response:', err);
-        const serverError = typeof err?.error === 'string'
-          ? err.error
-          : err?.error?.message;
-        const fallback = 'error: validation failed </3';
-        this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
-        this.password = '';
-    }
-    });
+  register() {
+    console.log('register clicked');
+    this.authService
+      .register(this.username, this.password, this.email, this.firstName, this.lastName)
+      .subscribe({
+        next: response => {
+          console.log('register successful!');
+          console.log('Server Response:', response);
+          this.router.navigate(['/inventory']);
+        },
+        error: err => {
+          console.log('Login failed!');
+          console.log('Server Response:', err);
+          const serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
+          const fallback = 'error: validation failed </3';
+          this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
+          this.password = '';
+        },
+      });
   }
-
-
-
-
 }

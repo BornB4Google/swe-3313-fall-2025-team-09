@@ -4,46 +4,60 @@
 
     <div class="info-box">
       <div class="input-grid">
-        <input type="text" class="name"
-               placeholder="Your Name"
-               [(ngModel)]="checkoutData.name"
-               required
-               name="name"/>
-        <input type="text"
-               class="address1"
-               placeholder="Address Line 1"
-               required
-               [(ngModel)]="checkoutData.address1"
-               name="address1" />
-        <input type="tel"
-               class="number"
-               name="phone"
-               required
-               placeholder="Phone Number"
-               pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
-               maxlength="12"
-               [(ngModel)]="checkoutData.phone"
-               (input)="formatPhone($event)"/>
-        <input type="email"
-               class="email"
-               placeholder="Email Address"
-               name="email"
-               required
-               email
-               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
-               [(ngModel)]="checkoutData.email"
-               #emailRef="ngModel">
+        <input
+          type="text"
+          class="name"
+          placeholder="Your Name"
+          [(ngModel)]="checkoutData.name"
+          required
+          name="name"
+        />
+        <input
+          type="text"
+          class="address1"
+          placeholder="Address Line 1"
+          required
+          [(ngModel)]="checkoutData.address1"
+          name="address1"
+        />
+        <input
+          type="tel"
+          class="number"
+          name="phone"
+          required
+          placeholder="Phone Number"
+          pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+          maxlength="12"
+          [(ngModel)]="checkoutData.phone"
+          (input)="formatPhone($event)"
+        />
+        <input
+          type="email"
+          class="email"
+          placeholder="Email Address"
+          name="email"
+          required
+          email
+          pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+          [(ngModel)]="checkoutData.email"
+          #emailRef="ngModel"
+        />
         <div class="city-state-zip">
-          <input type="text" class="input"
-                 placeholder="City"
-                 required
-                 [(ngModel)]="checkoutData.city"
-                 name="city"/>
-          <select class="input2"
-                  placeholder="State"
-                  required
-                  [(ngModel)]="checkoutData.state"
-                  name="state">
+          <input
+            type="text"
+            class="input"
+            placeholder="City"
+            required
+            [(ngModel)]="checkoutData.city"
+            name="city"
+          />
+          <select
+            class="input2"
+            placeholder="State"
+            required
+            [(ngModel)]="checkoutData.state"
+            name="state"
+          >
             <option value="state">State</option>
             <option>AL</option>
             <option>AK</option>
@@ -98,90 +112,96 @@
             <option>WY</option>
           </select>
 
-          <input type="text"
-                 class="zipcode"
-                 placeholder="Zip code"
-                 [(ngModel)]="checkoutData.zip"
-                 name="zipcode"
-                 required
-                 pattern="[0-9]*"
-                 maxlength="5"
-                 (input)="formatNumOnly($event)"/>
+          <input
+            type="text"
+            class="zipcode"
+            placeholder="Zip code"
+            [(ngModel)]="checkoutData.zip"
+            name="zipcode"
+            required
+            pattern="[0-9]*"
+            maxlength="5"
+            (input)="formatNumOnly($event)"
+          />
         </div>
       </div>
       <div class="input-grid2">
-        <input type="text"
-               class="credit-card"
-               placeholder="Credit Card #"
-               name="card"
-               required
-               pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
-               maxlength="19"
-               [(ngModel)]="checkoutData.card"
-               (input)="formatCC($event)"/>
-        <input type="text"
-               class="exp"
-               name="exp"
-               required
-               placeholder="XX/XXXX"
-               maxlength="6"
-               [(ngModel)]="checkoutData.exp"
-               (input)="formatDate($event)"/>
-        <input type="text"
-               class="cvv"
-               placeholder="CVV"
-               name="cvv"
-               required
-               pattern="[0-9]{3}"
-               maxlength="3"
-               [(ngModel)]="checkoutData.cvv"
-               (input)="formatNumOnly($event)" />
+        <input
+          type="text"
+          class="credit-card"
+          placeholder="Credit Card #"
+          name="card"
+          required
+          pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
+          maxlength="19"
+          [(ngModel)]="checkoutData.card"
+          (input)="formatCC($event)"
+        />
+        <input
+          type="text"
+          class="exp"
+          name="exp"
+          required
+          placeholder="XX/XXXX"
+          maxlength="6"
+          [(ngModel)]="checkoutData.exp"
+          (input)="formatDate($event)"
+        />
+        <input
+          type="text"
+          class="cvv"
+          placeholder="CVV"
+          name="cvv"
+          required
+          pattern="[0-9]{3}"
+          maxlength="3"
+          [(ngModel)]="checkoutData.cvv"
+          (input)="formatNumOnly($event)"
+        />
       </div>
     </div>
     <div class="confirm-columns">
       <div class="shipping-options">
         <label class="shipping-column">
-          <span class="ship-label">Overnight  </span>
+          <span class="ship-label">Overnight </span>
           <span class="ship-price">$29.99</span>
-          <input type="radio"
-                 name="shipping"
-                 value="Overnight"
-                 (change)="updateShipping('Overnight')">
+          <input
+            type="radio"
+            name="shipping"
+            value="Overnight"
+            (change)="updateShipping('Overnight')"
+          />
           <span class="ship-radio"></span>
         </label>
 
         <label class="shipping-column">
-          <span class="ship-label">3 Day Shipping  </span>
+          <span class="ship-label">3 Day Shipping </span>
           <span class="ship-price">$19.99</span>
-          <input type="radio"
-                 name="shipping"
-                 value="3Day"
-                 (change)="updateShipping('ThreeDay')">
+          <input type="radio" name="shipping" value="3Day" (change)="updateShipping('ThreeDay')" />
           <span class="ship-radio"></span>
         </label>
 
         <label class="shipping-column">
-          <span class="ship-label">Ground  </span>
+          <span class="ship-label">Ground </span>
           <span class="ship-price">$0.00</span>
-          <input type="radio"
-                 name="shipping"
-                 value="Ground"
-                 (change)="updateShipping('Ground')"
-                 checked>
+          <input
+            type="radio"
+            name="shipping"
+            value="Ground"
+            (change)="updateShipping('Ground')"
+            checked
+          />
           <span class="ship-radio"></span>
         </label>
       </div>
       <div class="pricing-container">
-        <h2 class="shipping">Shipping: {{ shippingCost | currency:'USD':'symbol' }}</h2>
-        <h2 class="subtotal">Subtotal: {{ total | currency:'USD':'symbol' }}</h2>
+        <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' : 'symbol' }}</h2>
+        <h2 class="subtotal">Subtotal: {{ total | currency: 'USD' : 'symbol' }}</h2>
       </div>
     </div>
     <div class="confirm-buttons">
       <button class="confirm-order-btn" type="submit">Confirm Order &#11162;</button>
       <button class="back-btn" routerLink="/shoppingCart">&#11160; Back</button>
     </div>
-
-
   </form>
 </div>
-

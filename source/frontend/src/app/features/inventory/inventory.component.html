@@ -6,39 +6,42 @@
       <h3 class="item-name">{{ item.name }}</h3>
       <p class="item-price">$ {{ formatCompact(item.price) }}</p>
 
-      <button class="add-to-cart-btn"
-              [disabled]="cartService.isInCart(item.itemId)"
-              (click)="addToCart(item); $event.stopPropagation()">
-              {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
-              </button>
+      <button
+        class="add-to-cart-btn"
+        [disabled]="cartService.isInCart(item.itemId)"
+        (click)="addToCart(item); $event.stopPropagation()"
+      >
+        {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
+      </button>
     </div>
   </div>
   <div class="pages">
-    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">&#11160;</button>
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&#11160;</button>
     <button
       *ngFor="let page of [].constructor(totalPages); let i = index"
-      (click)="changePage(i+1)"
-      [class.active]="currentPage === i + 1">
+      (click)="changePage(i + 1)"
+      [class.active]="currentPage === i + 1"
+    >
       {{ i + 1 }}
     </button>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">&#11162;</button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      &#11162;
+    </button>
   </div>
   <div class="overlay" *ngIf="selectedItem" (click)="closeOverlay()">
     <div class="overlay-content" (click)="$event.stopPropagation()">
       <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
-      <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl"/>
+      <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" />
       <h2 class="overlay-title">{{ selectedItem.name }}</h2>
-      <p class="overlay-description"> {{ selectedItem.description  }}</p>
+      <p class="overlay-description">{{ selectedItem.description }}</p>
       <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
-      <button class="overlay-cart-btn"
-              [disabled]="cartService.isInCart(selectedItem.itemId)"
-              (click)="addToCart(selectedItem); $event.stopPropagation()">
+      <button
+        class="overlay-cart-btn"
+        [disabled]="cartService.isInCart(selectedItem.itemId)"
+        (click)="addToCart(selectedItem); $event.stopPropagation()"
+      >
         {{ cartService.isInCart(selectedItem.itemId) ? 'Added to Cart' : 'Add to Cart' }}
       </button>
     </div>
   </div>
 </div>
-
-
-
-

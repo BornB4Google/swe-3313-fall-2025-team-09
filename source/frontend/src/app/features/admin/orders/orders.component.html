@@ -1,32 +1,30 @@
 <h1 class="order-title">Completed Orders</h1>
 
 <div class="order-content">
-  <h2> Purchases</h2>
+  <h2>Purchases</h2>
   <div class="order-grid" *ngFor="let r of receipts" (click)="openReceipt(r)">
     <div class="receipt-card" *ngFor="let r of receipts" (click)="openReceipt(r)">
       <table class="receipt-info">
         <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Total</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        <td>{{ r.user.firstName }} {{ r.user.lastName }}</td>
-        <td>{{ r.user.email }}</td>
-        <td>{{ r.total | currency }}</td>
-        <td>{{ r.saleDateTime | date:'short' }}</td>
+          <td>{{ r.user.firstName }} {{ r.user.lastName }}</td>
+          <td>{{ r.user.email }}</td>
+          <td>{{ r.total | currency }}</td>
+          <td>{{ r.saleDateTime | date: 'short' }}</td>
         </tbody>
-
       </table>
     </div>
   </div>
   <div class="overlay" *ngIf="selectedReceipt" (click)="closeReceipt()">
-
-    <form class="receipt-form"(click)="$event.stopPropagation()">
+    <form class="receipt-form" (click)="$event.stopPropagation()">
       <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
       <h2 class="receipt-title">Receipt</h2>
       <div class="receipt-box">
@@ -53,22 +51,12 @@
           </div>
         </div>
         <div class="pricing-container">
-          <h2 class="shipping">
-            Shipping: {{ selectedReceipt.shippingCost | currency }}
-          </h2>
-          <h2 class="subtotal">
-            Subtotal: {{ selectedReceipt.subtotal | currency }}
-          </h2>
-          <h2 class="tax">
-            Tax: {{ selectedReceipt.tax | currency }}
-          </h2>
-          <h2 class="total">
-            Total: {{ selectedReceipt.total | currency }}
-          </h2>
+          <h2 class="shipping">Shipping: {{ selectedReceipt.shippingCost | currency }}</h2>
+          <h2 class="subtotal">Subtotal: {{ selectedReceipt.subtotal | currency }}</h2>
+          <h2 class="tax">Tax: {{ selectedReceipt.tax | currency }}</h2>
+          <h2 class="total">Total: {{ selectedReceipt.total | currency }}</h2>
         </div>
       </div>
     </form>
-
-
   </div>
 </div>

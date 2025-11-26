@@ -7,13 +7,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 80px 0;
-  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
   text-align: center;
-
 }
-
 
 .confirm-form {
   background-color: #000000;
@@ -35,13 +33,12 @@
 .confirm-box {
   position: relative;
   height: 50px;
-  background-color: #0A0F1C;
+  background-color: #0a0f1c;
   border-radius: 12px;
   margin-bottom: 15px;
 }
 
-
-.confirm-title{
+.confirm-title {
   font-size: 2rem;
 }
 .confirm-box:after {
@@ -53,10 +50,8 @@
   transform: translateX(-50%);
   width: 750px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
-
 }
 
 .confirm-box:after {
@@ -68,62 +63,63 @@
   transform: translateX(-50%);
   width: 750px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
-
 }
 
-.item-name, .item-price {
+.item-name,
+.item-price {
   position: absolute;
-
 }
 
-
-.item-name{
+.item-name {
   position: absolute;
   transform: translateY(-50%);
   left: 30px;
   font-size: 1.2rem;
-
 }
 
-.item-price{
+.item-price {
   position: absolute;
   transform: translateY(-50%);
   right: 30px;
   font-size: 1.2rem;
 }
-.shipping, .subtotal, .tax, .total {
+.shipping,
+.subtotal,
+.tax,
+.total {
   left: 35%;
 }
 
-
-.shipping{
+.shipping {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.subtotal{
+.subtotal {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.tax{
+.tax {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.total{
+.total {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.shipping, .subtotal, .tax, .total {
+.shipping,
+.subtotal,
+.tax,
+.total {
   left: -15px;
   display: flex;
   justify-content: flex-end;
@@ -138,7 +134,8 @@
   margin-top: 30px;
 }
 
-.back-btn, .confirm-btn {
+.back-btn,
+.confirm-btn {
   display: inline-block;
   width: fit-content;
   padding: 6px 12px;
@@ -148,13 +145,11 @@
   cursor: pointer;
 }
 
-
-
 .confirm-btn {
   position: relative;
   font-family: 'Playfair Display SC', serif;
-  background-color: #1E2A38 ;
-  color: #F4F7F9 ;
+  background-color: #1e2a38;
+  color: #f4f7f9;
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -174,8 +169,8 @@
 .back-btn {
   position: absolute;
   font-family: 'Playfair Display SC', serif;
-  background-color: #1E2A38 ;
-  color: #F4F7F9 ;
+  background-color: #1e2a38;
+  color: #f4f7f9;
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -198,7 +193,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   text-align: left;
-  color: #F4F7F9;
+  color: #f4f7f9;
   width: 40%;
   align-self: flex-start;
 }
@@ -207,7 +202,6 @@
   font-size: 1.25rem;
 }
 .ship-name {
-
   font-size: 1.25rem;
 }
 
@@ -223,16 +217,13 @@
   margin-top: 40px;
 }
 
-
 .shipping-address {
   text-align: left;
   padding-left: 50px;
-  color: #F4F7F9;
+  color: #f4f7f9;
   line-height: 1.5;
   width: 45%;
 }
-
-
 
 .pricing-container {
   display: flex;
@@ -240,5 +231,3 @@
   align-items: flex-end;
   width: 45%;
 }
-
-
