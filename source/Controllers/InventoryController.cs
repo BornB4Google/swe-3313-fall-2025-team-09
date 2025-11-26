@@ -17,7 +17,7 @@ public class InventoryController : ControllerBase
     {
         _db = db;
     }
-    
+
     // Get /api/inventory
     [HttpGet]
     [Authorize(Roles = "User, Admin")]
@@ -84,7 +84,7 @@ public class InventoryController : ControllerBase
 
         return Ok(item);
     }
-    
+
     // POST /api/inventory  (Admin)
     // Add an inventory item
     [HttpPost]
@@ -137,7 +137,7 @@ public class InventoryController : ControllerBase
 
         if (entity is null)
             return NotFound();
-        
+
         entity.Name = dto.Name;
         entity.Description = dto.Description;
         entity.Price = dto.Price;
@@ -182,7 +182,7 @@ public class InventoryController : ControllerBase
 
         if (entity is null)
             return NotFound();
-        
+
         _db.InventoryItems.Remove(entity);
         await _db.SaveChangesAsync();
 

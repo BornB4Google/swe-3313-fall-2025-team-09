@@ -16,15 +16,15 @@ namespace Backend.Controllers;
 [Authorize]
 public class CartController : ControllerBase
 {
-    
+
     private readonly StorefrontDbContext _db;
-    
+
     public CartController(StorefrontDbContext db)
     {
         _db = db;
     }
-    
-    
+
+
     //Exract userId from JWT token for security
     private int GetUserId()
     {
@@ -36,15 +36,15 @@ public class CartController : ControllerBase
 
         throw new UnauthorizedAccessException("Invalid user ID");
     }
-    
-    
+
+
     // GET /api/cart
     [HttpGet]
     public async Task<IActionResult> GetCart()
     {
         //collect userId from JWT
         var userId = GetUserId();
-        
+
         var cart = await _db.Carts
             .Include(c => c.Items)
                 .ThenInclude(i => i.InventoryItem)
@@ -80,7 +80,7 @@ public class CartController : ControllerBase
 
         return Ok(response); //return the cart
     }
-    
+
     // POST /api/cart/items
     [HttpPost("items")]
     public async Task<IActionResult> AddItem([FromBody] AddToCartRequest request)
@@ -101,7 +101,7 @@ public class CartController : ControllerBase
         {
             return BadRequest("Item is sold out");
         }
-        
+
         //
         var cart = await _db.Carts
             .Include(c => c.Items)
@@ -115,32 +115,32 @@ public class CartController : ControllerBase
                 isActive = true,
                 Items = new List<CartItem>()
             };
-            
+
             _db.Carts.Add(cart);
             await _db.SaveChangesAsync();
         }
-        
-        
+
+
         if (cart.Items.Any(i => i.ItemId == item.ItemId))
         {
             return BadRequest("Item already in cart");
         }
-        
-        
+
+
         cart.Items.Add(new CartItem
         {
             CartId = cart.CartId,
             ItemId = request.ItemId,
-            
+
         });
 
         await _db.SaveChangesAsync();
 
         return Ok(new { message = "Added to cart" });
     }
-    
-    
-    
+
+
+
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]
     public async Task<IActionResult> RemoveItem(int id)

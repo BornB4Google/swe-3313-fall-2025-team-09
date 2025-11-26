@@ -6,30 +6,24 @@ import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-receipt',
-  imports: [
-    CurrencyPipe,
-    NgForOf,
-    RouterLink
-  ],
+  imports: [CurrencyPipe, NgForOf, RouterLink],
   templateUrl: './receipt.component.html',
-  styleUrl: './receipt.component.css'
+  styleUrl: './receipt.component.css',
 })
 export class ReceiptComponent {
-
   shipping: any = {};
 
   cart: any[] = [];
 
   constructor(
     private shipService: ShippingService,
-    private cartService: CartService) {
-  }
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;
     this.cartService.cartItems$.subscribe(items => {
       this.cart = items;
     });
-
   }
 }
