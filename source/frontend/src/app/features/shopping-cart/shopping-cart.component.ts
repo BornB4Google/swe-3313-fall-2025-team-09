@@ -24,7 +24,6 @@ export class ShoppingCartComponent {
   subtotal: number = 0;
 
 
-
   trackById(index: number, item: any) {
     return item._id;
   }
@@ -34,17 +33,12 @@ export class ShoppingCartComponent {
   }
 
   ngOnInit() {
-    this.cartService.cartItems$.subscribe(items => {
-      this.cart = items;
-      this.calculateSubtotal();
-      console.log("CART ITEMS STREAM:", items);
-    })
 
+    this.cart$.subscribe(items => {this.cart = items;});
+    this.cartService.subtotal$.subscribe(total => {this.subtotal = total;});
   }
 
-  calculateSubtotal(){
-    this.subtotal = this.cart.reduce((num, item) => num + item.price, 0);
-  }
+
 
 
 }

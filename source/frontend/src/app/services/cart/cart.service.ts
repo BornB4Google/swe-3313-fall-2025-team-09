@@ -19,6 +19,10 @@ export class CartService {
     map(items => items.length)
   );
 
+
+  private subtotalSubject = new BehaviorSubject<number>(0);
+  subtotal$ = this.subtotalSubject.asObservable();
+
   addToCart(item: any) {
     const cartItem = {
       ...item,
@@ -27,6 +31,7 @@ export class CartService {
 
     this.cart.push(cartItem);
     this.cartItems.next([...this.cart]);
+    this.updateSubtotal();
 
 
   }
@@ -34,6 +39,7 @@ export class CartService {
   removeFromCart(id: number) {
     this.cart = this.cart.filter(x => x._id !== id);
     this.cartItems.next([...this.cart]);
+    this.updateSubtotal();
   }
 /*
   clearCart() {
@@ -41,6 +47,10 @@ export class CartService {
     this.cartItems.next([]);
   }
 */
+  private updateSubtotal() {
+    const subtotal = this.cart.reduce((sum, item) => sum + item.price, 0);
+    this.subtotalSubject.next(subtotal);
+  }
 
   isInCart(id: number):boolean {
     return this.cart.some(i => i.itemId === id);
