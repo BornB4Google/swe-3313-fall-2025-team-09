@@ -35,6 +35,7 @@ public class OrdersController : ControllerBase
 
         IQueryable<Sale> query = _db.Sales
             .AsNoTracking()
+            .Include(s => s.User)
             .Include(s => s.Items);
 
         if (!isAdmin)
@@ -51,7 +52,11 @@ public class OrdersController : ControllerBase
             SaleId = s.SaleId,
             SaleDateTime = s.SaleDateTime,
             Total = s.Total,
-            ItemCount = s.Items.Count
+            ItemCount = s.Items.Count,
+            UserId = s.UserId,
+            CustomerName = $"{s.User.FirstName} {s.User.LastName}",
+            CustomerEmail = s.User.Email
+            
         }).ToList();
 
         return Ok(result);
