@@ -1,18 +1,18 @@
 <h1 class="order-title">Completed Orders</h1>
 
 <div class="order-content">
-  <h2> Purchases</h2>
+  <h2>Purchases</h2>
   <div class="order-grid">
     <div class="receipt-card" *ngFor="let r of receipts" (click)="openReceipt(r)">
       <table class="receipt-info">
         <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Total</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           <td>{{ r.shippingName }}</td>
@@ -20,44 +20,34 @@
           <td>{{ r.total | currency }}</td>
           <td>{{ r.date }}</td>
         </tbody>
-
       </table>
     </div>
   </div>
   <div class="overlay" *ngIf="selectedReceipt" (click)="closeReceipt()">
-
-      <form class="receipt-form"(click)="$event.stopPropagation()">
-        <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
-        <h2 class="receipt-title">Receipt</h2>
-        <div class="receipt-box">
-          <div class="receipt-grid">
-            <div class="item-image"></div>
-            <h3 class="item-name">item name</h3>
-            <p class="item-price">price</p>
-          </div>
+    <form class="receipt-form" (click)="$event.stopPropagation()">
+      <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
+      <h2 class="receipt-title">Receipt</h2>
+      <div class="receipt-box">
+        <div class="receipt-grid">
+          <div class="item-image"></div>
+          <h3 class="item-name">item name</h3>
+          <p class="item-price">price</p>
         </div>
-        <div class="receipt-columns">
-          <div class="shipping-address">
-            <div class="ship-title">Shipping to:</div>
-            <div class="ship-name">
-              Name
-            </div>
-            <div class="ship-line">
-              Address
-            </div>
-            <div class="ship-line">
-              City State Zip
-            </div>
-          </div>
-          <div class="pricing-container">
-            <h2 class="shipping">Shipping: $0.00</h2>
-            <h2 class="subtotal">Subtotal: $0.00</h2>
-            <h2 class="tax">Tax: $0.00</h2>
-            <h2 class="total">Total: $0.00</h2>
-          </div>
+      </div>
+      <div class="receipt-columns">
+        <div class="shipping-address">
+          <div class="ship-title">Shipping to:</div>
+          <div class="ship-name">Name</div>
+          <div class="ship-line">Address</div>
+          <div class="ship-line">City State Zip</div>
         </div>
-      </form>
-
-
+        <div class="pricing-container">
+          <h2 class="shipping">Shipping: $0.00</h2>
+          <h2 class="subtotal">Subtotal: $0.00</h2>
+          <h2 class="tax">Tax: $0.00</h2>
+          <h2 class="total">Total: $0.00</h2>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -1,4 +1,3 @@
-
 .order-title {
   position: absolute;
   align-content: center;
@@ -6,32 +5,27 @@
   top: 250px;
   transform: translateX(-50%);
   font-size: 2rem;
-  color: #F4F7F9;
+  color: #f4f7f9;
 }
 
 .order-content {
   font-family: 'Playfair Display SC', serif;
   margin-top: 40px;
   padding: 20px;
-  background-color: #0A0F1C;
+  background-color: #0a0f1c;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   width: 80%;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-
 }
-
 
 .order-grid {
   margin-top: 80px;
   display: grid;
   flex-direction: row;
-
 }
-
-
 
 .receipt-form {
   background-color: #000000;
@@ -54,13 +48,12 @@
 .receipt-box {
   position: relative;
   height: 50px;
-  background-color: #0A0F1C;
+  background-color: #0a0f1c;
   border-radius: 12px;
   margin-bottom: 15px;
 }
 
-
-.receipt-title{
+.receipt-title {
   font-size: 2rem;
 }
 .receipt-box:after {
@@ -72,10 +65,8 @@
   transform: translateX(-50%);
   width: 750px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
-
 }
 
 .receipt-box:after {
@@ -87,70 +78,68 @@
   transform: translateX(-50%);
   width: 750px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
-
 }
 
-.item-name, .item-price {
+.item-name,
+.item-price {
   position: absolute;
-
 }
 
-
-.item-name{
+.item-name {
   position: absolute;
   transform: translateY(-50%);
   left: 30px;
   font-size: 1.2rem;
-
 }
 
-.item-price{
+.item-price {
   position: absolute;
   transform: translateY(-50%);
   right: 30px;
   font-size: 1.2rem;
 }
-.shipping, .subtotal, .tax, .total {
+.shipping,
+.subtotal,
+.tax,
+.total {
   left: 35%;
 }
 
-
-.shipping{
+.shipping {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.subtotal{
+.subtotal {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.tax{
+.tax {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.total{
+.total {
   position: relative;
   left: 35%;
   font-size: 1.2rem;
 }
 
-.shipping, .subtotal, .tax, .total {
+.shipping,
+.subtotal,
+.tax,
+.total {
   left: -15px;
   display: flex;
   justify-content: flex-end;
   font-size: 1.2rem;
 }
-
-
-
 
 .shipping-address {
   margin-top: 20px;
@@ -158,7 +147,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   text-align: left;
-  color: #F4F7F9;
+  color: #f4f7f9;
   width: 40%;
   align-self: flex-start;
 }
@@ -167,7 +156,6 @@
   font-size: 1.25rem;
 }
 .ship-name {
-
   font-size: 1.25rem;
 }
 
@@ -190,17 +178,16 @@
 
 .receipt-info th {
   background-color: #1a2332;
-  color: #F4F7F9;
+  color: #f4f7f9;
   font-weight: bold;
 }
 
 .receipt-info td {
-  color: #F4F7F9;
+  color: #f4f7f9;
 }
 .receipt-info tr:hover {
   background-color: #1a2332;
 }
-
 
 .receipt-columns {
   display: flex;
@@ -210,15 +197,13 @@
   margin-top: 40px;
 }
 
-
 .shipping-address {
   text-align: left;
   padding-left: 50px;
-  color: #F4F7F9;
+  color: #f4f7f9;
   line-height: 1.5;
   width: 45%;
 }
-
 
 .pricing-container {
   display: flex;
@@ -230,9 +215,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-
 }
-
 
 .overlay {
   position: absolute;
@@ -250,14 +233,12 @@
   animation: fadeIn 0.3s ease;
 }
 
-
-
 .overlay-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   background: #000000;
-  color: #A7B3BC;
+  color: #a7b3bc;
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -272,12 +253,10 @@
 }
 
 .overlay-close-btn:hover {
-  background-color: #A7B3BC;
-  color: #0A0F1C;
+  background-color: #a7b3bc;
+  color: #0a0f1c;
   transform: scale(1.05);
 }
 
 .order-grid {
-
-
 }

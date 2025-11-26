@@ -1,9 +1,6 @@
-
-
 <nav class="navbar">
   <div class="logo">Offshore Holdings</div>
   <ng-container *ngIf="isLanding || isLanding2 || isLogin || isSignup; else normalButtons">
-
   </ng-container>
   <ng-template #normalButtons>
     <ul class="nav-links">
@@ -17,7 +14,6 @@
           <li><a (click)="logout()">Logout</a></li>
         </ul>
       </li>
-
     </ul>
   </ng-template>
 </nav>

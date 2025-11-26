@@ -7,7 +7,7 @@ export const redirectIfAuthenticatedGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  return authService.ensureCurrentUserLoaded().pipe(
-    map(() => (authService.isLoggedIn() ? router.createUrlTree(['/inventory']) : true))
-  );
+  return authService
+    .ensureCurrentUserLoaded()
+    .pipe(map(() => (authService.isLoggedIn() ? router.createUrlTree(['/inventory']) : true)));
 };
