@@ -5,7 +5,7 @@ on:
       - '**'
 jobs:
   frontend-format:
-    name: format-frontend
+    name: format-frontend (prettier)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,7 +24,7 @@ jobs:
         run: npx prettier --check "src/**/*.{ts,html,css,scss}"
 
   frontend-lint:
-    name: lint-frontend
+    name: lint-frontend (eslint)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,7 +46,7 @@ jobs:
         run: npx ng lint
 
   backend-format:
-    name: format-backend
+    name: format-backend (dotnet format)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
