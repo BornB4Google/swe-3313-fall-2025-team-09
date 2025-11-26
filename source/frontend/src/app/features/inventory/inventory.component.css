@@ -19,21 +19,18 @@ Ice White	#F4F7F9
   padding-top: 120px;
   padding-bottom: 60px;
   overflow: visible;
-  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
   text-align: center;
-
 }
 
 .inventory-title {
   font-size: 3rem;
   position: relative;
   text-align: center;
-
-
 }
-.inventory-title:after{
+.inventory-title:after {
   content: '';
   position: absolute;
   top: 120px;
@@ -42,13 +39,11 @@ Ice White	#F4F7F9
   transform: translateX(-50%);
   width: 1200px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
 }
 
-
-.inventory-grid{
+.inventory-grid {
   position: relative;
   z-index: 1;
   display: grid;
@@ -58,7 +53,6 @@ Ice White	#F4F7F9
   padding: 25px;
   justify-items: center;
   align-items: flex-start;
-
 }
 @media (max-width: 900px) {
   .inventory-grid {
@@ -71,18 +65,18 @@ Ice White	#F4F7F9
   }
 }
 
-
-
 .inventory-box {
   position: relative;
-  background-color: #1E2A38;
-  color: #F4F7F9;
+  background-color: #1e2a38;
+  color: #f4f7f9;
   border-radius: 12px;
   padding: 10px;
   width: 300px;
   height: 300px;
-  box-shadow:0 4px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -90,14 +84,14 @@ Ice White	#F4F7F9
   cursor: pointer;
 }
 .inventory-box:hover {
-  transform:translateY(-5px);
+  transform: translateY(-5px);
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.35),
     0 0 12px rgba(62, 92, 118, 0.6);
-  border: 1px solid #3E5C76;
+  border: 1px solid #3e5c76;
 }
 
-.item-name{
+.item-name {
   position: absolute;
   top: 180px;
   left: 50%;
@@ -106,7 +100,7 @@ Ice White	#F4F7F9
   text-align: center;
   width: 100%;
 }
-.item-name:after{
+.item-name:after {
   content: '';
   position: absolute;
   top: 65px;
@@ -115,23 +109,20 @@ Ice White	#F4F7F9
   transform: translateX(-50%);
   width: 250px;
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
 }
 
-.item-price{
+.item-price {
   position: absolute;
   bottom: -5px;
   left: 15px;
   font-size: 1.2rem;
-
 }
-
 
 .add-to-cart-btn {
   background-color: #000000;
-  color: #A7B3BC;
+  color: #a7b3bc;
   font-family: 'Playfair', serif;
   padding: 5px 8px;
   border-radius: 5px;
@@ -141,15 +132,13 @@ Ice White	#F4F7F9
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-
-
 }
 .add-to-cart-btn:hover {
   background-color: #a7b3bc;
   color: #0a0f1c;
 }
 
-.item-image{
+.item-image {
   position: absolute;
   object-fit: cover;
   top: 15px;
@@ -159,7 +148,7 @@ Ice White	#F4F7F9
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.pages{
+.pages {
   position: absolute;
   bottom: 0;
 
@@ -171,27 +160,24 @@ Ice White	#F4F7F9
   padding: 20px;
 }
 
-.pages button{
+.pages button {
   background-color: #000000;
-  color: #F4F7F9;
+  color: #f4f7f9;
   border-radius: 5px;
   border: none;
   padding: 8px 14px;
   transition: all 0.3s ease;
   cursor: pointer;
-
 }
 
-.pages button:disabled{
+.pages button:disabled {
   opacity: 0;
-  cursor: default ;
+  cursor: default;
 }
 
-.pages button:active{
-
+.pages button:active {
   background-color: #000000;
-  color: #F4F7F9;
-
+  color: #f4f7f9;
 }
 .pages button:hover {
   background-color: #a7b3bc;
@@ -214,7 +200,7 @@ Ice White	#F4F7F9
 
 .overlay-content {
   background-color: #000000;
-  color: #F4F7F9;
+  color: #f4f7f9;
   width: 800px;
   height: 700px;
   overflow-y: auto;
@@ -223,19 +209,16 @@ Ice White	#F4F7F9
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   animation: slideUp 0.3s ease;
-
 }
 
 .overlay-image {
-
-  max-width: 500px;      /
+  max-width: 500px;
   height: auto;
   max-height: 300px;
   object-fit: cover;
   border-radius: 12px;
   margin: 0 auto 20px;
   display: block;
-
 }
 
 .overlay-title {
@@ -250,17 +233,15 @@ Ice White	#F4F7F9
   margin-bottom: 20px;
 }
 
-
 .overlay-price {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 25px;
 }
 
-
 .overlay-cart-btn {
-  background-color: #3E5C76;
-  color: #F4F7F9;
+  background-color: #3e5c76;
+  color: #f4f7f9;
   padding: 10px 25px;
   font-size: 1.2rem;
   font-family: 'Playfair', serif;
@@ -271,18 +252,28 @@ Ice White	#F4F7F9
 }
 
 .overlay-cart-btn:hover {
-  background-color: #A7B3BC;
-  color: #0A0F1C;
+  background-color: #a7b3bc;
+  color: #0a0f1c;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .overlay-close-btn {
@@ -290,7 +281,7 @@ Ice White	#F4F7F9
   top: 10px;
   right: 10px;
   background: #000000;
-  color: #A7B3BC;
+  color: #a7b3bc;
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -305,8 +296,8 @@ Ice White	#F4F7F9
 }
 
 .overlay-close-btn:hover {
-  background-color: #A7B3BC;
-  color: #0A0F1C;
+  background-color: #a7b3bc;
+  color: #0a0f1c;
   transform: scale(1.05);
 }
 
