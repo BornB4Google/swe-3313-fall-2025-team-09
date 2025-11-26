@@ -5,8 +5,7 @@
       <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
       <h3 class="item-name">{{ item.name }}</h3>
       <p class="item-price">$ {{ formatCompact(item.price) }}</p>
-      <button class="add-to-cart-btn" (click)="addToCart(item); $event.stopPropagation()">Add to Cart</button>
-      <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
+
       <button class="add-to-cart-btn"
               [disabled]="cartService.isInCart(item.itemId)"
               (click)="addToCart(item); $event.stopPropagation()">
@@ -31,9 +30,6 @@
       <h2 class="overlay-title">{{ selectedItem.name }}</h2>
       <p class="overlay-description"> {{ selectedItem.description  }}</p>
       <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
-      <button class="overlay-cart-btn" (click)="addToCart(selectedItem)">Add to Cart</button>
-
-      <p class="overlay-price">{{ selectedItem.price | currency }}</p>
       <button class="overlay-cart-btn"
               [disabled]="cartService.isInCart(selectedItem.itemId)"
               (click)="addToCart(selectedItem); $event.stopPropagation()">

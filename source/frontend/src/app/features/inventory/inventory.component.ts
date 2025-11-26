@@ -67,7 +67,7 @@ export class InventoryComponent {
       notation: 'compact',
       compactDisplay: 'short',
       maximumFractionDigits: 2,
-      minimumFractionDigits: 1
+      minimumFractionDigits: 2
     }).format(value);
   }
 

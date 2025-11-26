@@ -143,32 +143,42 @@
         <label class="shipping-column">
           <span class="ship-label">Overnight  </span>
           <span class="ship-price">$29.99</span>
-          <input type="radio" name="shipping" value="Overnight" checked>
+          <input type="radio"
+                 name="shipping"
+                 value="Overnight"
+                 (change)="updateShipping('Overnight')">
           <span class="ship-radio"></span>
         </label>
 
         <label class="shipping-column">
           <span class="ship-label">3 Day Shipping  </span>
           <span class="ship-price">$19.99</span>
-          <input type="radio" name="shipping" value="3Day">
+          <input type="radio"
+                 name="shipping"
+                 value="3Day"
+                 (change)="updateShipping('ThreeDay')">
           <span class="ship-radio"></span>
         </label>
 
         <label class="shipping-column">
           <span class="ship-label">Ground  </span>
           <span class="ship-price">$0.00</span>
-          <input type="radio" name="shipping" value="Ground">
+          <input type="radio"
+                 name="shipping"
+                 value="Ground"
+                 (change)="updateShipping('Ground')"
+                 checked>
           <span class="ship-radio"></span>
         </label>
       </div>
       <div class="pricing-container">
-        <h2 class="shipping">Shipping: $0.00</h2>
-        <h2 class="subtotal">Subtotal: $0.00</h2>
+        <h2 class="shipping">Shipping: {{ shippingCost | currency:'USD':'symbol' }}</h2>
+        <h2 class="subtotal">Subtotal: {{ total | currency:'USD':'symbol' }}</h2>
       </div>
     </div>
     <div class="confirm-buttons">
       <button class="confirm-order-btn" type="submit">Confirm Order &#11162;</button>
-      <button class="back-btn" routerLink="/inventory">⮘ Back</button>
+      <button class="back-btn" routerLink="/shoppingCart">&#11160; Back</button>
     </div>
 
 
