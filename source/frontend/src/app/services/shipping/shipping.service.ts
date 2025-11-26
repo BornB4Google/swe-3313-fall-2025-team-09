@@ -12,4 +12,7 @@ export class ShippingService {
     state: '',
     zip: '',
   };
+  subtotal: number = 0;
+  shippingCost: number = 0;
+
 }

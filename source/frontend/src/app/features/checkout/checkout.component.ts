@@ -5,6 +5,8 @@ import { ShippingService } from '../../services/shipping/shipping.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../models/cart.models';
+import { OrderSummaryService } from '../../services/order/order-summary.service';
+
 
 @Component({
   selector: 'app-checkout',
@@ -17,6 +19,8 @@ export class CheckoutComponent implements OnInit {
   private shipService = inject(ShippingService);
   private router = inject(Router);
   private cartService = inject(CartService);
+  private orderSummary = inject(OrderSummaryService);
+
 
   checkoutData = {
     name: '',
@@ -44,11 +48,6 @@ export class CheckoutComponent implements OnInit {
 
   updateShipping(option: string) {
     this.shippingCost = this.shippingOptions[option];
-    this.calculateTotal();
-  }
-
-  calculateTotal() {
-    this.total = this.subtotal + this.shippingCost;
   }
 
   confirmOrder(form: NgForm) {
@@ -59,6 +58,12 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     this.shipService.shippingInfo = this.checkoutData;
+
+    this.shipService.shippingInfo = this.checkoutData;
+    this.shipService.shippingCost = this.shippingCost;
+    this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
+
+
     this.router.navigate(['/confirm']);
   }
   formatPhone(event: Event) {
@@ -93,7 +98,6 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartItems$.subscribe(items => (this.cart = items));
     this.cartService.subtotal$.subscribe(value => {
       this.subtotal = value;
-      this.calculateTotal();
     });
   }
 }
