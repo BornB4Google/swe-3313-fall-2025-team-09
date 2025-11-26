@@ -11,16 +11,16 @@
         (keydown.space)="openItem(item)"
       >
         <img class="item-image" [src]="item.primaryPhotoUrl" [alt]="item.name" />
-      <h3 class="item-name">{{ item.name }}</h3>
-      <p class="item-price">$ {{ formatCompact(item.price) }}</p>
+        <h3 class="item-name">{{ item.name }}</h3>
+        <p class="item-price">$ {{ formatCompact(item.price) }}</p>
 
-      <button
-        class="add-to-cart-btn"
-        [disabled]="cartService.isInCart(item.itemId)"
-        (click)="addToCart(item); $event.stopPropagation()"
-      >
-        {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
-      </button>
+        <button
+          class="add-to-cart-btn"
+          [disabled]="cartService.isInCart(item.itemId)"
+          (click)="addToCart(item); $event.stopPropagation()"
+        >
+          {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
+        </button>
       </div>
     }
   </div>
@@ -52,16 +52,16 @@
       >
         <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
         <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" [alt]="selectedItem.name" />
-      <h2 class="overlay-title">{{ selectedItem.name }}</h2>
-      <p class="overlay-description">{{ selectedItem.description }}</p>
-      <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
-      <button
-        class="overlay-cart-btn"
-        [disabled]="cartService.isInCart(selectedItem.itemId)"
-        (click)="addToCart(selectedItem); $event.stopPropagation()"
-      >
-        {{ cartService.isInCart(selectedItem.itemId) ? 'Added to Cart' : 'Add to Cart' }}
-      </button>
+        <h2 class="overlay-title">{{ selectedItem.name }}</h2>
+        <p class="overlay-description">{{ selectedItem.description }}</p>
+        <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
+        <button
+          class="overlay-cart-btn"
+          [disabled]="cartService.isInCart(selectedItem.itemId)"
+          (click)="addToCart(selectedItem); $event.stopPropagation()"
+        >
+          {{ cartService.isInCart(selectedItem.itemId) ? 'Added to Cart' : 'Add to Cart' }}
+        </button>
       </div>
     </div>
   }
