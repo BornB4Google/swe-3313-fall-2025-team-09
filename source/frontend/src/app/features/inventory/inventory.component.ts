@@ -12,7 +12,6 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent {
-
   inventoryService = inject(InventoryService);
 
   inventoryData = toSignal(this.inventoryService.getInventory(), {

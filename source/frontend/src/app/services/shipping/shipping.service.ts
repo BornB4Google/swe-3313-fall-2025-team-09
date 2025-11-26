@@ -13,6 +13,5 @@ export class ShippingService {
     zip: '',
   };
   subtotal = 0;
-  shippingCost =  0;
-
+  shippingCost = 0;
 }

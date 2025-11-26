@@ -19,13 +19,15 @@
         <div class="ship-line">
           {{ shippingInfo.address1 }}
         </div>
-        <div class="ship-line">{{ shippingInfo.city }}, {{ shippingInfo.state }} {{ shippingInfo.zip }}</div>
+        <div class="ship-line">
+          {{ shippingInfo.city }}, {{ shippingInfo.state }} {{ shippingInfo.zip }}
+        </div>
       </div>
       <div class="pricing-container">
-        <h2 class="shipping">Shipping: {{ shippingCost | currency:'USD' }}</h2>
-        <h2 class="subtotal">Subtotal: {{ subtotal | currency:'USD' }}</h2>
-        <h2 class="tax">Tax: {{ tax | currency:'USD' }}</h2>
-        <h2 class="total">Total: {{ total | currency:'USD' }}</h2>
+        <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' }}</h2>
+        <h2 class="subtotal">Subtotal: {{ subtotal | currency: 'USD' }}</h2>
+        <h2 class="tax">Tax: {{ tax | currency: 'USD' }}</h2>
+        <h2 class="total">Total: {{ total | currency: 'USD' }}</h2>
       </div>
     </div>
     <div class="confirm-buttons">

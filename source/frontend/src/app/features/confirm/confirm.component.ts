@@ -6,8 +6,6 @@ import { CartService } from '../../services/cart/cart.service';
 import { CartItem, ShippingInfo } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 
-
-
 @Component({
   selector: 'app-confirm',
   imports: [CurrencyPipe, RouterLink],
@@ -27,13 +25,11 @@ export class ConfirmComponent implements OnInit {
     zip: '',
   };
 
-
   cart: CartItem[] = [];
-  shippingCost: number = 0;
-  total: number = 0;
-  subtotal: number = 0;
-  tax: number = 0;
-
+  shippingCost = 0;
+  total = 0;
+  subtotal = 0;
+  tax = 0;
 
   ngOnInit() {
     this.shippingInfo = this.shipService.shippingInfo;
@@ -42,6 +38,5 @@ export class ConfirmComponent implements OnInit {
     this.subtotal = this.orderSummary.cartSubtotal;
     this.tax = this.orderSummary.tax;
     this.total = this.orderSummary.total;
-
   }
 }

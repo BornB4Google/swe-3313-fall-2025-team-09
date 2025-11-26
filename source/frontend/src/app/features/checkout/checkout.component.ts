@@ -7,7 +7,6 @@ import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 
-
 @Component({
   selector: 'app-checkout',
   standalone: true,
@@ -20,7 +19,6 @@ export class CheckoutComponent implements OnInit {
   private router = inject(Router);
   private cartService = inject(CartService);
   private orderSummary = inject(OrderSummaryService);
-
 
   checkoutData = {
     name: '',
@@ -62,7 +60,6 @@ export class CheckoutComponent implements OnInit {
     this.shipService.shippingInfo = this.checkoutData;
     this.shipService.shippingCost = this.shippingCost;
     this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
-
 
     this.router.navigate(['/confirm']);
   }
