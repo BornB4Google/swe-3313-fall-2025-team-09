@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Router, NavigationEnd, RouterLink, RouterOutlet} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {filter} from 'rxjs';
+import {AuthService} from './services/auth/auth.service';
 
 
 @Component({
@@ -12,6 +13,8 @@ import {filter} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  authService = inject(AuthService);
+
   isLanding = false;
   isLanding2 = false;
   isLogin = false;
@@ -28,11 +31,29 @@ export class AppComponent {
         this.isSignup = url === '/signup';
         console.log("URL:", url, "Landing:", this.isLanding, "Login:", this.isLogin, "Signup:", this.isSignup);
       })
-
-
-
   }
 
+
+
+
+  logout(){
+    this.authService.logout().subscribe({
+        // This block runs if the request is SUCCESSFUL (status 2xx)
+        next: (response) => {
+          console.log('logged out');
+          console.log('Server Response:', response);
+          this.router.navigate(['/']);
+
+        },
+        error: (err)=>{
+          console.log('logout failed!');
+          console.log('Server Response:', err);
+        }
+
+      },
+
+    );
+  }
 
 
 }
