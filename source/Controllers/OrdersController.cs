@@ -68,6 +68,7 @@ public class OrdersController : ControllerBase
 
         var sale = await _db.Sales
             .AsNoTracking()
+            .Include(s => s.User)
             .Include(s => s.Items)
                 .ThenInclude(si => si.InventoryItem)
             .SingleOrDefaultAsync(s => s.SaleId == id);
@@ -100,6 +101,7 @@ public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequ
 
     // Load the active cart for this user with items and inventory details
     var cart = await _db.Carts
+        .Include(s => s.User)
         .Include(c => c.Items)
             .ThenInclude(ci => ci.InventoryItem)
         .SingleOrDefaultAsync(c => c.UserId == userId && c.isActive);
@@ -201,6 +203,7 @@ public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequ
 
     // Update for DTO 
     var completedSale = await _db.Sales
+        .Include(s => s.User)  
         .Include(s => s.Items)
             .ThenInclude(si => si.InventoryItem)
         .SingleAsync(s => s.SaleId == sale.SaleId);
@@ -255,7 +258,11 @@ public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequ
             City = sale.City,
             State = sale.State,
             Zip = sale.Zip,
-            CardLast4 = sale.CardLast4
+            CardLast4 = sale.CardLast4,
+            
+            UserId = sale.UserId,
+            CustomerName = $"{sale.User.FirstName} {sale.User.LastName}",
+            CustomerEmail = sale.User.Email
         };
 
         foreach (var si in sale.Items)
