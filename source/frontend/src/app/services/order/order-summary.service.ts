@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {CartItem} from '../../models/cart.models';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderSummaryService {
-  cartSubtotal: number = 0;
-  shippingCost: number = 0;
-  total: number = 0;
-  tax: number = 0;
+  cartSubtotal = 0;
+  shippingCost= 0;
+  total= 0;
+  tax = 0;
 
   updateSummary(subtotal: number, shipping: number) {
     this.cartSubtotal = subtotal;
@@ -18,10 +18,4 @@ export class OrderSummaryService {
 
 
   }
-
-
-  constructor() { }
-}
-
-export class OrderSummary {
 }
