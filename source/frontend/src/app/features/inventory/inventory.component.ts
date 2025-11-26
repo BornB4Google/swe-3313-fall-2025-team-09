@@ -27,7 +27,11 @@ export class InventoryComponent {
   currentPage = 1;
   cartService = inject(CartService);
 
+
   addToCart(item: any) {
+    if (this.cartService.isInCart(item)){
+      return;
+    }
     this.cartService.addToCart(item);
   }
 
@@ -50,6 +54,7 @@ export class InventoryComponent {
 
   selectedItem: InventoryItem | null = null;
 
+
   openItem(item: InventoryItem) {
     this.selectedItem = item;
   }
@@ -57,8 +62,13 @@ export class InventoryComponent {
   closeOverlay(){
     this.selectedItem = null;
   }
-
-
-
+  formatCompact(value: number) {
+    return new Intl.NumberFormat('en-US', {
+      notation: 'compact',
+      compactDisplay: 'short',
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 1
+    }).format(value);
+  }
 
 }

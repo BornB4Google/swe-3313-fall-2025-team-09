@@ -1,0 +1,15 @@
+meta {
+  name: RemoveItem
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:5243/api/cart/items/1
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

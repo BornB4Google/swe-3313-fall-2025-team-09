@@ -1,21 +1,20 @@
 meta {
-  name: Login
+  name: /api/auth/login
   type: http
   seq: 4
 }
 
 post {
-  url: http://localhost:8080/api/auth/login
+  url: http://localhost:5243/api/auth/login
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "username": "andrew",
-    "password": "whatthedawgdoin"
+    "username":"award62",
+    "password":"Admin1!"
   }
-  
 }
 
 settings {

@@ -309,3 +309,11 @@ Ice White	#F4F7F9
   color: #0A0F1C;
   transform: scale(1.05);
 }
+
+.add-to-cart-btn:disabled,
+.overlay-cart-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #555 !important;
+  color: #ccc !important;
+}
