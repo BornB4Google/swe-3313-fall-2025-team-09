@@ -1,4 +1,3 @@
-
 .order-title {
   position: absolute;
   align-content: center;
@@ -174,6 +173,8 @@
 .ship-line {
   opacity: 0.85;
 }
+
+
 .receipt-info {
   width: 100%;
   border-collapse: collapse;

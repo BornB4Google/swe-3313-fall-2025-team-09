@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {CurrencyPipe, DatePipe, NgForOf, NgIf} from '@angular/common';
 import {InventoryItem} from '../../../models/inventory.models';
 import {RouterLink} from '@angular/router';
+import { Sale } from '../../../models/sale.model';
+import { SaleService } from '../../../services/sales/sale.service';
 
 @Component({
   selector: 'app-orders',
@@ -9,42 +11,26 @@ import {RouterLink} from '@angular/router';
     NgForOf,
     CurrencyPipe,
     NgIf,
-    RouterLink
+    RouterLink,
+    DatePipe
   ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnInit  {
 
-  /*Dummy data temp*/
-  receipts: any[] = [
-    {
-      id: 4001,
-      date: "11/25/2025",
-      items: [
-        {
-          name: "Offshore Holdings Black Card",
-          price: 2500000.00,
-        },
-        {
-          name: "Deep Slate Hoodie",
-          price: 89.99,
-        }
-      ],
-      shippingName: "John Doe",
-      shippingEmail: "johndoe@gmail.com",
-      shippingAddress1: "987 Deep Sea Drive",
-      shippingCity: "Atlantis",
-      shippingState: "FL",
-      shippingZip: "33101",
-      subtotal: 2500000.00 + 89.99 * 2,
-      tax: 150000.00,
-      total: 2500000.00 + 89.99 * 2 + 150000.00
-    }
-];
-  selectedReceipt: any | null = null;
+  receipts: Sale[] = [];
+  selectedReceipt: Sale | null = null;
+  constructor(private saleService: SaleService) {}
+  ngOnInit(): void {
+    this.saleService.getAllOrders().subscribe({
+      next: (sales) => this.receipts = sales,
+      error: (err) => console.error('Failed to load sales:', err)
+    });
+  }
 
-  openReceipt(receipt: any) {
+
+  openReceipt(receipt: Sale) {
     this.selectedReceipt = receipt;
   }
 

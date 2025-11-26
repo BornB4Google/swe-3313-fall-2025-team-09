@@ -2,7 +2,7 @@
 
 <div class="order-content">
   <h2> Purchases</h2>
-  <div class="order-grid">
+  <div class="order-grid" *ngFor="let r of receipts" (click)="openReceipt(r)">
     <div class="receipt-card" *ngFor="let r of receipts" (click)="openReceipt(r)">
       <table class="receipt-info">
         <thead>
@@ -15,10 +15,10 @@
         </tr>
         </thead>
         <tbody>
-          <td>{{ r.shippingName }}</td>
-          <td>{{ r.shippingEmail }}</td>
-          <td>{{ r.total | currency }}</td>
-          <td>{{ r.date }}</td>
+        <td>{{ r.user.firstName }} {{ r.user.lastName }}</td>
+        <td>{{ r.user.email }}</td>
+        <td>{{ r.total | currency }}</td>
+        <td>{{ r.saleDateTime | date:'short' }}</td>
         </tbody>
 
       </table>
@@ -26,37 +26,48 @@
   </div>
   <div class="overlay" *ngIf="selectedReceipt" (click)="closeReceipt()">
 
-      <form class="receipt-form"(click)="$event.stopPropagation()">
-        <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
-        <h2 class="receipt-title">Receipt</h2>
-        <div class="receipt-box">
-          <div class="receipt-grid">
-            <div class="item-image"></div>
-            <h3 class="item-name">item name</h3>
-            <p class="item-price">price</p>
+    <form class="receipt-form"(click)="$event.stopPropagation()">
+      <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
+      <h2 class="receipt-title">Receipt</h2>
+      <div class="receipt-box">
+        <div class="receipt-grid">
+          <div class="item-image"></div>
+          <h3 class="item-name">item name</h3>
+          <p class="item-price">price</p>
+        </div>
+      </div>
+      <div class="receipt-columns">
+        <div class="shipping-address">
+          <div class="ship-title">Shipping to:</div>
+
+          <div class="ship-name">
+            {{ selectedReceipt.user.firstName }} {{ selectedReceipt.user.lastName }}
+          </div>
+
+          <div class="ship-line">
+            {{ selectedReceipt.street1 }}
+            <span *ngIf="selectedReceipt.street2">, {{ selectedReceipt.street2 }}</span>
+          </div>
+          <div class="ship-line">
+            {{ selectedReceipt.city }} {{ selectedReceipt.state }} {{ selectedReceipt.zip }}
           </div>
         </div>
-        <div class="receipt-columns">
-          <div class="shipping-address">
-            <div class="ship-title">Shipping to:</div>
-            <div class="ship-name">
-              Name
-            </div>
-            <div class="ship-line">
-              Address
-            </div>
-            <div class="ship-line">
-              City State Zip
-            </div>
-          </div>
-          <div class="pricing-container">
-            <h2 class="shipping">Shipping: $0.00</h2>
-            <h2 class="subtotal">Subtotal: $0.00</h2>
-            <h2 class="tax">Tax: $0.00</h2>
-            <h2 class="total">Total: $0.00</h2>
-          </div>
+        <div class="pricing-container">
+          <h2 class="shipping">
+            Shipping: {{ selectedReceipt.shippingCost | currency }}
+          </h2>
+          <h2 class="subtotal">
+            Subtotal: {{ selectedReceipt.subtotal | currency }}
+          </h2>
+          <h2 class="tax">
+            Tax: {{ selectedReceipt.tax | currency }}
+          </h2>
+          <h2 class="total">
+            Total: {{ selectedReceipt.total | currency }}
+          </h2>
         </div>
-      </form>
+      </div>
+    </form>
 
 
   </div>
