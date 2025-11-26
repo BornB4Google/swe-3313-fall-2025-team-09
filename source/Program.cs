@@ -98,8 +98,8 @@ using (var scope = app.Services.CreateScope())
         db.Users.Add(new User
         {
             UserId = 2,
-            Username = "ithoman67",
-            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            Username = "isaac",
+            PasswordHash = PasswordHasher.ComputePasswordHash("password"),
             FirstName = "Isaac",
             LastName = "Thoman",
             Email = "ithoman67@students.kennesaw.edu",
@@ -109,7 +109,7 @@ using (var scope = app.Services.CreateScope())
         {
             UserId = 3,
             Username = "john",
-            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            PasswordHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", //'password' in sha256
             FirstName = "John",
             LastName = "Pork",
             Email = "jpork@gmail.com",
