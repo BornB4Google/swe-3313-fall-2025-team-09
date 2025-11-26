@@ -1,0 +1,22 @@
+meta {
+  name: /api/orders
+  type: http
+  seq: 15
+}
+
+get {
+  url: http://localhost:5243/api/orders
+  body: none
+  auth: none
+}
+
+headers {
+  ~authToken: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}
