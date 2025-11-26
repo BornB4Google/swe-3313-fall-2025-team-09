@@ -3,7 +3,8 @@ import { RouterLink } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {CommonModule, CurrencyPipe} from '@angular/common';
+import {CartService} from '../../services/cart/cart.service';
 
 
 
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterLink,
     FormsModule,
-    CommonModule
+    CommonModule,
+    CurrencyPipe
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
@@ -37,9 +39,28 @@ export class CheckoutComponent {
   };
   constructor(
     private shipService: ShippingService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
+  subtotal: number = 0;
+  shippingCost: number = 0;
+
+  shippingOptions: any = {
+    Overnight: 29.99,
+    ThreeDay: 19.99,
+    Ground: 0.00
+  };
+  total: number = 0;
+
+  updateShipping(option: string) {
+    this.shippingCost = this.shippingOptions[option];
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    this.total = this.subtotal + this.shippingCost;
+  }
 
   confirmOrder(form: any) {
     if (form.invalid) {
@@ -73,6 +94,20 @@ export class CheckoutComponent {
     value = value.replace(/(\d{2})(\d{4})/, '$1/$2');
     event.target.value = value;
   }
+
+
+  cart: any[] = [];
+
+
+  ngOnInit() {
+    this.cartService.cartItems$.subscribe(items => this.cart = items);
+    this.cartService.subtotal$.subscribe(value => {
+      this.subtotal = value;
+      this.calculateTotal();
+    });
+  }
+
+
 
 }
 

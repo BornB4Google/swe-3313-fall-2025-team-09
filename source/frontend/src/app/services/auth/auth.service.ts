@@ -1,7 +1,7 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../../models/user.models';
-import {catchError, Observable, of, tap} from 'rxjs';
+import {catchError, Observable, of, switchMap, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,13 @@ export class AuthService {
     const body = { "Username":username, "Password":password };
     return this.http.post(`/api/auth/login`, body).pipe(
       tap(() => this.refreshCurrentUser(true))
+    );
+  }
+
+  register(username: string, password: string, email:string, firstName: string, lastName:string){
+    const body = { "username":username, "password":password, "email":email, "firstName":firstName, "lastName":lastName };
+    return this.http.post(`/api/auth/register`, body).pipe(
+      switchMap(() => this.login(username, password))
     );
   }
 

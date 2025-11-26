@@ -43,6 +43,9 @@ public class AuthController : ControllerBase
 
         if (await _db.Users.AnyAsync(u => u.Username == request.Username))
             return BadRequest("Another user already took this username.");
+        if (await _db.Users.AnyAsync(u => u.Email == request.Email))
+            return BadRequest("An account with this email already exists.");
+        
 
         var newUser = new User
         {
@@ -57,7 +60,7 @@ public class AuthController : ControllerBase
         _db.Users.Add(newUser);
         await _db.SaveChangesAsync();
 
-        return Ok("Successfully registered new account");
+        return Ok(new { message = "Successfully registered new account" });
     }
 
     // POST /api/auth/login
@@ -92,7 +95,9 @@ public class AuthController : ControllerBase
             // username
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
             // admin flag 
-            new Claim("isAdmin", user.IsAdmin ? "true" : "false")
+            new Claim("isAdmin", user.IsAdmin ? "true" : "false"),
+            // user claim
+            new Claim(ClaimTypes.Role, "User")
         };
 
         // add role claim 

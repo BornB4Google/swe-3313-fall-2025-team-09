@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
-import {AsyncPipe, CurrencyPipe, NgForOf} from '@angular/common';
+import {AsyncPipe, CurrencyPipe, NgForOf, NgIf} from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
 
 
@@ -10,7 +10,8 @@ import { CartService } from '../../services/cart/cart.service';
     RouterLink,
     CurrencyPipe,
     NgForOf,
-    AsyncPipe
+    AsyncPipe,
+    NgIf
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
@@ -22,6 +23,7 @@ export class ShoppingCartComponent {
   cart$ = this.cartService.cartItems$;
   subtotal: number = 0;
 
+
   trackById(index: number, item: any) {
     return item._id;
   }
@@ -31,16 +33,12 @@ export class ShoppingCartComponent {
   }
 
   ngOnInit() {
-    this.cartService.cartItems$.subscribe(items => {
-      this.cart = items;
-      this.calculateSubtotal();
-    })
 
+    this.cart$.subscribe(items => {this.cart = items;});
+    this.cartService.subtotal$.subscribe(total => {this.subtotal = total;});
   }
 
-  calculateSubtotal(){
-    this.subtotal = this.cart.reduce((num, item) => num + item.price, 0);
-  }
+
 
 
 }
