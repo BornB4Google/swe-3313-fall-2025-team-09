@@ -11,7 +11,13 @@ export class ShippingService {
     city: '',
     state: '',
     zip: '',
+    email: '',
+    phone: '',
+    card: '',
+    exp: '',
+    cvv: '',
   };
   subtotal = 0;
   shippingCost = 0;
+  selectedOption: string = 'Ground';
 }

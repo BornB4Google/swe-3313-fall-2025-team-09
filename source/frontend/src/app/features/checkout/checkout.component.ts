@@ -15,24 +15,12 @@ import { OrderSummaryService } from '../../services/order/order-summary.service'
   styleUrl: './checkout.component.css',
 })
 export class CheckoutComponent implements OnInit {
-  private shipService = inject(ShippingService);
+  protected shipService = inject(ShippingService);
   private router = inject(Router);
   private cartService = inject(CartService);
   private orderSummary = inject(OrderSummaryService);
 
-  checkoutData = {
-    name: '',
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
-    zip: '',
-    email: undefined as string | undefined,
-    phone: undefined as string | undefined,
-    card: undefined as string | undefined,
-    exp: undefined as string | undefined,
-    cvv: undefined as string | undefined,
-  };
+  checkoutData = this.shipService.shippingInfo;
 
   subtotal = 0;
   shippingCost = 0;
@@ -46,6 +34,9 @@ export class CheckoutComponent implements OnInit {
 
   updateShipping(option: string) {
     this.shippingCost = this.shippingOptions[option];
+    this.shipService.shippingCost = this.shippingCost;
+    this.shipService.selectedOption = option;
+    this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
   }
 
   confirmOrder(form: NgForm) {
@@ -57,7 +48,7 @@ export class CheckoutComponent implements OnInit {
     }
     this.shipService.shippingInfo = this.checkoutData;
 
-    this.shipService.shippingInfo = this.checkoutData;
+
     this.shipService.shippingCost = this.shippingCost;
     this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
 
@@ -92,6 +83,8 @@ export class CheckoutComponent implements OnInit {
   cart: CartItem[] = [];
 
   ngOnInit() {
+    this.checkoutData = this.shipService.shippingInfo;
+    this.shippingCost = this.shipService.shippingCost;
     this.cartService.cartItems$.subscribe(items => (this.cart = items));
     this.cartService.subtotal$.subscribe(value => {
       this.subtotal = value;
