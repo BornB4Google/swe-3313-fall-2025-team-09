@@ -57,8 +57,13 @@ export class InventoryComponent {
   closeOverlay(){
     this.selectedItem = null;
   }
-
-
-
+  formatCompact(value: number) {
+    return new Intl.NumberFormat('en-US', {
+      notation: 'compact',
+      compactDisplay: 'short',
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 1
+    }).format(value);
+  }
 
 }
