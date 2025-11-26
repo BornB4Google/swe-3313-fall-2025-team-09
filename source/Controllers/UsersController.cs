@@ -3,6 +3,8 @@ using Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Backend.Controllers;
 
@@ -21,11 +23,13 @@ public class UsersController : ControllerBase
     //GET /api/users/me
     // returns current logged-n user's profile
     [HttpGet("me")]
-    [Authorize]
+    [Authorize(Roles = "User, Admin")] 
     public async Task<IActionResult> GetCurrentUser()
     {
-        var userIdClaim = User.FindFirst("UserId")?.Value;
-        if (userIdClaim == null || !int.TryParse(userIdClaim, out var userId))
+        var subClaim = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
+                      ?? User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (subClaim == null || !int.TryParse(subClaim, out var userId))
             return Unauthorized();
         
         var user = await _db.Users

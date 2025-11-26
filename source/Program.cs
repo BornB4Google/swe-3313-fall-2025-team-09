@@ -98,8 +98,8 @@ using (var scope = app.Services.CreateScope())
         db.Users.Add(new User
         {
             UserId = 2,
-            Username = "ithoman67",
-            PasswordHash = PasswordHasher.ComputePasswordHash("Admin2!"),
+            Username = "isaac",
+            PasswordHash = PasswordHasher.ComputePasswordHash("password"),
             FirstName = "Isaac",
             LastName = "Thoman",
             Email = "ithoman67@students.kennesaw.edu",
