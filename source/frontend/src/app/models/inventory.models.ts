@@ -14,4 +14,3 @@ export interface InventoryItem {
   isSold: boolean;
   images: InventoryImage[];
 }
-

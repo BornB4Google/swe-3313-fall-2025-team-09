@@ -1,5 +1,5 @@
-import { SaleItem } from "./sale-item.model";
-import { User } from "./user.models";
+import { SaleItem } from './sale-item.model';
+import { User } from './user.models';
 
 export interface Sale {
   saleId: number;

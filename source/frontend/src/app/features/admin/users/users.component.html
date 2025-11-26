@@ -24,13 +24,15 @@
           <button
             class="promote-btn"
             (click)="updateUserRole(user.userId, true)"
-            [hidden]="user.isAdmin">
+            [hidden]="user.isAdmin"
+          >
             Make Admin
           </button>
           <button
             class="promote-btn"
             (click)="updateUserRole(user.userId, false)"
-            [hidden]="!user.isAdmin">
+            [hidden]="!user.isAdmin"
+          >
             Make User
           </button>
         </td>

@@ -6,6 +6,6 @@ import { RouterLink } from '@angular/router'; // needed for routerLink
   standalone: true,
   imports: [RouterLink],
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  styleUrls: ['./landing.component.css'],
 })
-export class LandingComponent { }
+export class LandingComponent {}

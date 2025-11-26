@@ -10,21 +10,28 @@ import { ConfirmComponent } from './features/confirm/confirm.component';
 import { ReceiptComponent } from './features/receipt/receipt.component';
 import { ADMIN_ROUTES } from './features/admin/admin.routes';
 import { redirectIfAuthenticatedGuard } from './guards/redirect-if-authenticated.guard';
-import {redirectIfUnauthenticatedGuard} from './guards/redirect-if-unauthenticated.guard';
+import { redirectIfUnauthenticatedGuard } from './guards/redirect-if-unauthenticated.guard';
 export const routes: Routes = [
   { path: '', component: LandingComponent, canActivate: [redirectIfAuthenticatedGuard] },
   { path: 'login', component: LoginComponent, canActivate: [redirectIfAuthenticatedGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [redirectIfAuthenticatedGuard] },
-  { path: 'inventory', component: InventoryComponent, canActivate: [redirectIfUnauthenticatedGuard]  },
+  {
+    path: 'inventory',
+    component: InventoryComponent,
+    canActivate: [redirectIfUnauthenticatedGuard],
+  },
   { path: 'checkout', component: CheckoutComponent, canActivate: [redirectIfUnauthenticatedGuard] },
-  { path: 'shoppingCart', component: ShoppingCartComponent, canActivate: [redirectIfUnauthenticatedGuard] },
+  {
+    path: 'shoppingCart',
+    component: ShoppingCartComponent,
+    canActivate: [redirectIfUnauthenticatedGuard],
+  },
   { path: 'account', component: AccountComponent, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: 'confirm', component: ConfirmComponent, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: 'receipt', component: ReceiptComponent, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: 'admin', children: ADMIN_ROUTES, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: '**', redirectTo: '' },
 ];
-
 
 /*
 - admin panel

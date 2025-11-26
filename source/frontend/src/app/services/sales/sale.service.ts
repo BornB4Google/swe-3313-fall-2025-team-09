@@ -4,13 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sale } from '../../models/sale.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SaleService {
   private http = inject(HttpClient);
-  constructor() { }
+  constructor() {}
 
   getAllOrders(): Observable<Sale[]> {
     return this.http.get<Sale[]>('/api/orders');
@@ -19,5 +18,4 @@ export class SaleService {
   getOrderById(id: number): Observable<Sale> {
     return this.http.get<Sale>(`/api/orders/${id}`);
   }
-
 }

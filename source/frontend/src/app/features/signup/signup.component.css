@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
 }
 
 .signup-container::after {
@@ -22,9 +22,7 @@
   letter-spacing: 5px;
   pointer-events: none;
   z-index: 0;
-
 }
-
 
 .signup-form {
   background-color: #000000;
@@ -48,7 +46,7 @@
   margin: 0;
   text-align: center;
   position: relative;
-  color: #F4F7F9;
+  color: #f4f7f9;
 }
 /*
 .signup-title::after {
@@ -71,13 +69,12 @@
 }
 
 .signup-btn {
-  background-color: #1E2A38;
-  color: #F4F7F9;
+  background-color: #1e2a38;
+  color: #f4f7f9;
   cursor: pointer;
   font-family: 'Playfair', serif;
   font-size: 15px;
   transition: 0.3s;
-
 }
 
 .signup-btn:hover {

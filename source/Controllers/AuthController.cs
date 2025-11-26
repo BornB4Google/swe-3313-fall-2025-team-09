@@ -45,7 +45,7 @@ public class AuthController : ControllerBase
             return BadRequest("Another user already took this username.");
         if (await _db.Users.AnyAsync(u => u.Email == request.Email))
             return BadRequest("An account with this email already exists.");
-        
+
 
         var newUser = new User
         {
