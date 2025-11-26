@@ -5,6 +5,7 @@ import {filter} from 'rxjs';
 import {AuthService} from './services/auth/auth.service';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,6 +21,7 @@ export class AppComponent {
   isLogin = false;
   isSignup = false;
 
+
   constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -32,6 +34,7 @@ export class AppComponent {
         console.log("URL:", url, "Landing:", this.isLanding, "Login:", this.isLogin, "Signup:", this.isSignup);
       })
   }
+
 
 
 
