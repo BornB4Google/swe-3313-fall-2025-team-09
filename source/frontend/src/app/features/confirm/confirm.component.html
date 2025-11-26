@@ -1,13 +1,15 @@
 <div class="confirm-container">
   <form class="confirm-form">
     <h2 class="confirm-title">Confirm Order</h2>
-    <div class="confirm-box" *ngFor="let item of cart">
-      <div class="confirm-grid">
-        <div class="item-image"></div>
-        <h3 class="item-name">{{ item.name }}</h3>
-        <p class="item-price">{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+    @for (item of cart; track item._id) {
+      <div class="confirm-box">
+        <div class="confirm-grid">
+          <div class="item-image"></div>
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="item-price">{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+        </div>
       </div>
-    </div>
+    }
     <div class="confirm-columns">
       <div class="shipping-address">
         <div class="ship-title">Shipping to:</div>

@@ -2,11 +2,10 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
-  imports: [RouterLink, FormsModule, NgIf],
+  imports: [RouterLink, FormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
@@ -14,11 +13,11 @@ export class SignupComponent {
   authService = inject(AuthService);
   router = inject(Router);
 
-  firstName: string = '';
-  lastName: string = '';
-  username: string = '';
-  email: string = '';
-  password: string = '';
+  firstName = '';
+  lastName = '';
+  username = '';
+  email = '';
+  password = '';
 
   errorMessage: string | null = null;
 

@@ -14,7 +14,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users()">
+      @for (user of users(); track user.userId) {
+        <tr>
         <td>{{ user.userId }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
@@ -36,7 +37,8 @@
             Make User
           </button>
         </td>
-      </tr>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

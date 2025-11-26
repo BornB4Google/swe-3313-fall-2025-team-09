@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CurrencyPipe, DatePipe, NgForOf, NgIf } from '@angular/common';
-import { InventoryItem } from '../../../models/inventory.models';
-import { RouterLink } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Sale } from '../../../models/sale.model';
 import { SaleService } from '../../../services/sales/sale.service';
 
 @Component({
   selector: 'app-orders',
-  imports: [NgForOf, CurrencyPipe, NgIf, RouterLink, DatePipe],
+  imports: [CurrencyPipe, DatePipe],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css',
 })
 export class OrdersComponent implements OnInit {
   receipts: Sale[] = [];
   selectedReceipt: Sale | null = null;
-  constructor(private saleService: SaleService) {}
+  private saleService = inject(SaleService);
   ngOnInit(): void {
     this.saleService.getAllOrders().subscribe({
       next: sales => (this.receipts = sales),

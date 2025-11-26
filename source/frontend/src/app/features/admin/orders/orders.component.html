@@ -2,8 +2,23 @@
 
 <div class="order-content">
   <h2>Purchases</h2>
-  <div class="order-grid" *ngFor="let r of receipts" (click)="openReceipt(r)">
-    <div class="receipt-card" *ngFor="let r of receipts" (click)="openReceipt(r)">
+  @for (r of receipts; track r.saleId) {
+    <div
+      class="order-grid"
+      tabindex="0"
+      role="button"
+      (click)="openReceipt(r)"
+      (keydown.enter)="openReceipt(r)"
+      (keydown.space)="openReceipt(r)"
+    >
+      <div
+        class="receipt-card"
+        tabindex="0"
+        role="button"
+        (click)="openReceipt(r)"
+        (keydown.enter)="openReceipt(r)"
+        (keydown.space)="openReceipt(r)"
+      >
       <table class="receipt-info">
         <thead>
           <tr>
@@ -21,10 +36,18 @@
           <td>{{ r.saleDateTime | date: 'short' }}</td>
         </tbody>
       </table>
+      </div>
     </div>
-  </div>
-  <div class="overlay" *ngIf="selectedReceipt" (click)="closeReceipt()">
-    <form class="receipt-form" (click)="$event.stopPropagation()">
+  }
+  @if (selectedReceipt) {
+    <div
+      class="overlay"
+      tabindex="0"
+      role="dialog"
+      (click)="closeReceipt()"
+      (keydown.escape)="closeReceipt()"
+    >
+      <form class="receipt-form" (click)="$event.stopPropagation()" (keydown.enter)="$event.stopPropagation()">
       <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
       <h2 class="receipt-title">Receipt</h2>
       <div class="receipt-box">
@@ -44,7 +67,9 @@
 
           <div class="ship-line">
             {{ selectedReceipt.street1 }}
-            <span *ngIf="selectedReceipt.street2">, {{ selectedReceipt.street2 }}</span>
+            @if (selectedReceipt.street2) {
+              <span>, {{ selectedReceipt.street2 }}</span>
+            }
           </div>
           <div class="ship-line">
             {{ selectedReceipt.city }} {{ selectedReceipt.state }} {{ selectedReceipt.zip }}
@@ -57,6 +82,7 @@
           <h2 class="total">Total: {{ selectedReceipt.total | currency }}</h2>
         </div>
       </div>
-    </form>
-  </div>
+      </form>
+    </div>
+  }
 </div>

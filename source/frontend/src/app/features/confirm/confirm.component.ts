@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { CurrencyPipe, NgForOf } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ShippingService } from '../../services/shipping/shipping.service';
-import { Router } from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
+import { CartItem, ShippingInfo } from '../../models/cart.models';
 
 @Component({
   selector: 'app-confirm',
-  imports: [CurrencyPipe, NgForOf, RouterLink],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './confirm.component.html',
   styleUrl: './confirm.component.css',
 })
-export class ConfirmComponent {
-  shipping: any = {};
+export class ConfirmComponent implements OnInit {
+  private shipService = inject(ShippingService);
+  private cartService = inject(CartService);
 
-  cart: any[] = [];
+  shipping: ShippingInfo = {
+    name: '',
+    address1: '',
+    city: '',
+    state: '',
+    zip: '',
+  };
 
-  constructor(
-    private shipService: ShippingService,
-    private cartService: CartService
-  ) {}
+  cart: CartItem[] = [];
+
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;
     this.cartService.cartItems$.subscribe(items => {

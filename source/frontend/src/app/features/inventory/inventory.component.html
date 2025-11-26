@@ -1,8 +1,16 @@
 <div class="inventory-container">
   <h2 class="inventory-title">Shop</h2>
   <div class="inventory-grid">
-    <div class="inventory-box" (click)="openItem(item)" *ngFor="let item of pageInventory">
-      <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
+    @for (item of pageInventory; track item.itemId) {
+      <div
+        class="inventory-box"
+        tabindex="0"
+        role="button"
+        (click)="openItem(item)"
+        (keydown.enter)="openItem(item)"
+        (keydown.space)="openItem(item)"
+      >
+        <img class="item-image" [src]="item.primaryPhotoUrl" [alt]="item.name" />
       <h3 class="item-name">{{ item.name }}</h3>
       <p class="item-price">$ {{ formatCompact(item.price) }}</p>
 
@@ -13,25 +21,37 @@
       >
         {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
       </button>
-    </div>
+      </div>
+    }
   </div>
   <div class="pages">
     <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&#11160;</button>
-    <button
-      *ngFor="let page of [].constructor(totalPages); let i = index"
-      (click)="changePage(i + 1)"
-      [class.active]="currentPage === i + 1"
-    >
-      {{ i + 1 }}
-    </button>
+    @for (page of [].constructor(totalPages); track $index) {
+      <button (click)="changePage($index + 1)" [class.active]="currentPage === $index + 1">
+        {{ $index + 1 }}
+      </button>
+    }
     <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
       &#11162;
     </button>
   </div>
-  <div class="overlay" *ngIf="selectedItem" (click)="closeOverlay()">
-    <div class="overlay-content" (click)="$event.stopPropagation()">
-      <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
-      <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" />
+  @if (selectedItem) {
+    <div
+      class="overlay"
+      tabindex="0"
+      role="dialog"
+      (click)="closeOverlay()"
+      (keydown.escape)="closeOverlay()"
+    >
+      <div
+        class="overlay-content"
+        tabindex="0"
+        role="document"
+        (click)="$event.stopPropagation()"
+        (keydown.enter)="$event.stopPropagation()"
+      >
+        <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
+        <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" [alt]="selectedItem.name" />
       <h2 class="overlay-title">{{ selectedItem.name }}</h2>
       <p class="overlay-description">{{ selectedItem.description }}</p>
       <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
@@ -42,6 +62,7 @@
       >
         {{ cartService.isInCart(selectedItem.itemId) ? 'Added to Cart' : 'Add to Cart' }}
       </button>
+      </div>
     </div>
-  </div>
+  }
 </div>

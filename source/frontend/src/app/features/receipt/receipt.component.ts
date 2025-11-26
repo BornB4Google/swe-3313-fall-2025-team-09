@@ -1,24 +1,29 @@
-import { Component } from '@angular/core';
-import { CurrencyPipe, NgForOf } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CartItem, ShippingInfo } from '../../models/cart.models';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-receipt',
-  imports: [CurrencyPipe, NgForOf, RouterLink],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './receipt.component.html',
   styleUrl: './receipt.component.css',
 })
-export class ReceiptComponent {
-  shipping: any = {};
+export class ReceiptComponent implements OnInit {
+  private shipService = inject(ShippingService);
+  private cartService = inject(CartService);
 
-  cart: any[] = [];
+  shipping: ShippingInfo = {
+    name: '',
+    address1: '',
+    city: '',
+    state: '',
+    zip: '',
+  };
 
-  constructor(
-    private shipService: ShippingService,
-    private cartService: CartService
-  ) {}
+  cart: CartItem[] = [];
 
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;

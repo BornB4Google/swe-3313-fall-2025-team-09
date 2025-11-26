@@ -1,13 +1,15 @@
 <div class="receipt-container">
   <form class="receipt-form">
     <h2 class="receipt-title">Receipt</h2>
-    <div class="receipt-box" *ngFor="let item of cart">
-      <div class="receipt-grid">
-        <div class="item-image"></div>
-        <h3 class="item-name">{{ item.name }}</h3>
-        <p class="item-price">{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+    @for (item of cart; track item._id) {
+      <div class="receipt-box">
+        <div class="receipt-grid">
+          <div class="item-image"></div>
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="item-price">{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+        </div>
       </div>
-    </div>
+    }
     <div class="receipt-columns">
       <div class="shipping-address">
         <div class="ship-title">Shipping to:</div>

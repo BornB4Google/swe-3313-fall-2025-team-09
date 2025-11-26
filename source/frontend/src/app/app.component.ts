@@ -19,7 +19,9 @@ export class AppComponent {
   isLogin = false;
   isSignup = false;
 
-  constructor(private router: Router) {
+  private router = inject(Router);
+
+  constructor() {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {

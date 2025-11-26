@@ -1,25 +1,22 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe, CurrencyPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { CartItem } from '../../models/cart.models';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [RouterLink, CurrencyPipe, NgForOf, AsyncPipe, NgIf],
+  imports: [RouterLink, CurrencyPipe, AsyncPipe],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',
 })
-export class ShoppingCartComponent {
-  cart: any[] = [];
+export class ShoppingCartComponent implements OnInit {
+  cart: CartItem[] = [];
   cartService = inject(CartService);
   cart$ = this.cartService.cartItems$;
-  subtotal: number = 0;
+  subtotal = 0;
 
-  trackById(index: number, item: any) {
-    return item._id;
-  }
-
-  removeCart(item: any) {
+  removeCart(item: CartItem) {
     this.cartService.removeFromCart(item._id);
   }
 
