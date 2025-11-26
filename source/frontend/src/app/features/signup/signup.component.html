@@ -1,10 +1,13 @@
 <div class="signup-container">
   <form class="signup-form">
     <h2 class="signup-title">Sign Up</h2>
-    <input type="text" placeholder="Your Name" />
-    <input type="text" placeholder="Your Email" />
-    <input type="password" placeholder="Password" />
-    <button class="signup-btn" routerLink="/inventory">Sign Up</button>
+    <input type="text" name="firstName" [(ngModel)]="firstName" placeholder="First Name" />
+    <input type="text" name="lastName" [(ngModel)]="lastName" placeholder="Last Name" />
+    <input type="text" name="username" [(ngModel)]="username" placeholder="Username" />
+    <input type="text" name="email" [(ngModel)]="email" placeholder="Email" />
+    <input type="password"  name="password" [(ngModel)]="password" placeholder="Password" />
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <button class="signup-btn" (click)="register()" >Sign Up</button>
     <button class="signup-btn" routerLink="/login">Already have an account?</button>
   </form>
 </div>

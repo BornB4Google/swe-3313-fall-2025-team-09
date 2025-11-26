@@ -60,7 +60,7 @@ public class AuthController : ControllerBase
         _db.Users.Add(newUser);
         await _db.SaveChangesAsync();
 
-        return Ok("Successfully registered new account");
+        return Ok(new { message = "Successfully registered new account" });
     }
 
     // POST /api/auth/login
