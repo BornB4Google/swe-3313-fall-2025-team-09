@@ -3,6 +3,9 @@
   @if (isLanding || isLanding2 || isLogin || isSignup) {
   } @else {
     <ul class="nav-links">
+      @if (authService.currentUser()?.isAdmin) {
+        <li><a routerLink="/admin">Admin</a></li>
+      }
       <li><a routerLink="/inventory">Shop</a></li>
       <li><a routerLink="/search">Search</a></li>
       <li><a routerLink="/shoppingCart">Checkout</a></li>
