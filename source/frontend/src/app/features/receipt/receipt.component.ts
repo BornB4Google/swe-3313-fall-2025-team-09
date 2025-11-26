@@ -23,6 +23,11 @@ export class ReceiptComponent implements OnInit {
     city: '',
     state: '',
     zip: '',
+    email: '',
+    phone: '',
+    card: '',
+    exp: '',
+    cvv: '',
   };
 
   cart: CartItem[] = [];

@@ -23,6 +23,11 @@ export class ConfirmComponent implements OnInit {
     city: '',
     state: '',
     zip: '',
+    email: '',
+    phone: '',
+    card: '',
+    exp: '',
+    cvv: '',
   };
 
   cart: CartItem[] = [];
@@ -30,9 +35,11 @@ export class ConfirmComponent implements OnInit {
   total = 0;
   subtotal = 0;
   tax = 0;
+  selectedOption = '';
 
   ngOnInit() {
     this.shippingInfo = this.shipService.shippingInfo;
+    this.selectedOption = this.shipService.selectedOption;
     this.cartService.cartItems$.subscribe(items => (this.cart = items));
     this.shippingCost = this.orderSummary.shippingCost;
     this.subtotal = this.orderSummary.cartSubtotal;
