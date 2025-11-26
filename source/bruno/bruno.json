@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "name": "swe3313",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "size": 0.0026187896728515625,
+  "filesCount": 12,
+  "presets": {
+    "requestType": "http",
+    "requestUrl": "http://localhost:5243"
+  }
+}
