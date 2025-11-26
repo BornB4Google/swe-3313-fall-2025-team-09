@@ -19,5 +19,5 @@ export class ShippingService {
   };
   subtotal = 0;
   shippingCost = 0;
-  selectedOption: string = 'Ground';
+  selectedOption = 'Ground';
 }

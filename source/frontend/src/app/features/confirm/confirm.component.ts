@@ -35,7 +35,7 @@ export class ConfirmComponent implements OnInit {
   total = 0;
   subtotal = 0;
   tax = 0;
-  selectedOption: string = '';
+  selectedOption = '';
 
   ngOnInit() {
     this.shippingInfo = this.shipService.shippingInfo;
