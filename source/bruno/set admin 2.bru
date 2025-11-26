@@ -1,0 +1,26 @@
+meta {
+  name: set admin 2
+  type: http
+  seq: 9
+}
+
+put {
+  url: http://localhost:5243/api/users/3/role
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "isAdmin": true
+  }
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

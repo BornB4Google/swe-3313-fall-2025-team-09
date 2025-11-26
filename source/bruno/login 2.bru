@@ -1,0 +1,27 @@
+meta {
+  name: login 2
+  type: http
+  seq: 14
+}
+
+post {
+  url: http://localhost:5243/api/auth/login
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "Username": "award62",
+    "Password": "Admin1!"
+  }
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}
