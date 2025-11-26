@@ -196,7 +196,9 @@
       </div>
       <div class="pricing-container">
         <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' : 'symbol' }}</h2>
-        <h2 class="subtotal">Subtotal: {{ total | currency: 'USD' : 'symbol' }}</h2>
+        <h2 class="subtotal">
+          Subtotal: {{ subtotal + shippingCost | currency: 'USD' : 'symbol' }}
+        </h2>
       </div>
     </div>
     <div class="confirm-buttons">
