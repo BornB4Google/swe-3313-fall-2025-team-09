@@ -85,46 +85,6 @@
   right: 30px;
   font-size: 1.2rem;
 }
-.shipping,
-.subtotal,
-.tax,
-.total {
-  left: 35%;
-}
-
-.shipping {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.subtotal {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.tax {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.total {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.shipping,
-.subtotal,
-.tax,
-.total {
-  left: -15px;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 1.2rem;
-}
 
 .confirm-buttons {
   display: flex;
@@ -226,8 +186,33 @@
 }
 
 .pricing-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 45%;
+  padding-right: 20px;
+  width: 425px;
+  margin: 20px auto;
+  border-radius: 14px;
+}
+.line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 6px 0;
+  align-items: center;
+}
+
+.label {
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.value {
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.total-row .label,
+.total-row .value {
+  font-size: 1.55rem;
+  font-weight: 700;
+  padding-top: 10px;
 }

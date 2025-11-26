@@ -24,10 +24,22 @@
         </div>
       </div>
       <div class="pricing-container">
-        <h2 class="shipping">Shipping: {{ selectedOption }} {{ shippingCost | currency }}</h2>
-        <h2 class="subtotal">Subtotal: {{ subtotal | currency: 'USD' }}</h2>
-        <h2 class="tax">Tax: {{ tax | currency: 'USD' }}</h2>
-        <h2 class="total">Total: {{ total | currency: 'USD' }}</h2>
+        <div class="line">
+          <span class="label">Shipping: </span>
+          <span class="value"> {{ shippingCost | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label">Subtotal: </span>
+          <span class="value">{{ subtotal | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label"> Tax: </span>
+          <span class="value"> {{ tax | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label"> Total: </span>
+          <span class="value"> {{ total | currency: 'USD' }}</span>
+        </div>
       </div>
     </div>
     <div class="confirm-buttons">

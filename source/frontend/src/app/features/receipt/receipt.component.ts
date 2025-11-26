@@ -36,6 +36,12 @@ export class ReceiptComponent implements OnInit {
   subtotal = 0;
   tax = 0;
 
+  get maskedCard(): string {
+    const card = this.shipService.shippingInfo.card || '';
+    const last4 = card.replace(/\s/g, '').slice(-4);
+    return `**** **** **** ${last4}`;
+  }
+
   ngOnInit() {
     this.shipping = this.shipService.shippingInfo;
     this.cartService.cartItems$.subscribe(items => {
