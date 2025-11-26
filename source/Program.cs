@@ -223,6 +223,9 @@ using (var scope = app.Services.CreateScope())
                 State = "GA",
                 Zip = "30303",
                 CardLast4 = "1234"
+                
+                //customer info
+                
             }
         );
     }
