@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   protected shipService = inject(ShippingService);
   private router = inject(Router);
   private cartService = inject(CartService);
-  private orderSummary = inject(OrderSummaryService);
+  protected orderSummary = inject(OrderSummaryService);
 
   checkoutData = this.shipService.shippingInfo;
 
