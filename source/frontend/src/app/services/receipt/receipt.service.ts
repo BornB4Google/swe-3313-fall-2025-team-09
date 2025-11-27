@@ -11,7 +11,7 @@ export class ReceiptService {
   private lastOrder: receiptInfo | null = null;
   private lastOrderId: number | null = null;
 
-  checkout(request: number): Observable<receiptInfo> {
+  checkout(request: CheckoutRequest): Observable<receiptInfo> {
     return this.http.post<receiptInfo>('/api/orders/checkout', request);
   }
 
@@ -27,4 +27,14 @@ export class ReceiptService {
   getOrderById(id: number): Observable<receiptInfo> {
     return this.http.get<receiptInfo>(`/api/orders/${id}`);
   }
+}
+
+export interface CheckoutRequest {
+  street1: string;
+  street2: string | null;
+  city: string;
+  state: string;
+  zip: string;
+  shippingSpeed: string;
+  cardLast4: string;
 }
