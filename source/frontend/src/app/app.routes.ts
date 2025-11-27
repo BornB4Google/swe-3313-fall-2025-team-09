@@ -11,6 +11,7 @@ import { ReceiptComponent } from './features/receipt/receipt.component';
 import { ADMIN_ROUTES } from './features/admin/admin.routes';
 import { redirectIfAuthenticatedGuard } from './guards/redirect-if-authenticated.guard';
 import { redirectIfUnauthenticatedGuard } from './guards/redirect-if-unauthenticated.guard';
+import { adminGuard } from './guards/admin.guard';
 export const routes: Routes = [
   { path: '', component: LandingComponent, canActivate: [redirectIfAuthenticatedGuard] },
   { path: 'login', component: LoginComponent, canActivate: [redirectIfAuthenticatedGuard] },
@@ -34,7 +35,7 @@ export const routes: Routes = [
     component: ReceiptComponent,
     canActivate: [redirectIfUnauthenticatedGuard],
   },
-  { path: 'admin', children: ADMIN_ROUTES, canActivate: [redirectIfUnauthenticatedGuard] },
+  { path: 'admin', children: ADMIN_ROUTES, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' },
 ];
 

@@ -42,7 +42,7 @@ public class UsersController : ControllerBase
                 u.FirstName,
                 u.LastName,
                 u.Email,
-
+                u.IsAdmin
             })
             .FirstOrDefaultAsync();
 
