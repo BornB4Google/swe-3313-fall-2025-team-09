@@ -10,10 +10,6 @@ import { InventoryItem } from '../../models/inventory.models';
 export class InventoryService {
   private http = inject(HttpClient);
 
-  getRandom() {
-    return Math.random();
-  }
-
   getInventory(): Observable<InventoryItem[]> {
     return this.http.get<InventoryItem[]>('/api/inventory');
   }

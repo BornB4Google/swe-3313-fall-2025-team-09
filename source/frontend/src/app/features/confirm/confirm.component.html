@@ -1,12 +1,12 @@
 <div class="confirm-container">
   <form class="confirm-form">
     <h2 class="confirm-title">Confirm Order</h2>
-    @for (item of cart; track item._id) {
+    @for (item of cart?.items; track item.itemId) {
       <div class="confirm-box">
         <div class="confirm-grid">
           <div class="item-image"></div>
           <h3 class="item-name">{{ item.name }}</h3>
-          <p class="item-price">{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+          <p class="item-price">{{ item.unitPrice | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
         </div>
       </div>
     }
@@ -43,7 +43,9 @@
       </div>
     </div>
     <div class="confirm-buttons">
-      <button class="confirm-btn" routerLink="/receipt">Complete Order &#11162;</button>
+      <button type="button" class="confirm-btn" (click)="saveReceipt()">
+        Complete Order &#11162;
+      </button>
       <button class="back-btn" routerLink="/checkout">&#11160; Back</button>
     </div>
   </form>

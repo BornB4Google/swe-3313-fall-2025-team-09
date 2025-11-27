@@ -26,16 +26,17 @@ export class InventoryComponent {
     if (this.cartService.isInCart(item.itemId)) {
       return;
     }
-    this.cartService.addToCart(item);
+    this.cartService.addToCart(item.itemId);
   }
 
   get totalPages(): number {
     return Math.ceil(this.inventoryData().length / this.itemsPerPage);
   }
   get pageInventory() {
+    const available = this.inventoryData().filter(item => !item.isSold);
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.inventoryData().slice(start, end);
+    return available.slice(start, end);
   }
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {

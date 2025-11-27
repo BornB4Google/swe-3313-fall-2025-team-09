@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
-import { CartItem } from '../../models/cart.models';
+import { CartDto, CartItem } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 
 @Component({
@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
   formatPhone(event: Event) {
     const target = event.target as HTMLInputElement;
     let value = target.value.replace(/[^0-9]/g, '');
-    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
     target.value = value;
     this.checkoutData.phone = value;
   }
@@ -79,14 +79,15 @@ export class CheckoutComponent implements OnInit {
     target.value = value;
   }
 
-  cart: CartItem[] = [];
+  cart: CartDto | null = null;
 
   ngOnInit() {
     this.checkoutData = this.shipService.shippingInfo;
     this.shippingCost = this.shipService.shippingCost;
-    this.cartService.cartItems$.subscribe(items => (this.cart = items));
-    this.cartService.subtotal$.subscribe(value => {
-      this.subtotal = value;
+    this.cartService.cartItems$.subscribe(cartDto => {
+      this.cart = cartDto;
+      this.subtotal = cartDto.total;
+      this.orderSummary.updateSummary(this.subtotal, this.shippingCost);
     });
   }
 }

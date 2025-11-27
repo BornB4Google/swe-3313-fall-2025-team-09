@@ -26,7 +26,7 @@
           name="phone"
           required
           placeholder="Phone Number"
-          pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+          pattern="^[0-9]{3} [0-9]{3} [0-9]{4}$"
           maxlength="12"
           [(ngModel)]="checkoutData.phone"
           (input)="formatPhone($event)"
@@ -204,7 +204,7 @@
       <div class="pricing-container">
         <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' : 'symbol' }}</h2>
         <h2 class="subtotal">
-          Subtotal: {{ subtotal + shippingCost | currency: 'USD' : 'symbol' }}
+          Subtotal: {{ orderSummary.cartSubtotal + shippingCost | currency: 'USD' : 'symbol' }}
         </h2>
       </div>
     </div>
