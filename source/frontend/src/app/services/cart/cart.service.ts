@@ -1,9 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs';
-import { CartDto, CartItem } from '../../models/cart.models';
-import { InventoryItem } from '../../models/inventory.models';
-import { receiptInfo } from '../../models/receipt.model';
+import { BehaviorSubject } from 'rxjs';
+import { CartDto } from '../../models/cart.models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

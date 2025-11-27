@@ -1,5 +1,3 @@
-import { InventoryItem } from './inventory.models';
-
 export interface CartItem {
   cartItemId: number;
   itemId: number;

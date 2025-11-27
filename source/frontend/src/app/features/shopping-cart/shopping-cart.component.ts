@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { CartItem } from '../../models/cart.models';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({

@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { InventoryItem } from '../../models/inventory.models';
 import { receiptInfo } from '../../models/receipt.model';
 
 @Injectable({
@@ -12,9 +11,7 @@ export class ReceiptService {
   private lastOrder: receiptInfo | null = null;
   private lastOrderId: number | null = null;
 
-  constructor() {}
-
-  checkout(request: any): Observable<receiptInfo> {
+  checkout(request: number): Observable<receiptInfo> {
     return this.http.post<receiptInfo>('/api/orders/checkout', request);
   }
 

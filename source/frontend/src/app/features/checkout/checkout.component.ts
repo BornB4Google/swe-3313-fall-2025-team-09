@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart/cart.service';
-import { CartDto, CartItem } from '../../models/cart.models';
+import { CartDto } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 
 @Component({

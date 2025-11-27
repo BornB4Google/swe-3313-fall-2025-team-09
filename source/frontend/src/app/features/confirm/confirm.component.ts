@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { provideRouter, Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { CartService } from '../../services/cart/cart.service';
-import { CartItem, ShippingInfo } from '../../models/cart.models';
+import { ShippingInfo } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 import { ReceiptService } from '../../services/receipt/receipt.service';
 import { CartDto } from '../../models/cart.models';
@@ -71,7 +71,7 @@ export class ConfirmComponent implements OnInit {
     return last4;
   }
   saveReceipt() {
-    let request = this.buildCheckout();
+    const request = this.buildCheckout();
     this.receiptService.checkout(request).subscribe(result => {
       this.receiptService.setLastOrder(result);
       this.clearCart();
@@ -82,7 +82,7 @@ export class ConfirmComponent implements OnInit {
   clearCart() {
     this.cartService.clearCart();
   }
-  navigateToReceiptPage(id: any) {
+  navigateToReceiptPage(id: number) {
     this.router.navigate(['/receipt', id]);
   }
 }
