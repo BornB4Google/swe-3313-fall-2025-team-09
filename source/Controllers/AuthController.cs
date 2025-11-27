@@ -50,7 +50,7 @@ public class AuthController : ControllerBase
         var newUser = new User
         {
             Username = request.Username,
-            PasswordHash = ComputePasswordHash(request.Password),
+            PasswordHash = PasswordHasher.ComputePasswordHash(request.Password),
             FirstName = request.FirstName,
             LastName = request.LastName,
             Email = request.Email,
@@ -79,7 +79,7 @@ public class AuthController : ControllerBase
         if (user == null)
             return BadRequest("User not found.");
 
-        var hashedPassword = ComputePasswordHash(request.Password);
+        var hashedPassword = PasswordHasher.ComputePasswordHash(request.Password);
         if (user.PasswordHash != hashedPassword)
             return BadRequest("Incorrect password");
 
@@ -94,13 +94,13 @@ public class AuthController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
             // username
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
-            // admin flag 
+            // admin flag
             new Claim("isAdmin", user.IsAdmin ? "true" : "false"),
             // user claim
             new Claim(ClaimTypes.Role, "User")
         };
 
-        // add role claim 
+        // add role claim
         if (user.IsAdmin)
         {
             claims.Add(new Claim(ClaimTypes.Role, "Admin"));
@@ -127,7 +127,7 @@ public class AuthController : ControllerBase
             new CookieOptions
             {
                 HttpOnly = true,
-                Secure = false,                 // HTTPS in prod; okay for dev with http if needed
+                Secure = false,
                 SameSite = SameSiteMode.Strict,
                 Expires = DateTimeOffset.UtcNow.AddMinutes(expiryMinutes)
             });
@@ -150,18 +150,4 @@ public class AuthController : ControllerBase
         return Ok(new { message = "Successfully logged out" });
     }
 
-    // helpers
-
-    private static string ComputePasswordHash(string s)
-    {
-        var sb = new StringBuilder();
-
-        using var hash = SHA256.Create();
-        byte[] result = hash.ComputeHash(Encoding.UTF8.GetBytes(s));
-
-        foreach (byte b in result)
-            sb.Append(b.ToString("x2"));
-
-        return sb.ToString();
-    }
 }
