@@ -90,37 +90,39 @@ public class ReportsController : ControllerBase
         }
 
         // Overall summary
+        // Overall summary
         var summary = await salesQuery
-            .GroupBy(_ => 1)
-            .Select(g => new
-            {
-                OrderCount   = g.Count(),
-                Subtotal     = g.Sum(s => s.Subtotal),
-                Tax          = g.Sum(s => s.Tax),
-                Shipping     = g.Sum(s => s.ShippingCost),
-                TotalRevenue = g.Sum(s => s.Total)
-            })
-            .FirstOrDefaultAsync()
-            ?? new
-            {
-                OrderCount   = 0,
-                Subtotal     = 0m,
-                Tax          = 0m,
-                Shipping     = 0m,
-                TotalRevenue = 0m
-            };
+                          .GroupBy(_ => 1)
+                          .Select(g => new
+                          {
+                              OrderCount = g.Count(),
+                              Subtotal = g.Sum(s => s.Subtotal),
+                              Tax = g.Sum(s => s.Tax),
+                              Shipping = g.Sum(s => s.ShippingCost),
+                              TotalRevenue = g.Sum(s => s.Total)
+                          })
+                          .FirstOrDefaultAsync()
+                      ?? new
+                      {
+                          OrderCount = 0,
+                          Subtotal = 0m,
+                          Tax = 0m,
+                          Shipping = 0m,
+                          TotalRevenue = 0m
+                      };
+
 
         // Breakdown by day
         var byDay = await salesQuery
             .GroupBy(s => s.SaleDateTime.Date)
             .Select(g => new
             {
-                Date        = g.Key,
-                OrderCount  = g.Count(),
-                Subtotal    = g.Sum(s => s.Subtotal),
-                Tax         = g.Sum(s => s.Tax),
-                Shipping    = g.Sum(s => s.ShippingCost),
-                Total       = g.Sum(s => s.Total)
+                Date = g.Key,
+                OrderCount = g.Count(),
+                Subtotal = g.Sum(s => s.Subtotal),
+                Tax = g.Sum(s => s.Tax),
+                Shipping = g.Sum(s => s.ShippingCost),
+                Total = g.Sum(s => s.Total)
             })
             .OrderBy(x => x.Date)
             .ToListAsync();
@@ -128,8 +130,9 @@ public class ReportsController : ControllerBase
         var report = new
         {
             Summary = summary,
-            ByDay   = byDay
+            ByDay = byDay
         };
+
 
         return Ok(report);
     }
