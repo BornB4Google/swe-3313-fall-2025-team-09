@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryService } from '../../services/inventory/inventory.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -11,7 +11,7 @@ import { CartService } from '../../services/cart/cart.service';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
-export class InventoryComponent {
+export class InventoryComponent implements OnInit {
   inventoryService = inject(InventoryService);
 
   inventoryData = toSignal(this.inventoryService.getInventory(), {
@@ -61,5 +61,8 @@ export class InventoryComponent {
       maximumFractionDigits: 2,
       minimumFractionDigits: 2,
     }).format(value);
+  }
+  ngOnInit() {
+    this.cartService.loadCart();
   }
 }
