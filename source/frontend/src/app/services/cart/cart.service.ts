@@ -1,52 +1,48 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs';
-import { CartItem } from '../../models/cart.models';
-import { InventoryItem } from '../../models/inventory.models';
+import { CartDto } from '../../models/cart.models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart: CartItem[] = [];
-  private cartItems = new BehaviorSubject<CartItem[]>([]);
+  private http = inject(HttpClient);
+  private cartItems = new BehaviorSubject<CartDto>({ items: [], total: 0 });
   cartItems$ = this.cartItems.asObservable();
-
-  private idCounter = 1;
-
-  cartCount$ = this.cartItems$.pipe(map(items => items.length));
-
   private subtotalSubject = new BehaviorSubject<number>(0);
-  subtotal$ = this.subtotalSubject.asObservable();
 
-  addToCart(item: InventoryItem) {
-    const cartItem = {
-      ...item,
-      _id: this.idCounter++,
-    };
+  addToCart(id: number) {
+    return this.http.post(`/api/cart/items`, { itemId: id }).subscribe(() => {
+      this.loadCart();
+    });
+  }
 
-    this.cart.push(cartItem);
-    this.cartItems.next([...this.cart]);
-    this.updateSubtotal();
+  loadCart(): void {
+    this.http.get<CartDto>('/api/cart').subscribe(cartDto => {
+      this.cartItems.next(cartDto);
+      this.subtotalSubject.next(cartDto.total);
+    });
   }
 
   removeFromCart(id: number) {
-    this.cart = this.cart.filter(x => x._id !== id);
-    this.cartItems.next([...this.cart]);
-    this.updateSubtotal();
+    return this.http.delete(`/api/cart/items/${id}`).subscribe(() => {
+      this.loadCart();
+    });
   }
-  /*
+
   clearCart() {
-    this.cart = [];
-    this.cartItems.next([]);
+    this.cartItems.next({
+      items: [],
+      total: 0,
+    });
+    this.subtotalSubject.next(0);
   }
-*/
-  private updateSubtotal() {
-    const subtotal = this.cart.reduce((sum, item) => sum + item.price, 0);
-    this.subtotalSubject.next(subtotal);
+  getSubtotal() {
+    return this.cartItems.value.total;
   }
 
   isInCart(itemId: number): boolean {
-    return this.cart.some(i => i.itemId === itemId);
+    return this.cartItems.value.items.some(i => i.itemId === itemId);
   }
 }

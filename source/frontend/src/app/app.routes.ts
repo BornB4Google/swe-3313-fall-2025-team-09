@@ -30,6 +30,11 @@ export const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: 'confirm', component: ConfirmComponent, canActivate: [redirectIfUnauthenticatedGuard] },
   { path: 'receipt', component: ReceiptComponent, canActivate: [redirectIfUnauthenticatedGuard] },
+  {
+    path: 'receipt/:id',
+    component: ReceiptComponent,
+    canActivate: [redirectIfUnauthenticatedGuard],
+  },
   { path: 'admin', children: ADMIN_ROUTES, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' },
 ];

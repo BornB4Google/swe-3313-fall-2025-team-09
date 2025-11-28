@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { CartItem } from '../../models/cart.models';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
@@ -11,21 +10,18 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrl: './shopping-cart.component.css',
 })
 export class ShoppingCartComponent implements OnInit {
-  cart: CartItem[] = [];
   cartService = inject(CartService);
   cart$ = this.cartService.cartItems$;
   subtotal = 0;
 
-  removeCart(item: CartItem) {
-    this.cartService.removeFromCart(item._id);
+  ngOnInit() {
+    this.cartService.loadCart();
+    this.cart$.subscribe(cart => {
+      this.subtotal = cart?.total ?? 0;
+    });
   }
 
-  ngOnInit() {
-    this.cart$.subscribe(items => {
-      this.cart = items;
-    });
-    this.cartService.subtotal$.subscribe(total => {
-      this.subtotal = total;
-    });
+  removeCart(itemId: number) {
+    this.cartService.removeFromCart(itemId);
   }
 }

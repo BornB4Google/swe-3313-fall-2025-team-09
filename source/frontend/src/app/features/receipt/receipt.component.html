@@ -1,7 +1,7 @@
 <div class="receipt-container">
   <form class="receipt-form">
     <h2 class="receipt-title">Receipt</h2>
-    @for (item of cart; track item._id) {
+    @for (item of order?.items; track item.itemId) {
       <div class="receipt-box">
         <div class="receipt-grid">
           <div class="item-image"></div>
@@ -10,36 +10,35 @@
         </div>
       </div>
     }
-
     <div class="receipt-columns">
       <div class="shipping-address">
         <div class="ship-title">Shipping to:</div>
         <div class="ship-name">
-          {{ shipping.name }}
+          {{ order?.customerName }}
         </div>
         <div class="ship-line">
-          {{ shipping.address1 }}
+          {{ order?.street1 }}
         </div>
-        <div class="ship-line">{{ shipping.city }}, {{ shipping.state }} {{ shipping.zip }}</div>
+        <div class="ship-line">{{ order?.city }}, {{ order?.state }} {{ order?.zip }}</div>
       </div>
       <div class="pricing-container">
         <div class="line">
           <span class="label">Shipping: </span>
-          <span class="value"> {{ shippingCost | currency: 'USD' }}</span>
+          <span class="value"> {{ order?.shippingCost | currency: 'USD' }}</span>
         </div>
         <div class="line">
           <span class="label">Subtotal: </span>
-          <span class="value">{{ subtotal | currency: 'USD' }}</span>
+          <span class="value">{{ order?.subtotal | currency: 'USD' }}</span>
         </div>
         <div class="line">
           <span class="label"> Tax: </span>
-          <span class="value"> {{ tax | currency: 'USD' }}</span>
+          <span class="value"> {{ order?.tax | currency: 'USD' }}</span>
         </div>
         <div class="line">
           <span class="label"> Total: </span>
-          <span class="value"> {{ total | currency: 'USD' }}</span>
+          <span class="value"> {{ order?.total | currency: 'USD' }}</span>
         </div>
-        <h3 class="paid-card">Paid with: {{ maskedCard }}</h3>
+        <h3 class="paid-card">Paid with: **** **** **** {{ order?.cardLast4 }}</h3>
       </div>
     </div>
 

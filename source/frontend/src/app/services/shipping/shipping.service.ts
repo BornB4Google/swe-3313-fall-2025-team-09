@@ -8,6 +8,7 @@ export class ShippingService {
   shippingInfo: ShippingInfo = {
     name: '',
     address1: '',
+    address2: '',
     city: '',
     state: '',
     zip: '',

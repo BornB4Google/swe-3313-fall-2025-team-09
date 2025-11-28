@@ -27,6 +27,6 @@ public class CartDto
 {
     public List<CartItemDto> Items { get; set; } = new();
 
-    // Total is sum of all Subtotal values 
+    // Total is sum of all Subtotal values
     public decimal Total { get; set; }
 }

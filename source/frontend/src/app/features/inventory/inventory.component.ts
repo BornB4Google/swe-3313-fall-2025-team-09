@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryService } from '../../services/inventory/inventory.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -11,7 +11,7 @@ import { CartService } from '../../services/cart/cart.service';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })
-export class InventoryComponent {
+export class InventoryComponent implements OnInit {
   inventoryService = inject(InventoryService);
 
   inventoryData = toSignal(this.inventoryService.getInventory(), {
@@ -26,16 +26,17 @@ export class InventoryComponent {
     if (this.cartService.isInCart(item.itemId)) {
       return;
     }
-    this.cartService.addToCart(item);
+    this.cartService.addToCart(item.itemId);
   }
 
   get totalPages(): number {
     return Math.ceil(this.inventoryData().length / this.itemsPerPage);
   }
   get pageInventory() {
+    const available = this.inventoryData().filter(item => !item.isSold);
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.inventoryData().slice(start, end);
+    return available.slice(start, end);
   }
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
@@ -60,5 +61,8 @@ export class InventoryComponent {
       maximumFractionDigits: 2,
       minimumFractionDigits: 2,
     }).format(value);
+  }
+  ngOnInit() {
+    this.cartService.loadCart();
   }
 }

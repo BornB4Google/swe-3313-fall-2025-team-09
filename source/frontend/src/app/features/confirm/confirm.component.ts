@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ShippingService } from '../../services/shipping/shipping.service';
 import { CartService } from '../../services/cart/cart.service';
-import { CartItem, ShippingInfo } from '../../models/cart.models';
+import { ShippingInfo } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
+import { ReceiptService } from '../../services/receipt/receipt.service';
+import { CartDto } from '../../models/cart.models';
 
 @Component({
   selector: 'app-confirm',
@@ -15,11 +17,14 @@ import { OrderSummaryService } from '../../services/order/order-summary.service'
 export class ConfirmComponent implements OnInit {
   private shipService = inject(ShippingService);
   private cartService = inject(CartService);
+  private receiptService = inject(ReceiptService);
   private orderSummary = inject(OrderSummaryService);
+  private router = inject(Router);
 
   shippingInfo: ShippingInfo = {
     name: '',
     address1: '',
+    address2: '',
     city: '',
     state: '',
     zip: '',
@@ -30,7 +35,7 @@ export class ConfirmComponent implements OnInit {
     cvv: '',
   };
 
-  cart: CartItem[] = [];
+  cart: CartDto | undefined;
   shippingCost = 0;
   total = 0;
   subtotal = 0;
@@ -38,12 +43,46 @@ export class ConfirmComponent implements OnInit {
   selectedOption = '';
 
   ngOnInit() {
+    this.cartService.loadCart();
+    this.cartService.cartItems$.subscribe(cartDto => (this.cart = cartDto));
     this.shippingInfo = this.shipService.shippingInfo;
     this.selectedOption = this.shipService.selectedOption;
-    this.cartService.cartItems$.subscribe(items => (this.cart = items));
     this.shippingCost = this.orderSummary.shippingCost;
     this.subtotal = this.orderSummary.cartSubtotal;
     this.tax = this.orderSummary.tax;
     this.total = this.orderSummary.total;
+  }
+
+  buildCheckout() {
+    const object = {
+      street1: this.shippingInfo.address1,
+      street2: this.shippingInfo.address2,
+      city: this.shippingInfo.city,
+      state: this.shippingInfo.state,
+      zip: this.shippingInfo.zip,
+      shippingSpeed: this.shipService.selectedOption,
+      cardLast4: this.maskedCard(this.shippingInfo.card),
+    };
+    return object;
+  }
+
+  maskedCard(card: string) {
+    const last4 = card.replace(/\s/g, '').slice(-4);
+    return last4;
+  }
+  saveReceipt() {
+    const request = this.buildCheckout();
+    this.receiptService.checkout(request).subscribe(result => {
+      this.receiptService.setLastOrder(result);
+      this.clearCart();
+      this.navigateToReceiptPage(result.saleId);
+    });
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+  navigateToReceiptPage(id: number) {
+    this.router.navigate(['/receipt', id]);
   }
 }
