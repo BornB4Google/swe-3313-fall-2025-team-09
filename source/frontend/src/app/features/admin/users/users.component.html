@@ -23,6 +23,7 @@
           <td>{{ user.isAdmin }}</td>
           <td>
             <button
+              type="button"
               class="promote-btn"
               (click)="updateUserRole(user.userId, true)"
               [hidden]="user.isAdmin"
@@ -30,6 +31,7 @@
               Make Admin
             </button>
             <button
+              type="button"
               class="promote-btn"
               (click)="updateUserRole(user.userId, false)"
               [hidden]="!user.isAdmin"
