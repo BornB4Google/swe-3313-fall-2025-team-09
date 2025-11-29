@@ -115,8 +115,8 @@ public class OrdersController : ControllerBase
         // Generates YYYY-MM-lastDay 23:59:59 UTC timestamp
         var lastDay = DateTime.DaysInMonth(year, month);
         var now = DateTime.UtcNow;
-        var expirationDate = new DateTime(
-                year,month,lastDay, 23, 59, 59, DateTimeKind.Utc);
+        var expirationDate = new DateTime(year, month, lastDay, 23,
+            59, 59, DateTimeKind.Utc);
 
         if (expirationDate < now)
             return BadRequest("Card is expired.");
