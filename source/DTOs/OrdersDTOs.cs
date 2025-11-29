@@ -78,4 +78,7 @@ public class CheckoutRequestDto
     [Required]
     [MinLength(4), MaxLength(4)]
     public string CardLast4 { get; set; } = string.Empty;
+
+    public string Expiration { get; set; } = string.Empty;
+
 }

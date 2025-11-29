@@ -16,7 +16,7 @@ public class OrdersController : ControllerBase
 {
     private readonly StorefrontDbContext _db;
     private readonly ILogger<OrdersController> _logger;
-    private const decimal TAX_RATE = 0.06m;
+    private const decimal taxRate = 0.06m;
 
     public OrdersController(StorefrontDbContext db, ILogger<OrdersController> logger)
     {
@@ -97,6 +97,31 @@ public class OrdersController : ControllerBase
     [HttpPost("checkout")]
     public async Task<ActionResult<OrderDetailDto>> Checkout([FromBody] CheckoutRequestDto request)
     {
+        // Validate cc expiration date
+
+        var monthYear = request.Expiration.Split('/');
+        if (monthYear.Length != 2
+            || !int.TryParse(monthYear[0], out var month)
+            || !int.TryParse(monthYear[1], out var year))
+        {
+            return BadRequest("Invalid Expiration date format. Use MM/YYYY.");
+        }
+
+        if (month < 1 || month > 12)
+        {
+            return BadRequest("Invalid expiration month.");
+        }
+
+        // Generates YYYY-MM-lastDay 23:59:59 UTC timestamp
+        var lastDay = DateTime.DaysInMonth(year, month);
+        var now = DateTime.UtcNow;
+        var expirationDate = new DateTime(
+                year,month,lastDay, 23, 59, 59, DateTimeKind.Utc);
+
+        if (expirationDate < now)
+            return BadRequest("Card is expired.");
+
+
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -161,7 +186,7 @@ public class OrdersController : ControllerBase
                 return BadRequest("Invalid shipping speed. Must be 'Overnight', '3-Day', or 'Ground'.");
         }
 
-        var tax = Math.Round(subtotal * TAX_RATE, 2, MidpointRounding.AwayFromZero);
+        var tax = Math.Round(subtotal * taxRate, 2, MidpointRounding.AwayFromZero);
         var total = subtotal + tax + shippingCost;
 
         var sale = new Sale
@@ -206,7 +231,7 @@ public class OrdersController : ControllerBase
 
         await _db.SaveChangesAsync();
 
-        // Update for DTO 
+        // Update for DTO
         var completedSale = await _db.Sales
             .Include(s => s.User)
             .Include(s => s.Items)
