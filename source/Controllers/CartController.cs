@@ -71,7 +71,7 @@ public class CartController : ControllerBase
                 ItemId = i.ItemId,
                 Name = i.InventoryItem.Name,
                 Category = i.InventoryItem.Category,
-                Description = i. InventoryItem.Description,
+                Description = i.InventoryItem.Description,
                 UnitPrice = i.InventoryItem.Price,
                 PrimaryPhotoUrl = i.InventoryItem.PrimaryPhotoUrl
             }).ToList(),
