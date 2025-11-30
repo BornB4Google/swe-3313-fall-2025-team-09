@@ -1,6 +1,9 @@
 using Backend.Data;
 using Backend.DTOs;
 using Backend.Models;
+
+using FuzzySharp;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
@@ -187,5 +190,55 @@ public class InventoryController : ControllerBase
         await _db.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    // GET /api/inventory/search?q=searchterm
+    [HttpGet("search")]
+    [Authorize(Roles = "User, Admin")]
+    public async Task<IActionResult> Search([FromQuery] string q)
+    {
+        if (string.IsNullOrWhiteSpace(q))
+            return BadRequest("Search query required");
+
+        var items = await _db.InventoryItems
+            .Include(i => i.Images)
+            .Where(i => !i.IsSold)
+            .ToListAsync();
+
+        var scoredItems = items.Select(item =>
+            {
+                var nameScore = Fuzz.WeightedRatio(q, item.Name);
+                var categoryScore = Fuzz.WeightedRatio(q, item.Category);
+                var descScore = Fuzz.PartialRatio(q, item.Description);  // partial for long text
+
+                var bestScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
+
+                return new { Item = item, Score = bestScore };
+            })
+            .Where(x => x.Score >= 50)  // cutoff
+            .OrderByDescending(x => x.Score)
+            .Select(x => new
+            {
+                x.Item.ItemId,
+                x.Item.Name,
+                x.Item.Description,
+                x.Item.Price,
+                x.Item.PrimaryPhotoUrl,
+                x.Item.Category,
+                x.Item.IsSold,
+                MatchScore = x.Score,
+                Images = x.Item.Images
+                    .OrderBy(img => img.DisplayOrder)
+                    .Select(img => new
+                    {
+                        img.ImageId,
+                        img.ImageUrl,
+                        img.DisplayOrder
+                    })
+                    .ToList()
+            })
+            .ToList();
+
+        return Ok(scoredItems);
     }
 }
