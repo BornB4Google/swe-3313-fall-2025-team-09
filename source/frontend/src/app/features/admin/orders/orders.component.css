@@ -29,128 +29,90 @@
 
 .receipt-form {
   background-color: #000000;
-  color: #fff;
-  padding: 40px 30px;
-  border-radius: 16px;
+  color: #f4f7f9;
   width: 800px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
+  height: 600px;
+  overflow-y: auto;
+  position: relative;
+  padding: 50px;
+  border-radius: 10px;
   box-shadow:
     0 4px 15px rgba(0, 0, 0, 0.4),
     0 0px 20px rgba(84, 112, 154, 0.7);
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
+  animation: slideUp 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .receipt-box {
   position: relative;
-  height: 50px;
-  background-color: #0a0f1c;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #131a2b;
   border-radius: 12px;
   margin-bottom: 15px;
+  padding: 10px 0;
 }
 
 .receipt-title {
   font-size: 2rem;
 }
-.receipt-box:after {
-  content: '';
-  position: absolute;
-  top: 125px;
-  left: 50%;
-
-  transform: translateX(-50%);
-  width: 750px;
-  height: 2px;
-  background-color: #a7b3bc;
-  border-radius: 2px;
+.receipt-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #333;
 }
 
-.receipt-box:after {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 50%;
-
-  transform: translateX(-50%);
-  width: 750px;
-  height: 2px;
-  background-color: #a7b3bc;
-  border-radius: 2px;
+.receipt-grid:last-child {
+  border-bottom: none;
 }
 
-.item-name,
-.item-price {
-  position: absolute;
+.item-image {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .item-name {
-  position: absolute;
-  transform: translateY(-50%);
-  left: 30px;
-  font-size: 1.2rem;
+  flex: 1;
+  margin-left: 15px;
+  font-size: 1.1rem;
+  color: #f4f7f9;
 }
 
 .item-price {
-  position: absolute;
-  transform: translateY(-50%);
-  right: 30px;
-  font-size: 1.2rem;
-}
-.shipping,
-.subtotal,
-.tax,
-.total {
-  left: 35%;
-}
-
-.shipping {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.subtotal {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.tax {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.total {
-  position: relative;
-  left: 35%;
-  font-size: 1.2rem;
-}
-
-.shipping,
-.subtotal,
-.tax,
-.total {
-  left: -15px;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 1.2rem;
-}
-
-.shipping-address {
-  margin-top: 20px;
-  padding-left: 10px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  text-align: left;
+  font-size: 1.1rem;
   color: #f4f7f9;
-  width: 40%;
-  align-self: flex-start;
+  font-weight: 500;
 }
+.shipping,
+.subtotal,
+.tax,
+.total {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  text-align: right;
+}
+
+.total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+
 .ship-title {
   font-weight: bold;
   font-size: 1.25rem;
@@ -200,10 +162,11 @@
 
 .shipping-address {
   text-align: left;
-  padding-left: 50px;
+  padding-left: 10px;
   color: #f4f7f9;
-  line-height: 1.5;
-  width: 45%;
+  line-height: 1.6;
+  width: 50%;
+  font-size: 1rem;
 }
 
 .pricing-container {
@@ -219,19 +182,39 @@
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
+  top: 200px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background-color: #000000;
-  backdrop-filter: blur(8px);
   display: flex;
-  width: 1000px;
-  height: 550px;
+  width: 800px;
+  height: 600px;
   justify-content: center;
   align-items: center;
   z-index: 2000;
   border-radius: 10px;
   animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .overlay-close-btn {
@@ -257,7 +240,4 @@
   background-color: #a7b3bc;
   color: #0a0f1c;
   transform: scale(1.05);
-}
-
-.order-grid {
 }

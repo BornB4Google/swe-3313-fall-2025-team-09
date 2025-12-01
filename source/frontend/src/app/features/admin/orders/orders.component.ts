@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Sale } from '../../../models/sale.model';
+import { OrderSummaryDto, OrderDetailDto } from '../../../models/order.models';
 import { SaleService } from '../../../services/sales/sale.service';
 
 @Component({
@@ -10,18 +10,21 @@ import { SaleService } from '../../../services/sales/sale.service';
   styleUrl: './orders.component.css',
 })
 export class OrdersComponent implements OnInit {
-  receipts: Sale[] = [];
-  selectedReceipt: Sale | null = null;
+  receipts: OrderSummaryDto[] = [];
+  selectedReceipt: OrderDetailDto | null = null;
   private saleService = inject(SaleService);
   ngOnInit(): void {
     this.saleService.getAllOrders().subscribe({
-      next: sales => (this.receipts = sales),
-      error: err => console.error('Failed to load sales:', err),
+      next: orders => (this.receipts = orders),
+      error: err => console.error('Failed to load orders:', err),
     });
   }
 
-  openReceipt(receipt: Sale) {
-    this.selectedReceipt = receipt;
+  openReceipt(receipt: OrderSummaryDto) {
+    this.saleService.getOrderById(receipt.saleId).subscribe({
+      next: orderDetail => (this.selectedReceipt = orderDetail),
+      error: err => console.error('Failed to load order details:', err),
+    });
   }
 
   closeReceipt() {

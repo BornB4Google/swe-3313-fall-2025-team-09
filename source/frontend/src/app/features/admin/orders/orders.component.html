@@ -30,8 +30,8 @@
             </tr>
           </thead>
           <tbody>
-            <td>{{ r.user.firstName }} {{ r.user.lastName }}</td>
-            <td>{{ r.user.email }}</td>
+            <td>{{ r.customerName }}</td>
+            <td>{{ r.customerEmail }}</td>
             <td>{{ r.total | currency }}</td>
             <td>{{ r.saleDateTime | date: 'short' }}</td>
           </tbody>
@@ -52,21 +52,27 @@
         (click)="$event.stopPropagation()"
         (keydown.enter)="$event.stopPropagation()"
       >
-        <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
+        <button type="button" class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
         <h2 class="receipt-title">Receipt</h2>
         <div class="receipt-box">
-          <div class="receipt-grid">
-            <div class="item-image"></div>
-            <h3 class="item-name">item name</h3>
-            <p class="item-price">price</p>
-          </div>
+          @for (item of selectedReceipt.items; track item.itemId) {
+            <div class="receipt-grid">
+              <div class="item-image">
+                @if (item.primaryPhotoUrl) {
+                  <img [src]="item.primaryPhotoUrl" [alt]="item.name" />
+                }
+              </div>
+              <h3 class="item-name">{{ item.name }}</h3>
+              <p class="item-price">{{ item.price | currency }}</p>
+            </div>
+          }
         </div>
         <div class="receipt-columns">
           <div class="shipping-address">
             <div class="ship-title">Shipping to:</div>
 
             <div class="ship-name">
-              {{ selectedReceipt.user.firstName }} {{ selectedReceipt.user.lastName }}
+              {{ selectedReceipt.customerName }}
             </div>
 
             <div class="ship-line">
