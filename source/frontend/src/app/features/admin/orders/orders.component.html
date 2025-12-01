@@ -52,7 +52,7 @@
         (click)="$event.stopPropagation()"
         (keydown.enter)="$event.stopPropagation()"
       >
-        <button class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
+        <button type="button" class="overlay-close-btn" (click)="closeReceipt()">&#10006;</button>
         <h2 class="receipt-title">Receipt</h2>
         <div class="receipt-box">
           @for (item of selectedReceipt.items; track item.itemId) {
