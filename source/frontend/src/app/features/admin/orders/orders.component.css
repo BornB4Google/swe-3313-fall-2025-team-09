@@ -36,7 +36,7 @@
   position: relative;
   padding: 50px;
   border-radius: 10px;
-  box-shadow: 
+  box-shadow:
     0 4px 15px rgba(0, 0, 0, 0.4),
     0 0px 20px rgba(84, 112, 154, 0.7);
   animation: slideUp 0.3s ease;
@@ -241,4 +241,3 @@
   color: #0a0f1c;
   transform: scale(1.05);
 }
-

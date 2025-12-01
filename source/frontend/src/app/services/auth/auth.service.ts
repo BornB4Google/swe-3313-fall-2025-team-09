@@ -8,7 +8,7 @@ import { catchError, Observable, of, switchMap, tap } from 'rxjs';
 })
 export class AuthService {
   constructor() {
-  //  this.refreshCurrentUser();
+    //  this.refreshCurrentUser();
   }
 
   private http = inject(HttpClient);
