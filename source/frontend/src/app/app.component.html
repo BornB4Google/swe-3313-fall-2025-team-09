@@ -8,7 +8,14 @@
       }
       <li><a routerLink="/inventory">Shop</a></li>
       <li><a routerLink="/search">Search</a></li>
-      <li><a routerLink="/shoppingCart">Checkout</a></li>
+      <li>
+        <a routerLink="/shoppingCart" class="checkout-link">
+          Checkout
+          @if (cartCount > 0) {
+            <span class="cart-badge">{{ cartCount }}</span>
+          }
+        </a>
+      </li>
       <li class="dropdown">
         <span class="account-label">Account</span>
         <ul class="dropdown-menu">
