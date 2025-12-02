@@ -34,3 +34,14 @@ export interface OrderDetailDto {
   customerEmail: string;
   items: OrderItemDto[];
 }
+
+export interface CheckoutRequest {
+  street1: string;
+  street2?: string | null;
+  city: string;
+  state: string;
+  zip: string;
+  shippingSpeed: string;
+  cardLast4: string;
+  expiration: string;
+}
