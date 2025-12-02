@@ -136,7 +136,7 @@
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #333;
-  width: 25%;
+  width: 20%;
 }
 
 .receipt-info th {
@@ -240,4 +240,22 @@
   background-color: #a7b3bc;
   color: #0a0f1c;
   transform: scale(1.05);
+}
+
+.promote-btn {
+  background-color: #a7b3bc;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+}
+
+.promote-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
 }

@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { receiptInfo } from '../../models/receipt.model';
+import { CheckoutRequest } from '../../models/order.models';
 
 @Injectable({
   providedIn: 'root',
@@ -27,14 +28,4 @@ export class ReceiptService {
   getOrderById(id: number): Observable<receiptInfo> {
     return this.http.get<receiptInfo>(`/api/orders/${id}`);
   }
-}
-
-export interface CheckoutRequest {
-  street1: string;
-  street2: string | null;
-  city: string;
-  state: string;
-  zip: string;
-  shippingSpeed: string;
-  cardLast4: string;
 }
