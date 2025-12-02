@@ -5,7 +5,6 @@ import { filter } from 'rxjs';
 import { AuthService } from './services/auth/auth.service';
 import { CartService } from './services/cart/cart.service';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -47,11 +46,11 @@ export class AppComponent implements OnInit {
       });
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.cartService.loadCart();
     this.cartService.cartItems$.subscribe(cart => {
       this.cartCount = cart.items.length;
-    })
+    });
   }
 
   logout() {
