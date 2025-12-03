@@ -217,7 +217,8 @@ public class InventoryController : ControllerBase
 
                 var bestFuzzyScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
 
-                return new {
+                return new
+                {
                     Item = item,
                     IsExactMatch = exactNameMatch || exactCategoryMatch,
                     FuzzyScore = bestFuzzyScore
@@ -225,7 +226,7 @@ public class InventoryController : ControllerBase
             })
             .ToList();
 
-// If we have any exact matches, only show those
+        // If we have any exact matches, only show those
         var exactMatches = scoredItems.Where(x => x.IsExactMatch).ToList();
 
         var results = exactMatches.Any()
