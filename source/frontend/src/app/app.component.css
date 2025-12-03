@@ -184,3 +184,17 @@ body {
   background-color: #a7b3bc;
   color: #0a0f1c;
 }
+
+.search-close-btn {
+  background: transparent;
+  border: none;
+  color: #a7b3bc;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.search-close-btn:hover {
+  color: #f4f7f9;
+}
