@@ -43,10 +43,8 @@ export class AppComponent implements OnInit {
 
   clearSearch() {
     this.searchQuery = '';
-    this.router.navigate(['/inventory']);  // navigates back without query param
+    this.router.navigate(['/inventory']); // navigates back without query param
   }
-
-
 
   private router = inject(Router);
 
