@@ -120,12 +120,10 @@ body {
   border-radius: 50%;
   font-size: 0.75rem;
   font-weight: bold;
-  margin-left: 3px;
   width: 16px;
   height: 16px;
   display: inline-grid;
   place-items: center;
   font-family: Arial, sans-serif;
-  padding-right: 2px;
-  padding-top: 1px;
+  padding: 1px;
 }
