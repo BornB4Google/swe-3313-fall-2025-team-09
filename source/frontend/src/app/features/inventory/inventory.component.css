@@ -86,7 +86,6 @@ Ice White	#F4F7F9
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-
   }
 
   .overlay-title {
@@ -100,9 +99,6 @@ Ice White	#F4F7F9
   .overlay-price {
     font-size: 1.2rem;
   }
-
-
-
 }
 
 .inventory-box {
@@ -183,7 +179,7 @@ Ice White	#F4F7F9
   position: absolute;
   object-fit: cover;
   align-items: center;
-  left:50%;
+  left: 50%;
   transform: translateX(-50%);
   top: 15px;
   width: 290px;
@@ -248,7 +244,7 @@ Ice White	#F4F7F9
 .overlay-content {
   background-color: #000000;
   color: #f4f7f9;
-  width:100%;
+  width: 100%;
   max-height: clamp(60vh, 75vh, 80vh);
   overflow-y: auto;
   position: relative;
@@ -357,4 +353,3 @@ Ice White	#F4F7F9
   background-color: #555 !important;
   color: #ccc !important;
 }
-

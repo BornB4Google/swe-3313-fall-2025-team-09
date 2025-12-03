@@ -12,7 +12,7 @@
           <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
           <h3 class="item-name">{{ item.name }}</h3>
           <p class="item-price">{{ item.unitPrice | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
-          <h4 class="item-description">{{ item.description}}</h4>
+          <h4 class="item-description">{{ item.description }}</h4>
           <button type="button" class="remove-cart-btn" (click)="removeCart(item.itemId)">
             Remove
           </button>
