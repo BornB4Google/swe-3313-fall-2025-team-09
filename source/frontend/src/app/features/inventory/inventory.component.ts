@@ -4,6 +4,7 @@ import { InventoryService } from '../../services/inventory/inventory.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { InventoryItem } from '../../models/inventory.models';
 import { CartService } from '../../services/cart/cart.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
@@ -13,6 +14,8 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class InventoryComponent implements OnInit {
   inventoryService = inject(InventoryService);
+  cartService = inject(CartService);
+  private route = inject(ActivatedRoute);
 
   inventoryData = toSignal(this.inventoryService.getInventory(), {
     initialValue: [] as InventoryItem[],
@@ -20,7 +23,44 @@ export class InventoryComponent implements OnInit {
 
   itemsPerPage = 12;
   currentPage = 1;
-  cartService = inject(CartService);
+
+  searchQuery = '';
+  searchResults: InventoryItem[] = [];
+  isSearching = false;
+
+  onSearch() {
+    if (!this.searchQuery.trim()) {
+      this.clearSearch();
+      return;
+    }
+
+    this.isSearching = true;
+    this.inventoryService.searchInventory(this.searchQuery).subscribe({
+      next: (results) => {
+        this.searchResults = results;
+        this.currentPage = 1;
+      },
+      error: (err) => {
+        console.error('Search failed:', err);
+        this.searchResults = [];
+      }
+    });
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.searchResults = [];
+    this.isSearching = false;
+    this.currentPage = 1;
+  }
+
+  get displayedItems(): InventoryItem[] {
+    if (this.isSearching) {
+      return this.searchResults;
+    }
+    return this.inventoryData().filter(item => !item.isSold);
+  }
+
 
   addToCart(item: InventoryItem) {
     if (this.cartService.isInCart(item.itemId)) {
@@ -30,14 +70,14 @@ export class InventoryComponent implements OnInit {
   }
 
   get totalPages(): number {
-    return Math.ceil(this.inventoryData().length / this.itemsPerPage);
+    return Math.ceil(this.displayedItems.length / this.itemsPerPage);
   }
   get pageInventory() {
-    const available = this.inventoryData().filter(item => !item.isSold);
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return available.slice(start, end);
+    return this.displayedItems.slice(start, end);
   }
+
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
@@ -64,5 +104,14 @@ export class InventoryComponent implements OnInit {
   }
   ngOnInit() {
     this.cartService.loadCart();
+
+    this.route.queryParams.subscribe(params => {
+      if (params['q']) {
+        this.searchQuery = params['q'];
+        this.onSearch();
+      } else {
+        this.clearSearch();
+      }
+    });
   }
 }
