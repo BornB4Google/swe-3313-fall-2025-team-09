@@ -7,6 +7,7 @@ using FuzzySharp;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.CodeAnalysis;
 
 namespace Backend.Controllers;
 
@@ -207,20 +208,31 @@ public class InventoryController : ControllerBase
 
         var scoredItems = items.Select(item =>
             {
-                var exactNameMatch = item.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ? 50 : 0;
-                var exactCategoryMatch = item.Category.Contains(q, StringComparison.OrdinalIgnoreCase) ? 30 : 0;
+                var exactNameMatch = item.Name.Contains(q, StringComparison.OrdinalIgnoreCase);
+                var exactCategoryMatch = item.Category.Contains(q, StringComparison.OrdinalIgnoreCase);
 
                 var nameScore = Fuzz.WeightedRatio(q, item.Name);
                 var categoryScore = Fuzz.WeightedRatio(q, item.Category);
-                var descScore = Fuzz.PartialRatio(q, item.Description) / 3;  // partial for long text
+                var descScore = Fuzz.PartialRatio(q, item.Description) / 3;
 
-                var bestScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
-                var totalScore = bestScore + exactNameMatch + exactCategoryMatch;
+                var bestFuzzyScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
 
-                return new { Item = item, Score = totalScore };
+                return new {
+                    Item = item,
+                    IsExactMatch = exactNameMatch || exactCategoryMatch,
+                    FuzzyScore = bestFuzzyScore
+                };
             })
-            .Where(x => x.Score >= 50)  // cutoff
-            .OrderByDescending(x => x.Score)
+            .ToList();
+
+// If we have any exact matches, only show those
+        var exactMatches = scoredItems.Where(x => x.IsExactMatch).ToList();
+
+        var results = exactMatches.Any()
+            ? exactMatches.OrderByDescending(x => x.FuzzyScore)
+            : scoredItems.Where(x => x.FuzzyScore >= 45).OrderByDescending(x => x.FuzzyScore);
+
+        var finalResults = results
             .Select(x => new
             {
                 x.Item.ItemId,
@@ -230,7 +242,7 @@ public class InventoryController : ControllerBase
                 x.Item.PrimaryPhotoUrl,
                 x.Item.Category,
                 x.Item.IsSold,
-                MatchScore = x.Score,
+                MatchScore = x.FuzzyScore,
                 Images = x.Item.Images
                     .OrderBy(img => img.DisplayOrder)
                     .Select(img => new
@@ -243,6 +255,6 @@ public class InventoryController : ControllerBase
             })
             .ToList();
 
-        return Ok(scoredItems);
+        return Ok(finalResults);
     }
 }
