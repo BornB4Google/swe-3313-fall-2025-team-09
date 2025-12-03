@@ -36,14 +36,14 @@ export class InventoryComponent implements OnInit {
 
     this.isSearching = true;
     this.inventoryService.searchInventory(this.searchQuery).subscribe({
-      next: (results) => {
+      next: results => {
         this.searchResults = results;
         this.currentPage = 1;
       },
-      error: (err) => {
+      error: err => {
         console.error('Search failed:', err);
         this.searchResults = [];
-      }
+      },
     });
   }
 
@@ -60,7 +60,6 @@ export class InventoryComponent implements OnInit {
     }
     return this.inventoryData().filter(item => !item.isSold);
   }
-
 
   addToCart(item: InventoryItem) {
     if (this.cartService.isInCart(item.itemId)) {
