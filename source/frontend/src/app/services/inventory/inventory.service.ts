@@ -17,4 +17,8 @@ export class InventoryService {
   addInventoryItem(item: InventoryItem): Observable<InventoryItem> {
     return this.http.post<InventoryItem>('/api/inventory', item);
   }
+
+  searchInventory(query: string): Observable<InventoryItem[]> {
+    return this.http.get<InventoryItem[]>(`/api/inventory/search?q=${encodeURIComponent(query)}`);
+  }
 }

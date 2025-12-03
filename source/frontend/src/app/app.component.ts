@@ -1,23 +1,40 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
 import { AuthService } from './services/auth/auth.service';
+import { CartService } from './services/cart/cart.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   authService = inject(AuthService);
+  cartService = inject(CartService);
 
   isLanding = false;
   isLanding2 = false;
   isLogin = false;
   isSignup = false;
+  cartCount = 0;
+
+  showSearch = false;
+  searchQuery = '';
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/inventory'], { queryParams: { q: this.searchQuery } });
+    }
+  }
 
   private router = inject(Router);
 
@@ -41,6 +58,13 @@ export class AppComponent {
           this.isSignup
         );
       });
+  }
+
+  ngOnInit() {
+    this.cartService.loadCart();
+    this.cartService.cartItems$.subscribe(cart => {
+      this.cartCount = cart.items.length;
+    });
   }
 
   logout() {
