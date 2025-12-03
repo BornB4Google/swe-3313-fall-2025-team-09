@@ -6,8 +6,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Name</th>
+        <th>Username</th>
         <th>Email</th>
         <th>Admin</th>
         <th></th>
@@ -17,8 +17,8 @@
       @for (user of users(); track user.userId) {
         <tr>
           <td>{{ user.userId }}</td>
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName }}</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.isAdmin }}</td>
           <td>

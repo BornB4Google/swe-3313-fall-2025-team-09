@@ -7,6 +7,7 @@ import { ShippingInfo } from '../../models/cart.models';
 import { OrderSummaryService } from '../../services/order/order-summary.service';
 import { ReceiptService } from '../../services/receipt/receipt.service';
 import { CartDto } from '../../models/cart.models';
+import { CheckoutRequest } from '../../models/order.models';
 
 @Component({
   selector: 'app-confirm',
@@ -53,15 +54,16 @@ export class ConfirmComponent implements OnInit {
     this.total = this.orderSummary.total;
   }
 
-  buildCheckout() {
-    const object = {
+  buildCheckout(): CheckoutRequest {
+    const object: CheckoutRequest = {
       street1: this.shippingInfo.address1,
-      street2: this.shippingInfo.address2,
+      street2: this.shippingInfo.address2 || null,
       city: this.shippingInfo.city,
       state: this.shippingInfo.state,
       zip: this.shippingInfo.zip,
       shippingSpeed: this.shipService.selectedOption,
       cardLast4: this.maskedCard(this.shippingInfo.card),
+      expiration: this.shippingInfo.exp,
     };
     return object;
   }

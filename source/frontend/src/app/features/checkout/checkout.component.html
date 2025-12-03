@@ -142,8 +142,8 @@
           class="exp"
           name="exp"
           required
-          placeholder="XX/XXXX"
-          maxlength="6"
+          placeholder="MM/YYYY"
+          maxlength="7"
           [(ngModel)]="checkoutData.exp"
           (input)="formatDate($event)"
         />
@@ -181,9 +181,9 @@
           <input
             type="radio"
             name="shipping"
-            value="3Day"
-            [checked]="shipService.selectedOption === 'ThreeDay'"
-            (change)="updateShipping('ThreeDay')"
+            value="3-Day"
+            [checked]="shipService.selectedOption === '3-Day'"
+            (change)="updateShipping('3-Day')"
           />
           <span class="ship-radio"></span>
         </label>

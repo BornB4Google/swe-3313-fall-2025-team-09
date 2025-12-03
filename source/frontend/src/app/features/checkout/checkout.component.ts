@@ -27,7 +27,7 @@ export class CheckoutComponent implements OnInit {
 
   shippingOptions: Record<string, number> = {
     Overnight: 29.99,
-    ThreeDay: 19.99,
+    '3-Day': 19.99,
     Ground: 0.0,
   };
   total = 0;
@@ -77,6 +77,7 @@ export class CheckoutComponent implements OnInit {
     let value = target.value.replace(/[^0-9]/g, '');
     value = value.replace(/(\d{2})(\d{4})/, '$1/$2');
     target.value = value;
+    this.checkoutData.exp = value;
   }
 
   cart: CartDto | null = null;

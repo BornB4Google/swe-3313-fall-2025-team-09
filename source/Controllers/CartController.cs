@@ -171,4 +171,28 @@ public class CartController : ControllerBase
         return Ok(new { message = "Item removed from cart" });
     }
 
+    // DELETE /api/cart
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCart()
+    {
+        var userId = GetUserId();
+
+        var cart = await _db.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == userId && c.isActive);
+
+        if (cart == null)
+        {
+            return NotFound("Cart not found");
+        }
+
+        cart.isActive = false;
+        await _db.SaveChangesAsync();
+
+
+        return Ok(new { message = "Cart deleted" });
+    }
+
 }
+
+
