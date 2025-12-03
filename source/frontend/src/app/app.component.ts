@@ -81,4 +81,9 @@ export class AppComponent implements OnInit {
       },
     });
   }
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
