@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
 import { AuthService } from './services/auth/auth.service';
 import { CartService } from './services/cart/cart.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -21,6 +22,19 @@ export class AppComponent implements OnInit {
   isLogin = false;
   isSignup = false;
   cartCount = 0;
+
+  showSearch = false;
+  searchQuery = '';
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/inventory'], { queryParams: { q: this.searchQuery } });
+    }
+  }
 
   private router = inject(Router);
 
