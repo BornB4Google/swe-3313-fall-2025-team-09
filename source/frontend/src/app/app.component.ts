@@ -33,7 +33,10 @@ export class AppComponent implements OnInit {
   closeSearch() {
     this.showSearch = false;
     this.searchQuery = '';
-    this.router.navigate(['/inventory']);
+    const currentUrl = this.router.url;
+    if (!currentUrl.includes('shoppingCart') && !currentUrl.includes('checkout')) {
+      this.router.navigate(['/inventory']);
+    }
   }
   onSearch() {
     if (this.searchQuery.trim()) {
