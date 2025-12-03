@@ -4,7 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 80px;
   background: linear-gradient(135deg, #0a0f1c, #1e2a38);
 }
 
@@ -12,9 +14,9 @@
   content: 'OFFSHORE\A HOLDINGS';
   white-space: pre;
   position: absolute;
-  bottom: -28%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   font-family: 'Playfair Display SC', serif;
   font-size: 20rem;
   line-height: 35rem;
@@ -41,7 +43,7 @@
   transition: all 0.3s ease;
 }
 .signup-title {
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: 2rem;
   padding-bottom: 15px;
   margin: 0;
   text-align: center;
@@ -54,7 +56,20 @@
   padding: 10px;
   border: none;
   border-radius: 8px;
+  font-size: 16px !important;
 }
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  input,
+  select,
+  textarea,
+  input::placeholder {
+    font-size: 16px !important;
+  }
+}
+
+
 
 .signup-btn {
   background-color: #1e2a38;

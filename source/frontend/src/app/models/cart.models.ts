@@ -5,7 +5,7 @@ export interface CartItem {
   category: string;
   unitPrice: number;
   primaryPhotoUrl: string;
-  //description: string;
+  description: string;
 }
 export interface CartDto {
   items: CartItem[];

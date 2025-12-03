@@ -109,3 +109,53 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background-color: #f4f7f9;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  transition: max-height 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: #0a0f1c;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  .nav-links.open {
+    max-height: 300px;
+    visibility: visible;
+  }
+  .hamburger {
+    display: flex;
+  }
+}

@@ -2,7 +2,12 @@
   <a class="logo" routerLink="/landing">Offshore Holdings</a>
   @if (isLanding || isLanding2 || isLogin || isSignup) {
   } @else {
-    <ul class="nav-links">
+    <button class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" [class.open]="menuOpen">
       @if (authService.currentUser()?.isAdmin) {
         <li><a routerLink="/admin">Admin</a></li>
       }

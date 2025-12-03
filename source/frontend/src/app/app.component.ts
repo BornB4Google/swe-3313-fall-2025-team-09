@@ -57,4 +57,9 @@ export class AppComponent {
       },
     });
   }
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }
