@@ -109,3 +109,21 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.checkout-link {
+  position: relative;
+}
+
+.cart-badge {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  display: inline-grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  padding: 1px;
+}
