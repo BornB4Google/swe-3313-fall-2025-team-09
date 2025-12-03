@@ -126,6 +126,6 @@ body {
   display: inline-grid;
   place-items: center;
   font-family: Arial, sans-serif;
-  padding-right: 1px;
+  padding-right: 2px;
   padding-top: 1px;
 }
