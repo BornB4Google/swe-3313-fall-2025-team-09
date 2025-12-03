@@ -30,6 +30,12 @@
               (keydown.enter)="onSearch()"
             />
             <button class="search-btn" (click)="onSearch()">Go</button>
+            @if (searchQuery) {
+              <button class="search-btn" (click)="clearSearch()">Clear</button>
+            }
+            <button class="search-close-btn" (click)="closeSearch()" aria-label="Close search">
+              &#10007;
+            </button>
           </div>
         }
       </li>

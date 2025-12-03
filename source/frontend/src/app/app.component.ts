@@ -30,11 +30,23 @@ export class AppComponent implements OnInit {
     this.showSearch = !this.showSearch;
   }
 
+  closeSearch() {
+    this.showSearch = false;
+    this.searchQuery = '';
+    this.router.navigate(['/inventory']);
+  }
   onSearch() {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/inventory'], { queryParams: { q: this.searchQuery } });
     }
   }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.router.navigate(['/inventory']);  // navigates back without query param
+  }
+
+
 
   private router = inject(Router);
 
