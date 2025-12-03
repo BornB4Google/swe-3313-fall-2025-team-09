@@ -207,13 +207,17 @@ public class InventoryController : ControllerBase
 
         var scoredItems = items.Select(item =>
             {
+                var exactNameMatch = item.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ? 50 : 0;
+                var exactCategoryMatch = item.Category.Contains(q, StringComparison.OrdinalIgnoreCase) ? 30 : 0;
+
                 var nameScore = Fuzz.WeightedRatio(q, item.Name);
                 var categoryScore = Fuzz.WeightedRatio(q, item.Category);
-                var descScore = Fuzz.PartialRatio(q, item.Description);  // partial for long text
+                var descScore = Fuzz.PartialRatio(q, item.Description) / 3;  // partial for long text
 
                 var bestScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
+                var totalScore = bestScore + exactNameMatch + exactCategoryMatch;
 
-                return new { Item = item, Score = bestScore };
+                return new { Item = item, Score = totalScore };
             })
             .Where(x => x.Score >= 50)  // cutoff
             .OrderByDescending(x => x.Score)
