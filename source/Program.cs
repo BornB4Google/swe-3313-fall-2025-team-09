@@ -233,14 +233,12 @@ using (var scope = app.Services.CreateScope())
             {
                 SaleId = 1,
                 ItemId = 4,
-                Quantity = 1,
                 UnitPrice = 190220000000.00m
             },
             new SaleItem
             {
                 SaleId = 2,
                 ItemId = 3,
-                Quantity = 1,
                 UnitPrice = 1340000000000.00m
             }
         );
