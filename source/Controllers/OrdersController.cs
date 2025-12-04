@@ -11,7 +11,7 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize] // all endpoints require auth
+[Authorize]
 public class OrdersController : ControllerBase
 {
     private readonly StorefrontDbContext _db;
@@ -159,7 +159,7 @@ public class OrdersController : ControllerBase
         // Each item is one-of-one, so subtotal is just sum of prices
         var subtotal = cart.Items.Sum(ci => ci.InventoryItem.Price);
 
-        // 🔹 Shipping cost based on ShippingSpeed
+        // Shipping cost based on ShippingSpeed
         decimal shippingCost;
         string normalizedSpeed = request.ShippingSpeed.Trim();
 
@@ -216,7 +216,6 @@ public class OrdersController : ControllerBase
             {
                 SaleId = sale.SaleId,
                 ItemId = ci.ItemId,
-                Quantity = 1, // always 1
                 UnitPrice = ci.InventoryItem.Price
             };
 
