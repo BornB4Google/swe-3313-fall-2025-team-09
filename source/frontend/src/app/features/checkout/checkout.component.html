@@ -2,164 +2,172 @@
   <form class="checkout-form" #checkoutForm="ngForm" (ngSubmit)="confirmOrder(checkoutForm)">
     <h2 class="checkout-title">Check Out</h2>
 
-    <div class="info-box">
-      <div class="input-grid">
-        <input
-          type="text"
-          class="name"
-          placeholder="Your Name"
-          [(ngModel)]="checkoutData.name"
-          required
-          name="name"
-        />
-        <input
-          type="text"
-          class="address1"
-          placeholder="Address Line 1"
-          required
-          [(ngModel)]="checkoutData.address1"
-          name="address1"
-        />
-        <input
-          type="tel"
-          class="number"
-          name="phone"
-          required
-          placeholder="Phone Number"
-          pattern="^[0-9]{3} [0-9]{3} [0-9]{4}$"
-          maxlength="12"
-          [(ngModel)]="checkoutData.phone"
-          (input)="formatPhone($event)"
-        />
-        <input
-          type="email"
-          class="email"
-          placeholder="Email Address"
-          name="email"
-          required
-          email
-          pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
-          [(ngModel)]="checkoutData.email"
-          #emailRef="ngModel"
-        />
-        <div class="city-state-zip">
-          <input
-            type="text"
-            class="input"
-            placeholder="City"
-            required
-            [(ngModel)]="checkoutData.city"
-            name="city"
-          />
-          <select
-            class="input2"
-            placeholder="State"
-            required
-            [(ngModel)]="checkoutData.state"
-            name="state"
-          >
-            <option value="" disabled selected>State</option>
-            <option>AL</option>
-            <option>AK</option>
-            <option>AZ</option>
-            <option>AR</option>
-            <option>CA</option>
-            <option>CO</option>
-            <option>CT</option>
-            <option>DC</option>
-            <option>DE</option>
-            <option>FL</option>
-            <option>GA</option>
-            <option>HI</option>
-            <option>ID</option>
-            <option>IL</option>
-            <option>IN</option>
-            <option>IA</option>
-            <option>KS</option>
-            <option>KY</option>
-            <option>LA</option>
-            <option>ME</option>
-            <option>MD</option>
-            <option>MA</option>
-            <option>MI</option>
-            <option>MN</option>
-            <option>MS</option>
-            <option>MO</option>
-            <option>MT</option>
-            <option>NE</option>
-            <option>NV</option>
-            <option>NH</option>
-            <option>NJ</option>
-            <option>NM</option>
-            <option>NY</option>
-            <option>NC</option>
-            <option>ND</option>
-            <option>OH</option>
-            <option>OK</option>
-            <option>OR</option>
-            <option>PA</option>
-            <option>RI</option>
-            <option>SC</option>
-            <option>SD</option>
-            <option>TN</option>
-            <option>TX</option>
-            <option>UT</option>
-            <option>VT</option>
-            <option>VA</option>
-            <option>WA</option>
-            <option>WV</option>
-            <option>WI</option>
-            <option>WY</option>
-          </select>
-
-          <input
-            type="text"
-            class="zipcode"
-            placeholder="Zip code"
-            name="zip"
-            required
-            pattern="[0-9]*"
-            maxlength="5"
-            [(ngModel)]="checkoutData.zip"
-            (input)="formatNumOnly($event)"
-          />
-        </div>
-      </div>
-      <div class="input-grid2">
-        <input
-          type="text"
-          class="credit-card"
-          placeholder="Credit Card #"
-          name="card"
-          required
-          pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
-          maxlength="19"
-          [(ngModel)]="checkoutData.card"
-          (input)="formatCC($event)"
-        />
-        <input
-          type="text"
-          class="exp"
-          name="exp"
-          required
-          placeholder="MM/YYYY"
-          maxlength="7"
-          [(ngModel)]="checkoutData.exp"
-          (input)="formatDate($event)"
-        />
-        <input
-          type="text"
-          class="cvv"
-          placeholder="CVV"
-          name="cvv"
-          required
-          pattern="[0-9]{3}"
-          maxlength="3"
-          [(ngModel)]="checkoutData.cvv"
-          (input)="formatNumOnly($event)"
-        />
-      </div>
+    <!-- Row 1: Name, Phone, Email -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Your Name"
+        [(ngModel)]="checkoutData.name"
+        required
+        name="name"
+      />
+      <input
+        type="tel"
+        class="input"
+        name="phone"
+        required
+        placeholder="Phone Number"
+        pattern="^[0-9]{3} [0-9]{3} [0-9]{4}$"
+        maxlength="12"
+        [(ngModel)]="checkoutData.phone"
+        (input)="formatPhone($event)"
+      />
+      <input
+        type="email"
+        class="input"
+        placeholder="Email Address"
+        name="email"
+        required
+        email
+        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+        [(ngModel)]="checkoutData.email"
+        #emailRef="ngModel"
+      />
     </div>
+
+    <!-- Row 2: Address Line 1 & 2 -->
+    <div class="form-row two-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Address Line 1"
+        required
+        [(ngModel)]="checkoutData.address1"
+        name="address1"
+      />
+      <input
+        type="text"
+        class="input"
+        placeholder="Address Line 2"
+        [(ngModel)]="checkoutData.address2"
+        name="address2"
+      />
+    </div>
+
+    <!-- Row 3: City, State, Zip -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="City"
+        required
+        [(ngModel)]="checkoutData.city"
+        name="city"
+      />
+      <select class="input" required [(ngModel)]="checkoutData.state" name="state">
+        <option value="" disabled selected>State</option>
+        <option>AL</option>
+        <option>AK</option>
+        <option>AZ</option>
+        <option>AR</option>
+        <option>CA</option>
+        <option>CO</option>
+        <option>CT</option>
+        <option>DC</option>
+        <option>DE</option>
+        <option>FL</option>
+        <option>GA</option>
+        <option>HI</option>
+        <option>ID</option>
+        <option>IL</option>
+        <option>IN</option>
+        <option>IA</option>
+        <option>KS</option>
+        <option>KY</option>
+        <option>LA</option>
+        <option>ME</option>
+        <option>MD</option>
+        <option>MA</option>
+        <option>MI</option>
+        <option>MN</option>
+        <option>MS</option>
+        <option>MO</option>
+        <option>MT</option>
+        <option>NE</option>
+        <option>NV</option>
+        <option>NH</option>
+        <option>NJ</option>
+        <option>NM</option>
+        <option>NY</option>
+        <option>NC</option>
+        <option>ND</option>
+        <option>OH</option>
+        <option>OK</option>
+        <option>OR</option>
+        <option>PA</option>
+        <option>RI</option>
+        <option>SC</option>
+        <option>SD</option>
+        <option>TN</option>
+        <option>TX</option>
+        <option>UT</option>
+        <option>VT</option>
+        <option>VA</option>
+        <option>WA</option>
+        <option>WV</option>
+        <option>WI</option>
+        <option>WY</option>
+      </select>
+      <input
+        type="text"
+        class="input"
+        placeholder="Zip Code"
+        name="zip"
+        required
+        pattern="[0-9]*"
+        maxlength="5"
+        [(ngModel)]="checkoutData.zip"
+        (input)="formatNumOnly($event)"
+      />
+    </div>
+
+    <!-- Row 4: Credit Card, Exp, CVV -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Credit Card #"
+        name="card"
+        required
+        pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
+        maxlength="19"
+        [(ngModel)]="checkoutData.card"
+        (input)="formatCC($event)"
+      />
+      <input
+        type="text"
+        class="input"
+        name="exp"
+        required
+        placeholder="MM/YYYY"
+        maxlength="7"
+        [(ngModel)]="checkoutData.exp"
+        (input)="formatDate($event)"
+      />
+      <input
+        type="text"
+        class="input"
+        placeholder="CVV"
+        name="cvv"
+        required
+        pattern="[0-9]{3}"
+        maxlength="3"
+        [(ngModel)]="checkoutData.cvv"
+        (input)="formatNumOnly($event)"
+      />
+    </div>
+
     <div class="confirm-columns">
       <div class="shipping-options">
         <label class="shipping-column">
