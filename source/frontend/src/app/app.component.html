@@ -2,7 +2,7 @@
   <a class="logo" routerLink="/landing">Offshore Holdings</a>
   @if (isLanding || isLanding2 || isLogin || isSignup) {
   } @else {
-    <button class="hamburger" (click)="toggleMenu()">
+    <button class="hamburger" [class.open]="menuOpen" (click)="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
@@ -30,6 +30,12 @@
               (keydown.enter)="onSearch()"
             />
             <button class="search-btn" (click)="onSearch()">Go</button>
+            @if (searchQuery) {
+              <button class="search-btn" (click)="clearSearch()">Clear</button>
+            }
+            <button class="search-close-btn" (click)="closeSearch()" aria-label="Close search">
+              &#10007;
+            </button>
           </div>
         }
       </li>
@@ -39,21 +45,15 @@
           <span class="cart-badge">{{ cartCount }}</span>
         }
       </a>
-      <li class="dropdown">
-        <span class="account-label">Account</span>
-        <ul class="dropdown-menu">
-          <li><a routerLink="/account">Settings</a></li>
-          <li>
-            <a
-              tabindex="0"
-              role="button"
-              (click)="logout()"
-              (keydown.enter)="logout()"
-              (keydown.space)="logout()"
-              >Logout</a
-            >
-          </li>
-        </ul>
+      <li>
+        <a
+          tabindex="0"
+          role="button"
+          (click)="logout()"
+          (keydown.enter)="logout()"
+          class="logout-link"
+          >Logout</a
+        >
       </li>
     </ul>
   }

@@ -30,10 +30,22 @@ export class AppComponent implements OnInit {
     this.showSearch = !this.showSearch;
   }
 
+  closeSearch() {
+    this.showSearch = false;
+    this.searchQuery = '';
+    const currentUrl = this.router.url;
+    if (!currentUrl.includes('shoppingCart') && !currentUrl.includes('checkout')) {
+      this.router.navigate(['/inventory']);
+    }
+  }
   onSearch() {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/inventory'], { queryParams: { q: this.searchQuery } });
     }
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
   }
 
   private router = inject(Router);

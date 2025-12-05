@@ -99,12 +99,13 @@
   background-color: #1e2a38;
   color: #a7b3bc;
   border-radius: 5px;
-  bottom: 30px;
+  bottom: 10px;
   cursor: pointer;
   right: 30px;
   border: none;
   padding: 4px;
   transition: 0.3s;
+  margin-top: 15px;
 }
 
 .remove-cart-btn:hover {
@@ -204,4 +205,94 @@
   font-size: 2rem;
   margin-bottom: 25px;
   font-family: 'Playfair Display SC', serif;
+}
+
+@media (max-width: 900px) {
+  .shopping-cart-form {
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .shopping-cart-box {
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-left: 10px;
+  }
+
+  .shopping-cart-box:after {
+    top: auto;
+    bottom: -25px;
+    width: 100%;
+  }
+
+  .item-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .item-name {
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .item-description {
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .item-price {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .remove-cart-btn {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    align-self: flex-start;
+  }
+
+  .shopping-cart-title:after {
+    width: 90%;
+  }
+
+  .cart-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .back-btn {
+    position: relative;
+    left: auto;
+    order: 1; /* Back on the right */
+  }
+
+  .checkout-btn {
+    position: relative;
+    left: auto;
+    order: 2; /* Checkout on the left */
+  }
+
+  .subtotal {
+    left: 0;
+    justify-content: center;
+  }
 }

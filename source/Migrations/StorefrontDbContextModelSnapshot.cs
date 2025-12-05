@@ -44,9 +44,6 @@ namespace backend.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("CartId", "ItemId");
 
                     b.HasIndex("ItemId");
@@ -175,9 +172,6 @@ namespace backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ItemId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("UnitPrice")
