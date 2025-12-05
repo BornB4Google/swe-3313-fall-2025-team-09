@@ -5,10 +5,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { InventoryItem } from '../../models/inventory.models';
 import { CartService } from '../../services/cart/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { InventoryCarouselComponent } from './inventory-carousel/inventory-carousel.component';
 
 @Component({
   selector: 'app-inventory',
-  imports: [CommonModule],
+  imports: [CommonModule, InventoryCarouselComponent],
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css'],
 })

@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
 </head>
 <body>
-  <div class="carousel" *ngIf="imageUrls.length > 0; else noImages">
+  <div class="carousel">
+    <button type="button" (click)="prev()"> </button>
+    <button type="button" (click)="next()"> </button>
+
+
     <img
       [src]="imageUrls[currentIndex()]"
-      [alt]=""
+      [alt]="item.name"
     />
 
   </div>
