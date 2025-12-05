@@ -1,14 +1,18 @@
 .carousel {
   position: relative;
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  width: clamp(200px, 100%, 500px);
+  height: clamp(150px, 25vh, 300px);
 
 }
 
 
 .overlay-image {
-  max-width: clamp(200px, 70%, 500px);
-  max-height: clamp(150px, 25vh, 300px);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 12px;
   margin: 0 auto 20px;
@@ -19,16 +23,21 @@
   position: absolute;
   display: flex;
   justify-content: center;
-  top: 50%;
+  align-items: center;
+  top: -20px;
+  bottom: 0;
+  width: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: #FFFFFF 1px solid;
   cursor:pointer;
 }
 
 
 .prev-button{
-  left: 8px;
+  left: 0;
 }
 
 .next-button{
-  right: 8px;
+  right: 0;
 
 }
