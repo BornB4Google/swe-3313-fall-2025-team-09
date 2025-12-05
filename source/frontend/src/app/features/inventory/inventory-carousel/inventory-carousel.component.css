@@ -24,14 +24,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -20px;
-  bottom: 0;
+  top: -10px;
+  bottom: 10px;
   width: 20px;
-  background: rgba(0, 0, 0, 0.2);
-  border: #FFFFFF 1px solid;
+  background: rgba(0, 0, 0, 0.1);
+  border: rgba(255, 255, 255, 0.4) 1px solid;
+  border-radius: 12px;
   cursor:pointer;
 }
-
 
 .prev-button{
   left: 0;
@@ -39,5 +39,8 @@
 
 .next-button{
   right: 0;
+}
 
+.carousel-button-arrow{
+  color: rgba(255, 255, 255, 0.9);
 }
