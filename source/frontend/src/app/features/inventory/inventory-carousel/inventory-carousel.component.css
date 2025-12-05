@@ -1,0 +1,34 @@
+.carousel {
+  position: relative;
+  align-items: center;
+  display: flex;
+
+}
+
+
+.overlay-image {
+  max-width: clamp(200px, 70%, 500px);
+  max-height: clamp(150px, 25vh, 300px);
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.carousel-button{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  cursor:pointer;
+}
+
+
+.prev-button{
+  left: 8px;
+}
+
+.next-button{
+  right: 8px;
+
+}

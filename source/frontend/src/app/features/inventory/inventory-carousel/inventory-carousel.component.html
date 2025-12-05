@@ -5,14 +5,15 @@
 </head>
 <body>
   <div class="carousel">
-    <button type="button" (click)="prev()"> </button>
-    <button type="button" (click)="next()"> </button>
+    <button type="button" class=" carousel-button prev-button" (click)="prev()"> </button>
 
 
-    <img
+    <img class="overlay-image"
       [src]="imageUrls[currentIndex()]"
       [alt]="item.name"
     />
+
+    <button type="button" class="carousel-button next-button" (click)="next()"> </button>
 
   </div>
 
