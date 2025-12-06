@@ -6,9 +6,7 @@
   margin: 0 auto 20px;
   width: clamp(200px, 100%, 500px);
   height: clamp(150px, 25vh, 300px);
-
 }
-
 
 .overlay-image {
   width: 100%;
@@ -19,7 +17,7 @@
   display: block;
 }
 
-.carousel-button{
+.carousel-button {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -30,17 +28,17 @@
   background: rgba(0, 0, 0, 0.1);
   border: rgba(255, 255, 255, 0.4) 1px solid;
   border-radius: 12px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.prev-button{
+.prev-button {
   left: 0;
 }
 
-.next-button{
+.next-button {
   right: 0;
 }
 
-.carousel-button-arrow{
+.carousel-button-arrow {
   color: rgba(255, 255, 255, 0.9);
 }
