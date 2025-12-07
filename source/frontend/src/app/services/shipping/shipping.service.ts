@@ -21,4 +21,23 @@ export class ShippingService {
   subtotal = 0;
   shippingCost = 0;
   selectedOption = 'Ground';
+
+  clearShippingInfo() {
+    this.shippingInfo = {
+      name: '',
+      address1: '',
+      address2: '',
+      city: '',
+      state: '',
+      zip: '',
+      email: '',
+      phone: '',
+      card: '',
+      exp: '',
+      cvv: '',
+    };
+    this.subtotal = 0;
+    this.shippingCost = 0;
+    this.selectedOption = 'Ground';
+  }
 }

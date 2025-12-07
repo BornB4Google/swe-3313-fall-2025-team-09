@@ -77,6 +77,7 @@ export class ConfirmComponent implements OnInit {
     this.receiptService.checkout(request).subscribe(result => {
       this.receiptService.setLastOrder(result);
       this.clearCart();
+      this.shipService.clearShippingInfo();
       this.navigateToReceiptPage(result.saleId);
     });
   }
