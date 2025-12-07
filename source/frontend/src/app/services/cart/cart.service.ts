@@ -32,12 +32,15 @@ export class CartService {
   }
 
   clearCart() {
-    this.cartItems.next({
-      items: [],
-      total: 0,
+    return this.http.delete('/api/cart').subscribe(() => {
+      this.cartItems.next({
+        items: [],
+        total: 0,
+      });
+      this.subtotalSubject.next(0);
     });
-    this.subtotalSubject.next(0);
   }
+
   getSubtotal() {
     return this.cartItems.value.total;
   }
