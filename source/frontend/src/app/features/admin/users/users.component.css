@@ -1,0 +1,91 @@
+.user-title {
+  position: absolute;
+  align-content: center;
+  left: 50%;
+  top: 250px;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #f4f7f9;
+}
+
+.user-content {
+  font-family: 'Playfair Display SC', serif;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #0a0f1c;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 80%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-grid {
+  margin-top: 80px;
+  display: grid;
+  flex-direction: row;
+}
+
+.user-card {
+  background-color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  color: #f4f7f9;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+}
+
+.user-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  width: 16.66%; /* Evenly distribute 6 columns */
+}
+
+.user-table th {
+  background-color: #1a2332;
+  color: #f4f7f9;
+  font-weight: bold;
+}
+
+.user-table td {
+  color: #f4f7f9;
+}
+
+.user-table tr:hover {
+  background-color: #1a2332;
+}
+
+.promote-btn {
+  background-color: #a7b3bc;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+}
+
+.promote-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
+}

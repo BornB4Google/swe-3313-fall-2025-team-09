@@ -1,0 +1,22 @@
+meta {
+  name: /api/orders
+  type: http
+  seq: 15
+}
+
+post {
+  url: http://localhost:5243/api/orders/checkout
+  body: none
+  auth: none
+}
+
+headers {
+  ~authToken: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

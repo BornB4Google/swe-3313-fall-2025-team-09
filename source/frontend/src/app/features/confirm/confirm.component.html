@@ -1,6 +1,86 @@
-
 <div class="confirm-container">
   <form class="confirm-form">
     <h2 class="confirm-title">Confirm Order</h2>
+    @for (item of cart?.items; track item.itemId) {
+      <div class="confirm-box">
+        <div class="confirm-grid">
+          <div class="item-image"></div>
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="item-price">{{ item.unitPrice | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+        </div>
+      </div>
+    }
+    <div class="confirm-columns">
+      <div class="shipping-address">
+        <div class="ship-title">Shipping to:</div>
+        <div class="ship-name">
+          {{ shippingInfo.name }}
+        </div>
+        <div class="ship-line">
+          {{ shippingInfo.address1 }}
+        </div>
+        <div class="ship-line">
+          {{ shippingInfo.city }}, {{ shippingInfo.state }} {{ shippingInfo.zip }}
+        </div>
+      </div>
+      <div class="pricing-container">
+        <div class="line">
+          <span class="label">Shipping: </span>
+          <span class="value"> {{ shippingCost | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label">Subtotal: </span>
+          <span class="value">{{ subtotal | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label"> Tax: </span>
+          <span class="value"> {{ tax | currency: 'USD' }}</span>
+        </div>
+        <div class="line">
+          <span class="label"> Total: </span>
+          <span class="value"> {{ total | currency: 'USD' }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="confirm-buttons">
+      <button type="button" class="confirm-btn" (click)="saveReceipt()">
+        Complete Order
+        <svg
+          class="icon-arrow icon-arrow-right"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M5 12h14m-6-6 6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="back-btn" routerLink="/checkout">
+        <svg
+          class="icon-arrow icon-arrow-left"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M19 12H5m6-6-6 6 6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Back
+      </button>
+    </div>
   </form>
 </div>

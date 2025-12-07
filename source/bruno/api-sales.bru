@@ -1,0 +1,16 @@
+meta {
+  name: /api/sales
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:5243/api/sales
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

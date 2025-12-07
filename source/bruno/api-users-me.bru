@@ -1,0 +1,22 @@
+meta {
+  name: /api/users/me
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:5243/api/users/me
+  body: none
+  auth: none
+}
+
+headers {
+  ~authToken: 
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

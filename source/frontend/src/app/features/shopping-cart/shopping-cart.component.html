@@ -1,21 +1,69 @@
 <div class="shopping-cart-container">
   <form class="shopping-cart-form">
     <h2 class="shopping-cart-title">Your Cart</h2>
-    <div class="shopping-cart-box" *ngFor="let item of shoppingCart">
-    <div class="shopping-cart-grid">
-      <div class="item-image"></div>
-      <h3 class="item-name">{{ item.name }}</h3>
-      <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
-      <h4 class="item-description">{{ item.description }}</h4>
-      <button class="remove-cart-btn" (click)="removeCart(item)">Remove</button>
-    </div>
-    </div>
-
-    <h2 class="subtotal">Subtotal: $0.00</h2>
+    @if ((cart$ | async)?.items?.length === 0) {
+      <div class="empty-cart">
+        <p class="empty-message">Your cart is empty.</p>
+      </div>
+    }
+    @for (item of (cart$ | async)?.items; track item.itemId) {
+      <div class="shopping-cart-box">
+        <div class="shopping-cart-grid">
+          <img class="item-image" [src]="item.primaryPhotoUrl" alt="item" />
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="item-price">{{ item.unitPrice | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+          <h4 class="item-description">{{ item.description }}</h4>
+          <button type="button" class="remove-cart-btn" (click)="removeCart(item.itemId)">
+            Remove
+          </button>
+        </div>
+      </div>
+    }
+    <h2 class="subtotal">Subtotal: {{ this.subtotal | currency: 'USD' : 'symbol' : '1.2-2' }}</h2>
     <div class="cart-buttons">
-      <button class="checkout-btn" routerLink="/checkout">Checkout ⮚</button>
-      <button class="back-btn" routerLink="/inventory">⮘ Back</button>
+      <button
+        type="button"
+        class="checkout-btn"
+        routerLink="/checkout"
+        [disabled]="(cart$ | async)?.items?.length === 0"
+      >
+        Checkout
+        <svg
+          class="icon-arrow icon-arrow-right"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M5 12h14m-6-6 6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button type="button" class="back-btn" routerLink="/inventory">
+        <svg
+          class="icon-arrow icon-arrow-left"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M19 12H5m6-6-6 6 6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Back
+      </button>
     </div>
   </form>
 </div>
-

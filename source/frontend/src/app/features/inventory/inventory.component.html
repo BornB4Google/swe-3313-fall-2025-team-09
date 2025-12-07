@@ -1,26 +1,108 @@
 <div class="inventory-container">
   <h2 class="inventory-title">Shop</h2>
   <div class="inventory-grid">
-    <div class="inventory-box" *ngFor="let item of pageInventory">
-      <div class="item-image"></div>
-      <h3 class="item-name">{{ item.name }}</h3>
-      <p class="item-price">{{ item.price | currency:'USD':'symbol':'1.2-2'}}</p>
-      <button class="add-to-cart-btn" (click)="addToCart(item)">Add to Cart</button>
-    </div>
+    @for (item of pageInventory; track item.itemId) {
+      <div
+        class="inventory-box"
+        tabindex="0"
+        role="button"
+        (click)="openItem(item)"
+        (keydown.enter)="openItem(item)"
+        (keydown.space)="openItem(item)"
+      >
+        <img class="item-image" [src]="item.primaryPhotoUrl" [alt]="item.name" />
+        <h3 class="item-name">{{ item.name }}</h3>
+        <p class="item-price">$ {{ formatCompact(item.price) }}</p>
+
+        <button
+          class="add-to-cart-btn"
+          [disabled]="cartService.isInCart(item.itemId)"
+          (click)="addToCart(item); $event.stopPropagation()"
+        >
+          {{ cartService.isInCart(item.itemId) ? 'Added to Cart' : 'Add to Cart' }}
+        </button>
+      </div>
+    }
   </div>
   <div class="pages">
-    <button (click)="changePage(currentPage-1)" [disabled]="currentPage ===1">⮘</button>
     <button
-      *ngFor="let page of [].constructor(totalPages); let i = index"
-      (click)="changePage(i+1)"
-      [class.active]="currentPage === i + 1">
-      {{ i + 1 }}
+      (click)="changePage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      aria-label="Previous page"
+    >
+      <svg
+        class="icon-arrow icon-arrow-left"
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M19 12H5m6-6-6 6 6 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </button>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">⮚</button>
-
+    @for (page of [].constructor(totalPages); track $index) {
+      <button (click)="changePage($index + 1)" [class.active]="currentPage === $index + 1">
+        {{ $index + 1 }}
+      </button>
+    }
+    <button
+      (click)="changePage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      aria-label="Next page"
+    >
+      <svg
+        class="icon-arrow icon-arrow-right"
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M5 12h14m-6-6 6 6-6 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
   </div>
+  @if (selectedItem) {
+    <div
+      class="overlay"
+      tabindex="0"
+      role="dialog"
+      (click)="closeOverlay()"
+      (keydown.escape)="closeOverlay()"
+    >
+      <div
+        class="overlay-content"
+        tabindex="0"
+        role="document"
+        (click)="$event.stopPropagation()"
+        (keydown.enter)="$event.stopPropagation()"
+      >
+        <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
+        <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" [alt]="selectedItem.name" />
+        <h2 class="overlay-title">{{ selectedItem.name }}</h2>
+        <p class="overlay-description">{{ selectedItem.description }}</p>
+        <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
+        <button
+          class="overlay-cart-btn"
+          [disabled]="cartService.isInCart(selectedItem.itemId)"
+          (click)="addToCart(selectedItem); $event.stopPropagation()"
+        >
+          {{ cartService.isInCart(selectedItem.itemId) ? 'Added to Cart' : 'Add to Cart' }}
+        </button>
+      </div>
+    </div>
+  }
 </div>
-
-
-
-

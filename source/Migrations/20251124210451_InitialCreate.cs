@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -94,7 +94,7 @@ namespace backend.Migrations
                     SaleId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SaleDateTime = table.Column<string>(type: "TEXT", nullable: false),
+                    SaleDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Subtotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     Tax = table.Column<decimal>(type: "TEXT", nullable: false),
                     ShippingCost = table.Column<decimal>(type: "TEXT", nullable: false),
@@ -124,7 +124,6 @@ namespace backend.Migrations
                 {
                     CartId = table.Column<int>(type: "INTEGER", nullable: false),
                     ItemId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,7 +148,6 @@ namespace backend.Migrations
                 {
                     SaleId = table.Column<int>(type: "INTEGER", nullable: false),
                     ItemId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     UnitPrice = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

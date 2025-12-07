@@ -1,9 +1,13 @@
 using Backend.Data;
 using Backend.DTOs;
 using Backend.Models;
+
+using FuzzySharp;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.CodeAnalysis;
 
 namespace Backend.Controllers;
 
@@ -17,10 +21,10 @@ public class InventoryController : ControllerBase
     {
         _db = db;
     }
-    
+
     // Get /api/inventory
     [HttpGet]
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetAll()
     {
         var items = await _db.InventoryItems
@@ -52,7 +56,7 @@ public class InventoryController : ControllerBase
 
     // Get /api/inventory/{id}
     [HttpGet("{id:int}")]
-    [AllowAnonymous]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetById(int id)
     {
         var item = await _db.InventoryItems
@@ -84,11 +88,11 @@ public class InventoryController : ControllerBase
 
         return Ok(item);
     }
-    
+
     // POST /api/inventory  (Admin)
     // Add an inventory item
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> Create([FromBody] InventoryItemWriteDto dto)
     {
         if (!ModelState.IsValid)
@@ -137,7 +141,7 @@ public class InventoryController : ControllerBase
 
         if (entity is null)
             return NotFound();
-        
+
         entity.Name = dto.Name;
         entity.Description = dto.Description;
         entity.Price = dto.Price;
@@ -182,10 +186,76 @@ public class InventoryController : ControllerBase
 
         if (entity is null)
             return NotFound();
-        
+
         _db.InventoryItems.Remove(entity);
         await _db.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    // GET /api/inventory/search?q=searchterm
+    [HttpGet("search")]
+    [Authorize(Roles = "User, Admin")]
+    public async Task<IActionResult> Search([FromQuery] string q)
+    {
+        if (string.IsNullOrWhiteSpace(q))
+            return BadRequest("Search query required");
+
+        var items = await _db.InventoryItems
+            .Include(i => i.Images)
+            .Where(i => !i.IsSold)
+            .ToListAsync();
+
+        var scoredItems = items.Select(item =>
+            {
+                var exactNameMatch = item.Name.Contains(q, StringComparison.OrdinalIgnoreCase);
+                var exactCategoryMatch = item.Category.Contains(q, StringComparison.OrdinalIgnoreCase);
+
+                var nameScore = Fuzz.WeightedRatio(q, item.Name);
+                var categoryScore = Fuzz.WeightedRatio(q, item.Category);
+                var descScore = Fuzz.PartialRatio(q, item.Description) / 3;
+
+                var bestFuzzyScore = Math.Max(nameScore, Math.Max(categoryScore, descScore));
+
+                return new
+                {
+                    Item = item,
+                    IsExactMatch = exactNameMatch || exactCategoryMatch,
+                    FuzzyScore = bestFuzzyScore
+                };
+            })
+            .ToList();
+
+        // If we have any exact matches, only show those
+        var exactMatches = scoredItems.Where(x => x.IsExactMatch).ToList();
+
+        var results = exactMatches.Any()
+            ? exactMatches.OrderByDescending(x => x.FuzzyScore)
+            : scoredItems.Where(x => x.FuzzyScore >= 45).OrderByDescending(x => x.FuzzyScore);
+
+        var finalResults = results
+            .Select(x => new
+            {
+                x.Item.ItemId,
+                x.Item.Name,
+                x.Item.Description,
+                x.Item.Price,
+                x.Item.PrimaryPhotoUrl,
+                x.Item.Category,
+                x.Item.IsSold,
+                MatchScore = x.FuzzyScore,
+                Images = x.Item.Images
+                    .OrderBy(img => img.DisplayOrder)
+                    .Select(img => new
+                    {
+                        img.ImageId,
+                        img.ImageUrl,
+                        img.DisplayOrder
+                    })
+                    .ToList()
+            })
+            .ToList();
+
+        return Ok(finalResults);
     }
 }

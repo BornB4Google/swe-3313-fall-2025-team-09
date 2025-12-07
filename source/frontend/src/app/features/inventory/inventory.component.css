@@ -13,60 +13,37 @@ Ice White	#F4F7F9
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-  padding: 60px 0;
-  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  overflow: visible;
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
   text-align: center;
-
 }
 
 .inventory-title {
   font-size: 3rem;
   position: relative;
-
-
+  text-align: center;
 }
-.inventory-title:after{
+.inventory-title:after {
   content: '';
   position: absolute;
   top: 120px;
   left: 50%;
 
   transform: translateX(-50%);
-  width: 1200px;
+  width: clamp(250px, 80vw, 1200px);
   height: 2px;
-  background-color: #A7B3BC;
+  background-color: #a7b3bc;
   border-radius: 2px;
-
 }
 
-/*
-.inventory-container::after {
-  content: 'OFFSHORE';
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Playfair Display SC', serif;
-  font-size: 20rem;
-  color: rgba(62, 92, 118, 0.07);
-  letter-spacing: 10px;
-  pointer-events: none;
-  z-index: 0;
-
-}
-*/
-
-
-
-
-
-
-.inventory-grid{
+.inventory-grid {
   position: relative;
   z-index: 1;
   display: grid;
@@ -75,6 +52,7 @@ Ice White	#F4F7F9
   top: 30px;
   padding: 25px;
   justify-items: center;
+  align-items: flex-start;
 }
 @media (max-width: 900px) {
   .inventory-grid {
@@ -85,33 +63,72 @@ Ice White	#F4F7F9
   .inventory-grid {
     grid-template-columns: 1fr;
   }
-}
+  .overlay {
+    padding: 10px;
+    width: 100vw;
+    height: 100vh;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .overlay-content {
+    background-color: #000000;
+    color: #f4f7f9;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    overflow-y: auto;
+    position: relative;
 
-.inventory-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-  padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .overlay-title {
+    font-size: 1.5rem;
+  }
+
+  .overlay-description {
+    font-size: 1.1rem;
+  }
+
+  .overlay-price {
+    font-size: 1.2rem;
+  }
 }
 
 .inventory-box {
   position: relative;
-  background-color: #1E2A38;
-  color: #F4F7F9;
+  background-color: #1e2a38;
+  color: #f4f7f9;
   border-radius: 12px;
   padding: 10px;
   width: 300px;
-  height: 250px;
-  box-shadow:0 4px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  min-height: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+}
+.inventory-box:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    0 0 12px rgba(62, 92, 118, 0.6);
+  border: 1px solid #3e5c76;
 }
 
-
-.item-name{
+.item-name {
   position: absolute;
   top: 180px;
   left: 50%;
@@ -120,18 +137,29 @@ Ice White	#F4F7F9
   text-align: center;
   width: 100%;
 }
-.item-price{
+.item-name:after {
+  content: '';
+  position: absolute;
+  top: 65px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 250px;
+  height: 2px;
+  background-color: #a7b3bc;
+  border-radius: 2px;
+}
+
+.item-price {
   position: absolute;
   bottom: -5px;
   left: 15px;
   font-size: 1.2rem;
-
 }
-
 
 .add-to-cart-btn {
   background-color: #000000;
-  color: #A7B3BC;
+  color: #a7b3bc;
   font-family: 'Playfair', serif;
   padding: 5px 8px;
   border-radius: 5px;
@@ -141,26 +169,27 @@ Ice White	#F4F7F9
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-
-
 }
 .add-to-cart-btn:hover {
   background-color: #a7b3bc;
   color: #0a0f1c;
 }
 
-.item-image{
+.item-image {
   position: absolute;
+  object-fit: cover;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
   top: 15px;
-  width: 300px;
+  width: 290px;
   height: 175px;
   border-radius: 12px;
-  background-color: #3E5C76;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.pages{
-  position: absolute;
+.pages {
+  position: relative;
   bottom: 0;
 
   display: flex;
@@ -171,29 +200,156 @@ Ice White	#F4F7F9
   padding: 20px;
 }
 
-.pages button{
+.pages button {
   background-color: #000000;
-  color: #F4F7F9;
+  color: #f4f7f9;
   border-radius: 5px;
   border: none;
   padding: 8px 14px;
   transition: all 0.3s ease;
   cursor: pointer;
-
 }
 
-.pages button:disabled{
+.pages button:disabled {
   opacity: 0;
-  cursor: default ;
+  cursor: default;
 }
 
-.pages button:active{
-
+.pages button:active {
   background-color: #000000;
-  color: #F4F7F9;
-
+  color: #f4f7f9;
 }
 .pages button:hover {
   background-color: #a7b3bc;
   color: #0a0f1c;
+}
+
+.overlay {
+  position: fixed;
+  background-color: #000000;
+  display: flex;
+  width: 90%;
+  max-width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: clamp(10px, 3vw, 20px);
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.overlay-content {
+  background-color: #000000;
+  color: #f4f7f9;
+  width: 100%;
+  max-height: clamp(60vh, 75vh, 80vh);
+  overflow-y: auto;
+  position: relative;
+  padding: clamp(20px, 5vw, 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease;
+}
+
+.overlay-image {
+  max-width: clamp(200px, 70%, 500px);
+  max-height: clamp(150px, 25vh, 300px);
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.overlay-title {
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.overlay-description {
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  font-family: 'Playfair', serif;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.overlay-price {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.overlay-cart-btn {
+  background-color: #3e5c76;
+  color: #f4f7f9;
+  padding: clamp(6px, 1vw, 10px) clamp(15px, 2vw, 25px);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-family: 'Playfair', serif;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.overlay-cart-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.overlay-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000000;
+  color: #a7b3bc;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.overlay-close-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+  transform: scale(1.05);
+}
+
+.add-to-cart-btn:disabled,
+.overlay-cart-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #555 !important;
+  color: #ccc !important;
 }

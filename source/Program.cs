@@ -1,12 +1,23 @@
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Backend;
 using Backend.Data;
 using Backend.Models;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
+// Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<StorefrontDbContext>(options =>
@@ -17,12 +28,58 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddHttpClient();
 }
 
+var jwtSection = builder.Configuration.GetSection("Jwt");
+var jwtKey = jwtSection["Key"];
+var jwtIssuer = jwtSection["Issuer"];
+var jwtAudience = jwtSection["Audience"];
+
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidateLifetime = true,
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+
+        // Read JWT from HttpOnly cookie
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                if (context.Request.Cookies.TryGetValue("authToken", out var token))
+                {
+                    context.Token = token;
+                }
+
+                return Task.CompletedTask;
+            }
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+});
+
 var app = builder.Build();
 
+// Database migration and seeding
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<StorefrontDbContext>();
-    
+
     db.Database.Migrate();
 
     // Seed only if empty (first run)
@@ -32,11 +89,31 @@ using (var scope = app.Services.CreateScope())
         {
             UserId = 1,
             Username = "award62",
-            PasswordHash = "a4d2c07604811e53d29e425834f0d1302a519458323773a148f7d23204950e42",
+            PasswordHash = PasswordHasher.ComputePasswordHash("Admin1!"),
             FirstName = "Amy",
             LastName = "Ward",
             Email = "award62@students.kennesaw.edu",
             IsAdmin = true
+        });
+        db.Users.Add(new User
+        {
+            UserId = 2,
+            Username = "isaac",
+            PasswordHash = PasswordHasher.ComputePasswordHash("password"),
+            FirstName = "Isaac",
+            LastName = "Thoman",
+            Email = "ithoman67@students.kennesaw.edu",
+            IsAdmin = true
+        });
+        db.Users.Add(new User
+        {
+            UserId = 3,
+            Username = "john",
+            PasswordHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", //'password' in sha256
+            FirstName = "John",
+            LastName = "Pork",
+            Email = "jpork@gmail.com",
+            IsAdmin = false
         });
     }
 
@@ -112,6 +189,61 @@ using (var scope = app.Services.CreateScope())
         );
     }
 
+    if (!db.Sales.Any())
+    {
+        db.Sales.AddRange(
+            new Sale
+            {
+                SaleId = 1,
+                UserId = 1,
+                SaleDateTime = DateTime.UtcNow.AddDays(-10),
+                Subtotal = 190220000000.00m,
+                Tax = 15217600000.00m,
+                ShippingCost = 0.00m,
+                Total = 205437600000.00m,
+                ShippingSpeed = "N/A",
+                Street1 = "123 Main St",
+                City = "Atlanta",
+                State = "GA",
+                Zip = "30303",
+                CardLast4 = "1234"
+            },
+            new Sale
+            {
+                SaleId = 2,
+                UserId = 1,
+                SaleDateTime = DateTime.UtcNow.AddDays(-5),
+                Subtotal = 1340000000000.00m,
+                Tax = 107200000000.00m,
+                ShippingCost = 0.00m,
+                Total = 1447200000000.00m,
+                ShippingSpeed = "N/A",
+                Street1 = "123 Main St",
+                City = "Atlanta",
+                State = "GA",
+                Zip = "30303",
+                CardLast4 = "1234"
+            }
+        );
+    }
+    if (!db.SaleItems.Any())
+    {
+        db.SaleItems.AddRange(
+            new SaleItem
+            {
+                SaleId = 1,
+                ItemId = 4,
+                UnitPrice = 190220000000.00m
+            },
+            new SaleItem
+            {
+                SaleId = 2,
+                ItemId = 3,
+                UnitPrice = 1340000000000.00m
+            }
+        );
+    }
+
     db.SaveChanges();
 }
 
@@ -121,6 +253,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // DB health check (check for seed data)
 app.MapGet("/api/db-health", async (StorefrontDbContext db) =>
@@ -139,32 +273,34 @@ app.MapGet("/api/db-health", async (StorefrontDbContext db) =>
     });
 });
 
+// API controllers
+app.MapControllers();
+
 if (app.Environment.IsDevelopment())
 {
-    // Catch static file requests and proxy them too
+    // Proxy non-API requests to Angular dev server
     app.Use(async (context, next) =>
     {
         var path = context.Request.Path.Value ?? "";
         var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-        
+
         logger.LogInformation("Incoming request: {Method} {Path}", context.Request.Method, path);
-        
-        // Let API requests through
+
+        // Let API and OpenAPI requests through
         if (path.StartsWith("/api/", StringComparison.OrdinalIgnoreCase) ||
             path.StartsWith("/openapi/", StringComparison.OrdinalIgnoreCase))
         {
             await next(context);
             return;
         }
-        
-        // Proxy everything else to Angular
+
         var httpClientFactory = context.RequestServices.GetRequiredService<IHttpClientFactory>();
         var httpClient = httpClientFactory.CreateClient();
         var angularDevServer = "http://localhost:4200";
         var targetUri = $"{angularDevServer}{path}{context.Request.QueryString}";
-        
+
         logger.LogInformation("Proxying to: {TargetUri}", targetUri);
-        
+
         try
         {
             var requestMessage = new HttpRequestMessage
@@ -172,7 +308,7 @@ if (app.Environment.IsDevelopment())
                 Method = new HttpMethod(context.Request.Method),
                 RequestUri = new Uri(targetUri)
             };
-            
+
             foreach (var header in context.Request.Headers)
             {
                 if (!header.Key.StartsWith(":", StringComparison.OrdinalIgnoreCase))
@@ -180,24 +316,26 @@ if (app.Environment.IsDevelopment())
                     requestMessage.Headers.TryAddWithoutValidation(header.Key, header.Value.ToArray());
                 }
             }
-            
-            var responseMessage = await httpClient.SendAsync(requestMessage, 
-                HttpCompletionOption.ResponseHeadersRead, context.RequestAborted);
-            
+
+            var responseMessage = await httpClient.SendAsync(
+                requestMessage,
+                HttpCompletionOption.ResponseHeadersRead,
+                context.RequestAborted);
+
             context.Response.StatusCode = (int)responseMessage.StatusCode;
-            
+
             foreach (var header in responseMessage.Headers)
             {
                 context.Response.Headers[header.Key] = header.Value.ToArray();
             }
-            
+
             foreach (var header in responseMessage.Content.Headers)
             {
                 context.Response.Headers[header.Key] = header.Value.ToArray();
             }
-            
+
             context.Response.Headers.Remove("transfer-encoding");
-            
+
             await responseMessage.Content.CopyToAsync(context.Response.Body);
         }
         catch (HttpRequestException ex)
@@ -214,7 +352,5 @@ else
     app.UseStaticFiles();
     app.MapFallbackToFile("index.html");
 }
-
-app.MapControllers();
 
 app.Run();

@@ -1,112 +1,260 @@
 <div class="checkout-container">
-  <form class="checkout-form">
+  <form class="checkout-form" #checkoutForm="ngForm" (ngSubmit)="confirmOrder(checkoutForm)">
     <h2 class="checkout-title">Check Out</h2>
 
-    <div class="info-box">
-      <div class="input-grid">
-        <input type="text" class="input" placeholder="First Name" />
-        <input type="text" class="input" placeholder="Last Name" />
-        <input type="text" class="input"  placeholder="Phone Number" />
-        <input type="text" class="input" placeholder="Email Address" />
-        <input type="text" class="input full-width" placeholder="Address" />
-        <div class="city-state-zip">
-          <input type="text" class="input"  placeholder="City" />
-          <select class="input2">
-            <option value="state">State</option>
-            <option>AL</option>
-            <option>AK</option>
-            <option>AZ</option>
-            <option>AR</option>
-            <option>CA</option>
-            <option>CO</option>
-            <option>CT</option>
-            <option>DC</option>
-            <option>DE</option>
-            <option>FL</option>
-            <option>GA</option>
-            <option>HI</option>
-            <option>ID</option>
-            <option>IL</option>
-            <option>IN</option>
-            <option>IA</option>
-            <option>KS</option>
-            <option>KY</option>
-            <option>LA</option>
-            <option>ME</option>
-            <option>MD</option>
-            <option>MA</option>
-            <option>MI</option>
-            <option>MN</option>
-            <option>MS</option>
-            <option>MO</option>
-            <option>MT</option>
-            <option>NE</option>
-            <option>NV</option>
-            <option>NH</option>
-            <option>NJ</option>
-            <option>NM</option>
-            <option>NY</option>
-            <option>NC</option>
-            <option>ND</option>
-            <option>OH</option>
-            <option>OK</option>
-            <option>OR</option>
-            <option>PA</option>
-            <option>RI</option>
-            <option>SC</option>
-            <option>SD</option>
-            <option>TN</option>
-            <option>TX</option>
-            <option>UT</option>
-            <option>VT</option>
-            <option>VA</option>
-            <option>WA</option>
-            <option>WV</option>
-            <option>WI</option>
-            <option>WY</option>
-          </select>
-
-          <input type="text" class="input" placeholder="Zip Code" />
-        </div>
-      </div>
-      <div class="input-grid2">
-        <input type="text" class="credit-card" placeholder="Credit Card #" />
-        <input type="text" class="exp" placeholder="XX/XXXX" />
-        <input type="text" class="cvv" placeholder="CVV" />
-      </div>
+    <!-- Row 1: Name, Phone, Email -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Your Name"
+        [(ngModel)]="checkoutData.name"
+        required
+        name="name"
+      />
+      <input
+        type="tel"
+        class="input"
+        name="phone"
+        required
+        placeholder="Phone Number"
+        pattern="^[0-9]{3} [0-9]{3} [0-9]{4}$"
+        maxlength="12"
+        [(ngModel)]="checkoutData.phone"
+        (input)="formatPhone($event)"
+      />
+      <input
+        type="email"
+        class="input"
+        placeholder="Email Address"
+        name="email"
+        required
+        email
+        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+        [(ngModel)]="checkoutData.email"
+        #emailRef="ngModel"
+      />
     </div>
 
-    <div class="shipping-options">
-      <label class="shipping-option">
-        <input type="radio" name="shipping" value="Overnight" checked>
-        <div class="option-content">
-          <h3>Overnight</h3>
-          <p>$29.99</p>
-        </div>
-      </label>
+    <!-- Row 2: Address Line 1 & 2 -->
+    <div class="form-row two-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Address Line 1"
+        required
+        [(ngModel)]="checkoutData.address1"
+        name="address1"
+      />
+      <input
+        type="text"
+        class="input"
+        placeholder="Address Line 2"
+        [(ngModel)]="checkoutData.address2"
+        name="address2"
+      />
+    </div>
 
-      <label class="shipping-option">
-        <input type="radio" name="shipping" value="3Day">
-        <div class="option-content">
-          <h3>3 Day</h3>
-          <p>$19.99</p>
-        </div>
-      </label>
+    <!-- Row 3: City, State, Zip -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="City"
+        required
+        [(ngModel)]="checkoutData.city"
+        name="city"
+      />
+      <select class="input" required [(ngModel)]="checkoutData.state" name="state">
+        <option value="" disabled selected>State</option>
+        <option>AL</option>
+        <option>AK</option>
+        <option>AZ</option>
+        <option>AR</option>
+        <option>CA</option>
+        <option>CO</option>
+        <option>CT</option>
+        <option>DC</option>
+        <option>DE</option>
+        <option>FL</option>
+        <option>GA</option>
+        <option>HI</option>
+        <option>ID</option>
+        <option>IL</option>
+        <option>IN</option>
+        <option>IA</option>
+        <option>KS</option>
+        <option>KY</option>
+        <option>LA</option>
+        <option>ME</option>
+        <option>MD</option>
+        <option>MA</option>
+        <option>MI</option>
+        <option>MN</option>
+        <option>MS</option>
+        <option>MO</option>
+        <option>MT</option>
+        <option>NE</option>
+        <option>NV</option>
+        <option>NH</option>
+        <option>NJ</option>
+        <option>NM</option>
+        <option>NY</option>
+        <option>NC</option>
+        <option>ND</option>
+        <option>OH</option>
+        <option>OK</option>
+        <option>OR</option>
+        <option>PA</option>
+        <option>RI</option>
+        <option>SC</option>
+        <option>SD</option>
+        <option>TN</option>
+        <option>TX</option>
+        <option>UT</option>
+        <option>VT</option>
+        <option>VA</option>
+        <option>WA</option>
+        <option>WV</option>
+        <option>WI</option>
+        <option>WY</option>
+      </select>
+      <input
+        type="text"
+        class="input"
+        placeholder="Zip Code"
+        name="zip"
+        required
+        pattern="[0-9]*"
+        maxlength="5"
+        [(ngModel)]="checkoutData.zip"
+        (input)="formatNumOnly($event)"
+      />
+    </div>
 
-      <label class="shipping-option">
-        <input type="radio" name="shipping" value="Ground">
-        <div class="option-content">
-          <h3>Ground</h3>
-          <p>$0.00</p>
-        </div>
-      </label>
+    <!-- Row 4: Credit Card, Exp, CVV -->
+    <div class="form-row three-col">
+      <input
+        type="text"
+        class="input"
+        placeholder="Credit Card #"
+        name="card"
+        required
+        pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"
+        maxlength="19"
+        [(ngModel)]="checkoutData.card"
+        (input)="formatCC($event)"
+      />
+      <input
+        type="text"
+        class="input"
+        name="exp"
+        required
+        placeholder="MM/YYYY"
+        maxlength="7"
+        [(ngModel)]="checkoutData.exp"
+        (input)="formatDate($event)"
+      />
+      <input
+        type="text"
+        class="input"
+        placeholder="CVV"
+        name="cvv"
+        required
+        pattern="[0-9]{3}"
+        maxlength="3"
+        [(ngModel)]="checkoutData.cvv"
+        (input)="formatNumOnly($event)"
+      />
+    </div>
+
+    <div class="confirm-columns">
+      <div class="shipping-options">
+        <label class="shipping-column">
+          <span class="ship-label">Overnight </span>
+          <span class="ship-price">$29.99</span>
+          <input
+            type="radio"
+            name="shipping"
+            value="Overnight"
+            [checked]="shipService.selectedOption === 'Overnight'"
+            (change)="updateShipping('Overnight')"
+          />
+          <span class="ship-radio"></span>
+        </label>
+
+        <label class="shipping-column">
+          <span class="ship-label">3 Day Shipping </span>
+          <span class="ship-price">$19.99</span>
+          <input
+            type="radio"
+            name="shipping"
+            value="3-Day"
+            [checked]="shipService.selectedOption === '3-Day'"
+            (change)="updateShipping('3-Day')"
+          />
+          <span class="ship-radio"></span>
+        </label>
+
+        <label class="shipping-column">
+          <span class="ship-label">Ground </span>
+          <span class="ship-price">$0.00</span>
+          <input
+            type="radio"
+            name="shipping"
+            value="Ground"
+            [checked]="shipService.selectedOption === 'Ground'"
+            (change)="updateShipping('Ground')"
+          />
+          <span class="ship-radio"></span>
+        </label>
+      </div>
+      <div class="pricing-container">
+        <h2 class="shipping">Shipping: {{ shippingCost | currency: 'USD' : 'symbol' }}</h2>
+        <h2 class="subtotal">
+          Subtotal: {{ orderSummary.cartSubtotal + shippingCost | currency: 'USD' : 'symbol' }}
+        </h2>
+      </div>
     </div>
     <div class="confirm-buttons">
-      <button class="confirm-order-btn" routerLink="/confirm">Confirm Order ⮚</button>
-      <button class="back-btn" routerLink="/inventory">⮘ Back</button>
+      <button class="confirm-order-btn" type="submit">
+        Confirm Order
+        <svg
+          class="icon-arrow icon-arrow-right"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M5 12h14m-6-6 6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="back-btn" routerLink="/shoppingCart">
+        <svg
+          class="icon-arrow icon-arrow-left"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M19 12H5m6-6-6 6 6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Back
+      </button>
     </div>
-
-
   </form>
 </div>
-

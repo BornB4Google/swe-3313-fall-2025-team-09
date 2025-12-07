@@ -11,12 +11,14 @@ public class CartItemDto
 {
     public int CartItemId { get; set; }
 
-    public int ItemId { get; set; }          
+    public int ItemId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;
 
+    public string Description { get; set; }
+
     public decimal UnitPrice { get; set; }
-    
+
     public decimal Subtotal => UnitPrice;
 
     public string PrimaryPhotoUrl { get; set; } = string.Empty;
@@ -27,6 +29,6 @@ public class CartDto
 {
     public List<CartItemDto> Items { get; set; } = new();
 
-    // Total is sum of all Subtotal values 
+    // Total is sum of all Subtotal values
     public decimal Total { get; set; }
 }

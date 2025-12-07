@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ASP.NET run (dev)",
+            "type": "shell",
+            "command": "ASPNETCORE_ENVIRONMENT=Development dotnet run --project backend.csproj",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "ASP.NET watcher (dev)",
+            "type": "shell",
+            "command": "ASPNETCORE_ENVIRONMENT=Development dotnet watch run --project backend.csproj",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile",
+            "isBackground": true
+        },
+        {
+            "label": "ng dev",
+            "type": "shell",
+            "command": "ng dev",
+            "options": {
+                "cwd": "${workspaceFolder}/frontend"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$tsc",
+            "isBackground": true
+        },
+        {
+            "label": "format",
+            "type": "shell",
+            "command": "dotnet format backend.csproj && cd frontend && npx prettier --write .",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

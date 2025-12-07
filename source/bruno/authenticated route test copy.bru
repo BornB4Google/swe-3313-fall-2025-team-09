@@ -1,0 +1,25 @@
+meta {
+  name: authenticated route test copy
+  type: http
+  seq: 12
+}
+
+post {
+  url: https://dev-52.offshoreholdings.shop/api/auth/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+  "username": "award62",
+  "password": "Admin1!"
+  }
+  
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

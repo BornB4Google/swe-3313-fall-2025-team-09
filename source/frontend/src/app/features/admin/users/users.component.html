@@ -1,0 +1,46 @@
+<h1 class="user-title">User Management</h1>
+
+<div class="user-content">
+  <h2>User List</h2>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users(); track user.userId) {
+        <tr>
+          <td>{{ user.userId }}</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.isAdmin }}</td>
+          <td>
+            <button
+              type="button"
+              class="promote-btn"
+              (click)="updateUserRole(user.userId, true)"
+              [hidden]="user.isAdmin"
+            >
+              Make Admin
+            </button>
+            <button
+              type="button"
+              class="promote-btn"
+              (click)="updateUserRole(user.userId, false)"
+              [hidden]="!user.isAdmin"
+            >
+              Make User
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

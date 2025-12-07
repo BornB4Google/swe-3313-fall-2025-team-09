@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -6,3 +7,17 @@ html, body {
   font-family: 'Playfair Display SC', serif;
 }
 
+.icon-arrow {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-arrow-right {
+  margin-left: 0.35em;
+}
+
+.icon-arrow-left {
+  margin-right: 0.35em;
+}

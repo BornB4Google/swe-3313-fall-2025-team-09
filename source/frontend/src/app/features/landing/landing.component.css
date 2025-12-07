@@ -17,48 +17,43 @@ Ice White	#F4F7F9
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(135deg, #0A0F1C, #1E2A38);
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
   text-align: center;
-
 }
-
 
 .landing-container::after {
   content: 'OFFSHORE';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   font-family: 'Playfair Display SC', serif;
-  font-size: clamp(8rem, 20vw, 20rem);
+  font-size: 20rem;
   color: rgba(62, 92, 118, 0.07);
-  letter-spacing: 10px;
+  letter-spacing: clamp(5px, 1vw, 10px);
+
   pointer-events: none;
   z-index: 0;
-
 }
-
 
 .title {
   position: relative;
   font-family: 'Playfair Display SC', serif;
   font-size: clamp(2.5rem, 6vw, 7rem);
-
-  color: #F4F7F9;
+  transform: translate(-50%, -50%);
+  color: #f4f7f9;
   margin: 0 auto;
   text-align: center;
 }
-
 
 .subtitle {
   position: relative;
   font-size: clamp(1rem, 3vw, 3rem);
   margin-bottom: 25px;
-  color: #F4F7F9;
+  color: #f4f7f9;
   text-align: center;
-
 }
 
 .button-container {
@@ -77,11 +72,9 @@ Ice White	#F4F7F9
   border-radius: 15px;
   cursor: pointer;
   background-color: #000000;
-  color: #F4F7F9;
+  color: #f4f7f9;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-
-
 }
 
 .landing-btn:hover {
@@ -91,7 +84,6 @@ Ice White	#F4F7F9
   box-shadow:
     10px 20px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(167, 179, 188, 0.8);
-
 }
 
 @keyframes fadeUp {
@@ -105,9 +97,8 @@ Ice White	#F4F7F9
   }
 }
 
-.title, .subtitle, .button-container {
+.title,
+.subtitle,
+.button-container {
   animation: fadeUp 3s ease forwards;
 }
-
-
-

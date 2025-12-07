@@ -1,30 +1,27 @@
-import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {CurrencyPipe, NgForOf} from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [
-    RouterLink,
-    CurrencyPipe,
-    NgForOf
-  ],
+  imports: [RouterLink, CurrencyPipe, AsyncPipe],
   templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.css'
+  styleUrl: './shopping-cart.component.css',
 })
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit {
+  cartService = inject(CartService);
+  cart$ = this.cartService.cartItems$;
+  subtotal = 0;
 
-  /* placeholder until database is made*/
-  shoppingCart=[
-    {name: 'name1', description: "Description of item will be written here" ,price: 0.00},
-    {name: 'name1', description: "Description of item will be written here", price: 0.00},
-    {name: 'name1', description: "Description of item will be written here", price: 0.00}
-  ];
+  ngOnInit() {
+    this.cartService.loadCart();
+    this.cart$.subscribe(cart => {
+      this.subtotal = cart?.total ?? 0;
+    });
+  }
 
-
-
-
-  removeCart(item: any) {
-    console.log(`${item.name} added to cart`);
+  removeCart(itemId: number) {
+    this.cartService.removeFromCart(itemId);
   }
 }

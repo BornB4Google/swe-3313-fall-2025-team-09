@@ -1,0 +1,80 @@
+.admin-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0f1c, #1e2a38);
+  animation: gradientShift 15s ease infinite;
+  color: #f4f7f9;
+  text-align: center;
+}
+
+.admin-title {
+  font-size: 2rem;
+}
+.admin-title:after {
+  content: '';
+  position: absolute;
+  top: 120px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  width: 700px;
+  height: 2px;
+  background-color: #a7b3bc;
+  border-radius: 2px;
+}
+.admin-form {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 1000px;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0px 20px rgba(84, 112, 154, 0.7);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.admin-navbar {
+  width: auto;
+  padding: 40px 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.admin-navbar button {
+  width: 200px;
+  padding: 12px 25px;
+  flex: 1 1 auto;
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  border: 1px solid #3e5c76;
+  background-color: #1e2a38;
+  color: #f4f7f9;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-navbar button:hover {
+  background-color: #3e5c76;
+}
+
+.admin-navbar nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

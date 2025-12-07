@@ -1,0 +1,75 @@
+.product-content {
+  font-family: 'Playfair Display SC', serif;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #0a0f1c;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 80%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-title {
+  position: absolute;
+  align-content: center;
+  left: 50%;
+  top: 250px;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #f4f7f9;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.product-name {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: #a7b3bc;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  color: #f4f7f9;
+  margin-bottom: 5px;
+}
+
+.product-category {
+  color: #a7b3bc;
+  font-size: 0.9rem;
+}
+
+.product-name,
+input,
+textarea {
+  font-family: 'Playfair', serif !important;
+}
+
+.save-btn {
+  background-color: #a7b3bc;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  border-radius: 5px;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
+}
