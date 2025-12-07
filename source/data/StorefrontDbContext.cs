@@ -29,7 +29,7 @@ namespace Backend.Data
 
             // User unique constraints
             modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)
+                .HasIndex(u => u.NormalizedUsername)
                 .IsUnique();
 
             modelBuilder.Entity<User>()

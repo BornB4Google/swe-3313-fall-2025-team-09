@@ -41,7 +41,9 @@ public class AuthController : ControllerBase
         if (string.IsNullOrWhiteSpace(request.Email))
             return BadRequest("No email given.");
 
-        if (await _db.Users.AnyAsync(u => u.Username == request.Username))
+        var normalizedUsername = request.Username.ToLowerInvariant();
+
+        if (await _db.Users.AnyAsync(u => u.NormalizedUsername == normalizedUsername))
             return BadRequest("Another user already took this username.");
         if (await _db.Users.AnyAsync(u => u.Email == request.Email))
             return BadRequest("An account with this email already exists.");
@@ -50,6 +52,7 @@ public class AuthController : ControllerBase
         var newUser = new User
         {
             Username = request.Username,
+            NormalizedUsername = normalizedUsername,
             PasswordHash = PasswordHasher.ComputePasswordHash(request.Password),
             FirstName = request.FirstName,
             LastName = request.LastName,
@@ -73,8 +76,10 @@ public class AuthController : ControllerBase
         if (string.IsNullOrWhiteSpace(request.Password))
             return BadRequest("No password given.");
 
+        var normalizedUsername = request.Username.ToLowerInvariant();
+
         var user = await _db.Users
-            .SingleOrDefaultAsync(u => u.Username == request.Username);
+            .SingleOrDefaultAsync(u => u.NormalizedUsername == normalizedUsername);
 
         if (user == null)
             return BadRequest("User not found.");
