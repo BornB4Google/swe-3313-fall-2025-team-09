@@ -12,7 +12,7 @@
       >
         <img class="item-image" [src]="item.primaryPhotoUrl" [alt]="item.name" />
         <h3 class="item-name">{{ item.name }}</h3>
-        <p class="item-price">$ {{ formatCompact(item.price) }}</p>
+        <p class="item-price">$ {{ formatCompact(item.price || 0) }}</p>
 
         <button
           class="add-to-cart-btn"
@@ -94,7 +94,7 @@
         <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" [alt]="selectedItem.name" />
         <h2 class="overlay-title">{{ selectedItem.name }}</h2>
         <p class="overlay-description">{{ selectedItem.description }}</p>
-        <p class="overlay-price">$ {{ formatCompact(selectedItem.price) }}</p>
+        <p class="overlay-price">$ {{ formatCompact(selectedItem.price || 0) }}</p>
         <button
           class="overlay-cart-btn"
           [disabled]="cartService.isInCart(selectedItem.itemId)"

@@ -2,6 +2,9 @@
 
 <div class="user-content">
   <h2>User List</h2>
+  @if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
   <table class="user-table">
     <thead>
       <tr>
