@@ -1,21 +1,17 @@
 import {CanActivateFn, Router} from '@angular/router';
-import { CartService } from '../services/cart/cart.service';
 import {inject} from '@angular/core';
 import {map, take} from 'rxjs';
+import {ReceiptService} from '../services/receipt/receipt.service';
 
 
 export const receiptGuard: CanActivateFn = (route, state) => {
-  const cartService = inject(CartService);
+  const orderSummary = inject(ReceiptService)
   const router = inject(Router);
 
+  const lastOrder = orderSummary.getLastOrder();
+  if(lastOrder ==null) {
+    return router.parseUrl('/inventory')
+  }
+  return true;
 
-  return cartService.cartItems$.pipe(
-    take(1),
-    map(cart => {
-      if (!cart || !cart.items || cart.items.length === 0) {
-        return router.parseUrl('/cart');
-      }
-      return true;
-    })
-  );
 };
