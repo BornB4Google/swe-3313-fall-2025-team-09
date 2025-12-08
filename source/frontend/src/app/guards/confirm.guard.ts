@@ -3,7 +3,7 @@ import { ShippingService } from '../services/shipping/shipping.service';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-export const confirmGuard: CanActivateFn = (route, state) => {
+export const confirmGuard: CanActivateFn = () => {
   const customerInfo = inject(ShippingService);
   const router = inject(Router);
 

@@ -1,9 +1,8 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { map, take } from 'rxjs';
 import { ReceiptService } from '../services/receipt/receipt.service';
 
-export const receiptGuard: CanActivateFn = (route, state) => {
+export const receiptGuard: CanActivateFn = () => {
   const orderSummary = inject(ReceiptService);
   const router = inject(Router);
 

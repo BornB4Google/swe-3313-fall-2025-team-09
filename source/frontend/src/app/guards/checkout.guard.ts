@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { CartService } from '../services/cart/cart.service';
 import { map, take } from 'rxjs';
 
-export const checkoutGuard: CanActivateFn = (route, state) => {
+export const checkoutGuard: CanActivateFn = () => {
   const cartService = inject(CartService);
   const router = inject(Router);
 
