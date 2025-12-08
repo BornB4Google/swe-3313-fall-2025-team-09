@@ -11,7 +11,7 @@ export const checkoutGuard: CanActivateFn = () => {
     take(1),
     map(cart => {
       if (!cart || !cart.items || cart.items.length === 0) {
-        return router.parseUrl('/cart');
+        return router.parseUrl('/shoppingCart');
       }
       return true;
     })
