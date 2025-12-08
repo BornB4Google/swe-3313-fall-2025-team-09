@@ -4,7 +4,7 @@
   <div class="report-top-row">
     <div class="report-metric report-metric--wide">
       <div class="metric-heading">Total Revenue</div>
-      <div class="metric-number">${{ totalRevenue }}</div>
+      <div class="metric-number">${{ totalRevenue | number: '1.2-2' }}</div>
       <div class="metric-subtext">Current period total revenue</div>
     </div>
 
@@ -37,7 +37,7 @@
               <div class="recent-item-date">Date Sold: {{ s.dateSold | date: 'short' }}</div>
             </div>
             <div class="recent-item-right">
-              <div class="recent-item-total">${{ s.lineTotal }}</div>
+              <div class="recent-item-total">${{ s.lineTotal | number: '1.2-2' }}</div>
               <button type="button" class="view-receipt-btn" (click)="openReceipt(s.saleId)">
                 View Receipt
               </button>
