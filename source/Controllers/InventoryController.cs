@@ -29,7 +29,7 @@ public class InventoryController : ControllerBase
     {
         var items = await _db.InventoryItems
             .Include(i => i.Images)
-            .OrderBy(i => i.ItemId)
+            .OrderByDescending(i => i.Price).ThenBy(i => i.ItemId)
             .Select(i => new
             {
                 i.ItemId,
