@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
   padding: 100px 20px 40px;
   background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   color: #f4f7f9;
