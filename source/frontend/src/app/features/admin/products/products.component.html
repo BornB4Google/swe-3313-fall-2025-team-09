@@ -25,6 +25,9 @@
         required
       />
       <input type="text" name="category" [(ngModel)]="newProduct.category" placeholder="Category" />
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
       <div class="product-buttons">
         <button type="submit" class="save-btn">Save</button>
       </div>

@@ -114,7 +114,7 @@ public class UsersController : ControllerBase
 
         if (currentUser == id)
         {
-            return BadRequest(new { message = "You cannot change your own admin status" });
+            return BadRequest("You cannot change your own admin status.");
         }
 
         var user = await _db.Users.FindAsync(id);

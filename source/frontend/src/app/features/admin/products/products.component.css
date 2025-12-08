@@ -73,3 +73,10 @@ textarea {
   background-color: #0a0f1c;
   color: #a7b3bc;
 }
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0 0 5px;
+}

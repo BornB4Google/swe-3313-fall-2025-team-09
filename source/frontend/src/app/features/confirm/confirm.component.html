@@ -42,6 +42,9 @@
         </div>
       </div>
     </div>
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
     <div class="confirm-buttons">
       <button type="button" class="confirm-btn" (click)="saveReceipt()">
         Complete Order

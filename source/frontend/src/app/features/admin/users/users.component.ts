@@ -16,6 +16,7 @@ import { Subject, startWith, switchMap } from 'rxjs';
 export class UsersComponent {
   adminUserService = inject(AdminUserService);
   private readonly refreshTrigger$ = new Subject<void>();
+  errorMessage: string | null = null;
   users: Signal<User[]> = toSignal(
     this.refreshTrigger$.pipe(
       startWith<void>(undefined),
@@ -25,8 +26,17 @@ export class UsersComponent {
   );
 
   updateUserRole(id: number, makeAdmin: boolean) {
-    this.adminUserService.setUserRole(id, makeAdmin).subscribe(() => {
-      this.refreshTrigger$.next();
+    this.adminUserService.setUserRole(id, makeAdmin).subscribe({
+      next: () => {
+        this.errorMessage = null;
+        this.refreshTrigger$.next();
+      },
+      error: err => {
+        console.error('Could not update user role', err);
+        const serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
+        const fallback = 'Failed to update user role. Please try again.';
+        this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
+      },
     });
   }
 }

@@ -215,3 +215,10 @@
   font-weight: 700;
   padding-top: 10px;
 }
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 10px 0;
+}

@@ -14,11 +14,13 @@ import { InventoryItem, InventoryImage } from '../../../models/inventory.models'
 export class ProductsComponent {
   private inventoryService = inject(InventoryService);
 
+  errorMessage: string | null = null;
+
   newProduct: InventoryItem = {
     itemId: 0,
     name: '',
     description: '',
-    price: 0,
+    price: null,
     primaryPhotoUrl: '',
     category: '',
     isSold: false,
@@ -28,6 +30,7 @@ export class ProductsComponent {
   submitNewProduct() {
     this.inventoryService.addInventoryItem(this.newProduct).subscribe({
       next: createdItem => {
+        this.errorMessage = null;
         this.products.push(createdItem);
         this.newProduct = {
           itemId: 0,
@@ -40,7 +43,12 @@ export class ProductsComponent {
           images: [],
         };
       },
-      error: err => console.error('Could not add item', err),
+      error: err => {
+        console.error('Could not add item', err);
+        const serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
+        const fallback = 'Failed to add product. Please try again.';
+        this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
+      },
     });
   }
   addImage() {
