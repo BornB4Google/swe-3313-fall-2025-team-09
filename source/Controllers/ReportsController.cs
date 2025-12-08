@@ -235,10 +235,10 @@ public class ReportsController : ControllerBase
                 $"{s.SaleId}," +
                 $"{s.UserId}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
-                $"{s.Subtotal:N2}," +
-                $"{s.Tax:N2}," +
-                $"{s.ShippingCost:N2}," +
-                $"{s.Total:N2}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
                 $"{s.ShippingSpeed}," +
                 $"{s.Street1}," +
                 $"{s.Street2}," +
