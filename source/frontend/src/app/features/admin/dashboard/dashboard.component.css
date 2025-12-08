@@ -113,11 +113,36 @@
   margin-top: 2px;
 }
 
+.recent-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-left: 24px;
+}
+
 .recent-item-total {
   font-size: 1rem;
   color: #f4f7f9;
   white-space: nowrap;
-  margin-left: 24px;
+}
+
+.view-receipt-btn {
+  background-color: #a7b3bc;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-receipt-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
 }
 
 .recent-item:last-child {
@@ -175,16 +200,18 @@
   width: 100%;
   padding: 12px;
   font-size: 1.1rem;
+  font-family: 'Playfair Display SC', serif;
   border-radius: 8px;
   border: none;
-  background-color: #3e5c76;
-  color: #f4f7f9;
+  background-color: #a7b3bc;
+  color: #000000;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .report-btn:hover {
-  background-color: #547da0;
+  background-color: #0a0f1c;
+  color: #a7b3bc;
 }
 
 .report-row.column {

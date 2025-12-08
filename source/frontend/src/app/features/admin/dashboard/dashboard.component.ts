@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -10,13 +10,15 @@ import {
   OrderSummary,
   SoldItem,
 } from '../../../models/reports.model';
-
+import { OrderDetailDto } from '../../../models/order.models';
 import { ReportsService } from '../../../services/report/report.service';
+import { SaleService } from '../../../services/sales/sale.service';
+import { ReceiptModalComponent } from '../../../shared/receipt-modal/receipt-modal.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReceiptModalComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -46,6 +48,9 @@ export class DashboardComponent implements OnInit {
   itemResults: SoldItem[] = [];
 
   loading = true;
+  selectedReceipt: OrderDetailDto | null = null;
+
+  private saleService = inject(SaleService);
 
   constructor(private reportsService: ReportsService) {}
 
@@ -125,5 +130,16 @@ export class DashboardComponent implements OnInit {
     a.click();
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+  }
+
+  openReceipt(saleId: number): void {
+    this.saleService.getOrderById(saleId).subscribe({
+      next: orderDetail => (this.selectedReceipt = orderDetail),
+      error: err => console.error('Failed to load order details:', err),
+    });
+  }
+
+  closeReceipt(): void {
+    this.selectedReceipt = null;
   }
 }

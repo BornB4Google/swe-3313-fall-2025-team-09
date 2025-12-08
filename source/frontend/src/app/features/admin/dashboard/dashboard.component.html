@@ -26,11 +26,22 @@
           <div class="recent-item">
             <div class="recent-item-main">
               <div class="recent-item-name">{{ s.itemName }}</div>
-              <div class="recent-item-date">{{ s.itemDescription.length <= 40 ? s.itemDescription.length : s.itemDescription.slice(0, 40) + `...` }}</div>
+              <div class="recent-item-date">
+                {{
+                  s.itemDescription.length <= 40
+                    ? s.itemDescription.length
+                    : s.itemDescription.slice(0, 40) + `...`
+                }}
+              </div>
 
               <div class="recent-item-date">Date Sold: {{ s.dateSold | date: 'short' }}</div>
             </div>
-            <div class="recent-item-total">${{ s.lineTotal }}</div>
+            <div class="recent-item-right">
+              <div class="recent-item-total">${{ s.lineTotal }}</div>
+              <button type="button" class="view-receipt-btn" (click)="openReceipt(s.saleId)">
+                View Receipt
+              </button>
+            </div>
           </div>
         }
       </div>
@@ -55,3 +66,5 @@
     </section>
   </div>
 </div>
+
+<app-receipt-modal [receipt]="selectedReceipt" (close)="closeReceipt()"></app-receipt-modal>
