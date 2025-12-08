@@ -21,8 +21,130 @@
   margin-right: auto;
 }
 
-.dashboard-grid {
+.dashboard-grid2 {
   margin-top: 80px;
   display: grid;
   flex-direction: row;
+}
+
+
+.dashboard-grid1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #1e2a38;
+  padding: 1rem 1.2rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #a7b3bc;
+}
+
+.value {
+  margin-top: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #f4f7f9;
+}
+
+
+.dashboard-grid2 {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1.5rem;
+}
+
+
+.panel {
+  background: #1e2a38;
+  border-radius: 0.7rem;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+
+.panel-header {
+  margin-bottom: 0.75rem;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #f4f7f9;
+}
+
+.table-wrapper {
+  border: 1px solid rgba(167,179,188,0.2);
+  border-radius: 0.6rem;
+  overflow: auto;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: #f4f7f9;
+}
+
+.reports-table th,
+.reports-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(167,179,188,0.15);
+}
+
+.reports-table th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #a7b3bc;
+}
+
+.reports-table tbody tr:hover {
+  background: rgba(62, 92, 118, 0.18);
+}
+
+
+.report-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.report-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #3E5C76;
+  color: #F4F7F9;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.report-btn:hover {
+  background-color: #547da0;
+}
+
+
+.report-row.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-date-input {
+  padding: 8px;
+  background: #29394a;
+  border: 1px solid #3f5166;
+  color: white;
+  border-radius: 6px;
 }

@@ -2,5 +2,69 @@
 
 <div class="dashboard-content">
   <h2>Sales Report</h2>
-  <div class="dashboard-grid"></div>
-</div>
+  <div class="dashboard-grid1">
+    <div class="card">
+      <div class="label">Total Orders</div>
+      <div class="value">{{ totalOrders }}</div>
+    </div>
+    <div class="card">
+      <div class="label"> Total Revenue</div>
+      <div class="value">${{ totalRevenue }}</div>
+    </div>
+  </div>
+
+  <div class="dashboard-grid2">
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Reports</h2>
+      </div>
+      <div class="report-row">
+        <button class="report-btn" (click)="downloadWeeklyCsv()">
+          View Weekly Sales Report
+        </button>
+
+        <input
+          type="date"
+          [(ngModel)]="weeklyStartDate"
+          class="report-date-input"
+        />
+      </div>
+
+
+
+
+      <button class="report-btn" (click)="downloadMonthlyCsv()">
+          View Monthly Sales Report
+        </button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2 class="panel-title">Recent Sales</h2>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="reports-table">
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (s of recentSales; track s.dateSold) {
+              <tr>
+                <td>{{ s.dateSold | date: 'short' }}</td>
+                <td>{{ s.itemName }}</td>
+                <td>${{ s.lineTotal }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
