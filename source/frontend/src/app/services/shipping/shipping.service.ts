@@ -21,4 +21,16 @@ export class ShippingService {
   subtotal = 0;
   shippingCost = 0;
   selectedOption = 'Ground';
+
+
+  isInfoComplete() {
+    for (const info in this.shippingInfo) {
+      if (info == null) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+
 }
