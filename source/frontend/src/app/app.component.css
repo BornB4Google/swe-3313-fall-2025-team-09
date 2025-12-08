@@ -254,6 +254,32 @@
   width: 400px;
 }
 
+.search-input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.search-input-wrapper input {
+  padding-right: 32px;
+}
+
+.search-clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #a7b3bc;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-clear-btn:hover {
+  color: #f4f7f9;
+}
+
 .search-dropdown-menu input::placeholder {
   color: #a7b3bc;
 }

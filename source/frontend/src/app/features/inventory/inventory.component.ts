@@ -34,10 +34,10 @@ export class InventoryComponent implements OnInit {
       return;
     }
 
-    this.isSearching = true;
     this.inventoryService.searchInventory(this.searchQuery).subscribe({
       next: results => {
         this.searchResults = results;
+        this.isSearching = true;
         this.currentPage = 1;
       },
       error: err => {

@@ -23,19 +23,25 @@
         >
         @if (showSearch) {
           <div class="search-dropdown-menu">
-            <input
-              type="text"
-              placeholder="Search products..."
-              [(ngModel)]="searchQuery"
-              (keydown.enter)="onSearch()"
-            />
-            <button class="search-btn" (click)="onSearch()">Go</button>
-            @if (searchQuery) {
-              <button class="search-btn" (click)="clearSearch()">Clear</button>
-            }
-            <button class="search-close-btn" (click)="closeSearch()" aria-label="Close search">
-              &#10007;
-            </button>
+            <div class="search-input-wrapper">
+              <input
+                type="text"
+                placeholder="Search products..."
+                [(ngModel)]="searchQuery"
+                (ngModelChange)="onSearchInput($event)"
+                (keydown.enter)="onSearch()"
+              />
+              @if (searchQuery) {
+                <button
+                  type="button"
+                  class="search-clear-btn"
+                  (click)="clearSearch()"
+                  aria-label="Clear search"
+                >
+                  &#10007;
+                </button>
+              }
+            </div>
           </div>
         }
       </li>

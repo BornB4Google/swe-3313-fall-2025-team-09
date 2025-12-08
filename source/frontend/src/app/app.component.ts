@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { filter } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { AuthService } from './services/auth/auth.service';
 import { CartService } from './services/cart/cart.service';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
   showSearch = false;
   searchQuery = '';
+  private searchInput$ = new Subject<string>();
+  private isSearchNavigation = false;
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
@@ -39,13 +41,20 @@ export class AppComponent implements OnInit {
     }
   }
   onSearch() {
-    if (this.searchQuery.trim()) {
-      this.router.navigate(['/inventory'], { queryParams: { q: this.searchQuery } });
+    const trimmed = this.searchQuery.trim();
+    if (trimmed) {
+      this.isSearchNavigation = true;
+      this.router.navigate(['/inventory'], { queryParams: { q: trimmed } });
     }
   }
 
   clearSearch() {
     this.searchQuery = '';
+    this.onSearchInput('');
+  }
+
+  onSearchInput(value: string) {
+    this.searchInput$.next(value);
   }
 
   private router = inject(Router);
@@ -59,6 +68,11 @@ export class AppComponent implements OnInit {
         this.isLanding2 = url === '/';
         this.isLogin = url === '/login';
         this.isSignup = url === '/signup';
+        if (this.isSearchNavigation) {
+          this.isSearchNavigation = false;
+        } else {
+          this.showSearch = false;
+        }
         console.log(
           'URL:',
           url,
@@ -76,6 +90,15 @@ export class AppComponent implements OnInit {
     this.cartService.loadCart();
     this.cartService.cartItems$.subscribe(cart => {
       this.cartCount = cart.items.length;
+    });
+    this.searchInput$.pipe(debounceTime(100), distinctUntilChanged()).subscribe(query => {
+      const trimmed = query?.trim() ?? '';
+      this.isSearchNavigation = true;
+      if (trimmed) {
+        this.router.navigate(['/inventory'], { queryParams: { q: trimmed } });
+      } else {
+        this.router.navigate(['/inventory']);
+      }
     });
   }
 
