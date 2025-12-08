@@ -146,9 +146,9 @@ public class ReportsController : ControllerBase
         [FromQuery] DateTime? startDate)
     {
 
-        var today     = DateTime.UtcNow.Date;
+        var today = DateTime.UtcNow.Date;
         var weekStart = (startDate ?? today.AddDays(-7)).Date;
-        var weekEnd   = weekStart.AddDays(7);
+        var weekEnd = weekStart.AddDays(7);
 
         var salesQuery = _db.Sales
             .Where(s => s.SaleDateTime >= weekStart && s.SaleDateTime < weekEnd);
