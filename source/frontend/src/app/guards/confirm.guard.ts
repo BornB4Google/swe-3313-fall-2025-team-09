@@ -4,13 +4,12 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export const confirmGuard: CanActivateFn = (route, state) => {
-  const customerInfo = inject(ShippingService)
+  const customerInfo = inject(ShippingService);
   const router = inject(Router);
 
   const info = customerInfo.isInfoComplete();
-  if(!info) {
+  if (!info) {
     return router.parseUrl('/checkout');
   }
   return true;
-
 };

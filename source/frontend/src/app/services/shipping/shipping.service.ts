@@ -22,7 +22,6 @@ export class ShippingService {
   shippingCost = 0;
   selectedOption = 'Ground';
 
-
   isInfoComplete() {
     for (const info in this.shippingInfo) {
       if (info == null) {
@@ -31,6 +30,4 @@ export class ShippingService {
     }
     return true;
   }
-
-
 }

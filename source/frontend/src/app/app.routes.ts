@@ -25,15 +25,27 @@ export const routes: Routes = [
     component: InventoryComponent,
     canActivate: [redirectIfUnauthenticatedGuard],
   },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [checkoutGuard, redirectIfUnauthenticatedGuard] },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [checkoutGuard, redirectIfUnauthenticatedGuard],
+  },
   {
     path: 'shoppingCart',
     component: ShoppingCartComponent,
     canActivate: [redirectIfUnauthenticatedGuard],
   },
   { path: 'account', component: AccountComponent, canActivate: [redirectIfUnauthenticatedGuard] },
-  { path: 'confirm', component: ConfirmComponent, canActivate: [confirmGuard, redirectIfUnauthenticatedGuard] },
-  { path: 'receipt', component: ReceiptComponent, canActivate: [receiptGuard, redirectIfUnauthenticatedGuard] },
+  {
+    path: 'confirm',
+    component: ConfirmComponent,
+    canActivate: [confirmGuard, redirectIfUnauthenticatedGuard],
+  },
+  {
+    path: 'receipt',
+    component: ReceiptComponent,
+    canActivate: [receiptGuard, redirectIfUnauthenticatedGuard],
+  },
   {
     path: 'receipt/:id',
     component: ReceiptComponent,

@@ -1,17 +1,15 @@
-import {CanActivateFn, Router} from '@angular/router';
-import {inject} from '@angular/core';
-import {map, take} from 'rxjs';
-import {ReceiptService} from '../services/receipt/receipt.service';
-
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { map, take } from 'rxjs';
+import { ReceiptService } from '../services/receipt/receipt.service';
 
 export const receiptGuard: CanActivateFn = (route, state) => {
-  const orderSummary = inject(ReceiptService)
+  const orderSummary = inject(ReceiptService);
   const router = inject(Router);
 
   const lastOrder = orderSummary.getLastOrder();
-  if(lastOrder ==null) {
-    return router.parseUrl('/inventory')
+  if (lastOrder == null) {
+    return router.parseUrl('/inventory');
   }
   return true;
-
 };

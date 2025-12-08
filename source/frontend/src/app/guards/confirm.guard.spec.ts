@@ -4,8 +4,8 @@ import { CanActivateFn } from '@angular/router';
 import { confirmGuard } from './confirm.guard';
 
 describe('confirmGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => confirmGuard(...guardParameters));
+  const executeGuard: CanActivateFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => confirmGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

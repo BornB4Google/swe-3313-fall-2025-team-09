@@ -4,8 +4,8 @@ import { CanActivateFn } from '@angular/router';
 import { receiptGuard } from './receipt.guard';
 
 describe('receiptGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => receiptGuard(...guardParameters));
+  const executeGuard: CanActivateFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => receiptGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
