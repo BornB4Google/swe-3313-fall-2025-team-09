@@ -8,17 +8,14 @@ import {
   MonthlyReport,
   RecentSale,
   OrderSummary,
-  SoldItem
+  SoldItem,
 } from '../../models/reports.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportsService {
-
   constructor(private http: HttpClient) {}
-
 
   getSalesReport(startDate?: Date, endDate?: Date): Observable<SaleReportItem[]> {
     let params = new HttpParams();
@@ -27,7 +24,6 @@ export class ReportsService {
     return this.http.get<SaleReportItem[]>(`/api/reports/sales`, { params });
   }
 
-
   getRevenueReport(startDate?: Date, endDate?: Date): Observable<RevenueReport> {
     let params = new HttpParams();
     if (startDate) params = params.set('startDate', startDate.toISOString());
@@ -35,18 +31,16 @@ export class ReportsService {
     return this.http.get<RevenueReport>(`/api/reports/revenue`, { params });
   }
 
-
   getWeeklySalesReport(startDate: Date): Observable<WeeklyReport> {
     const params = new HttpParams().set('startDate', startDate.toISOString());
     return this.http.get<WeeklyReport>(`/api/reports/sales/weekly`, { params });
   }
 
-
   downloadWeeklyCsv(startDate: Date): Observable<Blob> {
     const params = new HttpParams().set('startDate', startDate.toISOString());
     return this.http.get(`/api/reports/sales/weekly/csv`, {
       params,
-      responseType: 'blob'
+      responseType: 'blob',
     });
   }
 
@@ -58,12 +52,10 @@ export class ReportsService {
   }
 
   downloadMonthlyCsv(year: number, month: number): Observable<Blob> {
-    const params = new HttpParams()
-      .set('year', year)
-      .set('month', month);
+    const params = new HttpParams().set('year', year).set('month', month);
     return this.http.get(`/api/reports/sales/monthly/csv`, {
       params,
-      responseType: 'blob'
+      responseType: 'blob',
     });
   }
 
@@ -77,7 +69,6 @@ export class ReportsService {
     startDate?: Date,
     endDate?: Date
   ): Observable<OrderSummary[]> {
-
     let params = new HttpParams();
     if (saleId) params = params.set('saleId', saleId.toString());
     if (email) params = params.set('customerEmail', email);
@@ -92,7 +83,6 @@ export class ReportsService {
     startDate?: Date,
     endDate?: Date
   ): Observable<SoldItem[]> {
-
     let params = new HttpParams();
 
     if (name) params = params.set('name', name);

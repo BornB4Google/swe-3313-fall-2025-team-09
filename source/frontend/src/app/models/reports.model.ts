@@ -15,7 +15,6 @@ export interface SaleReportItem {
   cardLast4: string;
 }
 
-
 export interface RevenueSummary {
   orderCount: number;
   subtotal: number;
@@ -37,7 +36,6 @@ export interface RevenueReport {
   summary: RevenueSummary;
   byDay: RevenueByDay[];
 }
-
 
 export interface WeeklyDataPoint {
   weekStart: string;
@@ -62,7 +60,6 @@ export interface WeeklyReport {
   weeklyDataPoints: WeeklyDataPoint[];
 }
 
-
 export interface MonthlyDataPoint {
   Month: number;
   MonthStart: string;
@@ -74,7 +71,6 @@ export interface MonthlyDataPoint {
   Shipping: number;
 }
 
-
 export interface MonthlyReportSummary {
   TotalOrders: number;
   TotalRevenue: number;
@@ -83,13 +79,10 @@ export interface MonthlyReportSummary {
   TotalShipping: number;
 }
 
-
 export interface MonthlyReport {
   Summary: MonthlyReportSummary;
   MonthlyDataPoints: MonthlyDataPoint[];
 }
-
-
 
 export interface RecentSale {
   itemName: string;
@@ -98,8 +91,6 @@ export interface RecentSale {
   lineTotal: number;
   saleId: number;
 }
-
-
 
 export interface OrderSummary {
   saleId: number;
@@ -110,7 +101,6 @@ export interface OrderSummary {
   customerName: string;
   customerEmail: string;
 }
-
 
 export interface SoldItem {
   itemId: number;
