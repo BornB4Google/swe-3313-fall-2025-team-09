@@ -23,23 +23,23 @@
   padding: 0 40px 40px;
 }
 
-.report-top-row {
-  display: grid;
-  grid-template-columns: 2fr 1.2fr;
-  gap: 2rem;
-  align-items: stretch;
+.report-card {
+  padding: 24px 28px;
+  background-color: #0a0f1c;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   margin-bottom: 32px;
 }
 
-.report-metric {
-  border: 1px solid rgba(167, 179, 188, 0.35);
-  padding: 18px 22px;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #0d1524, #111827);
+.charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
 }
 
-.report-metric--wide {
-  min-height: 180px;
+.chart-block {
+  display: flex;
+  flex-direction: column;
 }
 
 .metric-heading {
@@ -57,15 +57,33 @@
   margin-bottom: 8px;
 }
 
-.metric-subtext {
+.chart-title {
   font-size: 0.8rem;
-  color: #c0ccd5;
+  color: #a7b3bc;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 16px;
+  margin-bottom: 12px;
 }
 
 .section-divider {
   border: none;
   border-top: 1px solid rgba(167, 179, 188, 0.35);
   margin: 32px 0;
+}
+
+.chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+.chart-container--doughnut {
+  height: 180px;
+}
+
+.chart-block .chart-container {
+  margin-top: auto;
 }
 
 .report-bottom-row {

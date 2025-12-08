@@ -34,8 +34,6 @@
   padding: 40px 30px;
   border-radius: 16px;
   width: 1000px;
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
