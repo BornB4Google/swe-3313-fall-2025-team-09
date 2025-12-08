@@ -385,7 +385,7 @@ public class ReportsController : ControllerBase
             .Include(si => si.Sale)
             .Include(si => si.InventoryItem)
             .OrderByDescending(si => si.Sale.SaleDateTime)
-            .Take(3)
+            .Take(10)
             .Select(si => new
             {
                 ItemName = si.InventoryItem.Name,

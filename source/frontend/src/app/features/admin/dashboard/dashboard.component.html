@@ -1,6 +1,74 @@
-<h1 class="dashboard-title">Sales Overview</h1>
+<h1 class="product-title">Sales Report</h1>
 
 <div class="dashboard-content">
-  <h2>Sales Report</h2>
-  <div class="dashboard-grid"></div>
+  <div class="report-top-row">
+    <div class="report-metric report-metric--wide">
+      <div class="metric-heading">Total Revenue</div>
+      <div class="metric-number">${{ totalRevenue | number: '1.2-2' }}</div>
+      <div class="metric-subtext">Current period total revenue</div>
+    </div>
+
+    <div class="report-metric">
+      <div class="metric-heading">Total Orders</div>
+      <div class="metric-number">{{ totalOrders }}</div>
+      <div class="metric-subtext">Orders in current period</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <div class="report-bottom-row">
+    <section class="recently-sold">
+      <h2 class="section-title">Recently Sold Items</h2>
+
+      <div class="recent-list">
+        @for (s of recentSales; track $index) {
+          <div class="recent-item">
+            <div class="recent-item-main">
+              <div class="recent-item-name">{{ s.itemName }}</div>
+              <div class="recent-item-date">
+                {{
+                  s.itemDescription.length <= 40
+                    ? s.itemDescription.length
+                    : s.itemDescription.slice(0, 40) + `...`
+                }}
+              </div>
+
+              <div class="recent-item-date">Date Sold: {{ s.dateSold | date: 'short' }}</div>
+            </div>
+            <div class="recent-item-right">
+              <div class="recent-item-total">${{ s.lineTotal | number: '1.2-2' }}</div>
+              <button type="button" class="view-receipt-btn" (click)="openReceipt(s.saleId)">
+                View Receipt
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="reports-section">
+      <h2 class="section-title">Reports</h2>
+
+      <div class="reports-controls">
+        <div class="report-row">
+          <button type="button" class="report-btn" (click)="downloadWeeklyCsv()">
+            View Weekly Sales Report
+          </button>
+
+          <!--          <input-->
+          <!--            type="date"-->
+          <!--            [(ngModel)]="weeklyStartDate"-->
+          <!--            class="report-date-input"-->
+          <!--          />-->
+        </div>
+
+        <button type="button" class="report-btn" (click)="downloadMonthlyCsv()">
+          View Monthly Sales Report
+        </button>
+      </div>
+    </section>
+  </div>
 </div>
+
+<app-receipt-modal [receipt]="selectedReceipt" (closeModal)="closeReceipt()"></app-receipt-modal>

@@ -1,0 +1,188 @@
+.receipt-form {
+  background-color: #000000;
+  color: #f4f7f9;
+  width: 800px;
+  height: 600px;
+  overflow-y: auto;
+  position: relative;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0px 20px rgba(84, 112, 154, 0.7);
+  animation: slideUp 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.receipt-box {
+  position: relative;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #131a2b;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 10px 0;
+}
+
+.receipt-title {
+  font-size: 2rem;
+  font-family: 'Playfair Display SC', serif;
+}
+
+.receipt-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #333;
+}
+
+.receipt-grid:last-child {
+  border-bottom: none;
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.item-name {
+  flex: 1;
+  margin-left: 15px;
+  font-size: 1.1rem;
+  color: #f4f7f9;
+  font-family: 'Playfair Display SC', serif;
+}
+
+.item-price {
+  font-size: 1.1rem;
+  color: #f4f7f9;
+  font-weight: 500;
+}
+
+.shipping,
+.subtotal,
+.tax,
+.total {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  text-align: right;
+  font-family: 'Playfair Display SC', serif;
+}
+
+.total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+
+.ship-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.ship-name {
+  font-size: 1.25rem;
+}
+
+.ship-line {
+  opacity: 0.85;
+}
+
+.receipt-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.shipping-address {
+  text-align: left;
+  padding-left: 10px;
+  color: #f4f7f9;
+  line-height: 1.6;
+  width: 50%;
+  font-size: 1rem;
+}
+
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 45%;
+}
+
+.overlay {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  display: flex;
+  width: 800px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.overlay-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000000;
+  color: #a7b3bc;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.overlay-close-btn:hover {
+  background-color: #a7b3bc;
+  color: #0a0f1c;
+  transform: scale(1.05);
+}

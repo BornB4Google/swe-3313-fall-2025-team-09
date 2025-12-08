@@ -1,0 +1,54 @@
+@if (receipt) {
+  <div
+    class="overlay"
+    tabindex="0"
+    role="dialog"
+    (click)="onOverlayClick()"
+    (keydown.escape)="onCloseClick()"
+  >
+    <form
+      class="receipt-form"
+      (click)="stopPropagation($event)"
+      (keydown.enter)="stopPropagation($event)"
+    >
+      <button type="button" class="overlay-close-btn" (click)="onCloseClick()">&#10006;</button>
+      <h2 class="receipt-title">Receipt</h2>
+      <div class="receipt-box">
+        @for (item of receipt.items; track item.itemId) {
+          <div class="receipt-grid">
+            <div class="item-image">
+              @if (item.primaryPhotoUrl) {
+                <img [src]="item.primaryPhotoUrl" [alt]="item.name" />
+              }
+            </div>
+            <h3 class="item-name">{{ item.name }}</h3>
+            <p class="item-price">{{ item.price | currency }}</p>
+          </div>
+        }
+      </div>
+      <div class="receipt-columns">
+        <div class="shipping-address">
+          <div class="ship-title">Shipping to:</div>
+
+          <div class="ship-name">
+            {{ receipt.customerName }}
+          </div>
+
+          <div class="ship-line">
+            {{ receipt.street1 }}
+            @if (receipt.street2) {
+              <span>, {{ receipt.street2 }}</span>
+            }
+          </div>
+          <div class="ship-line">{{ receipt.city }} {{ receipt.state }} {{ receipt.zip }}</div>
+        </div>
+        <div class="pricing-container">
+          <h2 class="shipping">Shipping: {{ receipt.shippingCost | currency }}</h2>
+          <h2 class="subtotal">Subtotal: {{ receipt.subtotal | currency }}</h2>
+          <h2 class="tax">Tax: {{ receipt.tax | currency }}</h2>
+          <h2 class="total">Total: {{ receipt.total | currency }}</h2>
+        </div>
+      </div>
+    </form>
+  </div>
+}

@@ -1,4 +1,12 @@
 .dashboard-title {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2.4rem;
+  color: #f4f7f9;
+  font-family: 'Playfair Display SC', serif;
+}
+
+.product-title {
   position: absolute;
   align-content: center;
   left: 50%;
@@ -10,19 +18,212 @@
 
 .dashboard-content {
   font-family: 'Playfair Display SC', serif;
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #0a0f1c;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  width: 80%;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 0 40px 40px;
 }
 
-.dashboard-grid {
-  margin-top: 80px;
+.report-top-row {
   display: grid;
-  flex-direction: row;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+
+.report-metric {
+  border: 1px solid rgba(167, 179, 188, 0.35);
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #0d1524, #111827);
+}
+
+.report-metric--wide {
+  min-height: 180px;
+}
+
+.metric-heading {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a7b3bc;
+  margin-bottom: 12px;
+}
+
+.metric-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f4f7f9;
+  margin-bottom: 8px;
+}
+
+.metric-subtext {
+  font-size: 0.8rem;
+  color: #c0ccd5;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(167, 179, 188, 0.35);
+  margin: 32px 0;
+}
+
+.report-bottom-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f4f7f9;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.recent-list {
+  max-height: 180px; /* three recent-item rows */
+  overflow-y: auto;
+}
+
+.recent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0 14px 0;
+  border-bottom: 1px solid rgba(167, 179, 188, 0.2);
+  text-align: left;
+}
+
+.recent-item-name {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #f4f7f9;
+}
+
+.recent-item-description,
+.recent-item-date {
+  font-size: 0.8rem;
+  color: #a7b3bc;
+}
+
+.recent-item-date {
+  margin-top: 2px;
+}
+
+.recent-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-left: 24px;
+}
+
+.recent-item-total {
+  font-size: 1rem;
+  color: #f4f7f9;
+  white-space: nowrap;
+}
+
+.view-receipt-btn {
+  background-color: #a7b3bc;
+  color: #000000;
+  font-family: 'Playfair Display SC', serif;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-receipt-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
+}
+
+.recent-item:last-child {
+  border-bottom: none;
+}
+
+.reports-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.reports-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.table-wrapper {
+  border: 1px solid rgba(167, 179, 188, 0.2);
+  border-radius: 0.6rem;
+  overflow: auto;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: #f4f7f9;
+}
+
+.reports-table th,
+.reports-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(167, 179, 188, 0.15);
+}
+
+.reports-table th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #a7b3bc;
+}
+
+.reports-table tbody tr:hover {
+  background: rgba(62, 92, 118, 0.18);
+}
+
+.report-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.report-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display SC', serif;
+  border-radius: 8px;
+  border: none;
+  background-color: #a7b3bc;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.report-btn:hover {
+  background-color: #0a0f1c;
+  color: #a7b3bc;
+}
+
+.report-row.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-date-input {
+  padding: 8px;
+  background: #29394a;
+  border: 1px solid #3f5166;
+  color: white;
+  border-radius: 6px;
 }
