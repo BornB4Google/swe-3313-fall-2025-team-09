@@ -27,9 +27,13 @@ public class InventoryController : ControllerBase
     [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetAll()
     {
-        var items = await _db.InventoryItems
+
+        var itemsFromDb = await _db.InventoryItems
             .Include(i => i.Images)
-            .OrderByDescending(i => i.Price).ThenBy(i => i.ItemId)
+            .ToListAsync();
+
+        var items = itemsFromDb
+            .OrderByDescending(i => i.Price)   // sort price highest to lowest
             .Select(i => new
             {
                 i.ItemId,
@@ -49,7 +53,7 @@ public class InventoryController : ControllerBase
                     })
                     .ToList()
             })
-            .ToListAsync();
+            .ToList();
 
         return Ok(items);
     }
