@@ -2,14 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import {
-  RecentSale,
-  WeeklyReport,
-  RevenueReport,
-  MonthlyReport,
-  OrderSummary,
-  SoldItem,
-} from '../../../models/reports.model';
+import { RecentSale, RevenueReport, OrderSummary, SoldItem } from '../../../models/reports.model';
 import { OrderDetailDto } from '../../../models/order.models';
 import { ReportsService } from '../../../services/report/report.service';
 import { SaleService } from '../../../services/sales/sale.service';
