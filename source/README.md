@@ -57,3 +57,36 @@ To run the application in a Docker container, ensure you have [Docker](https://w
     ```bash
     docker run -p 8080:8080 offshore-app
     ```
+
+# Running Locally in Production Mode
+
+To run the application locally in a way that closely matches production (Angular
+built and served by ASP.NET Core), do the following from the `/source`
+directory:
+
+1. Publish the backend in Release mode (this also builds the Angular frontend
+   and includes it in the publish output):
+
+   ```bash
+   dotnet publish -c Release -o ./publish
+   ```
+
+2. Run the published app with the `Production` environment.
+
+   **Linux/macOS:**
+
+   ```bash
+   cd publish
+   ASPNETCORE_ENVIRONMENT=Production dotnet backend.dll
+   ```
+
+   **Windows (PowerShell):**
+
+   ```powershell
+   cd publish
+   $env:ASPNETCORE_ENVIRONMENT="Production"; dotnet .\backend.dll
+   ```
+
+3. Open the app in your browser using the default URL:
+
+   - http://localhost:5000
