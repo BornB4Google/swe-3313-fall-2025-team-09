@@ -80,6 +80,7 @@ export class ConfirmComponent implements OnInit {
         this.errorMessage = null;
         this.receiptService.setLastOrder(result);
         this.clearCart();
+        this.shipService.clearShippingInfo();
         this.navigateToReceiptPage(result.saleId);
       },
       error: err => {
