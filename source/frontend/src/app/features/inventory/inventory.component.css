@@ -15,10 +15,9 @@ Ice White	#F4F7F9
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  height: auto;
+  box-sizing: border-box;
   padding-top: 120px;
   padding-bottom: 60px;
-  overflow: visible;
   background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
   color: #f4f7f9;
