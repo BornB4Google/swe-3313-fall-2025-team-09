@@ -11,14 +11,14 @@ import { OrderDetailDto } from '../../models/order.models';
 })
 export class ReceiptModalComponent {
   @Input() receipt: OrderDetailDto | null = null;
-  @Output() close = new EventEmitter<void>();
+  @Output() closeModal = new EventEmitter<void>();
 
   onOverlayClick(): void {
-    this.close.emit();
+    this.closeModal.emit();
   }
 
   onCloseClick(): void {
-    this.close.emit();
+    this.closeModal.emit();
   }
 
   stopPropagation(event: Event): void {

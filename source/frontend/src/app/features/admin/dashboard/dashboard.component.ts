@@ -44,8 +44,7 @@ export class DashboardComponent implements OnInit {
   selectedReceipt: OrderDetailDto | null = null;
 
   private saleService = inject(SaleService);
-
-  constructor(private reportsService: ReportsService) {}
+  private reportsService = inject(ReportsService);
 
   ngOnInit(): void {
     this.loadDashboardData();
