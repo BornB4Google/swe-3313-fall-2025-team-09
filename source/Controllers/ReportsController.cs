@@ -143,10 +143,12 @@ public class ReportsController : ControllerBase
     // Weekly data for the week starting at startDate
     [HttpGet("sales/weekly")]
     public async Task<IActionResult> GetWeeklySalesReport(
-        [FromQuery] DateTime startDate)
+        [FromQuery] DateTime? startDate)
     {
-        var weekStart = startDate.Date;
-        var weekEnd = weekStart.AddDays(7);
+
+        var today     = DateTime.UtcNow.Date;
+        var weekStart = (startDate ?? today.AddDays(-7)).Date;
+        var weekEnd   = weekStart.AddDays(7);
 
         var salesQuery = _db.Sales
             .Where(s => s.SaleDateTime >= weekStart && s.SaleDateTime < weekEnd);
@@ -191,15 +193,21 @@ public class ReportsController : ControllerBase
             WeeklyDataPoints = new[] { weeklyDataPoint }
         });
     }
-
     // GET /api/reports/sales/weekly/csv
     // Exports all sales the week following startDate as CSV
     [HttpGet("sales/weekly/csv")]
     public async Task<IActionResult> GetWeeklySalesCsv(
-        [FromQuery] DateTime startDate)
+        [FromQuery] DateTime? startDate)
     {
-        // Start at midnight of that day
-        var weekStart = startDate.Date;
+        // If the client passed an invalid date, give an error
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("startDate must be a valid date. Example: startDate=2025-11-01");
+        }
+
+        // Default to the previous 7-day window if no startDate is provided
+        var today = DateTime.UtcNow.Date;
+        var weekStart = (startDate ?? today.AddDays(-7)).Date;
         var weekEnd = weekStart.AddDays(7);
 
         var sales = await _db.Sales
@@ -313,15 +321,32 @@ public class ReportsController : ControllerBase
     // Exports all sales for a specific month as CSV
     [HttpGet("sales/monthly/csv")]
     public async Task<IActionResult> GetMonthlySalesCsv(
-        [FromQuery] int year,
-        [FromQuery] int month)
+        [FromQuery] int? year,
+        [FromQuery] int? month)
     {
-        if (year <= 0 || month < 1 || month > 12)
+        var now = DateTime.UtcNow;
+        int targetYear;
+        int targetMonth;
+
+        if (!year.HasValue && !month.HasValue)
         {
-            return BadRequest("Year and month must be valid. Example: year=2025&month=11");
+            // Default to previous calendar month
+            var prevMonthDate = new DateTime(now.Year, now.Month, 1).AddMonths(-1);
+            targetYear = prevMonthDate.Year;
+            targetMonth = prevMonthDate.Month;
+        }
+        else
+        {
+            if (!year.HasValue || !month.HasValue || year <= 0 || month < 1 || month > 12)
+            {
+                return BadRequest("Year and month must be valid. Example: year=2025&month=11");
+            }
+
+            targetYear = year.Value;
+            targetMonth = month.Value;
         }
 
-        var monthStart = new DateTime(year, month, 1);
+        var monthStart = new DateTime(targetYear, targetMonth, 1);
         var monthEnd = monthStart.AddMonths(1);
 
         var sales = await _db.Sales
@@ -357,10 +382,10 @@ public class ReportsController : ControllerBase
                 $"{s.SaleId}," +
                 $"{s.UserId}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
-                $"{s.Subtotal:N2}," +
-                $"{s.Tax:N2}," +
-                $"{s.ShippingCost:N2}," +
-                $"{s.Total:N2}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
                 $"{s.ShippingSpeed}," +
                 $"{s.Street1}," +
                 $"{s.Street2}," +
@@ -371,10 +396,11 @@ public class ReportsController : ControllerBase
         }
 
         var bytes = Encoding.UTF8.GetBytes(sb.ToString());
-        var fileName = $"sales-{year}-{month:00}.csv";
+        var fileName = $"sales-{targetYear}-{targetMonth:00}.csv";
 
         return File(bytes, "text/csv", fileName);
     }
+
 
     // GET /api/reports/recent-sales
     // Returns details on the three most recent sales and connects to their receipt
