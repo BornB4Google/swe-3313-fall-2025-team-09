@@ -127,7 +127,16 @@ public class OrdersController : ControllerBase
             return BadRequest(ModelState);
         }
 
+        // Normalize request fields
+        var state = request.State.Trim().ToUpperInvariant();
+        var zip = request.Zip.Trim();
+        var shippingSpeedRaw = request.ShippingSpeed.Trim();
+        var street1 = request.Street1.Trim();
+        var street2 = request.Street2?.Trim();
+        var city = request.City.Trim();
+
         var userId = GetUserIdFromClaims();
+
 
         // Load the active cart for this user with items and inventory details
         var cart = await _db.Carts
@@ -161,9 +170,9 @@ public class OrdersController : ControllerBase
 
         // Shipping cost based on ShippingSpeed
         decimal shippingCost;
-        string normalizedSpeed = request.ShippingSpeed.Trim();
+        string normalizedSpeed = shippingSpeedRaw;
 
-        switch (normalizedSpeed.ToLowerInvariant())
+        switch (shippingSpeedRaw.ToLowerInvariant())
         {
             case "overnight":
                 shippingCost = 29m;
@@ -198,11 +207,11 @@ public class OrdersController : ControllerBase
             ShippingCost = shippingCost,
             Total = total,
             ShippingSpeed = normalizedSpeed,
-            Street1 = request.Street1,
-            Street2 = request.Street2,
-            City = request.City,
-            State = request.State,
-            Zip = request.Zip,
+            Street1 = street1,
+            Street2 = street2,
+            City = city,
+            State = state,
+            Zip = zip,
             CardLast4 = request.CardLast4
         };
 
