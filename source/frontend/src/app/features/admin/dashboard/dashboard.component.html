@@ -1,17 +1,24 @@
 <h1 class="product-title">Sales Report</h1>
 
 <div class="dashboard-content">
-  <div class="report-top-row">
-    <div class="report-metric report-metric--wide">
-      <div class="metric-heading">Total Revenue</div>
-      <div class="metric-number">${{ totalRevenue | number: '1.2-2' }}</div>
-      <div class="metric-subtext">Current period total revenue</div>
-    </div>
-
-    <div class="report-metric">
-      <div class="metric-heading">Total Orders</div>
-      <div class="metric-number">{{ totalOrders }}</div>
-      <div class="metric-subtext">Orders in current period</div>
+  <div class="report-card">
+    <div class="charts-row">
+      <div class="chart-block">
+        <div class="metric-heading">Total Revenue</div>
+        <div class="metric-number">${{ totalRevenue | number: '1.2-2' }}</div>
+        <div class="chart-title">Monthly Sales Revenue</div>
+        <div class="chart-container">
+          <canvas #monthlyRevenueChart></canvas>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="metric-heading">Total Orders</div>
+        <div class="metric-number">{{ totalOrders }}</div>
+        <div class="chart-title">Sales by Region</div>
+        <div class="chart-container">
+          <canvas #regionChart></canvas>
+        </div>
+      </div>
     </div>
   </div>
 
