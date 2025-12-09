@@ -25,7 +25,7 @@ public class CartController : ControllerBase
     }
 
 
-    //Exract userId from JWT token for security
+    //Extract userId from JWT token for security
     private int GetUserId()
     {
         var sub = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value
@@ -103,7 +103,6 @@ public class CartController : ControllerBase
             return BadRequest("Item is sold out");
         }
 
-        //
         var cart = await _db.Carts
             .Include(c => c.Items)
             .FirstOrDefaultAsync(c => c.UserId == userId && c.isActive);
@@ -139,8 +138,6 @@ public class CartController : ControllerBase
 
         return Ok(new { message = "Added to cart" });
     }
-
-
 
     // DELETE /api/cart/items/{id}
     [HttpDelete("items/{id:int}")]

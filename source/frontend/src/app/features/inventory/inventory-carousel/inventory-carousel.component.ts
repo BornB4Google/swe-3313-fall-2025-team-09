@@ -10,15 +10,15 @@ import { InventoryItem } from '../../../models/inventory.models';
   styleUrls: ['./inventory-carousel.component.css'],
 })
 export class InventoryCarouselComponent implements OnChanges {
-  //sets a required parameter - an InventoryItem
+  // Sets a required parameter - an InventoryItem
   @Input({ required: true }) item!: InventoryItem;
 
   imageUrls: string[] = [];
 
-  //signal so re-rendered automatically when changed
+  // Signal so re-rendered automatically when changed
   currentIndex = signal(0);
 
-  //use mod to wrap around to start of array
+  // Use mod to wrap around to start of array
   next(): void {
     const n = this.imageUrls.length;
     if (n === 0) return;
@@ -38,13 +38,13 @@ export class InventoryCarouselComponent implements OnChanges {
   }
 
   private changeUrls(): void {
-    //clear then add new images so doesn't keep old ones
+    // Clear then add new images so doesn't keep old ones
     this.imageUrls = [];
-    //set to 0
+    // Set to 0
     this.currentIndex.update(i => i - i);
-    //PrimaryPhotoUrl always index 0 in the array imageUrls
+    // PrimaryPhotoUrl always index 0 in the array imageUrls
     this.imageUrls.push(this.item.primaryPhotoUrl);
-    //add rest of urls from the array images as described in inventory.models.ts
+    // Add rest of urls from the array images as described in inventory.models.ts
     for (const image of this.item.images) {
       this.imageUrls.push(image.imageUrl);
     }
