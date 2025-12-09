@@ -8,7 +8,7 @@ public class Sale
     public int SaleId { get; set; }
     public int UserId { get; set; }
     public int LastName { get; set; }
-    public int FirstName { get; set;  }
+    public int FirstName { get; set; }
     public int Email { get; set; }
     public DateTime SaleDateTime { get; set; }
     public decimal Subtotal { get; set; }
