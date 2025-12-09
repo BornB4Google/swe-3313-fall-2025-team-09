@@ -201,6 +201,7 @@ public class OrdersController : ControllerBase
         var sale = new Sale
         {
             UserId = userId,
+            CustomerName = S{request.FirstName.Trim()} {request.LastName.Trim()}
             SaleDateTime = DateTime.UtcNow,
             Subtotal = subtotal,
             Tax = tax,
@@ -284,6 +285,7 @@ public class OrdersController : ControllerBase
     {
         var dto = new OrderDetailDto
         {
+            CustomerName = sale.CustomerName ?? $"{sale.User.FirstName} {sale.User.LastName}",
             SaleId = sale.SaleId,
             SaleDateTime = sale.SaleDateTime,
             Subtotal = sale.Subtotal,

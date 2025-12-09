@@ -57,6 +57,14 @@ public class OrderDetailDto
 public class CheckoutRequestDto
 {
     [Required]
+    [StringLength(50, MinimumLength = 1, ErrorMessage = "First name is required.")]
+        public string FirstName { get; set; } = string.Empty;
+
+    [Required]
+    [StringLength(50, MinimumLength = 1, ErrorMessage = "Last name is required.")]
+        public string LastName { get; set; } = string.Empty;
+
+    [Required]
     [StringLength(20)]
     public string ShippingSpeed { get; set; } = string.Empty;
 

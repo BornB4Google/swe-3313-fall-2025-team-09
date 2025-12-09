@@ -20,6 +20,7 @@ public class Sale
     public string State { get; set; } = "";
     public string Zip { get; set; } = "";
     public string CardLast4 { get; set; } = "";
+    public string? CustomerName { get; set; }
 
     public User User { get; set; } = null!;
     public List<SaleItem> Items { get; set; } = new();
