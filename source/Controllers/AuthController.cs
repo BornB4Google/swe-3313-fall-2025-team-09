@@ -72,6 +72,8 @@ public class AuthController : ControllerBase
             return BadRequest("No username given.");
         if (string.IsNullOrWhiteSpace(request.Password))
             return BadRequest("No password given.");
+        if (request.Password.Length < 6)
+            return BadRequest("Password must be at least 6 characters");
 
         var user = await _db.Users
             .SingleOrDefaultAsync(u => u.Username == request.Username);
