@@ -9,11 +9,9 @@
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .product-form {
-
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -28,11 +26,7 @@
   transform: translateX(-50%);
   font-size: 2rem;
   color: #f4f7f9;
-
 }
-
-
-
 
 .products-grid {
   display: grid;
@@ -78,7 +72,6 @@ textarea {
 textarea {
   resize: none;
 }
-
 
 .save-btn {
   background-color: #a7b3bc;
