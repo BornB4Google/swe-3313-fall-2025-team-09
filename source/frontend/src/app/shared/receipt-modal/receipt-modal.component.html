@@ -47,6 +47,7 @@
           <h2 class="subtotal">Subtotal: {{ receipt.subtotal | currency }}</h2>
           <h2 class="tax">Tax: {{ receipt.tax | currency }}</h2>
           <h2 class="total">Total: {{ receipt.total | currency }}</h2>
+          <h2 class="paid-card">Paid with: **** **** **** {{ receipt.cardLast4 }}</h2>
         </div>
       </div>
     </form>
