@@ -15,8 +15,8 @@ export class ProductsComponent {
   private inventoryService = inject(InventoryService);
 
   errorMessage: string | null = null;
-  secondaryPhotoUrl: string = '';
-  thirdPhotoUrl: string = '';
+  secondaryPhotoUrl =  '';
+  thirdPhotoUrl= '';
 
   newProduct: InventoryItem = {
     itemId: 0,
