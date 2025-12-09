@@ -196,6 +196,7 @@ using (var scope = app.Services.CreateScope())
             {
                 SaleId = 1,
                 UserId = 1,
+                CheckoutName = "Amy Ward",
                 SaleDateTime = DateTime.UtcNow.AddDays(-10),
                 Subtotal = 190220000000.00m,
                 Tax = 15217600000.00m,
@@ -212,6 +213,7 @@ using (var scope = app.Services.CreateScope())
             {
                 SaleId = 2,
                 UserId = 1,
+                CheckoutName = "Amy Ward",
                 SaleDateTime = DateTime.UtcNow.AddDays(-5),
                 Subtotal = 1340000000000.00m,
                 Tax = 107200000000.00m,
