@@ -24,8 +24,7 @@ export class ShippingService {
 
   clearShippingInfo() {
     this.shippingInfo = {
-      firstName: '',
-      lastName: '',
+      name: '',
       address1: '',
       address2: '',
       city: '',
