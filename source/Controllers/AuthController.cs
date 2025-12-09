@@ -85,7 +85,7 @@ public class AuthController : ControllerBase
         if (user.PasswordHash != hashedPassword)
             return BadRequest("Incorrect password");
 
-        // Build JWT toke
+        // Build JWT token
         var jwtSection = _config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -136,7 +136,7 @@ public class AuthController : ControllerBase
 
         return Ok(new LoginResponse
         {
-            // token is carried only in cookie for this app
+            // token is cookie
             Token = string.Empty,
             Username = user.Username,
             IsAdmin = user.IsAdmin

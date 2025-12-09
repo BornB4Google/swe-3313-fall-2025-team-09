@@ -46,12 +46,9 @@ public class OrderDetailDto
     public string CardLast4 { get; set; } = string.Empty;
 
     // Customer Info
-
     public int UserId { get; set; }
-
     public string CustomerName { get; set; } = string.Empty;
     public string CustomerEmail { get; set; } = string.Empty;
-
     public List<OrderItemDto> Items { get; set; } = new();
 }
 
