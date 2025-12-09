@@ -70,6 +70,9 @@ To run the application in a Docker container, ensure you have [Docker](https://w
    ```bash
    docker run -p 8080:8080 offshore-app
    ```
+3. Open the app in your browser using the port specified:
+   - http://localhost:8080
+
 
 # Running Locally in Production Mode
 To run the application locally in a way that closely matches production (Angular built and served by ASP.NET Core), do the following from the `/source` directory:
