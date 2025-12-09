@@ -7,6 +7,9 @@ public class Sale
 {
     public int SaleId { get; set; }
     public int UserId { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
 
     public DateTime SaleDateTime { get; set; }
     public decimal Subtotal { get; set; }
