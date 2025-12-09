@@ -6,13 +6,13 @@
   <body>
     <div class="carousel">
       <button type="button" class="carousel-button prev-button" (click)="prev()">
-        <span class="carousel-button-arrow"> < </span>
+        <span class="carousel-button-arrow">&#10096;</span>
       </button>
 
       <img class="overlay-image" [src]="imageUrls[currentIndex()]" [alt]="item.name" />
 
       <button type="button" class="carousel-button next-button" (click)="next()">
-        <span class="carousel-button-arrow"> > </span>
+        <span class="carousel-button-arrow">&#10097;</span>
       </button>
     </div>
   </body>
