@@ -23,8 +23,7 @@ export class ConfirmComponent implements OnInit {
   private router = inject(Router);
 
   shippingInfo: ShippingInfo = {
-    firstName: '',
-    lastName: '',
+    name: '',
     address1: '',
     address2: '',
     city: '',

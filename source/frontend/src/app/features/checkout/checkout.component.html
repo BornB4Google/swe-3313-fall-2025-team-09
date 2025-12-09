@@ -3,22 +3,14 @@
     <h2 class="checkout-title">Check Out</h2>
 
     <!-- Row 1: Name, Phone, Email -->
-    <div class="form-row four-col">
+    <div class="form-row three-col">
       <input
         type="text"
         class="input"
-        placeholder="First Name"
-        [(ngModel)]="checkoutData.firstName"
+        placeholder="Your Name"
+        [(ngModel)]="checkoutData.name"
         required
-        name="firstName"
-      />
-      <input
-        type="text"
-        class="input"
-        placeholder="Last Name"
-        [(ngModel)]="checkoutData.lastName"
-        required
-        name="lastName"
+        name="name"
       />
       <input
         type="tel"

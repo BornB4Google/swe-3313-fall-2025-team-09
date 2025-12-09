@@ -45,10 +45,6 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.form-row.four-col {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
 /* Inputs */
 .input {
   width: 100%;
