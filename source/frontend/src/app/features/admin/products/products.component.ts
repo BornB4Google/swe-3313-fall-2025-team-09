@@ -15,8 +15,8 @@ export class ProductsComponent {
   private inventoryService = inject(InventoryService);
 
   errorMessage: string | null = null;
-  secondaryPhotoUrl =  '';
-  thirdPhotoUrl= '';
+  secondaryPhotoUrl = '';
+  thirdPhotoUrl = '';
 
   newProduct: InventoryItem = {
     itemId: 0,
@@ -30,14 +30,13 @@ export class ProductsComponent {
   };
   products: InventoryItem[] = [];
   submitNewProduct() {
-
     this.newProduct.images = [];
 
     if (this.secondaryPhotoUrl?.trim()) {
       this.newProduct.images.push({
         imageId: 0,
         imageUrl: this.secondaryPhotoUrl,
-        displayOrder: 1
+        displayOrder: 1,
       });
     }
 
@@ -45,7 +44,7 @@ export class ProductsComponent {
       this.newProduct.images.push({
         imageId: 0,
         imageUrl: this.thirdPhotoUrl,
-        displayOrder: 2
+        displayOrder: 2,
       });
     }
 
