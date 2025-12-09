@@ -61,6 +61,10 @@ public class CheckoutRequestDto
     public string ShippingSpeed { get; set; } = string.Empty;
 
     [Required]
+    [StringLength(100)]
+    public string? CheckoutName { get; set; }
+
+    [Required]
     [StringLength(100, MinimumLength = 3, ErrorMessage = "Street1 must be at least 3 characters.")]
     public string Street1 { get; set; } = string.Empty;
 

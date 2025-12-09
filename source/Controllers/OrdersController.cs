@@ -201,6 +201,7 @@ public class OrdersController : ControllerBase
         var sale = new Sale
         {
             UserId = userId,
+            CheckoutName = request.CheckoutName,
             SaleDateTime = DateTime.UtcNow,
             Subtotal = subtotal,
             Tax = tax,
