@@ -54,7 +54,6 @@
   font-size: clamp(1.2rem, 1.6vw, 1.4rem);
   border-radius: 8px;
   border: none;
-  /*background-color: #3e5c76;*/
   color: #f4f7f9;
   cursor: pointer;
   padding: 5px 10px;
@@ -62,21 +61,4 @@
 .carousel-button-arrow:hover {
   background-color: #f4f7f9;
   color: #000000;
-}
-
-.overlay-cart-btn {
-  background-color: #3e5c76;
-  color: #f4f7f9;
-  padding: clamp(6px, 1vw, 10px) clamp(15px, 2vw, 25px);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  font-family: 'Playfair', serif;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.overlay-cart-btn:hover {
-  background-color: #a7b3bc;
-  color: #0a0f1c;
 }
