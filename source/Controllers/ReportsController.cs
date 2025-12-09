@@ -79,7 +79,6 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
                 s.User.Email,
                 s.SaleDateTime,
                 s.Subtotal,
@@ -99,13 +98,12 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
                 $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
@@ -274,7 +272,6 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
                 s.User.Email,
                 s.SaleDateTime,
                 s.Subtotal,
@@ -294,13 +291,12 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
                 $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
@@ -415,7 +411,6 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
                 s.User.Email,
                 s.SaleDateTime,
                 s.Subtotal,
@@ -435,13 +430,12 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
                 $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
