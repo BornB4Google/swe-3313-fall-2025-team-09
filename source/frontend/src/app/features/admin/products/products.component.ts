@@ -15,6 +15,8 @@ export class ProductsComponent {
   private inventoryService = inject(InventoryService);
 
   errorMessage: string | null = null;
+  secondaryPhotoUrl = '';
+  thirdPhotoUrl = '';
 
   newProduct: InventoryItem = {
     itemId: 0,
@@ -28,6 +30,24 @@ export class ProductsComponent {
   };
   products: InventoryItem[] = [];
   submitNewProduct() {
+    this.newProduct.images = [];
+
+    if (this.secondaryPhotoUrl?.trim()) {
+      this.newProduct.images.push({
+        imageId: 0,
+        imageUrl: this.secondaryPhotoUrl,
+        displayOrder: 1,
+      });
+    }
+
+    if (this.thirdPhotoUrl?.trim()) {
+      this.newProduct.images.push({
+        imageId: 0,
+        imageUrl: this.thirdPhotoUrl,
+        displayOrder: 2,
+      });
+    }
+
     this.inventoryService.addInventoryItem(this.newProduct).subscribe({
       next: createdItem => {
         this.errorMessage = null;
@@ -42,6 +62,8 @@ export class ProductsComponent {
           isSold: false,
           images: [],
         };
+        this.secondaryPhotoUrl = '';
+        this.thirdPhotoUrl = '';
       },
       error: err => {
         console.error('Could not add item', err);
