@@ -7,6 +7,7 @@ public class Sale
 {
     public int SaleId { get; set; }
     public int UserId { get; set; }
+    public string CheckoutName { get; set; } = string.Empty;
 
     public DateTime SaleDateTime { get; set; }
     public decimal Subtotal { get; set; }
