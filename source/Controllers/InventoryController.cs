@@ -112,6 +112,15 @@ public class InventoryController : ControllerBase
             IsSold = dto.IsSold
         };
 
+        foreach (var img in dto.Images)
+        {
+            entity.Images.Add(new ItemImage
+            {
+                ImageUrl = img.ImageUrl,
+                DisplayOrder = img.DisplayOrder
+            });
+        }
+
         _db.InventoryItems.Add(entity);
         await _db.SaveChangesAsync();
 
@@ -152,6 +161,16 @@ public class InventoryController : ControllerBase
         entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl;
         entity.Category = dto.Category;
         entity.IsSold = dto.IsSold;
+
+        entity.Images.Clear();
+        foreach (var img in dto.Images)
+        {
+            entity.Images.Add(new ItemImage
+            {
+                ImageUrl = img.ImageUrl,
+                DisplayOrder = img.DisplayOrder
+            });
+        }
 
         await _db.SaveChangesAsync();
 

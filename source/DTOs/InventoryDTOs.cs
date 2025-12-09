@@ -42,6 +42,17 @@ public class InventoryItemWriteDto
     public string Category { get; set; } = string.Empty;
 
     public bool IsSold { get; set; } = false;
+
+    public List<ImageWriteDto> Images { get; set; } = new();
+}
+
+public class ImageWriteDto
+{
+    [Required]
+    [Url]
+    public string ImageUrl { get; set; } = string.Empty;
+
+    public int DisplayOrder { get; set; } = 0;
 }
 
 
