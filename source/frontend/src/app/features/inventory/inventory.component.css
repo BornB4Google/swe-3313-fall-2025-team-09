@@ -106,6 +106,7 @@ Ice White	#F4F7F9
   color: #f4f7f9;
   border-radius: 12px;
   padding: 10px;
+  border: 1px solid transparent;
   width: 300px;
   height: 100%;
   min-height: 300px;
