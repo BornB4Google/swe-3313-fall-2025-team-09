@@ -1,36 +1,34 @@
 <h1 class="product-title">Product Management</h1>
 
 <div class="product-content">
-  <div class="product-content">
-    <h2>Add New Product</h2>
-    <form #addForm="ngForm" (ngSubmit)="submitNewProduct()" class="product-form">
-      <input
-        type="text"
-        name="name"
-        [(ngModel)]="newProduct.name"
-        placeholder="Product Name"
-        required
-      />
-      <textarea
-        name="description"
-        [(ngModel)]="newProduct.description"
-        placeholder="Description"
-      ></textarea>
-      <input type="text" name="price" [(ngModel)]="newProduct.price" placeholder="Price" required />
-      <input
-        type="text"
-        name="primaryPhotoUrl"
-        [(ngModel)]="newProduct.primaryPhotoUrl"
-        placeholder="Image URL"
-        required
-      />
-      <input type="text" name="category" [(ngModel)]="newProduct.category" placeholder="Category" />
-      @if (errorMessage) {
-        <p class="error-message">{{ errorMessage }}</p>
-      }
-      <div class="product-buttons">
-        <button type="submit" class="save-btn">Save</button>
-      </div>
-    </form>
-  </div>
+  <h2>Add New Product</h2>
+  <form #addForm="ngForm" (ngSubmit)="submitNewProduct()" class="product-form">
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="newProduct.name"
+      placeholder="Product Name"
+      required
+    />
+    <textarea
+      name="description"
+      [(ngModel)]="newProduct.description"
+      placeholder="Description"
+    ></textarea>
+    <input type="text" name="price" [(ngModel)]="newProduct.price" placeholder="Price" required />
+    <input
+      type="text"
+      name="primaryPhotoUrl"
+      [(ngModel)]="newProduct.primaryPhotoUrl"
+      placeholder="Image URL"
+      required
+    />
+    <input type="text" name="category" [(ngModel)]="newProduct.category" placeholder="Category" />
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
+    <div class="product-buttons">
+      <button type="submit" class="save-btn">Save</button>
+    </div>
+  </form>
 </div>

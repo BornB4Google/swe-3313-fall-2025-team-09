@@ -190,7 +190,7 @@ select.input {
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
   border: 2px solid #ff4d4d !important;
-  background-color: rgba(255, 0, 0, 0.15) !important;
+  background-color: #f5cddc !important;
   color: #333 !important;
 }
 
