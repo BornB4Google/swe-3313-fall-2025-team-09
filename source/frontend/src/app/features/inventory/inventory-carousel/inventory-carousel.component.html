@@ -6,47 +6,14 @@
   <body>
     <div class="carousel">
       <button type="button" class="carousel-button prev-button" (click)="prev()">
-        <span class="carousel-button-arrow">
-          <svg
-          class="icon-arrow icon-arrow-left"
-          viewBox="0 0 24 24"
-          role="img"
-          aria-hidden="true"
-          focusable="false"
-        >
-        <path
-          d="M19 12H5m6-6-6 6 6 6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg></span>
+        <span class="carousel-button-arrow">&#10096;</span>
 
       </button>
 
       <img class="overlay-image" [src]="imageUrls[currentIndex()]" [alt]="item.name" />
 
       <button type="button" class="carousel-button next-button" (click)="next()">
-        <span class="carousel-button-arrow">
-          <svg
-            class="icon-arrow icon-arrow-right"
-            viewBox="0 0 24 24"
-            role="img"
-            aria-hidden="true"
-            focusable="false"
-          >
-        <path
-          d="M5 12h14m-6-6 6 6-6 6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-          </svg>
-        </span>
+        <span class="carousel-button-arrow">&#10097;</span>
       </button>
     </div>
   </body>
