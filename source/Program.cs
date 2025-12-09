@@ -176,13 +176,13 @@ using (var scope = app.Services.CreateScope())
     if (!db.ItemImages.Any())
     {
         db.ItemImages.AddRange(
-            new ItemImage { ImageId = 1, ItemId = 1, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/67/Nintendo_of_America_Headquarters.jpg", DisplayOrder = 2 },
-            new ItemImage { ImageId = 2, ItemId = 1, ImageUrl = "https://assets.nintendo.com/image/upload/w_800,f_auto,q_auto/Play%20Nintendo/Video/posters/play-nintendo", DisplayOrder = 3 },
+            new ItemImage { ImageId = 1, ItemId = 1, ImageUrl = "https://www.zgf.com/images/2016_04_S21460.00_Nintendo-1500x700.jpg?w=1920", DisplayOrder = 2 },
+            new ItemImage { ImageId = 2, ItemId = 1, ImageUrl = "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/c_scale,w_900/ncom/en_US/articles/2024/super-nintendo-world-coming-to-universal-epic-universe-in-2025/SNW-USJMerch-Key-1920x1080", DisplayOrder = 3 },
             new ItemImage { ImageId = 3, ItemId = 2, ImageUrl = "https://a.storyblok.com/f/182663/1344x756/61509b8286/m-a-lvmh-hero-bernard-arnault.png", DisplayOrder = 2 },
             new ItemImage { ImageId = 4, ItemId = 2, ImageUrl = "https://mvcmagazine.com/wp-content/uploads/2021/07/Schermata-2021-07-19-alle-22.52.47.png", DisplayOrder = 3 },
             new ItemImage { ImageId = 5, ItemId = 3, ImageUrl = "https://www.austinchamber.com/uploads/marketing/Blog-Images/tesla_blog.jpg", DisplayOrder = 2 },
             new ItemImage { ImageId = 6, ItemId = 3, ImageUrl = "https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2025/01/Model-Y-2-Along-the-Way-Tablet-CN.png-e1736950646574.jpeg?w=1500&quality=82&strip=all&ssl=1", DisplayOrder = 3 },
-            new ItemImage { ImageId = 7, ItemId = 4, ImageUrl = "https://i0.wp.com/businessbigwigs.com/wp-content/uploads/2013/04/walt-disney-company.jpeg", DisplayOrder = 2 },
+            new ItemImage { ImageId = 7, ItemId = 4, ImageUrl = "https://static.wikia.nocookie.net/disney/images/3/31/Disney2004report.jpg/revision/latest?cb=20140130132003", DisplayOrder = 2 },
             new ItemImage { ImageId = 8, ItemId = 4, ImageUrl = "https://res.cloudinary.com/sagacity/image/upload/c_crop,h_2700,w_1800,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/0725ZN_0276MS_oi24ko.jpg", DisplayOrder = 3 },
             new ItemImage { ImageId = 9, ItemId = 5, ImageUrl = "https://api.time.com/wp-content/uploads/2024/08/GettyImages-2151467843.jpg?quality=85&w=1024", DisplayOrder = 2 },
             new ItemImage { ImageId = 10, ItemId = 5, ImageUrl = "https://static.the-independent.com/2025/03/13/10/40/google-deepmind-robot-gemini.png?quality=75&width=1250&crop=3%3A2%2Csmart&auto=webp", DisplayOrder = 3 }
@@ -196,12 +196,13 @@ using (var scope = app.Services.CreateScope())
             {
                 SaleId = 1,
                 UserId = 1,
+                CheckoutName = "Amy Ward",
                 SaleDateTime = DateTime.UtcNow.AddDays(-10),
                 Subtotal = 190220000000.00m,
                 Tax = 15217600000.00m,
                 ShippingCost = 0.00m,
                 Total = 205437600000.00m,
-                ShippingSpeed = "Ground",
+                ShippingSpeed = "N/A",
                 Street1 = "123 Main St",
                 City = "Atlanta",
                 State = "GA",
@@ -212,12 +213,13 @@ using (var scope = app.Services.CreateScope())
             {
                 SaleId = 2,
                 UserId = 1,
+                CheckoutName = "Amy Ward",
                 SaleDateTime = DateTime.UtcNow.AddDays(-5),
                 Subtotal = 1340000000000.00m,
                 Tax = 107200000000.00m,
                 ShippingCost = 0.00m,
                 Total = 1447200000000.00m,
-                ShippingSpeed = "Ground",
+                ShippingSpeed = "N/A",
                 Street1 = "123 Main St",
                 City = "Atlanta",
                 State = "GA",
