@@ -91,7 +91,9 @@
         (keydown.enter)="$event.stopPropagation()"
       >
         <button class="overlay-close-btn" (click)="closeOverlay()">&#10006;</button>
-        <img class="overlay-image" [src]="selectedItem.primaryPhotoUrl" [alt]="selectedItem.name" />
+
+        <app-inventory-carousel [item]="selectedItem"> </app-inventory-carousel>
+
         <h2 class="overlay-title">{{ selectedItem.name }}</h2>
         <p class="overlay-description">{{ selectedItem.description }}</p>
         <p class="overlay-price">$ {{ formatCompact(selectedItem.price || 0) }}</p>

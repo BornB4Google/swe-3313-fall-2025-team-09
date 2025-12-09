@@ -1,0 +1,44 @@
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  width: clamp(200px, 100%, 500px);
+  height: clamp(150px, 25vh, 300px);
+}
+
+.overlay-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.carousel-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -10px;
+  bottom: 10px;
+  width: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border: rgba(255, 255, 255, 0.4) 1px solid;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+.carousel-button-arrow {
+  color: rgba(255, 255, 255, 0.9);
+}
