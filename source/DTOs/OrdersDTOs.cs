@@ -57,28 +57,37 @@ public class OrderDetailDto
 public class CheckoutRequestDto
 {
     [Required]
+    [StringLength(20)]
     public string ShippingSpeed { get; set; } = string.Empty;
 
     [Required]
+    [StringLength(100, MinimumLength = 3, ErrorMessage = "Street1 must be at least 3 characters.")]
     public string Street1 { get; set; } = string.Empty;
 
-    public string? Street2 { get; set; }
+    [StringLength(100)] public string? Street2 { get; set; }
 
     [Required]
+    [StringLength(50, MinimumLength = 2, ErrorMessage = "City must be at least 2 characters.")]
     public string City { get; set; } = string.Empty;
 
     [Required]
-    [MinLength(2)]
+    [RegularExpression(@"^[A-Za-z]{2}$",
+        ErrorMessage = "State must be a 2-letter code.")]
     public string State { get; set; } = string.Empty;
 
     [Required]
-    [MinLength(5)]
+    [RegularExpression(@"^\d{5}(-\d{4})?$",
+        ErrorMessage = "Zip must be 5 digits or ZIP+4 (12345 or 12345-6789).")]
     public string Zip { get; set; } = string.Empty;
 
     [Required]
-    [MinLength(4), MaxLength(4)]
+    [RegularExpression(@"^\d{4}$",
+        ErrorMessage = "CardLast4 must be exactly 4 digits.")]
     public string CardLast4 { get; set; } = string.Empty;
 
+    [Required]
+    [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{4}$",
+        ErrorMessage = "Expiration must be in MM/YYYY format.")]
     public string Expiration { get; set; } = string.Empty;
 
 }
