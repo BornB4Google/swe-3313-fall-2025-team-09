@@ -201,7 +201,7 @@ public class OrdersController : ControllerBase
         var sale = new Sale
         {
             UserId = userId,
-            CustomerName = S{request.FirstName.Trim()} {request.LastName.Trim()}
+            CustomerName = $"{request.FirstName.Trim()} {request.LastName.Trim()}",
             SaleDateTime = DateTime.UtcNow,
             Subtotal = subtotal,
             Tax = tax,
@@ -301,7 +301,6 @@ public class OrdersController : ControllerBase
             CardLast4 = sale.CardLast4,
 
             UserId = sale.UserId,
-            CustomerName = $"{sale.User.FirstName} {sale.User.LastName}",
             CustomerEmail = sale.User.Email
         };
 

@@ -58,11 +58,11 @@ public class CheckoutRequestDto
 {
     [Required]
     [StringLength(50, MinimumLength = 1, ErrorMessage = "First name is required.")]
-        public string FirstName { get; set; } = string.Empty;
+    public string FirstName { get; set; } = string.Empty;
 
     [Required]
     [StringLength(50, MinimumLength = 1, ErrorMessage = "Last name is required.")]
-        public string LastName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
 
     [Required]
     [StringLength(20)]
