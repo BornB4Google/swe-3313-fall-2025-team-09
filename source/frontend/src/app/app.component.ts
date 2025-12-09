@@ -95,9 +95,9 @@ export class AppComponent implements OnInit {
       const trimmed = query?.trim() ?? '';
       this.isSearchNavigation = true;
       if (trimmed) {
-        this.router.navigate(['/inventory'], { queryParams: { q: trimmed } });
+        this.router.navigate(['/inventory'], { queryParams: { q: trimmed }, replaceUrl: true });
       } else {
-        this.router.navigate(['/inventory']);
+        this.router.navigate(['/inventory'], { replaceUrl: true });
       }
     });
   }
