@@ -36,7 +36,7 @@ export interface OrderDetailDto {
 }
 
 export interface CheckoutRequest {
-  customerName: string;
+  checkoutName: string;
   street1: string;
   street2?: string | null;
   city: string;

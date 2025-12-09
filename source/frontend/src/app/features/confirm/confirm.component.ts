@@ -57,7 +57,7 @@ export class ConfirmComponent implements OnInit {
 
   buildCheckout(): CheckoutRequest {
     const object: CheckoutRequest = {
-      customerName: this.shippingInfo.name,
+      checkoutName: this.shippingInfo.name,
       street1: this.shippingInfo.address1,
       street2: this.shippingInfo.address2 || null,
       city: this.shippingInfo.city,
