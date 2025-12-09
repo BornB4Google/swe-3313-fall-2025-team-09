@@ -4,14 +4,15 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
-  width: clamp(200px, 100%, 500px);
-  height: clamp(150px, 25vh, 300px);
+  width: 400px;
+  height: clamp(200px, 70%, 400px);
 }
 
 .overlay-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   border-radius: 12px;
   margin: 0 auto 20px;
   display: block;
