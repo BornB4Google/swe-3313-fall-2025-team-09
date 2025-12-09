@@ -34,8 +34,16 @@ export class SignupComponent {
         error: err => {
           console.log('Login failed!');
           console.log('Server Response:', err);
-          const serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
-          const fallback = 'error: validation failed </3';
+
+          let serverError: string | null = null;
+          if (err?.error?.errors) {
+            const firstKey = Object.keys(err?.error?.errors)[0];
+            serverError = err?.error?.errors[firstKey]?.[0];
+          } else{
+            serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
+          }
+
+          const fallback = 'error: validation failed.';
           this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
           this.password = '';
         },
