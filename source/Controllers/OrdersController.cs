@@ -54,7 +54,9 @@ public class OrdersController : ControllerBase
             Total = s.Total,
             ItemCount = s.Items.Count,
             UserId = s.UserId,
-            CustomerName = $"{s.User.FirstName} {s.User.LastName}",
+            CustomerName = string.IsNullOrWhiteSpace(s.CheckoutName)
+                ? $"{s.User.FirstName} {s.User.LastName}"
+                : s.CheckoutName,
             CustomerEmail = s.User.Email,
             CardLast4 = s.CardLast4
 
@@ -207,6 +209,7 @@ public class OrdersController : ControllerBase
             Tax = tax,
             ShippingCost = shippingCost,
             Total = total,
+            CheckoutName = request.CheckoutName,
             ShippingSpeed = normalizedSpeed,
             Street1 = street1,
             Street2 = street2,
@@ -300,7 +303,10 @@ public class OrdersController : ControllerBase
             CardLast4 = sale.CardLast4,
 
             UserId = sale.UserId,
-            CustomerName = $"{sale.User.FirstName} {sale.User.LastName}",
+            CustomerName = string.IsNullOrWhiteSpace(sale.CheckoutName)
+                ? $"{sale.User.FirstName} {sale.User.LastName}"
+                : sale.CheckoutName,
+
             CustomerEmail = sale.User.Email
         };
 

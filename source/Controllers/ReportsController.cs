@@ -50,7 +50,8 @@ public class ReportsController : ControllerBase
             .Select(sale => new
             {
                 sale.SaleId,
-                sale.UserId,
+                sale.CheckoutName,
+                sale.User.Email,
                 sale.SaleDateTime,
                 sale.Subtotal,
                 sale.Tax,
@@ -67,6 +68,65 @@ public class ReportsController : ControllerBase
             .ToListAsync();
 
         return Ok(items);
+    }
+
+    // GET /api/reports/sales/csv
+    // Exports all sales as CSV
+    [HttpGet("sales/csv")]
+    public async Task<IActionResult> GetAllSalesCsv()
+    {
+        var sales = await _db.Sales
+            .OrderBy(s => s.SaleDateTime)
+            .Include(s => s.User)
+            .Select(s => new
+            {
+                s.SaleId,
+                s.CheckoutName,
+                Email = s.User.Email,
+                s.SaleDateTime,
+                s.Subtotal,
+                s.Tax,
+                s.ShippingCost,
+                s.Total,
+                s.ShippingSpeed,
+                s.Street1,
+                s.Street2,
+                s.City,
+                s.State,
+                s.Zip,
+                s.CardLast4
+            })
+            .ToListAsync();
+
+        var sb = new StringBuilder();
+
+        // Header row
+        sb.AppendLine("SaleId,Name,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+
+        foreach (var s in sales)
+        {
+            sb.AppendLine(
+                $"{s.SaleId}," +
+                $"{s.CheckoutName}," +
+                $"{s.Email}," +
+                $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
+                $"{s.ShippingSpeed}," +
+                $"{s.Street1}," +
+                $"{s.Street2}," +
+                $"{s.City}," +
+                $"{s.State}," +
+                $"{s.Zip}," +
+                $"{s.CardLast4}");
+        }
+
+        var bytes = Encoding.UTF8.GetBytes(sb.ToString());
+        var fileName = $"sales-all.csv";
+
+        return File(bytes, "text/csv", fileName);
     }
 
     // GET /api/reports/revenue
@@ -216,7 +276,8 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
+                s.CheckoutName,
+                s.User.Email,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -235,13 +296,14 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Name,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
+                $"{s.CheckoutName}," +
+                $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
                 $"{s.Tax:F2}," +
@@ -355,7 +417,8 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
+                s.CheckoutName,
+                s.User.Email,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -374,13 +437,14 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Name,Email,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
+                $"{s.CheckoutName}," +
+                $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
                 $"{s.Tax:F2}," +
@@ -474,7 +538,9 @@ public class ReportsController : ControllerBase
             Total = s.Total,
             ItemCount = s.Items.Count,
             UserId = s.UserId,
-            CustomerName = $"{s.User.FirstName} {s.User.LastName}",
+            CustomerName = string.IsNullOrWhiteSpace(s.CheckoutName)
+                ? $"{s.User.FirstName} {s.User.LastName}"
+                : s.CheckoutName,
             CustomerEmail = s.User.Email
         }).ToList();
 

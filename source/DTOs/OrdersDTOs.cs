@@ -48,6 +48,7 @@ public class OrderDetailDto
     // Customer Info
 
     public int UserId { get; set; }
+
     public string CustomerName { get; set; } = string.Empty;
     public string CustomerEmail { get; set; } = string.Empty;
 
@@ -57,6 +58,10 @@ public class OrderDetailDto
 // Request body for POST /api/orders/checkout
 public class CheckoutRequestDto
 {
+    [Required]
+    [StringLength(100)]
+    public string CheckoutName { get; set; } = string.Empty;
+
     [Required]
     [StringLength(20)]
     public string ShippingSpeed { get; set; } = string.Empty;
