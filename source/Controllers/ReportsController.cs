@@ -51,6 +51,9 @@ public class ReportsController : ControllerBase
             {
                 sale.SaleId,
                 sale.UserId,
+                sale.LastName,
+                sale.FirstName,
+                sale.Email,
                 sale.SaleDateTime,
                 sale.Subtotal,
                 sale.Tax,
@@ -80,6 +83,9 @@ public class ReportsController : ControllerBase
             {
                 s.SaleId,
                 s.UserId,
+                s.LastName,
+                s.FirstName,
+                s.Email,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -105,6 +111,9 @@ public class ReportsController : ControllerBase
             sb.AppendLine(
                 $"{s.SaleId}," +
                 $"{s.UserId}," +
+                $"{s.LastName}," +
+                $"{s.FirstName}," +
+                $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
                 $"{s.Tax:F2}," +
@@ -273,6 +282,9 @@ public class ReportsController : ControllerBase
             {
                 s.SaleId,
                 s.UserId,
+                s.LastName,
+                s.FirstName,
+                s.Email,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -298,6 +310,9 @@ public class ReportsController : ControllerBase
             sb.AppendLine(
                 $"{s.SaleId}," +
                 $"{s.UserId}," +
+                $"{s.LastName}," +
+                $"{s.FirstName}," +
+                $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
                 $"{s.Tax:F2}," +
@@ -412,6 +427,9 @@ public class ReportsController : ControllerBase
             {
                 s.SaleId,
                 s.UserId,
+                s.LastName,
+                s.FirstName,
+                s.Email,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -437,6 +455,9 @@ public class ReportsController : ControllerBase
             sb.AppendLine(
                 $"{s.SaleId}," +
                 $"{s.UserId}," +
+                $"{s.LastName}," +
+                $"{s.FirstName}," +
+                $"{s.Email}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
                 $"{s.Subtotal:F2}," +
                 $"{s.Tax:F2}," +

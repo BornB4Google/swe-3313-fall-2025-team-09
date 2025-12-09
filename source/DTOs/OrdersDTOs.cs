@@ -57,6 +57,13 @@ public class OrderDetailDto
 public class CheckoutRequestDto
 {
     [Required]
+    [StringLength(20)] public string FirstName { get; set; }
+
+    [Required]
+    [StringLength(20)] public string LastName { get; set; }
+
+
+    [Required]
     [StringLength(20)]
     public string ShippingSpeed { get; set; } = string.Empty;
 
