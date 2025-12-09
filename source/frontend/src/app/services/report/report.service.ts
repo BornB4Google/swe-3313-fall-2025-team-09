@@ -21,19 +21,22 @@ export class ReportsService {
     let params = new HttpParams();
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
-    return this.http.get<SaleReportItem[]>(`/api/reports/sales`, { params });
+    return this.http.get<SaleReportItem[]>(`/api/reports/sales`, {
+      params,
+      withCredentials: true
+    });
   }
 
   getRevenueReport(startDate?: Date, endDate?: Date): Observable<RevenueReport> {
     let params = new HttpParams();
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
-    return this.http.get<RevenueReport>(`/api/reports/revenue`, { params });
+    return this.http.get<RevenueReport>(`/api/reports/revenue`, { params, withCredentials: true });
   }
 
   getWeeklySalesReport(startDate: Date): Observable<WeeklyReport> {
     const params = new HttpParams().set('startDate', startDate.toISOString());
-    return this.http.get<WeeklyReport>(`/api/reports/sales/weekly`, { params });
+    return this.http.get<WeeklyReport>(`/api/reports/sales/weekly`, { params, withCredentials: true });
   }
 
   downloadWeeklyCsv(startDate: Date): Observable<Blob> {
@@ -41,6 +44,7 @@ export class ReportsService {
     return this.http.get(`/api/reports/sales/weekly/csv`, {
       params,
       responseType: 'blob',
+      withCredentials: true
     });
   }
 
@@ -48,7 +52,7 @@ export class ReportsService {
     let params = new HttpParams();
     if (year) params = params.set('year', year.toString());
     if (month) params = params.set('month', month.toString());
-    return this.http.get<MonthlyReport>(`/api/reports/sales/monthly`, { params });
+    return this.http.get<MonthlyReport>(`/api/reports/sales/monthly`, { params, withCredentials: true });
   }
 
   downloadMonthlyCsv(year: number, month: number): Observable<Blob> {
@@ -56,11 +60,14 @@ export class ReportsService {
     return this.http.get(`/api/reports/sales/monthly/csv`, {
       params,
       responseType: 'blob',
+      withCredentials: true
     });
   }
 
   getRecentSales(): Observable<RecentSale[]> {
-    return this.http.get<RecentSale[]>(`/api/reports/recent-sales`);
+    return this.http.get<RecentSale[]>(`/api/reports/recent-sales`, {
+      withCredentials: true
+    });
   }
 
   searchOrders(
@@ -74,7 +81,7 @@ export class ReportsService {
     if (email) params = params.set('customerEmail', email);
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
-    return this.http.get<OrderSummary[]>(`/api/reports/search`, { params });
+    return this.http.get<OrderSummary[]>(`/api/reports/search`, { params, withCredentials: true });
   }
 
   searchSoldItems(
@@ -90,6 +97,6 @@ export class ReportsService {
     if (startDate) params = params.set('startDate', startDate.toISOString());
     if (endDate) params = params.set('endDate', endDate.toISOString());
 
-    return this.http.get<SoldItem[]>(`/api/reports/sold-items/search`, { params });
+    return this.http.get<SoldItem[]>(`/api/reports/sold-items/search`, { params, withCredentials: true });
   }
 }
