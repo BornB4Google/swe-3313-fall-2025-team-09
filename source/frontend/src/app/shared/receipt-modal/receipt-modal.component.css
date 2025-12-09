@@ -89,6 +89,12 @@
   border-top: 1px solid #333;
 }
 
+.paid-card {
+  position: relative;
+  font-family: Playfair, serif;
+  font-size: 1rem;
+}
+
 .ship-title {
   font-weight: bold;
   font-size: 1.25rem;
