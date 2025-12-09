@@ -13,7 +13,8 @@ export interface CartDto {
 }
 
 export interface ShippingInfo {
-  name: string;
+  firstName: string;
+  lastName: string;
   address1: string;
   address2: string | null;
   city: string;

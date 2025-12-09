@@ -6,7 +6,8 @@ import { ShippingInfo } from '../../models/cart.models';
 })
 export class ShippingService {
   shippingInfo: ShippingInfo = {
-    name: '',
+    firstName: '',
+    lastName: '',
     address1: '',
     address2: '',
     city: '',
