@@ -55,7 +55,8 @@ public class OrdersController : ControllerBase
             ItemCount = s.Items.Count,
             UserId = s.UserId,
             CustomerName = $"{s.User.FirstName} {s.User.LastName}",
-            CustomerEmail = s.User.Email
+            CustomerEmail = s.User.Email,
+            CardLast4 = s.CardLast4
 
         }).ToList();
 

@@ -20,6 +20,7 @@ public class OrderSummaryDto
     public DateTime SaleDateTime { get; set; }
     public decimal Total { get; set; }
     public int ItemCount { get; set; }
+    public string CardLast4 { get; set; }
 
     public int UserId { get; set; }
     public string CustomerName { get; set; } = string.Empty;
