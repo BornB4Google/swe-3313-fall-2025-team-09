@@ -136,6 +136,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
+  downloadCompleteCsv(): void {
+    this.reportsService
+      .downloadCompleteCsv()
+      .subscribe(file => this.saveCsv(file, 'sales-all.csv'));
+  }
+
   searchReceipts(): void {
     const start = this.receiptStart ? new Date(this.receiptStart) : undefined;
     const end = this.receiptEnd ? new Date(this.receiptEnd) : undefined;

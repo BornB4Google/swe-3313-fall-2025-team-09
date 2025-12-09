@@ -59,6 +59,12 @@ export class ReportsService {
     });
   }
 
+  downloadCompleteCsv(): Observable<Blob> {
+    return this.http.get(`/api/reports/sales/csv`, {
+      responseType: 'blob',
+    });
+  }
+
   getRecentSales(): Observable<RecentSale[]> {
     return this.http.get<RecentSale[]>(`/api/reports/recent-sales`);
   }
