@@ -1,4 +1,4 @@
-﻿import { Component, Input, signal,SimpleChanges, OnChanges } from '@angular/core';
+﻿import { Component, Input, signal, SimpleChanges, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryItem } from '../../../models/inventory.models';
 
@@ -48,7 +48,5 @@ export class InventoryCarouselComponent implements OnChanges {
     for (const image of this.item.images) {
       this.imageUrls.push(image.imageUrl);
     }
-
   }
-
 }
