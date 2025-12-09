@@ -39,7 +39,7 @@ export class SignupComponent {
           if (err?.error?.errors) {
             const firstKey = Object.keys(err?.error?.errors)[0];
             serverError = err?.error?.errors[firstKey]?.[0];
-          } else{
+          } else {
             serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
           }
 
