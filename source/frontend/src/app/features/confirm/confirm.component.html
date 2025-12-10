@@ -11,18 +11,6 @@
       </div>
     }
     <div class="confirm-columns">
-      <div class="shipping-address">
-        <div class="ship-title">Shipping to:</div>
-        <div class="ship-name">
-          {{ shippingInfo.name }}
-        </div>
-        <div class="ship-line">
-          {{ shippingInfo.address1 }}
-        </div>
-        <div class="ship-line">
-          {{ shippingInfo.city }}, {{ shippingInfo.state }} {{ shippingInfo.zip }}
-        </div>
-      </div>
       <div class="pricing-container">
         <div class="line">
           <span class="label">Shipping: </span>
@@ -30,7 +18,7 @@
         </div>
         <div class="line">
           <span class="label">Subtotal: </span>
-          <span class="value">{{ subtotal | currency: 'USD' }}</span>
+          <span class="value">{{ subtotal + shippingCost | currency: 'USD' }}</span>
         </div>
         <div class="line">
           <span class="label"> Tax: </span>
@@ -42,6 +30,9 @@
         </div>
       </div>
     </div>
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
     <div class="confirm-buttons">
       <button type="button" class="confirm-btn" (click)="saveReceipt()">
         Complete Order

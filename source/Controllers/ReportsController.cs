@@ -50,7 +50,8 @@ public class ReportsController : ControllerBase
             .Select(sale => new
             {
                 sale.SaleId,
-                sale.UserId,
+                sale.CheckoutName,
+                sale.User.Email,
                 sale.SaleDateTime,
                 sale.Subtotal,
                 sale.Tax,
@@ -67,6 +68,63 @@ public class ReportsController : ControllerBase
             .ToListAsync();
 
         return Ok(items);
+    }
+
+    // GET /api/reports/sales/csv
+    // Exports all sales as CSV
+    [HttpGet("sales/csv")]
+    public async Task<IActionResult> GetAllSalesCsv()
+    {
+        var sales = await _db.Sales
+            .OrderBy(s => s.SaleDateTime)
+            .Include(s => s.User)
+            .Select(s => new
+            {
+                s.SaleId,
+                s.CheckoutName,
+                s.SaleDateTime,
+                s.Subtotal,
+                s.Tax,
+                s.ShippingCost,
+                s.Total,
+                s.ShippingSpeed,
+                s.Street1,
+                s.Street2,
+                s.City,
+                s.State,
+                s.Zip,
+                s.CardLast4
+            })
+            .ToListAsync();
+
+        var sb = new StringBuilder();
+
+        // Header row
+        sb.AppendLine("SaleId,Name,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+
+        foreach (var s in sales)
+        {
+            sb.AppendLine(
+                $"{s.SaleId}," +
+                $"{s.CheckoutName}," +
+                $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
+                $"{s.ShippingSpeed}," +
+                $"{s.Street1}," +
+                $"{s.Street2}," +
+                $"{s.City}," +
+                $"{s.State}," +
+                $"{s.Zip}," +
+                $"{s.CardLast4}");
+        }
+
+        var bytes = Encoding.UTF8.GetBytes(sb.ToString());
+        var fileName = $"sales-all.csv";
+
+        return File(bytes, "text/csv", fileName);
     }
 
     // GET /api/reports/revenue
@@ -143,9 +201,11 @@ public class ReportsController : ControllerBase
     // Weekly data for the week starting at startDate
     [HttpGet("sales/weekly")]
     public async Task<IActionResult> GetWeeklySalesReport(
-        [FromQuery] DateTime startDate)
+        [FromQuery] DateTime? startDate)
     {
-        var weekStart = startDate.Date;
+
+        var today = DateTime.UtcNow.Date;
+        var weekStart = (startDate ?? today.AddDays(-7)).Date;
         var weekEnd = weekStart.AddDays(7);
 
         var salesQuery = _db.Sales
@@ -191,15 +251,21 @@ public class ReportsController : ControllerBase
             WeeklyDataPoints = new[] { weeklyDataPoint }
         });
     }
-
     // GET /api/reports/sales/weekly/csv
     // Exports all sales the week following startDate as CSV
     [HttpGet("sales/weekly/csv")]
     public async Task<IActionResult> GetWeeklySalesCsv(
-        [FromQuery] DateTime startDate)
+        [FromQuery] DateTime? startDate)
     {
-        // Start at midnight of that day
-        var weekStart = startDate.Date;
+        // If the client passed an invalid date, give an error
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("startDate must be a valid date. Example: startDate=2025-11-01");
+        }
+
+        // Default to the previous 7-day window if no startDate is provided
+        var today = DateTime.UtcNow.Date;
+        var weekStart = (startDate ?? today.AddDays(-7)).Date;
         var weekEnd = weekStart.AddDays(7);
 
         var sales = await _db.Sales
@@ -208,7 +274,7 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
+                s.CheckoutName,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -227,18 +293,18 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Name,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
+                $"{s.CheckoutName}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
-                $"{s.Subtotal:N2}," +
-                $"{s.Tax:N2}," +
-                $"{s.ShippingCost:N2}," +
-                $"{s.Total:N2}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
                 $"{s.ShippingSpeed}," +
                 $"{s.Street1}," +
                 $"{s.Street2}," +
@@ -313,15 +379,32 @@ public class ReportsController : ControllerBase
     // Exports all sales for a specific month as CSV
     [HttpGet("sales/monthly/csv")]
     public async Task<IActionResult> GetMonthlySalesCsv(
-        [FromQuery] int year,
-        [FromQuery] int month)
+        [FromQuery] int? year,
+        [FromQuery] int? month)
     {
-        if (year <= 0 || month < 1 || month > 12)
+        var now = DateTime.UtcNow;
+        int targetYear;
+        int targetMonth;
+
+        if (!year.HasValue && !month.HasValue)
         {
-            return BadRequest("Year and month must be valid. Example: year=2025&month=11");
+            // Default to previous calendar month
+            var prevMonthDate = new DateTime(now.Year, now.Month, 1).AddMonths(-1);
+            targetYear = prevMonthDate.Year;
+            targetMonth = prevMonthDate.Month;
+        }
+        else
+        {
+            if (!year.HasValue || !month.HasValue || year <= 0 || month < 1 || month > 12)
+            {
+                return BadRequest("Year and month must be valid. Example: year=2025&month=11");
+            }
+
+            targetYear = year.Value;
+            targetMonth = month.Value;
         }
 
-        var monthStart = new DateTime(year, month, 1);
+        var monthStart = new DateTime(targetYear, targetMonth, 1);
         var monthEnd = monthStart.AddMonths(1);
 
         var sales = await _db.Sales
@@ -330,7 +413,7 @@ public class ReportsController : ControllerBase
             .Select(s => new
             {
                 s.SaleId,
-                s.UserId,
+                s.CheckoutName,
                 s.SaleDateTime,
                 s.Subtotal,
                 s.Tax,
@@ -349,18 +432,18 @@ public class ReportsController : ControllerBase
         var sb = new StringBuilder();
 
         // Header row
-        sb.AppendLine("SaleId,UserId,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
+        sb.AppendLine("SaleId,Name,SaleDateTime,Subtotal,Tax,ShippingCost,Total,ShippingSpeed,Street1,Street2,City,State,Zip,CardLast4");
 
         foreach (var s in sales)
         {
             sb.AppendLine(
                 $"{s.SaleId}," +
-                $"{s.UserId}," +
+                $"{s.CheckoutName}," +
                 $"{s.SaleDateTime:yyyy-MM-dd HH:mm:ss}," +
-                $"{s.Subtotal:N2}," +
-                $"{s.Tax:N2}," +
-                $"{s.ShippingCost:N2}," +
-                $"{s.Total:N2}," +
+                $"{s.Subtotal:F2}," +
+                $"{s.Tax:F2}," +
+                $"{s.ShippingCost:F2}," +
+                $"{s.Total:F2}," +
                 $"{s.ShippingSpeed}," +
                 $"{s.Street1}," +
                 $"{s.Street2}," +
@@ -371,10 +454,11 @@ public class ReportsController : ControllerBase
         }
 
         var bytes = Encoding.UTF8.GetBytes(sb.ToString());
-        var fileName = $"sales-{year}-{month:00}.csv";
+        var fileName = $"sales-{targetYear}-{targetMonth:00}.csv";
 
         return File(bytes, "text/csv", fileName);
     }
+
 
     // GET /api/reports/recent-sales
     // Returns details on the three most recent sales and connects to their receipt
@@ -385,7 +469,7 @@ public class ReportsController : ControllerBase
             .Include(si => si.Sale)
             .Include(si => si.InventoryItem)
             .OrderByDescending(si => si.Sale.SaleDateTime)
-            .Take(3)
+            .Take(10)
             .Select(si => new
             {
                 ItemName = si.InventoryItem.Name,
@@ -448,7 +532,9 @@ public class ReportsController : ControllerBase
             Total = s.Total,
             ItemCount = s.Items.Count,
             UserId = s.UserId,
-            CustomerName = $"{s.User.FirstName} {s.User.LastName}",
+            CustomerName = string.IsNullOrWhiteSpace(s.CheckoutName)
+                ? $"{s.User.FirstName} {s.User.LastName}"
+                : s.CheckoutName,
             CustomerEmail = s.User.Email
         }).ToList();
 

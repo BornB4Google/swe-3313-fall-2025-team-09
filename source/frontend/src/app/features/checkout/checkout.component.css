@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
   padding: 100px 20px 40px;
   background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   color: #f4f7f9;
@@ -64,7 +66,7 @@ select.input {
   cursor: pointer;
 }
 
-/* Shipping & Pricing Section */
+/* Shipping and Pricing Section */
 .confirm-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -188,7 +190,7 @@ select.input {
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
   border: 2px solid #ff4d4d !important;
-  background-color: rgba(255, 0, 0, 0.15) !important;
+  background-color: #f5cddc !important;
   color: #333 !important;
 }
 

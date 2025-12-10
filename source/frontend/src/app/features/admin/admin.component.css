@@ -3,9 +3,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
   padding: 80px 0;
   background: linear-gradient(135deg, #0a0f1c, #1e2a38);
   animation: gradientShift 15s ease infinite;
@@ -34,7 +34,6 @@
   padding: 40px 30px;
   border-radius: 16px;
   width: 1000px;
-  height: 1000px;
   display: flex;
   flex-direction: column;
   gap: 20px;

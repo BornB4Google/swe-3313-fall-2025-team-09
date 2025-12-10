@@ -54,8 +54,11 @@ public class OrdersController : ControllerBase
             Total = s.Total,
             ItemCount = s.Items.Count,
             UserId = s.UserId,
-            CustomerName = $"{s.User.FirstName} {s.User.LastName}",
-            CustomerEmail = s.User.Email
+            CustomerName = string.IsNullOrWhiteSpace(s.CheckoutName)
+                ? $"{s.User.FirstName} {s.User.LastName}"
+                : s.CheckoutName,
+            CustomerEmail = s.User.Email,
+            CardLast4 = s.CardLast4
 
         }).ToList();
 
@@ -127,7 +130,16 @@ public class OrdersController : ControllerBase
             return BadRequest(ModelState);
         }
 
+        // Normalize request fields
+        var state = request.State.Trim().ToUpperInvariant();
+        var zip = request.Zip.Trim();
+        var shippingSpeedRaw = request.ShippingSpeed.Trim();
+        var street1 = request.Street1.Trim();
+        var street2 = request.Street2?.Trim();
+        var city = request.City.Trim();
+
         var userId = GetUserIdFromClaims();
+
 
         // Load the active cart for this user with items and inventory details
         var cart = await _db.Carts
@@ -161,9 +173,9 @@ public class OrdersController : ControllerBase
 
         // Shipping cost based on ShippingSpeed
         decimal shippingCost;
-        string normalizedSpeed = request.ShippingSpeed.Trim();
+        string normalizedSpeed = shippingSpeedRaw;
 
-        switch (normalizedSpeed.ToLowerInvariant())
+        switch (shippingSpeedRaw.ToLowerInvariant())
         {
             case "overnight":
                 shippingCost = 29m;
@@ -197,12 +209,13 @@ public class OrdersController : ControllerBase
             Tax = tax,
             ShippingCost = shippingCost,
             Total = total,
+            CheckoutName = request.CheckoutName,
             ShippingSpeed = normalizedSpeed,
-            Street1 = request.Street1,
-            Street2 = request.Street2,
-            City = request.City,
-            State = request.State,
-            Zip = request.Zip,
+            Street1 = street1,
+            Street2 = street2,
+            City = city,
+            State = state,
+            Zip = zip,
             CardLast4 = request.CardLast4
         };
 
@@ -290,7 +303,10 @@ public class OrdersController : ControllerBase
             CardLast4 = sale.CardLast4,
 
             UserId = sale.UserId,
-            CustomerName = $"{sale.User.FirstName} {sale.User.LastName}",
+            CustomerName = string.IsNullOrWhiteSpace(sale.CheckoutName)
+                ? $"{sale.User.FirstName} {sale.User.LastName}"
+                : sale.CheckoutName,
+
             CustomerEmail = sale.User.Email
         };
 

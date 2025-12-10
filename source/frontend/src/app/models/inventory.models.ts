@@ -8,7 +8,7 @@ export interface InventoryItem {
   itemId: number;
   name: string;
   description: string;
-  price: number;
+  price: number | null;
   primaryPhotoUrl: string;
   category: string;
   isSold: boolean;

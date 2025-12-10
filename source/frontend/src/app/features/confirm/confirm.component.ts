@@ -42,6 +42,7 @@ export class ConfirmComponent implements OnInit {
   subtotal = 0;
   tax = 0;
   selectedOption = '';
+  errorMessage: string | null = null;
 
   ngOnInit() {
     this.cartService.loadCart();
@@ -56,6 +57,7 @@ export class ConfirmComponent implements OnInit {
 
   buildCheckout(): CheckoutRequest {
     const object: CheckoutRequest = {
+      checkoutName: this.shippingInfo.name,
       street1: this.shippingInfo.address1,
       street2: this.shippingInfo.address2 || null,
       city: this.shippingInfo.city,
@@ -74,10 +76,20 @@ export class ConfirmComponent implements OnInit {
   }
   saveReceipt() {
     const request = this.buildCheckout();
-    this.receiptService.checkout(request).subscribe(result => {
-      this.receiptService.setLastOrder(result);
-      this.clearCart();
-      this.navigateToReceiptPage(result.saleId);
+    this.receiptService.checkout(request).subscribe({
+      next: result => {
+        this.errorMessage = null;
+        this.receiptService.setLastOrder(result);
+        this.clearCart();
+        this.shipService.clearShippingInfo();
+        this.navigateToReceiptPage(result.saleId);
+      },
+      error: err => {
+        console.error('Checkout failed', err);
+        const serverError = typeof err?.error === 'string' ? err.error : err?.error?.message;
+        const fallback = 'Failed to complete order. Please try again.';
+        this.errorMessage = serverError?.trim()?.length ? serverError : fallback;
+      },
     });
   }
 

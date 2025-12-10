@@ -34,7 +34,6 @@ public class InventoryItemWriteDto
     [Range(0, double.MaxValue)]
     public decimal Price { get; set; }
 
-    [Url]
     public string? PrimaryPhotoUrl { get; set; }
 
     [Required]
@@ -42,6 +41,16 @@ public class InventoryItemWriteDto
     public string Category { get; set; } = string.Empty;
 
     public bool IsSold { get; set; } = false;
+
+    public List<ImageWriteDto> Images { get; set; } = new();
+}
+
+public class ImageWriteDto
+{
+    [Required]
+    public string ImageUrl { get; set; } = string.Empty;
+
+    public int DisplayOrder { get; set; } = 0;
 }
 
 

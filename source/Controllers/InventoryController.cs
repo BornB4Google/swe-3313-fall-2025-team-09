@@ -27,9 +27,13 @@ public class InventoryController : ControllerBase
     [Authorize(Roles = "User, Admin")]
     public async Task<IActionResult> GetAll()
     {
-        var items = await _db.InventoryItems
+
+        var itemsFromDb = await _db.InventoryItems
             .Include(i => i.Images)
-            .OrderBy(i => i.ItemId)
+            .ToListAsync();
+
+        var items = itemsFromDb
+            .OrderByDescending(i => i.Price)   // sort price highest to lowest
             .Select(i => new
             {
                 i.ItemId,
@@ -49,7 +53,7 @@ public class InventoryController : ControllerBase
                     })
                     .ToList()
             })
-            .ToListAsync();
+            .ToList();
 
         return Ok(items);
     }
@@ -103,10 +107,19 @@ public class InventoryController : ControllerBase
             Name = dto.Name,
             Description = dto.Description,
             Price = dto.Price,
-            PrimaryPhotoUrl = dto.PrimaryPhotoUrl,
+            PrimaryPhotoUrl = dto.PrimaryPhotoUrl ?? string.Empty,
             Category = dto.Category,
             IsSold = dto.IsSold
         };
+
+        foreach (var img in dto.Images)
+        {
+            entity.Images.Add(new ItemImage
+            {
+                ImageUrl = img.ImageUrl,
+                DisplayOrder = img.DisplayOrder
+            });
+        }
 
         _db.InventoryItems.Add(entity);
         await _db.SaveChangesAsync();
@@ -145,9 +158,20 @@ public class InventoryController : ControllerBase
         entity.Name = dto.Name;
         entity.Description = dto.Description;
         entity.Price = dto.Price;
-        entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl;
+        entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl ?? string.Empty;
         entity.Category = dto.Category;
         entity.IsSold = dto.IsSold;
+
+        entity.Images.Clear();
+        foreach (var img in dto.Images)
+        {
+            entity.Images.Add(new ItemImage
+            {
+                ImageUrl = img.ImageUrl,
+                DisplayOrder = img.DisplayOrder
+            });
+        }
+
 
         await _db.SaveChangesAsync();
 

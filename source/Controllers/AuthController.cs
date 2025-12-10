@@ -72,6 +72,8 @@ public class AuthController : ControllerBase
             return BadRequest("No username given.");
         if (string.IsNullOrWhiteSpace(request.Password))
             return BadRequest("No password given.");
+        if (request.Password.Length < 6)
+            return BadRequest("Password must be at least 6 characters");
 
         var user = await _db.Users
             .SingleOrDefaultAsync(u => u.Username == request.Username);
@@ -83,7 +85,7 @@ public class AuthController : ControllerBase
         if (user.PasswordHash != hashedPassword)
             return BadRequest("Incorrect password");
 
-        // Build JWT toke
+        // Build JWT token
         var jwtSection = _config.GetSection("Jwt");
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -134,7 +136,7 @@ public class AuthController : ControllerBase
 
         return Ok(new LoginResponse
         {
-            // token is carried only in cookie for this app
+            // token is cookie
             Token = string.Empty,
             Username = user.Username,
             IsAdmin = user.IsAdmin

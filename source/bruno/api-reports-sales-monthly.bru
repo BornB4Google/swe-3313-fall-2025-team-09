@@ -1,0 +1,15 @@
+meta {
+  name: /api/reports/sales/monthly
+  type: http
+  seq: 15
+}
+
+get {
+  url: http://localhost:5243
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

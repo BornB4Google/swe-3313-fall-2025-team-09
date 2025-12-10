@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { OrderSummaryDto, OrderDetailDto } from '../../../models/order.models';
 import { SaleService } from '../../../services/sales/sale.service';
+import { ReceiptModalComponent } from '../../../shared/receipt-modal/receipt-modal.component';
 
 @Component({
   selector: 'app-orders',
-  imports: [CurrencyPipe, DatePipe],
+  imports: [CurrencyPipe, DatePipe, ReceiptModalComponent],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css',
 })

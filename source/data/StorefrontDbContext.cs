@@ -72,13 +72,13 @@ namespace Backend.Data
                 .WithMany(i => i.CartItems)
                 .HasForeignKey(ci => ci.ItemId);
 
-            // Cart → User (many carts per user.. can be checked out or active)
+            // Cart to User (many carts per user.. can be checked out or active)
             modelBuilder.Entity<Cart>()
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserId);
 
-            // Sale → User (many sales per user)
+            // Sale to User (many sales per user)
             modelBuilder.Entity<Sale>()
                 .HasOne(s => s.User)
                 .WithMany()

@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-
 namespace Backend.Controllers;
 
 [ApiController]
@@ -114,11 +111,13 @@ public class UsersController : ControllerBase
 
         if (currentUser == id)
         {
-            return BadRequest(new { message = "You cannot change your own admin status" });
+            return BadRequest("You cannot change your own admin status.");
         }
 
         var user = await _db.Users.FindAsync(id);
 
+        if (user is null)
+            return NotFound();
 
         user.IsAdmin = request.IsAdmin;
         await _db.SaveChangesAsync();
