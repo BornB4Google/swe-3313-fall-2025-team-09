@@ -174,9 +174,9 @@ using (var scope = app.Services.CreateScope())
             {
                 ItemId = 6,
                 Name = "Spotify",
-                Description = "N/A",
+                Description = "Acquire the platform that redefined global music consumption. With industry-shaping algorithms, vast licensing power, and cultural reach across every genre, Spotify’s IP gives you a decisive stake in the future of audio.",
                 Price = 121410000000.00m,
-                PrimaryPhotoUrl = "https://www.pngegg.com/en/png-hyigp",
+                PrimaryPhotoUrl = "https://www.logo.wine/a/logo/Spotify/Spotify-Icon-Logo.wine.svg",
                 Category = "Entertainment",
                 IsSold = true
             },
@@ -184,7 +184,7 @@ using (var scope = app.Services.CreateScope())
             {
                 ItemId = 7,
                 Name = "Prada Holding S.P.A",
-                Description = "N/A",
+                Description = "Assume ownership of one of fashion’s most iconic luxury houses. From runway-defining silhouettes to boundary-pushing materials, Prada’s intellectual property shapes the language of style and exerts cultural influence across decades.",
                 Price = 14000000000.00m,
                 PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/61/1/prada-logo-png_seeklogo-619678.png",
                 Category = "Luxury Goods",
