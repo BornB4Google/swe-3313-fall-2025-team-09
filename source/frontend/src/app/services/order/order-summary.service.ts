@@ -12,7 +12,7 @@ export class OrderSummaryService {
   updateSummary(subtotal: number, shipping: number) {
     this.cartSubtotal = subtotal;
     this.shippingCost = shipping;
-    this.tax = (subtotal) * 0.06;
+    this.tax = subtotal * 0.06;
     this.total = subtotal + shipping + this.tax;
   }
 }
