@@ -169,6 +169,26 @@ using (var scope = app.Services.CreateScope())
                 PrimaryPhotoUrl = "https://media.wired.com/photos/66900a63fc84cb0d65446d72/3:2/w_1920,c_limit/Deepmind-Robotics-Chatbot-Business-2021265856.jpg",
                 Category = "Technology",
                 IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 6,
+                Name = "Spotify",
+                Description = "Acquire the platform that redefined global music consumption. With industry-shaping algorithms, vast licensing power, and cultural reach across every genre, Spotify’s IP gives you a decisive stake in the future of audio.",
+                Price = 121410000000.00m,
+                PrimaryPhotoUrl = "https://www.logo.wine/a/logo/Spotify/Spotify-Icon-Logo.wine.svg",
+                Category = "Entertainment",
+                IsSold = true
+            },
+            new InventoryItem
+            {
+                ItemId = 7,
+                Name = "Prada Holding S.P.A",
+                Description = "Assume ownership of one of fashion’s most iconic luxury houses. From runway-defining silhouettes to boundary-pushing materials, Prada’s intellectual property shapes the language of style and exerts cultural influence across decades.",
+                Price = 14000000000.00m,
+                PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/61/1/prada-logo-png_seeklogo-619678.png",
+                Category = "Luxury Goods",
+                IsSold = true
             }
         );
     }
@@ -234,13 +254,13 @@ using (var scope = app.Services.CreateScope())
             new SaleItem
             {
                 SaleId = 1,
-                ItemId = 4,
+                ItemId = 6,
                 UnitPrice = 190220000000.00m
             },
             new SaleItem
             {
                 SaleId = 2,
-                ItemId = 3,
+                ItemId = 7,
                 UnitPrice = 1340000000000.00m
             }
         );
