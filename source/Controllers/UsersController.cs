@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-
 namespace Backend.Controllers;
 
 [ApiController]
@@ -119,6 +116,8 @@ public class UsersController : ControllerBase
 
         var user = await _db.Users.FindAsync(id);
 
+        if (user is null)
+            return NotFound();
 
         user.IsAdmin = request.IsAdmin;
         await _db.SaveChangesAsync();

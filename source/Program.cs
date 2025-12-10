@@ -29,7 +29,7 @@ if (builder.Environment.IsDevelopment())
 }
 
 var jwtSection = builder.Configuration.GetSection("Jwt");
-var jwtKey = jwtSection["Key"];
+var jwtKey = jwtSection["Key"] ?? throw new InvalidOperationException("JWT Key is not configured");
 var jwtIssuer = jwtSection["Issuer"];
 var jwtAudience = jwtSection["Audience"];
 

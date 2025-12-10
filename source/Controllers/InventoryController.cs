@@ -107,7 +107,7 @@ public class InventoryController : ControllerBase
             Name = dto.Name,
             Description = dto.Description,
             Price = dto.Price,
-            PrimaryPhotoUrl = dto.PrimaryPhotoUrl,
+            PrimaryPhotoUrl = dto.PrimaryPhotoUrl ?? string.Empty,
             Category = dto.Category,
             IsSold = dto.IsSold
         };
@@ -158,7 +158,7 @@ public class InventoryController : ControllerBase
         entity.Name = dto.Name;
         entity.Description = dto.Description;
         entity.Price = dto.Price;
-        entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl;
+        entity.PrimaryPhotoUrl = dto.PrimaryPhotoUrl ?? string.Empty;
         entity.Category = dto.Category;
         entity.IsSold = dto.IsSold;
 
