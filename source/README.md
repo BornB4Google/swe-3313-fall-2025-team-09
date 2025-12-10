@@ -79,7 +79,7 @@ To run the application locally in a way that closely matches production (Angular
 
 1. Publish the backend in Release mode (this also builds the Angular frontend and includes it in the publish output):
    ```bash
-   dotnet publish -c Release -o ./publish
+   dotnet publish backend.csproj -c Release -o ./publish
    ```
 2. Run the published app with the `Production` environment.
 
