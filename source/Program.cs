@@ -169,6 +169,26 @@ using (var scope = app.Services.CreateScope())
                 PrimaryPhotoUrl = "https://media.wired.com/photos/66900a63fc84cb0d65446d72/3:2/w_1920,c_limit/Deepmind-Robotics-Chatbot-Business-2021265856.jpg",
                 Category = "Technology",
                 IsSold = false
+            },
+            new InventoryItem
+            {
+                ItemId = 6,
+                Name = "Spotify",
+                Description = "N/A",
+                Price = 121410000000.00m,
+                PrimaryPhotoUrl = "https://www.pngegg.com/en/png-hyigp",
+                Category = "Entertainment",
+                IsSold = true
+            },
+            new InventoryItem
+            {
+                ItemId = 7,
+                Name = "Prada Holding S.P.A",
+                Description = "N/A",
+                Price = 14000000000.00m,
+                PrimaryPhotoUrl = "https://images.seeklogo.com/logo-png/61/1/prada-logo-png_seeklogo-619678.png",
+                Category = "Luxury Goods",
+                IsSold = true
             }
         );
     }
@@ -234,13 +254,13 @@ using (var scope = app.Services.CreateScope())
             new SaleItem
             {
                 SaleId = 1,
-                ItemId = 4,
+                ItemId = 6,
                 UnitPrice = 190220000000.00m
             },
             new SaleItem
             {
                 SaleId = 2,
-                ItemId = 3,
+                ItemId = 7,
                 UnitPrice = 1340000000000.00m
             }
         );
